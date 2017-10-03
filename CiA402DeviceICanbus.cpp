@@ -74,13 +74,6 @@ can_msg CiA402DeviceICanbus::SetCanMsg(can_msg & msg, uint8_t msg_start[])
     return msg;
 }
 
-/**
- * @brief CiA402DeviceICanbus::SetCanOpenMsg : Constructs canopen message from parameters
- * @param id_co: cob id canopen parameter.
- * @param rtr: request for remote.
- * @param msg_start : canopen data frame.
- * @return : canopen constructed message in co_msg data type.
- */
 
 co_msg CiA402DeviceICanbus::SetCanOpenMsg(unsigned short id_co, unsigned short rtr, vector<uint8_t> coDataFrame){
 
