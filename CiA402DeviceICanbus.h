@@ -35,24 +35,16 @@ public:
 
 
     //co_msg SetCanOpenMsg();
+    long co2c(const co_msg & input, can_msg & output);
 
     int WaitForReadMessage(co_msg &output, unsigned int canIndex);
     long c2co(const can_msg &input, co_msg &output);
     int SetCanOpenMsg(co_msg &msg_co);
     int SetCanOpenMsg(co_msg &msg_co, uint8_t msg_start[]);
     can_msg SetCanMsg(can_msg &msg, uint8_t msg_start[]);
-
-    /**
-     * @brief CiA402DeviceICanbus::SetCanOpenMsg : Constructs canopen message from parameters
-     * @param id_co: cob id canopen parameter.
-     * @param rtr: request for remote.
-     * @param msg_start : canopen data frame.
-     * @return : canopen constructed message in co_msg data type.
-     */
     co_msg SetCanOpenMsg(unsigned short id_co, unsigned short rtr, vector<uint8_t> coDataFrame);
 private:
     int read_timeout(int fd, can_msg *buf, unsigned int timeout);
-    long co2c(const co_msg & input, can_msg & output);
     can_msg send_msg;
     long prueba;
 };

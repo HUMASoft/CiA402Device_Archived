@@ -8,8 +8,7 @@ struct co_msg
     unsigned short id_co;
 #ifdef HICO_LE
     struct {
-        /* Remote transmission request flag */
-        unsigned short rtr:1;
+
 
         /* Node ID */
         unsigned short nodeID:7;
@@ -28,6 +27,8 @@ struct co_msg
     /* Timestamp in microseconds */
     unsigned int ts;
 
+    /* Remote transmission request flag */
+    unsigned short rtr:1;
     unsigned short dlc_co;
 
     /* CAN message data */
