@@ -162,7 +162,13 @@ int CiA402DeviceICanbus::WaitForReadMessage(co_msg & output, unsigned int canInd
             printf("%02x ",input.data[i]);
         }
         cout<<endl;
+                cout<<"received canopen id " << (bitset<16>)output.id_co << " rtr: " << output.rtr << endl;
+                cout<<"received canopen data: ";
+                for (int i = 0; i < output.dlc_co; i++) {
 
+                    printf("%02x ",output.data_co[i]);
+                }
+                cout<<endl;
     }
     return 0;
 }
@@ -199,7 +205,6 @@ long CiA402DeviceICanbus::c2co(const can_msg & input, co_msg & output)
 
     output.dlc_co=input.dlc;
     output.id_co=input.id;
-    output.id_co<<=1;
     output.rtr=input.rtr;
     output.ts=input.ts;
 
