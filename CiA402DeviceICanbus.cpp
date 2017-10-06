@@ -103,6 +103,7 @@ co_msg CiA402DeviceICanbus::SetCanOpenMsg(unsigned short id_co, unsigned short r
     return msg_co;
 }
 
+
 /* Transforma mensaje de canopen a can y lo envía a can0 */
 int CiA402DeviceICanbus::SendMessage(co_msg input, unsigned int canIndex)
 {
