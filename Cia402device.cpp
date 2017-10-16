@@ -5,7 +5,7 @@ CiA402Device::CiA402Device()
     interf.Init(vector<int>(1),"/dev/can");
 }
 
-int CiA402Device::SwitchOn(){
+long CiA402Device::SwitchOn(){
 
 //    co_msg input;
 //    co_msg output;
@@ -59,4 +59,14 @@ int CiA402Device::CheckStatus(){
     return 0;
 }
 
+
+long CiA402Device::SwitchOff()
+{
+
+}
+
+double CiA402Device::GetPosition()
+{
+
+}
 

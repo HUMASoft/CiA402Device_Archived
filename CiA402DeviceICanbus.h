@@ -43,6 +43,8 @@ public:
     int SetCanOpenMsg(co_msg &msg_co, uint8_t msg_start[]);
     can_msg SetCanMsg(can_msg &msg, uint8_t msg_start[]);
     co_msg SetCanOpenMsg(unsigned short id_co, unsigned short rtr, vector<uint8_t> coDataFrame);
+
+
 private:
     int read_timeout(int fd, can_msg *buf, unsigned int timeout);
     can_msg send_msg;
