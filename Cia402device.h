@@ -1,6 +1,7 @@
 #ifndef CIA402DEVICE_H
 #define CIA402DEVICE_H
 #include "CiA402DeviceICanbus.h"
+#include "ObjectDictionary.h"
 
 class CiA402Device
 {
