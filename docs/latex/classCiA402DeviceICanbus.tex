@@ -1,0 +1,74 @@
+\hypertarget{classCiA402DeviceICanbus}{}\section{Ci\+A402\+Device\+I\+Canbus Class Reference}
+\label{classCiA402DeviceICanbus}\index{Ci\+A402\+Device\+I\+Canbus@{Ci\+A402\+Device\+I\+Canbus}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCiA402DeviceICanbus_a205b5105bd658b73b582cf1685f1d320}\label{classCiA402DeviceICanbus_a205b5105bd658b73b582cf1685f1d320}} 
+{\bfseries Ci\+A402\+Device\+I\+Canbus} (long number, string can\+Port)
+\item 
+\mbox{\Hypertarget{classCiA402DeviceICanbus_a757447054eadb6824cf779ca58d276ae}\label{classCiA402DeviceICanbus_a757447054eadb6824cf779ca58d276ae}} 
+long {\bfseries Init} (const vector$<$ int $>$ \&new\+\_\+can\+Ports, string can\+Port)
+\item 
+\mbox{\Hypertarget{classCiA402DeviceICanbus_ac831e319febc65d424955e32ecdf72c3}\label{classCiA402DeviceICanbus_ac831e319febc65d424955e32ecdf72c3}} 
+int {\bfseries Send\+Message} (\hyperlink{structco__msg}{co\+\_\+msg} input, unsigned int can\+Index)
+\item 
+\mbox{\Hypertarget{classCiA402DeviceICanbus_aa108188c7f32a1c5d1f50662e66c6676}\label{classCiA402DeviceICanbus_aa108188c7f32a1c5d1f50662e66c6676}} 
+long {\bfseries co2c} (const \hyperlink{structco__msg}{co\+\_\+msg} \&input, \hyperlink{structcan__msg}{can\+\_\+msg} \&output)
+\item 
+\mbox{\Hypertarget{classCiA402DeviceICanbus_a1f8d07b892461470a29ac5d30f3dd679}\label{classCiA402DeviceICanbus_a1f8d07b892461470a29ac5d30f3dd679}} 
+int {\bfseries Wait\+For\+Read\+Message} (\hyperlink{structco__msg}{co\+\_\+msg} \&output, unsigned int can\+Index)
+\item 
+\mbox{\Hypertarget{classCiA402DeviceICanbus_aab504488399b2d5a5a010efef29e3d64}\label{classCiA402DeviceICanbus_aab504488399b2d5a5a010efef29e3d64}} 
+long {\bfseries c2co} (const \hyperlink{structcan__msg}{can\+\_\+msg} \&input, \hyperlink{structco__msg}{co\+\_\+msg} \&output)
+\item 
+\mbox{\Hypertarget{classCiA402DeviceICanbus_aa439b9175f5879282058a3f4c2edb45d}\label{classCiA402DeviceICanbus_aa439b9175f5879282058a3f4c2edb45d}} 
+int {\bfseries Set\+Can\+Open\+Msg} (\hyperlink{structco__msg}{co\+\_\+msg} \&msg\+\_\+co)
+\item 
+\mbox{\Hypertarget{classCiA402DeviceICanbus_af09467b107e73f67804942db1597d983}\label{classCiA402DeviceICanbus_af09467b107e73f67804942db1597d983}} 
+int {\bfseries Set\+Can\+Open\+Msg} (\hyperlink{structco__msg}{co\+\_\+msg} \&msg\+\_\+co, uint8\+\_\+t msg\+\_\+start\mbox{[}$\,$\mbox{]})
+\item 
+\mbox{\Hypertarget{classCiA402DeviceICanbus_a93cde3041c3d0a26666b451aa70b246f}\label{classCiA402DeviceICanbus_a93cde3041c3d0a26666b451aa70b246f}} 
+\hyperlink{structcan__msg}{can\+\_\+msg} {\bfseries Set\+Can\+Msg} (\hyperlink{structcan__msg}{can\+\_\+msg} \&msg, uint8\+\_\+t msg\+\_\+start\mbox{[}$\,$\mbox{]})
+\item 
+\hyperlink{structco__msg}{co\+\_\+msg} \hyperlink{classCiA402DeviceICanbus_ab861fc4d62c917bdb1c06b886c8ed45a}{Set\+Can\+Open\+Msg} (unsigned short id\+\_\+co, unsigned short rtr, vector$<$ uint8\+\_\+t $>$ co\+Data\+Frame)
+\begin{DoxyCompactList}\small\item\em Ci\+A402\+Device\+I\+Canbus\+::\+Set\+Can\+Open\+Msg \+: Constructs canopen message from parameters. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCiA402DeviceICanbus_a456534a394e4072025f2528938d1070d}\label{classCiA402DeviceICanbus_a456534a394e4072025f2528938d1070d}} 
+vector$<$ int $>$ {\bfseries can\+Ports}
+\item 
+\mbox{\Hypertarget{classCiA402DeviceICanbus_af6cf1493b669ce0415cefed7d84e5710}\label{classCiA402DeviceICanbus_af6cf1493b669ce0415cefed7d84e5710}} 
+int {\bfseries ret}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classCiA402DeviceICanbus_ab861fc4d62c917bdb1c06b886c8ed45a}\label{classCiA402DeviceICanbus_ab861fc4d62c917bdb1c06b886c8ed45a}} 
+\index{Ci\+A402\+Device\+I\+Canbus@{Ci\+A402\+Device\+I\+Canbus}!Set\+Can\+Open\+Msg@{Set\+Can\+Open\+Msg}}
+\index{Set\+Can\+Open\+Msg@{Set\+Can\+Open\+Msg}!Ci\+A402\+Device\+I\+Canbus@{Ci\+A402\+Device\+I\+Canbus}}
+\subsubsection{\texorpdfstring{Set\+Can\+Open\+Msg()}{SetCanOpenMsg()}}
+{\footnotesize\ttfamily \hyperlink{structco__msg}{co\+\_\+msg} Ci\+A402\+Device\+I\+Canbus\+::\+Set\+Can\+Open\+Msg (\begin{DoxyParamCaption}\item[{unsigned short}]{id\+\_\+co,  }\item[{unsigned short}]{rtr,  }\item[{vector$<$ uint8\+\_\+t $>$}]{co\+Data\+Frame }\end{DoxyParamCaption})}
+
+
+
+Ci\+A402\+Device\+I\+Canbus\+::\+Set\+Can\+Open\+Msg \+: Constructs canopen message from parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id\+\_\+co} & cob id canopen parameter. \\
+\hline
+{\em rtr} & request for remote. \\
+\hline
+{\em msg\+\_\+start} & \+: canopen data frame. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: canopen constructed message in \hyperlink{structco__msg}{co\+\_\+msg} data type. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Ci\+A402\+Device\+I\+Canbus.\+h\item 
+Ci\+A402\+Device\+I\+Canbus.\+cpp\end{DoxyCompactItemize}
