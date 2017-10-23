@@ -156,7 +156,7 @@ int CiA402DeviceICanbus::WaitForReadMessage(co_msg & output, unsigned int canInd
     }
     else{
         //print can frame information
-        cout<<"received can id " << (bitset<16>)input.id << " rtr: " << input.rtr << endl;
+        cout<<"received can id " << (bitset<16>)input.id << " rtr: " << input.rtr << " ( " << std::hex << input.id << " )"<< endl;
         cout<<"received data: ";
         for (int i = 0; i < input.dlc; i++) {
 
