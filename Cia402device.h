@@ -1,7 +1,9 @@
 #ifndef CIA402DEVICE_H
 #define CIA402DEVICE_H
 #include "CiA402DeviceICanbus.h"
+#include "CiA301CommPort.h"
 #include "ObjectDictionary.h"
+#include "PortBase.h"
 
 class CiA402Device
 {
@@ -27,9 +29,12 @@ public:
      * @return: Position (angle in [rad])
      */
     double GetPosition();
+
+    long SetCommunications(CiA301CommPort *newCommunications);
 private:
 
-    CiA402DeviceICanbus interf;
+    //CiA402DeviceICanbus interf;
+    CiA301CommPort * comm;
 
 };
 

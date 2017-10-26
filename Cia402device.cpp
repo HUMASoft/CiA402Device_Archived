@@ -2,7 +2,7 @@
 
 CiA402Device::CiA402Device()
 {
-    interf.Init(vector<int>(1),"/dev/can");
+
 }
 
 long CiA402Device::SwitchOn(){
@@ -47,15 +47,6 @@ long CiA402Device::SwitchOn(){
 }
 
 int CiA402Device::CheckStatus(){
-    co_msg input;
-    uint8_t msg_start[]={0x40,0x60,0x41,0x00};
-    //Para escritura --> {0x2B,0x41,0x60,0x0};
-    input.dlc_co=sizeof (msg_start);
-    // input=interf.SetCanOpenMsg(7,0,msg_start);  //Fund_code=12 , nodeID=7 -->0x607
-    input.id_co=2830;
-    cout<<bitset<12>(input.id_co)<<endl;
-    interf.SendMessage(input,0);
-    interf.WaitForReadMessage(input,0);
     return 0;
 }
 
@@ -63,10 +54,18 @@ int CiA402Device::CheckStatus(){
 long CiA402Device::SwitchOff()
 {
 
+    return 0;
 }
 
 double CiA402Device::GetPosition()
 {
+    return 0.53; //fix this
+
+}
+
+long CiA402Device::SetCommunications(CiA301CommPort *newCommunications)
+{
+    comm = newCommunications;
 
 }
 
