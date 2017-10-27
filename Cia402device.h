@@ -1,6 +1,6 @@
 #ifndef CIA402DEVICE_H
 #define CIA402DEVICE_H
-#include "CiA402DeviceICanbus.h"
+//#include "CiA402DeviceICanbus.h"
 #include "CiA301CommPort.h"
 #include "ObjectDictionary.h"
 #include "PortBase.h"
@@ -35,6 +35,7 @@ private:
 
     //CiA402DeviceICanbus interf;
     CiA301CommPort * comm;
+    unsigned int id;
 
 };
 

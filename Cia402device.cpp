@@ -7,6 +7,7 @@ CiA402Device::CiA402Device()
 
 long CiA402Device::SwitchOn(){
 
+
 //    co_msg input;
 //    co_msg output;
 //    uint8_t msg_start[] = {0x81,0x07};
@@ -46,7 +47,11 @@ long CiA402Device::SwitchOn(){
     return 0;
 }
 
-int CiA402Device::CheckStatus(){
+int CiA402Device::CheckStatus()
+{
+    //Ask for the status word
+    comm->ReadSDO(vector<uint8_t>(od::statusword,od::statusword+2),id);
+
     return 0;
 }
 
