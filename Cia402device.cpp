@@ -66,6 +66,6 @@ double CiA402Device::GetPosition()
 long CiA402Device::SetCommunications(CiA301CommPort *newCommunications)
 {
     comm = newCommunications;
-
+    return 0;
 }
 
