@@ -15,15 +15,24 @@ TestPort::TestPort(string name)
     Init(name);
 
 }
+
+
 //Función para inicializar los puertos
 long TestPort::Init(string name)
 {
-        portFileDescriptor = open(name.c_str(), O_RDWR | O_CREAT);
+        portFileDescriptor = open(name.c_str(), O_RDWR | O_CREAT, 0744);
 
         if (portFileDescriptor<0)
         {
             err(1, "could not open node '%s'",name.c_str());
         }
+
+    return 0;
+}
+
+
+long TestPort::ShowBuffer()
+{
 
     return 0;
 }

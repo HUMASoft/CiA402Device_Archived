@@ -16,6 +16,8 @@ public:
     TestPort();
     TestPort(string Port);
 
+    long ShowBuffer();
+
 private:
     long Init(string name);
 

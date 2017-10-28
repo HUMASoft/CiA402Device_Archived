@@ -1,8 +1,21 @@
 #include "Cia402device.h"
 
+long CiA402Device::Init(uint8_t new_id)
+{
+    id = new_id;
+    return 0;
+}
+
 CiA402Device::CiA402Device()
 {
 
+    Init(1);
+}
+
+CiA402Device::CiA402Device(uint8_t new_id)
+{
+
+    Init(new_id);
 }
 
 long CiA402Device::SwitchOn(){
@@ -49,8 +62,21 @@ long CiA402Device::SwitchOn(){
 
 int CiA402Device::CheckStatus()
 {
+    //uint16_t* statusp;
+    uint16_t status;
     //Ask for the status word
-    comm->ReadSDO(vector<uint8_t>(od::statusword,od::statusword+2),id);
+    status = (uint16_t) comm->ReadSDO(od::statusword,id);
+
+    cout << "status word: " << status << endl;
+    //Print decoded response for status word
+    switch (status)
+    {
+
+    case 1: //
+        break;
+
+    //default:
+    }
 
     return 0;
 }

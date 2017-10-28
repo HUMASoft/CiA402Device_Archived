@@ -10,6 +10,7 @@ class CiA402Device
 public:
 
     CiA402Device();
+    CiA402Device(uint8_t new_id);
     int CheckStatus();
 
     /**
@@ -33,7 +34,10 @@ public:
     long SetCommunications(CiA301CommPort *newCommunications);
 private:
 
-    //CiA402DeviceICanbus interf;
+    //methods
+    long Init(uint8_t new_id);
+
+    //properties
     CiA301CommPort * comm;
     unsigned int id;
 
