@@ -45,3 +45,8 @@ long CanBusPort::Init(string canPort)
 
     return 0;
 }
+
+int CanBusPort::getPortFileDescriptor() const
+{
+    return canPortFileDesc;
+}

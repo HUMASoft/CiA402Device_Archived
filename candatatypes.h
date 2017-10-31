@@ -139,4 +139,107 @@ struct co_msg
 
 };
 
+
+
+
+
+
+
+#define FF_NORMAL 0
+#define FF_EXTENDED 1
+
+
+
+/**************************************************************************/
+#define IOC_RESET_BOARD                                   _IO (IOC_MAGIC, 1)
+/**************************************************************************/
+/* Reset the board. Note that this command affects both of the CAN nodes on
+ * the board */
+
+/**************************************************************************/
+#define IOC_START                                         _IO (IOC_MAGIC, 5)
+/**************************************************************************/
+/* This will put the CAN node in active state - CAN telegrams are sent and
+ * received */
+
+/**************************************************************************/
+#define IOC_START_PASSIVE                                 _IO (IOC_MAGIC, 10)
+/**************************************************************************/
+/* Start the CAN node in passive mode. Listen to the CAN bus traffic but don't
+ * affect it in any way. CAN messages are received normally but transmission
+ * is disabled */
+
+/**************************************************************************/
+#define IOC_START_BAUDSCAN                                _IO (IOC_MAGIC, 15)
+/**************************************************************************/
+/* This command will put the CAN node in baudscan mode. The node will probe
+ * for the correct baudrate on the CAN bus, but doesn't affect the traffic in
+ * any way. Of course, in order to the scan to succeed there has to be traffic
+ * on the bus. The first succesfully received message is put in the boards
+ * receive queue after which the node is in active state (like after givining
+ * IOC_START command ) */
+
+/**************************************************************************/
+#define IOC_STOP                                         _IO (IOC_MAGIC, 20)
+/**************************************************************************/
+/* This command will put the CAN node in reset state. No CAN telegrams are
+ * received or transmitted. */
+
+/**************************************************************************/
+#define IOC_GET_MODE                          _IOR(IOC_MAGIC, 25,  uint32_t)
+/**************************************************************************/
+/* Retrieve the nodes operation mode */
+
+/* node is in baudscan mode */
+#define CM_BAUDSCAN 1
+
+/* node listens to the CAN bus traffic but don't affect it in any way */
+#define CM_PASSIVE  2
+
+/* Normal usage mode. CAN messages are received and transmitted */
+#define CM_ACTIVE   3
+
+/* In reset mode, no messages are received or transmitted. */
+#define CM_RESET    4
+
+
+
+/**************************************************************************/
+#define IOC_SET_BITRATE	                       _IOW (IOC_MAGIC, 30, uint32_t)
+/**************************************************************************/
+/* Set the bitrate (aka. baudrate) for the given CAN nodes. Parameter is one
+ * of the BITRATE_* macros below */
+
+#define BITRATE_10k	 0
+#define BITRATE_20k	 1
+#define BITRATE_50k	 2
+#define BITRATE_100k	 3
+#define BITRATE_125k	 4
+#define BITRATE_250k	 5
+#define BITRATE_500k	 6
+#define BITRATE_800k	 7
+#define BITRATE_1000k	 8
+
+/**************************************************************************/
+#define IOC_SET_SJW_INCREMENT                  _IOW (IOC_MAGIC, 31, uint32_t)
+/**************************************************************************/
+/* Set a value which will be added to the Synchronisation Jump Width (SJW)
+ * on every bitrate. value can be from 0 to 3, and default is 0. This
+ * parameter might be useful to tweak if there are very long CAN cables or
+ * some CAN nodes, which are not that accurate with the bitrate. The value
+ * has to be set before calling IOC_SET_BITRATE. Normally you don't need
+ * to set this value */
+
+/**************************************************************************/
+#define IOC_GET_BITRATE	                       _IOR (IOC_MAGIC, 35, uint32_t)
+/**************************************************************************/
+/* Get the bitrate index number. The value corresponds one of the above
+ * defined bitrates BITRATE_*k */
+
+
+
+
+
+
+
 #endif // CANDATATYPES_H

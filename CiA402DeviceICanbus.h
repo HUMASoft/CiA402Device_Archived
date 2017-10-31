@@ -1,7 +1,7 @@
 #ifndef CIA402DEVICEICANBUS_H
 #define CIA402DEVICEICANBUS_H
 
-#include "co_msg.h"
+//#include "co_msg.h"
 #include <iostream>
 #include <sstream>
 #include <sys/types.h>
@@ -16,7 +16,8 @@
 #include <assert.h>
 #include <bitset>
 #include <vector>
-#include "hico_api.h"
+//#include "hico_api.h"
+#include "candatatypes.h"
 
 using namespace std;
 

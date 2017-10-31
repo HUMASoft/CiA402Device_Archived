@@ -298,70 +298,70 @@ struct err_stat{
 #define MSG_IOPIN(msg)(((msg)->fi&(1<<7))>>7)
 #define MSG_NODE(msg) (((msg)->fi&(3<<8))>>8)
 
-struct can_msg {
-    union{
-    uint16_t fi;
-#ifdef HICO_LE
-    struct {
-        /* Data length 0 to 8 */
-        uint16_t dlc:4;
+//struct can_msg {
+//    union{
+//    uint16_t fi;
+//#ifdef HICO_LE
+//    struct {
+//        /* Data length 0 to 8 */
+//        uint16_t dlc:4;
 
-        /* remote transmission request flag */
-        uint16_t rtr:1;
+//        /* remote transmission request flag */
+//        uint16_t rtr:1;
 
-        /* Frame format flag 0=normal, 1=extended */
-        uint16_t ff:1;
+//        /* Frame format flag 0=normal, 1=extended */
+//        uint16_t ff:1;
 
-        /* Data overrun status flag */
-        uint16_t dos:1;
+//        /* Data overrun status flag */
+//        uint16_t dos:1;
 
-        /* io pin status or can error signal on fault tolerant can */
-        uint16_t iopin:1;
+//        /* io pin status or can error signal on fault tolerant can */
+//        uint16_t iopin:1;
 
-        /* CAN node number which received the message */
-        uint16_t node:2;
+//        /* CAN node number which received the message */
+//        uint16_t node:2;
 
-        uint16_t reserved:6;
-        }PACKED;
-#elif defined(HICO_BE)
-    struct {
-        uint16_t reserved:6;
-        uint16_t node:2;
-        uint16_t iopin:1;
-        uint16_t dos:1;
-        uint16_t ff:1;
-        uint16_t rtr:1;
-        uint16_t dlc:4;
-        }PACKED;
-#endif
-    }PACKED;
+//        uint16_t reserved:6;
+//        }PACKED;
+//#elif defined(HICO_BE)
+//    struct {
+//        uint16_t reserved:6;
+//        uint16_t node:2;
+//        uint16_t iopin:1;
+//        uint16_t dos:1;
+//        uint16_t ff:1;
+//        uint16_t rtr:1;
+//        uint16_t dlc:4;
+//        }PACKED;
+//#endif
+//    }PACKED;
 
-    /* Timestamp in microseconds */
-    uint32_t ts;
+//    /* Timestamp in microseconds */
+//    uint32_t ts;
 
-    /* CAN identifier */
-    uint32_t id;
+//    /* CAN identifier */
+//    uint32_t id;
 
-    /* CAN message data */
-    uint8_t data[8];
-}PACKED;
+//    /* CAN message data */
+//    uint8_t data[8];
+//}PACKED;
 
-#define FF_NORMAL 0
-#define FF_EXTENDED 1
+//#define FF_NORMAL 0
+//#define FF_EXTENDED 1
 
-struct can_filter{
-    int type;
-    union{
-    uint32_t mask;
-    uint32_t upper;
-    };
-    union{
-    uint32_t code;
-    uint32_t lower;
-    };
-};
-#define FTYPE_AMASK 1
-#define FTYPE_RANGE 2
+//struct can_filter{
+//    int type;
+//    union{
+//    uint32_t mask;
+//    uint32_t upper;
+//    };
+//    union{
+//    uint32_t code;
+//    uint32_t lower;
+//    };
+//};
+//#define FTYPE_AMASK 1
+//#define FTYPE_RANGE 2
 
 
 #endif
