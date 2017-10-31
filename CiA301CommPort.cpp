@@ -271,8 +271,8 @@ int CiA301CommPort::read_timeout(int fd, struct can_msg *buf, unsigned int timeo
     }
     else if (ret<0)
     {
-        err(errno,"Numbered Error. See exit code");
-        return errno;
+        err(ret,"Numbered Error. See exit code");
+        return ret;
 
     }
     else

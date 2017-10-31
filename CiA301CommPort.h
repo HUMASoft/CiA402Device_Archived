@@ -9,6 +9,8 @@
 #include <vector>
 #include <string.h>
 #include <assert.h>
+#include <stdio.h>
+#include <fcntl.h>
 
 
 #include "candatatypes.h"

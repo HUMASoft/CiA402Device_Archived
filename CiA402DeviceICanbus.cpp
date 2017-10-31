@@ -232,7 +232,6 @@ int CiA402DeviceICanbus::read_timeout(int fd, struct can_msg *buf, unsigned int 
     FD_SET(fd,&fds);
 
     ret=select(fd,&fds,0,0,&tv);
-    cout<<ret<<endl;
     if(ret==0){
     return 0; /* timeout */
     } else if (ret<0) {
