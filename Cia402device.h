@@ -11,6 +11,7 @@ public:
 
     CiA402Device();
     CiA402Device(uint8_t new_id);
+    CiA402Device(uint8_t new_id, CiA301CommPort *new_comm);
     int CheckStatus();
 
     /**

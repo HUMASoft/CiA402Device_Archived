@@ -36,3 +36,8 @@ long TestPort::ShowBuffer()
 
     return 0;
 }
+
+int TestPort::getPortFileDescriptor()
+{
+    return portFileDescriptor;
+}

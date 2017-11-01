@@ -9,21 +9,22 @@ CiA301CommPort::CiA301CommPort(int newPortFileDescriptor)
 
 }
 
-long CiA301CommPort::ReadSDO(vector<uint8_t> address, int id)
+long CiA301CommPort::ReadSDO(int id, const vector<uint8_t> &address)
 {
 
     co_msg output;
 
     //Ask an sdo read from address
-    SendMessage(SetCanOpenMsg(cia301::rx+id, 0 ,address) , id);
+    SendMessage(SetCanOpenMsg(sdo::rx0+id, 0 ,address) , id);
 
     //Wait for the answer
-    WaitForAnswer(output,id);
+    //output = SetCanOpenMsg(sdo::tx0+id, 0 ,address);
+    ReadCobId(sdo::tx0+id,output);
 
     //Get the data from output
 
 
-    return 111;
+    return output.data_co[4]+output.data_co[5];
 }
 
 
@@ -187,13 +188,16 @@ int CiA301CommPort::WaitForReadMessage(co_msg & output, unsigned int canIndex){
     return 0;
 }
 
-
-int CiA301CommPort::WaitForAnswer(co_msg & output, unsigned int canIndex){
+///
+/// \brief CiA301CommPort::WaitForAnswer Read the port until expected canopen answer shows
+/// up in the port reads.
+/// \param output Expected canopen answer.
+/// \param canIndex: Index of the caller.
+/// \return
+///
+int CiA301CommPort::ReadCobId(uint16_t expected_cobid, co_msg & output ){
 #define USE_TIMEOUT 200
 
-    can_msg input;
-    can_msg expected;
-    CanOpenToCanBus(output,expected);
 
 #if USE_TIMEOUT
     if(read_timeout(portFileDescriptor,&input,USE_TIMEOUT)==0)
@@ -210,9 +214,10 @@ int CiA301CommPort::WaitForAnswer(co_msg & output, unsigned int canIndex){
 #endif //USE_TIMEOUT
 
     //First check for the output.
-    if (input.id != expected.id) //If the response is the answer expected, continue
+    //If the response is the answer expected, continue
+    if (input.id != expected_cobid)//Otherwise, store in a buffer to avoid loose data and read again
     {
-        //Otherwise, store in a buffer to avoid loose data and read again
+
 
     }
 

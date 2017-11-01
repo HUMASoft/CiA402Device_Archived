@@ -25,8 +25,8 @@ class CiA301CommPort
 public:
     CiA301CommPort(int newPortFileDescriptor);
 
-    long ReadSDO(vector<uint8_t> address, int subindex, int id);
-    long ReadSDO(vector<uint8_t> address, int id);
+    long ReadSDO(int id, vector<uint8_t> address, int subindex);
+    long ReadSDO(int id, const vector<uint8_t> &address);
 
 private:
 
@@ -37,7 +37,7 @@ private:
 
     int SendMessage(co_msg input, unsigned int canIndex);
     int WaitForReadMessage(co_msg &output, unsigned int canIndex);
-    int WaitForAnswer(co_msg &output, unsigned int canIndex);
+    int ReadCobId(uint16_t expected_cobid, co_msg &output);
     int read_timeout(int fd, can_msg *buf, unsigned int timeout);
 
 
@@ -45,16 +45,19 @@ private:
     int portFileDescriptor;
 
     can_msg send_msg;
+    can_msg input;
+    vector<can_msg> readBuffer;
+    vector<unsigned int> readInbox;
 
     co_msg SetCanOpenMsg(unsigned short id_co, unsigned short rtr,  vector<uint8_t> coDataFrame);
 };
 
 
-namespace cia301
+namespace sdo
 {
 
-const uint16_t tx=0x580;
-const uint16_t rx=0x600;
+const uint16_t tx0=0x580;
+const uint16_t rx0=0x600;
 
 
 }

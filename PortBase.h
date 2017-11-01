@@ -7,7 +7,7 @@ class PortBase
 public:
     PortBase();
 
-    int getPortFileDescriptor() const;
+    virtual int getPortFileDescriptor()=0;
 
 protected:
     int portFileDescriptor;

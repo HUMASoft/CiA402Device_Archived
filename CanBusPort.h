@@ -8,11 +8,13 @@
 #include <err.h>
 
 
-#include "hico_api.h"
+//#include "hico_api.h"
+#include "candatatypes.h"
+#include "PortBase.h"
 
 
 using namespace std;
-class CanBusPort
+class CanBusPort : public PortBase
 {
 public:
     ///
@@ -21,12 +23,11 @@ public:
     CanBusPort();
 
     ///
-    /// \brief CanBusPort: Initialization of "n" ports starting at canPort0.
-    /// \param number: Number of ports in the card.
+    /// \brief CanBusPort: Initialization of one port given a device name.
     /// \param canPort: String with the name of system device.
     ///
     CanBusPort(string canPort);
-    int getPortFileDescriptor() const;
+    int getPortFileDescriptor();
 
 private:
 

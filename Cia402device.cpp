@@ -18,6 +18,13 @@ CiA402Device::CiA402Device(uint8_t new_id)
     Init(new_id);
 }
 
+CiA402Device::CiA402Device(uint8_t new_id, CiA301CommPort *new_comm)
+{
+    Init(new_id);
+    comm = new_comm;
+
+}
+
 long CiA402Device::SwitchOn(){
 
 
@@ -65,7 +72,7 @@ int CiA402Device::CheckStatus()
     //uint16_t* statusp;
     uint16_t status;
     //Ask for the status word
-    status = (uint16_t) comm->ReadSDO(od::statusword,id);
+    status = (uint16_t) comm->ReadSDO(id, od::statusword);
 
     cout << "status word: " << status << endl;
     //Print decoded response for status word
