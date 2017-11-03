@@ -23,10 +23,10 @@ using namespace std;
 class CiA301CommPort
 {
 public:
-    CiA301CommPort(int newPortFileDescriptor);
+    CiA301CommPort(int newPortFileDescriptor, uint8_t new_id);
 
-    long ReadSDO(int id, vector<uint8_t> address, int subindex);
-    long ReadSDO(int id, const vector<uint8_t> &address);
+    long ReadSDO(vector<uint8_t> address, int subindex);
+    long ReadSDO(const vector<uint8_t> &address);
 
 private:
 
@@ -35,7 +35,7 @@ private:
     long CanBusToCanOpen(const can_msg &input, co_msg &output);
 
 
-    int SendMessage(co_msg input, unsigned int canIndex);
+    int SendMessage(co_msg input);
     int WaitForReadMessage(co_msg &output, unsigned int canIndex);
     int ReadCobId(uint16_t expected_cobid, co_msg &output);
     int read_timeout(int fd, can_msg *buf, unsigned int timeout);
@@ -43,6 +43,7 @@ private:
 
     //variables
     int portFileDescriptor;
+    uint8_t id;
 
     can_msg send_msg;
     can_msg input;

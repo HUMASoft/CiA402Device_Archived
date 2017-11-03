@@ -1,21 +1,24 @@
 #include "CiA301CommPort.h"
 
 
-CiA301CommPort::CiA301CommPort(int newPortFileDescriptor)
+CiA301CommPort::CiA301CommPort(int newPortFileDescriptor, uint8_t new_id)
 {
 
     portFileDescriptor = newPortFileDescriptor;
 
+    id=new_id;
+
 
 }
 
-long CiA301CommPort::ReadSDO(int id, const vector<uint8_t> &address)
+long CiA301CommPort::ReadSDO(const vector<uint8_t> &address)
 {
 
     co_msg output;
 
+    //cout << "id" << id << endl;
     //Ask an sdo read from address
-    SendMessage(SetCanOpenMsg(sdo::rx0+id, 0 ,address) , id);
+    SendMessage(SetCanOpenMsg(sdo::rx0+id, 0 ,address) );
 
     //Wait for the answer
     //output = SetCanOpenMsg(sdo::tx0+id, 0 ,address);
@@ -107,7 +110,7 @@ co_msg CiA301CommPort::SetCanOpenMsg(unsigned short id_co, unsigned short rtr, v
 
 
 /* Transforma mensaje de canopen a can y lo envía al puerto  */
-int CiA301CommPort::SendMessage(co_msg input, unsigned int canIndex)
+int CiA301CommPort::SendMessage(co_msg input)
 {
 
     if (CanOpenToCanBus(input,send_msg) < 0)
@@ -218,6 +221,7 @@ int CiA301CommPort::ReadCobId(uint16_t expected_cobid, co_msg & output ){
     if (input.id != expected_cobid)//Otherwise, store in a buffer to avoid loose data and read again
     {
 
+        //check if error
 
     }
 
