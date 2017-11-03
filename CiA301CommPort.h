@@ -28,6 +28,8 @@ public:
     long ReadSDO(vector<uint8_t> address, int subindex);
     long ReadSDO(const vector<uint8_t> &address);
 
+    long WriteNMT(const vector<uint8_t> &nmtCommand);
+    long WritePDO(const vector<uint8_t> &command);
 private:
 
     //methods
@@ -60,6 +62,12 @@ namespace sdo
 const uint16_t tx0=0x580;
 const uint16_t rx0=0x600;
 
+}
+namespace pdo
+{
+
+const uint16_t tx0=0x180;
+const uint16_t rx0=0x200;
 
 }
 

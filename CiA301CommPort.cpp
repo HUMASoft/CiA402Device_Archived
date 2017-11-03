@@ -30,6 +30,45 @@ long CiA301CommPort::ReadSDO(const vector<uint8_t> &address)
     return output.data_co[4]+output.data_co[5];
 }
 
+long CiA301CommPort::WritePDO(const vector<uint8_t> &command)
+{
+
+    co_msg output;
+
+    //cout << "id" << id << endl;
+    //Ask an sdo read from address
+    SendMessage(SetCanOpenMsg(pdo::rx0+id, 0 ,command) );
+
+    //Wait for the answer
+    //output = SetCanOpenMsg(sdo::tx0+id, 0 ,address);
+
+
+    //Get the data from output
+    //ReadCobId(pdo::tx0+id,output);
+
+    return 0;
+}
+
+long CiA301CommPort::WriteNMT(const vector<uint8_t> &nmtCommand)
+{
+
+    co_msg output;
+    vector<uint8_t> data(nmtCommand);
+    data.push_back(id);
+    //cout << "id" << id << endl;
+    //Ask an sdo read from address
+    SendMessage(SetCanOpenMsg(0, 0 ,data) );
+
+    //Wait for the answer
+    //output = SetCanOpenMsg(sdo::tx0+id, 0 ,address);
+
+
+    //Get the data from output
+
+
+    return ReadCobId(0x700+id,output);
+}
+
 
 long CiA301CommPort::CanOpenToCanBus(const co_msg & input, can_msg & output)
         {
@@ -199,8 +238,7 @@ int CiA301CommPort::WaitForReadMessage(co_msg & output, unsigned int canIndex){
 /// \return
 ///
 int CiA301CommPort::ReadCobId(uint16_t expected_cobid, co_msg & output ){
-#define USE_TIMEOUT 200
-
+#define USE_TIMEOUT 1000
 
 #if USE_TIMEOUT
     if(read_timeout(portFileDescriptor,&input,USE_TIMEOUT)==0)
