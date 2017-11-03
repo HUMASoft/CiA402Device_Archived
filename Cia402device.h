@@ -5,13 +5,14 @@
 #include "ObjectDictionary.h"
 #include "PortBase.h"
 
-class CiA402Device
+class CiA402Device : public CiA301CommPort
 {
 public:
 
     CiA402Device();
     CiA402Device(uint8_t new_id);
-    CiA402Device(uint8_t new_id, CiA301CommPort *new_comm);
+    CiA402Device(uint8_t new_id, int fdPort);
+    //CiA402Device(uint8_t new_id, CiA301CommPort *new_comm);
     int CheckStatus();
 
     /**
@@ -32,14 +33,14 @@ public:
      */
     double GetPosition();
 
-    long SetCommunications(CiA301CommPort *newCommunications);
+    long SetCommunications(int fdPort);
 private:
 
     //methods
     long Init(uint8_t new_id);
 
     //properties
-    CiA301CommPort * comm;
+    int comm; //port file de
     unsigned int id;
 
 };
