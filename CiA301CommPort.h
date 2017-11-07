@@ -16,6 +16,7 @@
 #include "candatatypes.h"
 
 
+#define USE_TIMEOUT 200
 
 
 using namespace std;
@@ -30,6 +31,8 @@ public:
 
     long WriteNMT(const vector<uint8_t> &nmtCommand);
     long WritePDO(const vector<uint8_t> &command);
+
+    long FlushBuffer();
 private:
 
     //methods

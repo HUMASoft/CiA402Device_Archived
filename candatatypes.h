@@ -2,6 +2,11 @@
 #define CANDATATYPES_H
 
 
+//masks used to get data
+//get id from cob-id
+#define GET_CO_ID(x) ((x) && 0xfe)
+#define CO_ID_MASK 0xfe
+
 
 /* hicocan_mpci 'magic' number for the ioctl calls */
 #ifdef __QNX__
