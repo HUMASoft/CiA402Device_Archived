@@ -20,7 +20,7 @@ const vector<uint8_t> switchon={0x07,0x00};
 const vector<uint8_t> enable={0x0F,0x00};
 
 
-
+const vector<uint8_t> checkerror={0x02,0x10};
 
 
 }

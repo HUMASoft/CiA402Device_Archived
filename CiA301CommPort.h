@@ -16,7 +16,7 @@
 #include "candatatypes.h"
 
 
-#define USE_TIMEOUT 200
+#define USE_TIMEOUT 200 //miliseconds timeout
 
 
 using namespace std;
@@ -41,9 +41,15 @@ private:
 
 
     int SendMessage(co_msg input);
+    int SendCanMessage(can_msg &input);
+
     int WaitForReadMessage(co_msg &output, unsigned int canIndex);
+
+#define FIND_RETRY 100
     int ReadCobId(uint16_t expected_cobid, co_msg &output);
     int read_timeout(int fd, can_msg *buf, unsigned int timeout);
+    long GetMsg(can_msg &msg);
+
 
 
     //variables

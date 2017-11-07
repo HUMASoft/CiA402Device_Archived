@@ -25,15 +25,20 @@ CiA402Device::CiA402Device(uint8_t new_id, int fdPort) : CiA301CommPort(fdPort, 
 
 }
 
-long CiA402Device::SwitchOn(){
+long CiA402Device::SwitchOn()
+{
 
-WriteNMT(od::reset);
-sleep(1);
-WritePDO(od::readytoswitchon);
-sleep(1);
-WritePDO(od::switchon);
-sleep(2);
-WritePDO(od::enable);
+
+    //Watch out!! see how to remove sleep commands!!!
+    WriteNMT(od::reset);
+    sleep(1);
+    WriteNMT(od::start);
+    sleep(1);
+    WritePDO(od::readytoswitchon);
+    sleep(1);
+    WritePDO(od::switchon);
+    sleep(1);
+    WritePDO(od::enable);
 
     return 0;
 }
@@ -50,6 +55,7 @@ int CiA402Device::CheckStatus()
     status = (uint16_t) ReadSDO(data);
 
     cout << "status word: " << status << endl;
+    cout << "status word: " << std::bitset<16>(status)<< endl;
     //Print decoded response for status word
     switch (status)
     {
@@ -63,6 +69,31 @@ int CiA402Device::CheckStatus()
     return 0;
 }
 
+int CiA402Device::CheckError()
+{
+    //uint16_t* statusp;
+    uint32_t error;
+    vector<uint8_t> data={0x40};
+    data.push_back(od::checkerror[0]);
+    data.push_back(od::checkerror[1]);
+
+    //Ask for the status word
+    error = (uint32_t) ReadSDO(data);
+
+    cout << "checkerror: " << error << endl;
+    cout << "checkerror: " << std::bitset<32>(error)<< endl;
+    //Print decoded response for status word
+    switch (error)
+    {
+
+    case 1: //
+        break;
+
+    //default:
+    }
+
+    return 0;
+}
 
 long CiA402Device::SwitchOff()
 {

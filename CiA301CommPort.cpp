@@ -194,6 +194,31 @@ int CiA301CommPort::SendMessage(co_msg input)
     return 0;
 }
 
+int CiA301CommPort::SendCanMessage(can_msg &input)
+{
+    cout<<"SendCanMessage " << endl;
+
+    //print can frame information
+    cout<<"sent can id " << (bitset<16>)send_msg.id << " rtr: " << send_msg.rtr << endl;
+
+    cout<<"sent data: ";
+    for (int i = 0; i < send_msg.dlc; i++)
+    {
+
+        printf("%02x ",send_msg.data[i]);
+    }
+    cout<<endl;
+
+    /* Write the message to the Port */
+    if(write(portFileDescriptor,&input,sizeof(struct can_msg))!=sizeof(struct can_msg))
+    {
+        err(1, "Failed to send message");
+
+    }
+
+
+    return 0;
+}
 
 int CiA301CommPort::WaitForReadMessage(co_msg & output, unsigned int canIndex){
 
@@ -203,7 +228,7 @@ int CiA301CommPort::WaitForReadMessage(co_msg & output, unsigned int canIndex){
 #if USE_TIMEOUT
     if(read_timeout(portFileDescriptor,&input,USE_TIMEOUT)==0)
     {
-        err(1,"Could not read the message.");
+        //err(1,"Could not read the message.");
         return -1;
     }
 
@@ -253,40 +278,46 @@ int CiA301CommPort::WaitForReadMessage(co_msg & output, unsigned int canIndex){
 ///
 int CiA301CommPort::ReadCobId(uint16_t expected_cobid, co_msg & output ){
 
-    cout<<"ReadCobId " << endl;
+    cout<<" -- ReadCobId " << endl;
 
 
-#if USE_TIMEOUT
-    if(read_timeout(portFileDescriptor,&input,USE_TIMEOUT)==0)
-    {
-        err(1,"Could not read the message.");
-        return -1;
-    }
+    vector<can_msg> otherMsgs;
 
-#else //(NOT)USE_TIMEOUT
-    if( read(portFileDescriptor,&input,sizeof(struct can_msg) !=sizeof(input)) )
-    {
-        err(1,"read");
-    }
-#endif //USE_TIMEOUT
+    GetMsg(input);
 
-    //First check for the output.
+    //First check for the input.
     //If the response is the answer expected, continue
-    if (input.id != expected_cobid)//Otherwise, store in a buffer to avoid loose data and read again
+    //if not:
+    long reps=0;
+    while (input.id != expected_cobid)
     {
-
+        //cout << "reps : " << reps << endl;
+        reps++;
+        if (reps>FIND_RETRY) return -10;
         //check node id
-        if (GET_CO_ID(input.id) != GET_CO_ID(expected_cobid) )
+        if (GET_CO_ID(input.id) == GET_CO_ID(expected_cobid) )
         {
 
-            cout << "Cobid not received. Error: " << input.id << endl;
-return -1;
+            cout << "Cobid still not received. Received: " << input.id << endl;
+            //if id, check if error
+            //return -1;
         }
-        //if id, check if error
+        //Otherwise, store in a buffer to avoid loose data and read again
+        else
+        {
+        otherMsgs.push_back(input);
+        }
 
-        //oterwise, resend to canopen to avoid losing messages
+        GetMsg(input);
 
 
+    }
+    //Finally, resend buffer to canopen to avoid losing messages
+
+    for (int i=0; i<otherMsgs.size(); i++)
+    {
+        cout << "resend : " << otherMsgs.size() << endl;
+        SendCanMessage(otherMsgs[i]);
     }
 
     //convert received data to canopen
@@ -297,24 +328,17 @@ return -1;
     }
     else
     {
-        //print can frame information
-        cout<<"received can id " << (bitset<16>)input.id << " rtr: " << input.rtr << endl;
-        cout<<"received data: ";
-        for (int i = 0; i < input.dlc; i++)
+
+        cout<<endl;
+        cout<<"received cob id " << std::hex << output.id_co << std::dec <<" rtr: " << output.rtr << endl;
+        cout << "ID: " << GET_CO_ID(output.id_co) << endl;
+        cout<<"received canopen data: ";
+        for (int i = 0; i < output.dlc_co; i++)
         {
 
-            printf("%02x ",input.data[i]);
+            printf("%02x ",output.data_co[i]);
         }
         cout<<endl;
-                cout<<"received cob id " << std::hex << output.id_co << std::dec <<" rtr: " << output.rtr << endl;
-                cout << "ID: " << GET_CO_ID(output.id_co) << endl;
-                cout<<"received canopen data: ";
-                for (int i = 0; i < output.dlc_co; i++)
-                {
-
-                    printf("%02x ",output.data_co[i]);
-                }
-                cout<<endl;
     }
 
     return 0;
@@ -339,7 +363,7 @@ int CiA301CommPort::read_timeout(int fd, struct can_msg *buf, unsigned int timeo
 
     if(ret==0)/* timeout */
     {
-        err(1,"Port connection timed out");
+        //err(1,"Port connection timed out");
         return 0;
 
     }
@@ -354,6 +378,71 @@ int CiA301CommPort::read_timeout(int fd, struct can_msg *buf, unsigned int timeo
         //TODO *** Check if pread works with canbus ports at 0 offset
         return pread(fd,buf,sizeof(struct can_msg),0);
     }
+
+}
+
+long CiA301CommPort::GetMsg(can_msg &msg)
+{
+
+#if USE_TIMEOUT
+
+    timeval tv;
+    //int readyMsg;
+
+    //can_msg msg;
+
+    //As USE_TIMEOUT are miliseconds, get seconds, then miliseconds
+    tv.tv_sec=(int)USE_TIMEOUT/1000;
+    tv.tv_usec=USE_TIMEOUT-(tv.tv_sec*1000);
+
+    //use select to check readyness
+    fd_set fds; // file descriptor set
+    FD_ZERO(&fds);// clear the set
+    FD_SET(portFileDescriptor,&fds);// put the fd in the set
+    assert(FD_ISSET(portFileDescriptor,&fds));
+    int readyMsg=select(portFileDescriptor+1,&fds,0,0,&tv);
+    //cout<< "Number of ready ports: " << ret <<endl;
+
+    if(readyMsg==0)/* timeout */
+    {
+        //err(1,"Port connection timed out");
+        //cout<< "Bus empty. Messages in buffer: " << readyMsg <<endl;
+        return 1;
+
+    }
+    else if (readyMsg<0)
+    {
+        err(readyMsg,"Numbered Error. See exit code");
+        return readyMsg;
+
+    }
+    else
+    {
+
+        if(pread(portFileDescriptor,&msg,sizeof(struct can_msg), 0) != sizeof(struct can_msg))
+        {
+            //err(1,"Could not read the message.");
+            cout << "Could not read the message." << endl;
+            return -1;
+        }
+
+
+        //TODO *** Check if pread works with canbus ports at 0 offset
+
+        //CanBusToCanOpen( msg , msg );
+        return 0;
+    }
+#else //(NOT)USE_TIMEOUT
+    if( pread(portFileDescriptor,&buf,sizeof(struct can_msg), 0) != sizeof(struct can_msg)  )
+    {
+        err(1,"read");
+    }
+    else
+    {
+        //CanBusToCanOpen( buf , msg );
+        return 0;
+    }
+#endif //USE_TIMEOUT
 
 }
 

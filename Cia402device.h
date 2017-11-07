@@ -34,6 +34,7 @@ public:
     double GetPosition();
 
     long SetCommunications(int fdPort);
+    int CheckError();
 private:
 
     //methods
