@@ -18,6 +18,8 @@ const vector<uint8_t> start={0x01};
 const vector<uint8_t> readytoswitchon={0x06,0x00};
 const vector<uint8_t> switchon={0x07,0x00};
 const vector<uint8_t> enable={0x0F,0x00};
+const vector<uint8_t> setPositionMode={0x60,0x60,0x00,0x01};
+const vector<uint8_t> setVelocityMode={0x60,0x60,0x00,0x03};
 
 
 const vector<uint8_t> checkerror={0x02,0x10};

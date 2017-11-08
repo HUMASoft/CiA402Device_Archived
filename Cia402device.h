@@ -35,6 +35,8 @@ public:
 
     long SetCommunications(int fdPort);
     int CheckError();
+    bool setPositionMode();
+    bool setVelocityModeRaw();
 private:
 
     //methods

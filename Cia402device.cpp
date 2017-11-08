@@ -27,9 +27,7 @@ CiA402Device::CiA402Device(uint8_t new_id, int fdPort) : CiA301CommPort(fdPort, 
 
 long CiA402Device::SwitchOn()
 {
-
-
-    //Watch out!! see how to remove sleep commands!!!
+//Watch out!! see how to remove sleep commands!!!
     WriteNMT(od::reset);
     sleep(1);
     WriteNMT(od::start);
@@ -41,6 +39,34 @@ long CiA402Device::SwitchOn()
     WritePDO(od::enable);
 
     return 0;
+}
+
+bool CiA402Device::setPositionMode(){
+   vector<uint8_t> data={0x2F};
+   data.push_back(od::setPositionMode[0]);
+   data.push_back(od::setPositionMode[1]);
+   data.push_back(od::setPositionMode[2]);
+   data.push_back(od::setPositionMode[3]);
+   if(!WritePDO(data)){
+       cout<<"Could not send position_mode"<<endl;
+       return false;
+    }
+   cout<<"Sent position_mode"<<endl;
+   return true;
+}
+
+bool CiA402Device::setVelocityModeRaw(){
+   vector<uint8_t> data={0x2F};
+   data.push_back(od::setVelocityMode[0]);
+   data.push_back(od::setVelocityMode[1]);
+   data.push_back(od::setVelocityMode[2]);
+   data.push_back(od::setVelocityMode[3]);
+   if(!WritePDO(data)){
+       cout<<"Could not send position_mode"<<endl;
+       return false;
+    }
+   cout<<"Sent position_mode"<<endl;
+   return true;
 }
 
 int CiA402Device::CheckStatus()
