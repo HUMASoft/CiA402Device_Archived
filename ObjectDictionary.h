@@ -24,6 +24,8 @@ const vector<uint8_t> setVelocityMode={0x60,0x60,0x00,0x03};
 
 const vector<uint8_t> checkerror={0x02,0x10};
 
+const vector<uint8_t> positionaddress={0x63,0x60}; //check this!!!
+
 
 }
 #endif // OBJECTDICTIONARY_H

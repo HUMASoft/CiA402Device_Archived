@@ -129,7 +129,7 @@ long CiA402Device::SwitchOff()
 
 double CiA402Device::GetPosition()
 {
-    return 0.53; //fix this
+    return (uint32_t) ReadSDO(od::positionaddress);
 
 }
 

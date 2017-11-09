@@ -26,7 +26,7 @@ long CiA301CommPort::ReadSDO(const vector<uint8_t> &address)
 
     //Get the data from output
 
-
+//fix this!!!! return four last bytes from data.
     return output.data_co[4]+output.data_co[5];
 }
 
@@ -297,8 +297,7 @@ int CiA301CommPort::ReadCobId(uint16_t expected_cobid, co_msg & output ){
         //check node id
         if (GET_CO_ID(input.id) == GET_CO_ID(expected_cobid) )
         {
-
-            cout << "Cobid still not received. Received: " << input.id << endl;
+            cout << "Cobid still not received. Received: " << std::hex << input.id << std::dec << endl;
             //if id, check if error
             //return -1;
         }

@@ -45,6 +45,7 @@ private:
     //properties
     int comm; //port file de
     //unsigned int id;
+    double currentPosition;
 
 };
 
