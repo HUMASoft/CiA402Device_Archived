@@ -37,6 +37,7 @@ public:
     int CheckError();
     bool setPositionMode();
     bool setVelocityModeRaw();
+    long OperationMode(const vector<uint8_t> mode);
 private:
 
     //methods

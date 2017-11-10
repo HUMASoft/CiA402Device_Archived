@@ -27,7 +27,54 @@ long CiA301CommPort::ReadSDO(const vector<uint8_t> &address)
     //Get the data from output
 
 //fix this!!!! return four last bytes from data.
-    return output.data_co[4]+output.data_co[5];
+    return output.data_co[4]+(2^8)*output.data_co[5]+
+            (2^16)*output.data_co[6]+(2^24)*output.data_co[7];
+}
+
+long CiA301CommPort::WriteSDO(const vector<uint8_t> &address, const vector<uint8_t> &value )
+{
+
+
+    vector<uint8_t> data(1);
+    switch(value.size()){
+    case 0 :
+
+        data[0]=0x40;
+        break;
+    case 1 :
+
+        data[0]=0x2F;
+        break;
+     case 2 :
+
+        data[0]=0x2B;
+        break;
+    default:
+
+       data[0]=0x23;
+       break;
+
+    }
+
+   data.insert(data.end(), address.begin(), address.end());
+   data.insert(data.end(), value.begin(), value.end());
+
+    //cout << "id" << id << endl;
+    //Ask an sdo read from address
+    SendMessage(SetCanOpenMsg(sdo::rx0+id, 0 ,data) );
+
+    co_msg output;
+    //Wait for the answer
+    ReadCobId(sdo::tx0+id,output);
+
+    //Use the data from output
+    if (output.data_co[0]!=0x60)
+    {
+        err(1,"Can not receive answer from node");
+    }
+
+//fix this!!!! return four last bytes from data.
+    return 0;
 }
 
 long CiA301CommPort::WritePDO(const vector<uint8_t> &command)
@@ -93,7 +140,7 @@ long CiA301CommPort::CanOpenToCanBus(const co_msg & input, can_msg & output)
                 output.dlc=input.dlc_co;
                 output.rtr=input.rtr;
 
-                output.ff=0; //normal frame
+                output.ff=FF_NORMAL; //normal frame
                 output.ts=input.ts;
                 // creo que en vez de 8 poner dlc
                 for( int i=0; i < 8; i++)
@@ -112,7 +159,6 @@ long CiA301CommPort::CanBusToCanOpen(const can_msg & input, co_msg & output)
 {
 
    //verificar el bit de start to frame de can
-
     output.dlc_co=input.dlc;
     output.id_co=input.id;
     output.rtr=input.rtr;
@@ -164,7 +210,13 @@ int CiA301CommPort::SendMessage(co_msg input)
 {
     cout<<"SendMessage " << endl;
     cout<<"sent cob id " << std::hex << input.id_co << std::dec <<" rtr: " << input.rtr << endl;
+            cout<<"sent data: ";
+            for (int i = 0; i < input.dlc_co; i++)
+            {
 
+                printf("%02x ",input.data_co[i]);
+            }
+            cout<<endl;
     if (CanOpenToCanBus(input,send_msg) < 0)
     {
         cout<<"Error al transformar el mensaje"<<endl;
@@ -173,15 +225,15 @@ int CiA301CommPort::SendMessage(co_msg input)
     else
     {
         //print can frame information
-        cout<<"sent can id " << (bitset<16>)send_msg.id << " rtr: " << send_msg.rtr << endl;
+//        cout<<"sent can id " << (bitset<16>)send_msg.id << " rtr: " << send_msg.rtr << endl;
 
-        cout<<"sent data: ";
-        for (int i = 0; i < send_msg.dlc; i++)
-        {
+//        cout<<"sent data: ";
+//        for (int i = 0; i < send_msg.dlc; i++)
+//        {
 
-            printf("%02x ",send_msg.data[i]);
-        }
-        cout<<endl;
+//            printf("%02x ",send_msg.data[i]);
+//        }
+//        cout<<endl;
 
         /* Write the message to the Port */
         if(write(portFileDescriptor,&send_msg,sizeof(struct can_msg))!=sizeof(struct can_msg))
@@ -196,17 +248,17 @@ int CiA301CommPort::SendMessage(co_msg input)
 
 int CiA301CommPort::SendCanMessage(can_msg &input)
 {
-    cout<<"SendCanMessage " << endl;
+    //cout<<"SendCanMessage " << endl;
 
     //print can frame information
-    cout<<"sent can id " << (bitset<16>)send_msg.id << " rtr: " << send_msg.rtr << endl;
+    //cout<<"sent can id " << (bitset<16>)send_msg.id << " rtr: " << send_msg.rtr << endl;
 
-    cout<<"sent data: ";
-    for (int i = 0; i < send_msg.dlc; i++)
-    {
+//    cout<<"sent data: ";
+//    for (int i = 0; i < send_msg.dlc; i++)
+//    {
 
-        printf("%02x ",send_msg.data[i]);
-    }
+//        printf("%02x ",send_msg.data[i]);
+//    }
     cout<<endl;
 
     /* Write the message to the Port */
@@ -278,12 +330,13 @@ int CiA301CommPort::WaitForReadMessage(co_msg & output, unsigned int canIndex){
 ///
 int CiA301CommPort::ReadCobId(uint16_t expected_cobid, co_msg & output ){
 
-    cout<<" -- ReadCobId " << endl;
+    cout<<" -- ReadCobId. Expected: "  << std::hex << expected_cobid << std::dec  << endl;
 
 
-    vector<can_msg> otherMsgs;
+    vector<can_msg> otherMsgs(0);
 
     GetMsg(input);
+
 
     //First check for the input.
     //If the response is the answer expected, continue
@@ -295,9 +348,9 @@ int CiA301CommPort::ReadCobId(uint16_t expected_cobid, co_msg & output ){
         reps++;
         if (reps>FIND_RETRY) return -10;
         //check node id
-        if (GET_CO_ID(input.id) == GET_CO_ID(expected_cobid) )
+        if (GET_NODE_ID(input.id) == GET_NODE_ID(expected_cobid) )
         {
-            cout << "Cobid still not received. Received: " << std::hex << input.id << std::dec << endl;
+            cout << " Cobid still not received. Received: " << std::hex << input.id << std::dec << endl;
             //if id, check if error
             //return -1;
         }
@@ -309,13 +362,18 @@ int CiA301CommPort::ReadCobId(uint16_t expected_cobid, co_msg & output ){
 
         GetMsg(input);
 
-
     }
     //Finally, resend buffer to canopen to avoid losing messages
 
     for (int i=0; i<otherMsgs.size(); i++)
     {
-        cout << "resend : " << otherMsgs.size() << endl;
+        cout << "resend number : " << i << " with bytes: " << otherMsgs[i].dlc;  ;
+        cout<<" message with cob id: " << std::hex << otherMsgs[i].id << std::dec <<" rtr: " << otherMsgs[i].rtr << endl;
+        for (int j = 0; j < otherMsgs[i].dlc; j++)
+        {
+
+            printf("%02x ",otherMsgs[i].data[j]);
+        }
         SendCanMessage(otherMsgs[i]);
     }
 
@@ -330,7 +388,7 @@ int CiA301CommPort::ReadCobId(uint16_t expected_cobid, co_msg & output ){
 
         cout<<endl;
         cout<<"received cob id " << std::hex << output.id_co << std::dec <<" rtr: " << output.rtr << endl;
-        cout << "ID: " << GET_CO_ID(output.id_co) << endl;
+        cout << "ID: " << std::hex<< GET_NODE_ID(output.id_co) << std::dec<< endl;
         cout<<"received canopen data: ";
         for (int i = 0; i < output.dlc_co; i++)
         {
