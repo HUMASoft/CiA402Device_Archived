@@ -18,6 +18,8 @@ const vector<uint8_t> start={0x01};
 const vector<uint8_t> readytoswitchon={0x06,0x00};
 const vector<uint8_t> switchon={0x07,0x00};
 const vector<uint8_t> enable={0x0F,0x00};
+const vector<uint8_t> run={0x1F,0x00};
+const vector<uint8_t> disablevoltage={0x04,0x00};
 const vector<uint8_t> OperationMode={0x60,0x60,0x00};
 //move to other header
 const vector<uint8_t> positionmode={0x01};

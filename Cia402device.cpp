@@ -47,13 +47,16 @@ long CiA402Device::SwitchOn()
     FlushBuffer();
 
     sleep(1);
-   //cout<<"SWITCHON"<<endl;
+   cout<<"SWITCHON"<<endl;
     WritePDO(od::switchon);
     sleep(1);
     FlushBuffer();
-//  cout<<"ENABLE"<<end;
-//    WritePDO(od::enable);
-//    FlushBuffer();
+  cout<<"ENABLE"<<endl;
+    WritePDO(od::enable);
+    FlushBuffer();
+//   cout<<"RUN"<<endl;
+//     WritePDO(od::run);
+//     FlushBuffer();
     return 0;
 }
 
@@ -121,7 +124,9 @@ int CiA402Device::CheckError()
 }
 
 long CiA402Device::SwitchOff()
-{
+{   cout<<"SwitchOff"<<endl;
+    WritePDO(od::disablevoltage);
+    FlushBuffer();
 
     return 0;
 }
