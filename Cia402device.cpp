@@ -81,44 +81,75 @@ void CiA402Device::CheckStatus()
 
     //Ask for the status word
     status = (uint16_t) ReadSDO(data);
-    //status = 0x043;
+    status = 0x043;
     //filter state
+    status = (status&0x6f); //mask 01101111=6f
 
-       if((status&0x040)==0x040){
-       cout<<"Switch on disabled"<<endl;
-       cout << "status word: " << std::bitset<16>(status)<< endl;
-       return;
-       }
-       if((status&0x021)==0x021){
-       cout<<"Ready to switch on"<<endl;
-       cout << "status word: " << std::bitset<16>(status)<< endl;
-       return;
-       }
-       if((status&0x023)==0x023){
-       cout<<"Switched on"<<endl;
-       cout << "status word: " << std::bitset<16>(status)<< endl;
-       return;
-       }
-       if((status&0x027)==0x027){
-       cout<<"Operation enabled"<<endl;
-       cout << "status word: " << std::bitset<16>(status)<< endl;
-       return;
-       }
-       if((status&0x007)==0x007){
-       cout<<"Quick stop active"<<endl;
-       cout << "status word: " << std::bitset<16>(status)<< endl;
-       return;
-       }
-       if((status&0x00F)==0x00F){
-       cout<<"Fault reaction active"<<endl;
-       cout << "status word: " << std::bitset<16>(status)<< endl;
-       return;
-       }
-       if((status&0x008)==0x008){
-       cout<<"Fault"<<endl;
-       cout << "status word: " << std::bitset<16>(status)<< endl;
-       return;
-        }
+    switch(status)
+    {
+    case 0x00:
+        cout<<"Not Ready to switch on"<<endl;
+        break;
+    case 0x60:
+    case 0x40:
+        cout<<"Switch on disabled"<<endl;
+        break;
+    case 0x21:
+        cout<<"Ready to switch on"<<endl;
+        break;
+    case 0x23:
+        cout<<"Switched on"<<endl;
+        break;
+    case 0x27:
+        cout<<"Operation enabled"<<endl;
+        break;
+    case 0x07:
+        cout<<"Quick stop active"<<endl;
+        break;
+    case 0x0f:
+        cout<<"Fault reaction active"<<endl;
+        break;
+    case 0x08:
+        cout<<"Fault"<<endl;
+        break;
+
+    }
+
+//       if((status&0x040)==0x040){
+//       cout<<"Switch on disabled"<<endl;
+//       cout << "status word: " << std::bitset<16>(status)<< endl;
+//       return;
+//       }
+//       if((status&0x021)==0x021){
+//       cout<<"Ready to switch on"<<endl;
+//       cout << "status word: " << std::bitset<16>(status)<< endl;
+//       return;
+//       }
+//       if((status&0x023)==0x023){
+//       cout<<"Switched on"<<endl;
+//       cout << "status word: " << std::bitset<16>(status)<< endl;
+//       return;
+//       }
+//       if((status&0x027)==0x027){
+//       cout<<"Operation enabled"<<endl;
+//       cout << "status word: " << std::bitset<16>(status)<< endl;
+//       return;
+//       }
+//       if((status&0x007)==0x007){
+//       cout<<"Quick stop active"<<endl;
+//       cout << "status word: " << std::bitset<16>(status)<< endl;
+//       return;
+//       }
+//       if((status&0x00F)==0x00F){
+//       cout<<"Fault reaction active"<<endl;
+//       cout << "status word: " << std::bitset<16>(status)<< endl;
+//       return;
+//       }
+//       if((status&0x008)==0x008){
+//       cout<<"Fault"<<endl;
+//       cout << "status word: " << std::bitset<16>(status)<< endl;
+//       return;
+//        }
     cout<<"Not Ready to switch on"<<endl;
     cout << "status word: " << std::bitset<16>(status)<< endl;
  //  cout << "status word: " << status << endl;
