@@ -71,7 +71,7 @@ long CiA402Device::OperationMode(const vector<uint8_t> mode)
 }
 
 
-int CiA402Device::CheckStatus()
+void CiA402Device::CheckStatus()
 {
     //uint16_t* statusp;
     uint16_t status;
@@ -81,20 +81,59 @@ int CiA402Device::CheckStatus()
 
     //Ask for the status word
     status = (uint16_t) ReadSDO(data);
+    //status = 0x043;
+    //filter state
 
-    cout << "status word: " << status << endl;
+       if((status&0x040)==0x040){
+       cout<<"Switch on disabled"<<endl;
+       cout << "status word: " << std::bitset<16>(status)<< endl;
+       return;
+       }
+       if((status&0x021)==0x021){
+       cout<<"Ready to switch on"<<endl;
+       cout << "status word: " << std::bitset<16>(status)<< endl;
+       return;
+       }
+       if((status&0x023)==0x023){
+       cout<<"Switched on"<<endl;
+       cout << "status word: " << std::bitset<16>(status)<< endl;
+       return;
+       }
+       if((status&0x027)==0x027){
+       cout<<"Operation enabled"<<endl;
+       cout << "status word: " << std::bitset<16>(status)<< endl;
+       return;
+       }
+       if((status&0x007)==0x007){
+       cout<<"Quick stop active"<<endl;
+       cout << "status word: " << std::bitset<16>(status)<< endl;
+       return;
+       }
+       if((status&0x00F)==0x00F){
+       cout<<"Fault reaction active"<<endl;
+       cout << "status word: " << std::bitset<16>(status)<< endl;
+       return;
+       }
+       if((status&0x008)==0x008){
+       cout<<"Fault"<<endl;
+       cout << "status word: " << std::bitset<16>(status)<< endl;
+       return;
+        }
+    cout<<"Not Ready to switch on"<<endl;
     cout << "status word: " << std::bitset<16>(status)<< endl;
-    //Print decoded response for status word
-    switch (status)
-    {
+ //  cout << "status word: " << status << endl;
+   //cout << "status word: " << std::bitset<16>(status)<< endl;
+//    //Print decoded response for status word
+//    switch (status)
+//    {
 
-    case 1: //
-        break;
+//    case 1: //
+//        break;
 
-    //default:
-    }
+//    //default:
+//    }
 
-    return 0;
+   return;
 }
 
 int CiA402Device::CheckError()

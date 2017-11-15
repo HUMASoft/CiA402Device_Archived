@@ -13,7 +13,7 @@ public:
     CiA402Device(uint8_t new_id);
     CiA402Device(uint8_t new_id, int fdPort);
     //CiA402Device(uint8_t new_id, CiA301CommPort *new_comm);
-    int CheckStatus();
+    void CheckStatus();
 
     /**
      * @brief SwitchOn: Turn on the device and wait for commands.
