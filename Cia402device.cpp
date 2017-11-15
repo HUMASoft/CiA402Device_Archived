@@ -81,15 +81,15 @@ void CiA402Device::CheckStatus()
 
     //Ask for the status word
     status = (uint16_t) ReadSDO(data);
-    status = 0x043;
+    status = 0x07;
     //filter state
-    status = (status&0x6f); //mask 01101111=6f
+    status = status&0x6f; //mask 01101111=6f
 
     switch(status)
     {
-    case 0x00:
-        cout<<"Not Ready to switch on"<<endl;
-        break;
+//    case 0x00:
+//        cout<<"Not Ready to switch on"<<endl;
+//        break;
     case 0x60:
     case 0x40:
         cout<<"Switch on disabled"<<endl;
@@ -112,6 +112,8 @@ void CiA402Device::CheckStatus()
     case 0x08:
         cout<<"Fault"<<endl;
         break;
+    default:
+        cout<<"Not known"<<endl;
 
     }
 
@@ -150,7 +152,7 @@ void CiA402Device::CheckStatus()
 //       cout << "status word: " << std::bitset<16>(status)<< endl;
 //       return;
 //        }
-    cout<<"Not Ready to switch on"<<endl;
+//    cout<<"Not Ready to switch on"<<endl;
     cout << "status word: " << std::bitset<16>(status)<< endl;
  //  cout << "status word: " << status << endl;
    //cout << "status word: " << std::bitset<16>(status)<< endl;
