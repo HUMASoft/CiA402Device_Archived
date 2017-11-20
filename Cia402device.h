@@ -13,7 +13,17 @@ public:
     CiA402Device(uint8_t new_id);
     CiA402Device(uint8_t new_id, int fdPort);
     //CiA402Device(uint8_t new_id, CiA301CommPort *new_comm);
-    void CheckStatus();
+    /**
+     * @brief CheckStatus: Returns the status word.
+     * @return: status
+     */
+    uint16_t CheckStatus();
+
+    /**
+     * @brief PrintStatus: Print the status word.
+     * @return: 0 if correct, negative on errors.
+     */
+    void PrintStatus();
 
     /**
      * @brief SwitchOn: Turn on the device and wait for commands.
@@ -25,7 +35,13 @@ public:
      * @brief SwitchOff: Turn on the device.
      * @return: 0 if correct, negative on errors.
      */
-    long SwitchOff();
+    long SwitchOff(uint16_t status);
+
+    /**
+     * @brief QuickStop: Fast turn off of the device.
+     * @return: 0 if correct, negative on errors.
+     */
+    long QuickStop();
 
     /**
      * @brief GetPosition: Get the position of the cia 402 device

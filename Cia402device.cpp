@@ -54,9 +54,9 @@ long CiA402Device::SwitchOn()
   cout<<"ENABLE"<<endl;
     WritePDO(od::enable);
     FlushBuffer();
-//   cout<<"RUN"<<endl;
-//     WritePDO(od::run);
-//     FlushBuffer();
+   cout<<"RUN"<<endl;
+     WritePDO(od::run);
+     FlushBuffer();
     return 0;
 }
 
@@ -71,7 +71,7 @@ long CiA402Device::OperationMode(const vector<uint8_t> mode)
 }
 
 
-void CiA402Device::CheckStatus()
+uint16_t CiA402Device::CheckStatus()
 {
     //uint16_t* statusp;
     uint16_t status;
@@ -81,7 +81,23 @@ void CiA402Device::CheckStatus()
 
     //Ask for the status word
     status = (uint16_t) ReadSDO(data);
-    status = 0x07;
+    //status = 0x07;
+    //filter state
+    status = status&0x6f; //mask 01101111=6f
+    return status;
+
+}
+void CiA402Device::PrintStatus()
+{
+    //uint16_t* statusp;
+    uint16_t status;
+    vector<uint8_t> data={0x40};
+    data.push_back(od::statusword[0]);
+    data.push_back(od::statusword[1]);
+
+    //Ask for the status word
+    status = (uint16_t) ReadSDO(data);
+   // status = 0x07;
     //filter state
     status = status&0x6f; //mask 01101111=6f
 
@@ -116,7 +132,6 @@ void CiA402Device::CheckStatus()
         cout<<"Not known"<<endl;
 
     }
-
 //       if((status&0x040)==0x040){
 //       cout<<"Switch on disabled"<<endl;
 //       cout << "status word: " << std::bitset<16>(status)<< endl;
@@ -124,7 +139,7 @@ void CiA402Device::CheckStatus()
 //       }
 //       if((status&0x021)==0x021){
 //       cout<<"Ready to switch on"<<endl;
-//       cout << "status word: " << std::bitset<16>(status)<< endl;
+//       cout << "status woCheckStatusrd: " << std::bitset<16>(status)<< endl;
 //       return;
 //       }
 //       if((status&0x023)==0x023){
@@ -195,9 +210,60 @@ int CiA402Device::CheckError()
     return 0;
 }
 
-long CiA402Device::SwitchOff()
+long CiA402Device::SwitchOff(uint16_t status)
+{
+
+    switch(status)
+    {
+//    case 0x00:
+//        cout<<"Not Ready to switch on"<<endl;
+//        break;
+    case 0x60:
+    case 0x40:
+        cout<<"1"<<endl;
+        break;
+    case 0x21:
+        cout<<"2"<<endl;
+        WritePDO(od::quickstop);
+        FlushBuffer();
+        break;
+    case 0x23:
+        cout<<"3"<<endl;
+        WritePDO(od::readytoswitchon);
+        FlushBuffer();
+        WritePDO(od::quickstop);
+        FlushBuffer();
+        break;
+    case 0x27:
+        cout<<"4"<<endl;
+        WritePDO(od::switchon);
+        FlushBuffer();
+        WritePDO(od::readytoswitchon);
+        FlushBuffer();
+        WritePDO(od::quickstop);
+        FlushBuffer();
+        break;
+    case 0x07:
+        cout<<"5"<<endl;
+        WritePDO(od::quickstop);
+        FlushBuffer();
+        break;
+    case 0x0f:
+        cout<<"Fault reaction active"<<endl;
+        break;
+    case 0x08:
+        cout<<"Fault"<<endl;
+        break;
+    default:
+        cout<<"Not known"<<endl;
+
+    }
+    return 0;
+}
+
+long CiA402Device::QuickStop()
 {   cout<<"SwitchOff"<<endl;
-    WritePDO(od::disablevoltage);
+    WritePDO(od::quickstop);
     FlushBuffer();
 
     return 0;
