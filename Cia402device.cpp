@@ -32,12 +32,12 @@ long CiA402Device::SwitchOn()
 
 //   const vector<u_int8_t> obj2111 ={0x40,0x11,0x21,0x00,0x00};
 
-    cout<<"RESET"<<endl;
+    cerr<<"RESET"<<endl;
     WriteNMT(od::reset);
     sleep(1);
     FlushBuffer();
-    OperationMode(od::positionmode);
-    cout<<"START"<<endl;
+    //OperationMode(od::positionmode);
+    cerr<<"START"<<endl;
     WriteNMT(od::start);
     sleep(1);
     FlushBuffer();
@@ -47,14 +47,14 @@ long CiA402Device::SwitchOn()
     FlushBuffer();
 
     sleep(1);
-   cout<<"SWITCHON"<<endl;
+   cerr<<"SWITCHON"<<endl;
     WritePDO(od::switchon);
     sleep(1);
     FlushBuffer();
-  cout<<"ENABLE"<<endl;
+  cerr<<"ENABLE"<<endl;
     WritePDO(od::enable);
     FlushBuffer();
-   cout<<"RUN"<<endl;
+   cerr<<"RUN"<<endl;
      WritePDO(od::run);
      FlushBuffer();
     return 0;
@@ -83,7 +83,7 @@ uint16_t CiA402Device::CheckStatus()
     status = (uint16_t) ReadSDO(data);
     //status = 0x07;
     //filter state
-    status = status&0x6f; //mask 01101111=6f
+
     return status;
 
 }
@@ -97,15 +97,17 @@ void CiA402Device::PrintStatus()
 
     //Ask for the status word
     status = (uint16_t) ReadSDO(data);
-   // status = 0x07;
+    cout << "status word: " << std::bitset<16>(status)<< endl;
+
+   // status = 0x07; //testing data
     //filter state
     status = status&0x6f; //mask 01101111=6f
 
     switch(status)
     {
-//    case 0x00:
-//        cout<<"Not Ready to switch on"<<endl;
-//        break;
+    case 0x00:
+        cout<<"Not Ready to switch on"<<endl;
+        break;
     case 0x60:
     case 0x40:
         cout<<"Switch on disabled"<<endl;
@@ -123,64 +125,17 @@ void CiA402Device::PrintStatus()
         cout<<"Quick stop active"<<endl;
         break;
     case 0x0f:
+    case 0x2f:
         cout<<"Fault reaction active"<<endl;
         break;
     case 0x08:
+    case 0x28:
         cout<<"Fault"<<endl;
         break;
     default:
         cout<<"Not known"<<endl;
 
     }
-//       if((status&0x040)==0x040){
-//       cout<<"Switch on disabled"<<endl;
-//       cout << "status word: " << std::bitset<16>(status)<< endl;
-//       return;
-//       }
-//       if((status&0x021)==0x021){
-//       cout<<"Ready to switch on"<<endl;
-//       cout << "status woCheckStatusrd: " << std::bitset<16>(status)<< endl;
-//       return;
-//       }
-//       if((status&0x023)==0x023){
-//       cout<<"Switched on"<<endl;
-//       cout << "status word: " << std::bitset<16>(status)<< endl;
-//       return;
-//       }
-//       if((status&0x027)==0x027){
-//       cout<<"Operation enabled"<<endl;
-//       cout << "status word: " << std::bitset<16>(status)<< endl;
-//       return;
-//       }
-//       if((status&0x007)==0x007){
-//       cout<<"Quick stop active"<<endl;
-//       cout << "status word: " << std::bitset<16>(status)<< endl;
-//       return;
-//       }
-//       if((status&0x00F)==0x00F){
-//       cout<<"Fault reaction active"<<endl;
-//       cout << "status word: " << std::bitset<16>(status)<< endl;
-//       return;
-//       }
-//       if((status&0x008)==0x008){
-//       cout<<"Fault"<<endl;
-//       cout << "status word: " << std::bitset<16>(status)<< endl;
-//       return;
-//        }
-//    cout<<"Not Ready to switch on"<<endl;
-    cout << "status word: " << std::bitset<16>(status)<< endl;
- //  cout << "status word: " << status << endl;
-   //cout << "status word: " << std::bitset<16>(status)<< endl;
-//    //Print decoded response for status word
-//    switch (status)
-//    {
-
-//    case 1: //
-//        break;
-
-//    //default:
-//    }
-
    return;
 }
 
@@ -210,14 +165,18 @@ int CiA402Device::CheckError()
     return 0;
 }
 
-long CiA402Device::SwitchOff(uint16_t status)
+long CiA402Device::SwitchOff()
 {
+    uint16_t status;
+    status=CheckStatus();
+    //filter state
+    status = status&0x6f; //mask 01101111=6f
 
     switch(status)
     {
-//    case 0x00:
-//        cout<<"Not Ready to switch on"<<endl;
-//        break;
+    case 0x00:
+        cout<<"Not Ready to switch on"<<endl;
+        break;
     case 0x60:
     case 0x40:
         cout<<"1"<<endl;
@@ -235,11 +194,11 @@ long CiA402Device::SwitchOff(uint16_t status)
         FlushBuffer();
         break;
     case 0x27:
-        cout<<"4"<<endl;
-        WritePDO(od::switchon);
+        cout<<"Leaving Operation enabled"<<endl;
+      /*  WritePDO(od::switchon);
         FlushBuffer();
         WritePDO(od::readytoswitchon);
-        FlushBuffer();
+        FlushBuffer();*/
         WritePDO(od::quickstop);
         FlushBuffer();
         break;
@@ -249,9 +208,11 @@ long CiA402Device::SwitchOff(uint16_t status)
         FlushBuffer();
         break;
     case 0x0f:
+    case 0x2f:
         cout<<"Fault reaction active"<<endl;
         break;
     case 0x08:
+    case 0x28:
         cout<<"Fault"<<endl;
         break;
     default:
@@ -262,7 +223,10 @@ long CiA402Device::SwitchOff(uint16_t status)
 }
 
 long CiA402Device::QuickStop()
-{   cout<<"SwitchOff"<<endl;
+{
+    const vector<uint8_t> mode = {0x00};
+    //WriteSDO(od::quick_stop_mode,mode);
+    cout<<"SwitchOff"<<endl;
     WritePDO(od::quickstop);
     FlushBuffer();
 

@@ -24,7 +24,7 @@ const vector<uint8_t> OperationMode={0x60,0x60,0x00};
 //move to other header
 const vector<uint8_t> positionmode={0x01};
 const vector<uint8_t> velocitymode={0x03};
-
+const vector<uint8_t> quick_stop_mode={0x5A,0x60};
 
 const vector<uint8_t> checkerror={0x02,0x10};
 

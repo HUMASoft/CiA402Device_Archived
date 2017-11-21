@@ -35,7 +35,7 @@ public:
      * @brief SwitchOff: Turn on the device.
      * @return: 0 if correct, negative on errors.
      */
-    long SwitchOff(uint16_t status);
+    long SwitchOff();
 
     /**
      * @brief QuickStop: Fast turn off of the device.

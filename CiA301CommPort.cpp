@@ -27,8 +27,14 @@ long CiA301CommPort::ReadSDO(const vector<uint8_t> &address)
     //Get the data from output
 
 //fix this!!!! return four last bytes from data.
-    return output.data_co[4]+(2^8)*output.data_co[5]+
-            (2^16)*output.data_co[6]+(2^24)*output.data_co[7];
+    long retvalue = output.data_co[7];
+    retvalue = (retvalue << 8) + output.data_co[6];
+    retvalue = (retvalue << 8) + output.data_co[5];
+    retvalue = (retvalue << 8) + output.data_co[4];
+
+//    return output.data_co[4]+(16^2)*output.data_co[5]+
+//            (16^4)*output.data_co[6]+(16^6)*output.data_co[7];
+    return retvalue;
 }
 
 long CiA301CommPort::WriteSDO(const vector<uint8_t> &address, const vector<uint8_t> &value )
@@ -275,7 +281,7 @@ int CiA301CommPort::SendCanMessage(can_msg &input)
 int CiA301CommPort::WaitForReadMessage(co_msg & output, unsigned int canIndex){
 
     can_msg input;
-    cout<<"WaitForReadMessage " << endl;
+    cout<<"WaitForReadMessage -----------" << endl;
 
 #if USE_TIMEOUT
     if(read_timeout(portFileDescriptor,&input,USE_TIMEOUT)==0)
@@ -316,7 +322,7 @@ int CiA301CommPort::WaitForReadMessage(co_msg & output, unsigned int canIndex){
 
                     printf("%02x ",output.data_co[i]);
                 }
-                cout<<endl;
+                cout<<"WaitForReadMessage End-----------" << endl;
     }
     return 0;
 }
@@ -350,7 +356,7 @@ int CiA301CommPort::ReadCobId(uint16_t expected_cobid, co_msg & output ){
         //check node id
         if (GET_NODE_ID(input.id) == GET_NODE_ID(expected_cobid) )
         {
-            cout << " Cobid still not received. Received: " << std::hex << input.id << std::dec << endl;
+            //cerr << " Cobid still not received. Received: " << std::hex << input.id << std::dec << endl;
             //if id, check if error
             //return -1;
         }
