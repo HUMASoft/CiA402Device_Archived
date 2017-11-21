@@ -281,3 +281,35 @@ long CiA402Device::SetCommunications(int fdPort)
     return 0;
 }
 
+long CiA402Device::Setup_Position_Mode(const vector<uint8_t> target,const vector<uint8_t> velocity,const vector<uint8_t> acceleration,const vector<uint8_t> deceleration){
+    OperationMode(od::positionmode);
+    // Motion profile type -  trapezoidal
+    WriteSDO(od::motion_profile_type,od::linear_ramp_trapezoidal);
+    //Si paso los parametros convertidos en ui, sino convertir primero
+    WriteSDO(od::profile_velocity,velocity);
+    //Si paso los parametros convertidos en ui, sino convertir primero
+    WriteSDO(od::profile_acceleration,acceleration);
+//  The target position is the position that the drive should move to in
+//  position profile mode using the current settings of motion control parameters
+//  such as velocity, acceleration, and motion profile type etc.
+//  It is given in position units.
+//  Si paso los parametros convertidos en ui, sino convertir primero
+    WriteSDO(od::target_position,target);
+    WriteSDO(od::quick_stop_deceleration,deceleration);
+   return 0;
+}
+
+long CiA402Device::Setup_Velocity_Mode(const vector<uint8_t> target,const vector<uint8_t> acceleration){
+//    In the Velocity Profile Mode the drive performs speed control.
+//    The built-in reference generator computes a speed profile with a trapezoidal shape,
+//    due to a limited acceleration. The Target Velocity object specifies
+//    the jog speed (speed sign specifies the direction) and the Profile Acceleration
+//    object the acceleration/deceleration rate.
+    OperationMode(od::velocitymode);
+//    The target velocity is the input for the trajectory generator
+//    and the value is given in user-defined velocity units.
+//    Si paso los parametros convertidos en ui, sino convertir primero
+    WriteSDO(od::target_velocity,target);
+    WriteSDO(od::profile_acceleration,acceleration);
+    return 0;
+}

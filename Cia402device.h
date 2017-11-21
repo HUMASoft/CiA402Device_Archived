@@ -54,6 +54,8 @@ public:
     bool setPositionMode();
     bool setVelocityModeRaw();
     long OperationMode(const vector<uint8_t> mode);
+    long Setup_Position_Mode(const vector<uint8_t> target, const vector<uint8_t> velocity, const vector<uint8_t> acceleration, const vector<uint8_t> deceleration);
+    long Setup_Velocity_Mode(const vector<uint8_t> target, const vector<uint8_t> acceleration);
 private:
 
     //methods

@@ -29,7 +29,14 @@ const vector<uint8_t> velocitymode={0x03};
 const vector<uint8_t> checkerror={0x02,0x10};
 
 const vector<uint8_t> positionaddress={0x63,0x60}; //check this!!!
-
+const vector<uint8_t> velocityaddress={0x6C,0x60};
+const vector<uint8_t> target_position={0x7A,0x60};
+const vector<uint8_t> profile_acceleration={0x83,0x60};
+const vector<uint8_t> quick_stop_deceleration={0x85,0x60};
+const vector<uint8_t> motion_profile_type={0x86,0x60};
+const vector<uint8_t> profile_velocity={0x81,0x60};
+const vector<uint8_t> linear_ramp_trapezoidal={0x00};
+const vector<uint8_t> target_velocity={0xFF,0x60};
 
 }
 #endif // OBJECTDICTIONARY_H
