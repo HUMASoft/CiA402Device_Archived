@@ -174,22 +174,23 @@ long CiA402Device::SwitchOff()
 
     switch(status)
     {
-    case 0x00:
-        cout<<"Not Ready to switch on"<<endl;
-        break;
-    case 0x60:
-    case 0x40:
-        cout<<"1"<<endl;
-        break;
+//    case 0x00:
+//        cout<<"Not Ready to switch on"<<endl;
+//        break;
+//    case 0x60:
+//    case 0x40:
+//        cout<<"1"<<endl;
+//        break;
     case 0x21:
-        cout<<"2"<<endl;
+        //cout<<"2"<<endl;
+        cout<<"7"<<endl;
         WritePDO(od::quickstop);
         FlushBuffer();
         break;
     case 0x23:
-        cout<<"3"<<endl;
-        WritePDO(od::readytoswitchon);
-        FlushBuffer();
+        cout<<"10"<<endl;
+        //WritePDO(od::readytoswitchon);
+        //FlushBuffer();
         WritePDO(od::quickstop);
         FlushBuffer();
         break;
@@ -199,8 +200,11 @@ long CiA402Device::SwitchOff()
         FlushBuffer();
         WritePDO(od::readytoswitchon);
         FlushBuffer();*/
+        cout<<"11"<<endl;
         WritePDO(od::quickstop);
         FlushBuffer();
+        cout<<"12"<<endl;
+        WriteNMT(od::start);
         break;
     case 0x07:
         cout<<"5"<<endl;
@@ -225,7 +229,10 @@ long CiA402Device::SwitchOff()
 long CiA402Device::QuickStop()
 {
     const vector<uint8_t> mode = {0x00};
-    //WriteSDO(od::quick_stop_mode,mode);
+    WriteSDO(od::quick_stop_mode,mode);
+    sleep(1);
+    WriteSDO(od::stop_option_code,mode);
+    sleep(1);
     cout<<"SwitchOff"<<endl;
     WritePDO(od::quickstop);
     FlushBuffer();
