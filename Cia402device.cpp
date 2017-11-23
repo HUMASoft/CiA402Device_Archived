@@ -42,17 +42,17 @@ long CiA402Device::SwitchOn()
     sleep(1);
     FlushBuffer();
     //FlushBuffer();
-    WritePDO(od::readytoswitchon);
+    WritePDO(od::goreadytoswitchon);
     sleep(1);
     FlushBuffer();
 
     sleep(1);
    cerr<<"SWITCHON"<<endl;
-    WritePDO(od::switchon);
+    WritePDO(od::goswitchon);
     sleep(1);
     FlushBuffer();
   cerr<<"ENABLE"<<endl;
-    WritePDO(od::enable);
+    WritePDO(od::goenable);
     FlushBuffer();
    cerr<<"RUN"<<endl;
      WritePDO(od::run);
@@ -163,6 +163,11 @@ int CiA402Device::CheckError()
     }
 
     return 0;
+}
+
+long CiA402Device::ForceSwitchOff(){
+    WritePDO(od::goswitchondisable);
+
 }
 
 long CiA402Device::SwitchOff()
