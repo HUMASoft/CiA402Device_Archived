@@ -18,13 +18,40 @@ long CiA301CommPort::ReadSDO(const vector<uint8_t> &address)
 
     //cout << "id" << id << endl;
     //Ask an sdo read from address
-    SendMessage(SetCanOpenMsg(sdo::rx0+id, 0 ,address) );
+    vector<uint8_t> data={};
+//   data.insert(data.end(), address.begin(), address.end());
+//    SendMessage(SetCanOpenMsg(sdo::rx0+id, 0 ,data) );
+    WriteSDO(address, data);
 
     //Wait for the answer
     output = SetCanOpenMsg(sdo::tx0+id, 0 ,address);
     ReadCobId(sdo::tx0+id,output);
 
+    for (long reps=0 ; reps>FIND_RETRY ;reps++)
+    {
+        if (output.data_co[1] == address[0] && output.data_co[2] == address[1])
+        {
+            continue;
+        }
+        else
+        {
+
+            SendMessage(output );
+            ReadCobId(sdo::tx0+id,output);
+
+        }
+
+
+
+    }
+
     //Get the data from output
+    //Use the data from output
+    //TODO: control response with read table (table 8 man 301)
+//    if (output.data_co[0]!=0x60)
+//    {
+//        err(1,"Can not receive answer from node");
+//    }
 
 //fix this!!!! return four last bytes from data.
     long retvalue = output.data_co[7];
@@ -73,11 +100,7 @@ long CiA301CommPort::WriteSDO(const vector<uint8_t> &address, const vector<uint8
     //Wait for the answer
     ReadCobId(sdo::tx0+id,output);
 
-    //Use the data from output
-    if (output.data_co[0]!=0x60)
-    {
-        err(1,"Can not receive answer from node");
-    }
+
 
 //fix this!!!! return four last bytes from data.
     return 0;
@@ -347,28 +370,48 @@ int CiA301CommPort::ReadCobId(uint16_t expected_cobid, co_msg & output ){
     //First check for the input.
     //If the response is the answer expected, continue
     //if not:
-    long reps=0;
-    while (input.id != expected_cobid)
+
+    for (long reps=0 ; reps>FIND_RETRY ;reps++)
     {
-        //cout << "reps : " << reps << endl;
-        reps++;
-        if (reps>FIND_RETRY) return -10;
-        //check node id
+        if (input.id == expected_cobid)
+        {
+            continue;
+        }
         if (GET_NODE_ID(input.id) == GET_NODE_ID(expected_cobid) )
         {
             //cerr << " Cobid still not received. Received: " << std::hex << input.id << std::dec << endl;
             //if id, check if error
             //return -1;
         }
-        //Otherwise, store in a buffer to avoid loose data and read again
         else
         {
-        otherMsgs.push_back(input);
+            otherMsgs.push_back(input);
         }
-
         GetMsg(input);
 
+
     }
+//    while (input.id != expected_cobid)
+//    {
+//        //cout << "reps : " << reps << endl;
+//        reps++;
+//        if (reps>FIND_RETRY) return -10;
+//        //check node id
+//        if (GET_NODE_ID(input.id) == GET_NODE_ID(expected_cobid) )
+//        {
+//            //cerr << " Cobid still not received. Received: " << std::hex << input.id << std::dec << endl;
+//            //if id, check if error
+//            //return -1;
+//        }
+//        //Otherwise, store in a buffer to avoid loose data and read again
+//        else
+//        {
+//        otherMsgs.push_back(input);
+//        }
+
+//        GetMsg(input);
+
+//    }
     //Finally, resend buffer to canopen to avoid losing messages
 
     for (int i=0; i<otherMsgs.size(); i++)

@@ -32,9 +32,9 @@ long CiA402Device::SwitchOn()
 
 //   const vector<u_int8_t> obj2111 ={0x40,0x11,0x21,0x00,0x00};
 
-    cerr<<"RESET"<<endl;
-    WriteNMT(od::reset);
-    sleep(1);
+    //cerr<<"RESET"<<endl;
+    //WriteNMT(od::reset);
+    //sleep(1);
     FlushBuffer();
     //OperationMode(od::positionmode);
     cerr<<"START"<<endl;
@@ -62,6 +62,12 @@ long CiA402Device::SwitchOn()
 
 long CiA402Device::OperationMode(const vector<uint8_t> mode)
 {
+    FlushBuffer();
+
+    cout<<"DISPLAY"<<endl;
+    ReadSDO(od::OperationModeDisplay);
+    FlushBuffer();
+
     //ask the node for write proper mode in 6060 address
     WriteSDO(od::OperationMode,mode);
     //wait the answer (tx0(580)+id)
@@ -75,9 +81,9 @@ uint16_t CiA402Device::CheckStatus()
 {
     //uint16_t* statusp;
     uint16_t status;
-    vector<uint8_t> data={0x40};
-    data.push_back(od::statusword[0]);
-    data.push_back(od::statusword[1]);
+    vector<uint8_t> data= od::statusword;
+//    data.push_back(od::statusword[0]);
+//    data.push_back(od::statusword[1]);
 
     //Ask for the status word
     status = (uint16_t) ReadSDO(data);
@@ -91,9 +97,10 @@ void CiA402Device::PrintStatus()
 {
     //uint16_t* statusp;
     uint16_t status;
-    vector<uint8_t> data={0x40};
-    data.push_back(od::statusword[0]);
-    data.push_back(od::statusword[1]);
+    //vector<uint8_t> data={0x40};
+    vector<uint8_t> data=od::statusword;
+//    data.push_back(od::statusword[0]);
+//    data.push_back(od::statusword[1]);
 
     //Ask for the status word
     status = (uint16_t) ReadSDO(data);
@@ -136,6 +143,7 @@ void CiA402Device::PrintStatus()
         cout<<"Not known"<<endl;
 
     }
+    FlushBuffer();
    return;
 }
 
@@ -167,7 +175,7 @@ int CiA402Device::CheckError()
 
 long CiA402Device::ForceSwitchOff(){
     WritePDO(od::goswitchondisable);
-
+    return 0;
 }
 
 long CiA402Device::SwitchOff()
@@ -247,6 +255,7 @@ long CiA402Device::QuickStop()
 
 double CiA402Device::GetPosition()
 {
+
     return (uint32_t) ReadSDO(od::positionaddress);
 
 }
