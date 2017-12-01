@@ -32,9 +32,9 @@ const vector<uint8_t> stop_option_code={0x5D,0x60};
 
 const vector<uint8_t> checkerror={0x02,0x10};
 
-const vector<uint8_t> positionaddress={0x64,0x60}; //check this!!!
+const vector<uint8_t> positionaddress={0x63,0x60};
 const vector<uint8_t> velocityaddress={0x6C,0x60};
-const vector<uint8_t> target_position={0x7A,0x60};
+const vector<uint8_t> target_position={0x7A,0x60,0x00};
 const vector<uint8_t> profile_acceleration={0x83,0x60};
 const vector<uint8_t> quick_stop_deceleration={0x85,0x60};
 const vector<uint8_t> motion_profile_type={0x86,0x60};

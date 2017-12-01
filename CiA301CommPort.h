@@ -34,6 +34,7 @@ public:
 
     long FlushBuffer();
     long WriteSDO(const vector<uint8_t> &address, const vector<uint8_t> &value);
+    long WritePDO4(const vector<uint8_t> &command);
 private:
 
     //methods
@@ -72,12 +73,15 @@ namespace sdo
 const uint16_t tx0=0x580;
 const uint16_t rx0=0x600;
 
+
 }
 namespace pdo
 {
 
 const uint16_t tx0=0x180;
 const uint16_t rx0=0x200;
+const uint16_t tx4=0x380;
+const uint16_t rx4=0x400;
 
 }
 

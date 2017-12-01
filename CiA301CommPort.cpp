@@ -36,7 +36,7 @@ long CiA301CommPort::ReadSDO(const vector<uint8_t> &address)
         else
         {
 
-            SendMessage(output );
+            SendMessage(output);
             ReadCobId(sdo::tx0+id,output);
 
         }
@@ -114,6 +114,25 @@ long CiA301CommPort::WritePDO(const vector<uint8_t> &command)
     //cout << "id" << id << endl;
     //Ask an sdo read from address
     SendMessage(SetCanOpenMsg(pdo::rx0+id, 0 ,command) );
+
+    //Wait for the answer
+    //output = SetCanOpenMsg(sdo::tx0+id, 0 ,address);
+
+
+    //Get the data from output
+    //ReadCobId(pdo::tx0+id,output);
+
+    return 0;
+}
+
+long CiA301CommPort::WritePDO4(const vector<uint8_t> &command)
+{
+
+    //co_msg output;
+
+    //cout << "id" << id << endl;
+    //Ask an sdo read from address
+    SendMessage(SetCanOpenMsg(pdo::rx4+id, 0 ,command) );
 
     //Wait for the answer
     //output = SetCanOpenMsg(sdo::tx0+id, 0 ,address);

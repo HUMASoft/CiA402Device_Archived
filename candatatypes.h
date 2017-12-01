@@ -215,15 +215,15 @@ struct co_msg
 /* Set the bitrate (aka. baudrate) for the given CAN nodes. Parameter is one
  * of the BITRATE_* macros below */
 
-#define BITRATE_10k	 0
-#define BITRATE_20k	 1
-#define BITRATE_50k	 2
-#define BITRATE_100k	 3
-#define BITRATE_125k	 4
-#define BITRATE_250k	 5
-#define BITRATE_500k	 6
-#define BITRATE_800k	 7
-#define BITRATE_1000k	 8
+#define BITRATE_10k	  0
+#define BITRATE_20k	  1
+#define BITRATE_50k	  2
+#define BITRATE_100k  3
+#define BITRATE_125k  4
+#define BITRATE_250k  5
+#define BITRATE_500k  6
+#define BITRATE_800k  7
+#define BITRATE_1000k 8
 
 /**************************************************************************/
 #define IOC_SET_SJW_INCREMENT                  _IOW (IOC_MAGIC, 31, uint32_t)

@@ -1,5 +1,8 @@
 #include "Cia402device.h"
 
+vector<uint8_t> data32to4x8(uint32_t in);
+
+
 long CiA402Device::Init(uint8_t new_id)
 {
     //id = new_id;
@@ -54,9 +57,7 @@ long CiA402Device::SwitchOn()
   cerr<<"ENABLE"<<endl;
     WritePDO(od::goenable);
     FlushBuffer();
-   cerr<<"RUN"<<endl;
-     WritePDO(od::run);
-     FlushBuffer();
+
     return 0;
 }
 
@@ -266,21 +267,22 @@ long CiA402Device::SetCommunications(int fdPort)
     return 0;
 }
 
-long CiA402Device::Setup_Position_Mode(const vector<uint8_t> target,const vector<uint8_t> velocity,const vector<uint8_t> acceleration,const vector<uint8_t> deceleration){
+long CiA402Device::SetupPositionMode(/*const vector<uint8_t> target,*/const uint32_t velocity,const uint32_t acceleration /*const vector<uint8_t> deceleration*/){
     OperationMode(od::positionmode);
     // Motion profile type -  trapezoidal
     WriteSDO(od::motion_profile_type,od::linear_ramp_trapezoidal);
     //Si paso los parametros convertidos en ui, sino convertir primero
-    WriteSDO(od::profile_velocity,velocity);
+    WriteSDO(od::profile_velocity,data32to4x8(velocity));
     //Si paso los parametros convertidos en ui, sino convertir primero
-    WriteSDO(od::profile_acceleration,acceleration);
+    WriteSDO(od::profile_acceleration,data32to4x8(acceleration));
 //  The target position is the position that the drive should move to in
 //  position profile mode using the current settings of motion control parameters
 //  such as velocity, acceleration, and motion profile type etc.
 //  It is given in position units.
 //  Si paso los parametros convertidos en ui, sino convertir primero
-    WriteSDO(od::target_position,target);
-    WriteSDO(od::quick_stop_deceleration,deceleration);
+    //WriteSDO(od::target_position,target);
+    //WriteSDO(od::quick_stop_deceleration,deceleration);
+    FlushBuffer();
    return 0;
 }
 
@@ -297,4 +299,33 @@ long CiA402Device::Setup_Velocity_Mode(const vector<uint8_t> target,const vector
     WriteSDO(od::target_velocity,target);
     WriteSDO(od::profile_acceleration,acceleration);
     return 0;
+}
+
+long CiA402Device::SetPosition(uint32_t target){
+
+
+    vector<uint8_t> value;
+    //convert target to value
+
+    WriteSDO(od::target_position,data32to4x8(target));
+    //WritePDO4(data32to4x8(target));
+    cerr<<"RUN"<<endl;
+      WritePDO(od::run);
+      FlushBuffer();
+    return 0;
+}
+
+vector<uint8_t> data32to4x8(uint32_t in)
+{
+    vector<uint8_t> retvalue(4);
+    retvalue[0] = in&0x000000FF;
+    retvalue[1] = (in&0x0000FF00)>>8;
+    retvalue[2] = (in&0x00FF0000)>>16;
+    retvalue[3] = (in&0xFF000000)>>24;
+    cout<< " " <<(int)retvalue[0]
+        << " ," <<(int)retvalue[1]
+        << " , "<<(int)retvalue[2]
+        << " , "<<(int)retvalue[3]<<endl;
+    return retvalue;
+
 }
