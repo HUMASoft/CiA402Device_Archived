@@ -50,11 +50,11 @@ long CiA402Device::SwitchOn()
     FlushBuffer();
 
     sleep(1);
-   cerr<<"SWITCHON"<<endl;
+    cerr<<"SWITCHON"<<endl;
     WritePDO(od::goswitchon);
     sleep(1);
     FlushBuffer();
-  cerr<<"ENABLE"<<endl;
+    cerr<<"ENABLE"<<endl;
     WritePDO(od::goenable);
     FlushBuffer();
 
@@ -65,7 +65,7 @@ long CiA402Device::OperationMode(const vector<uint8_t> mode)
 {
     FlushBuffer();
 
-    cout<<"DISPLAY"<<endl;
+    cout<<"OperationModeDisplay"<<endl;
     ReadSDO(od::OperationModeDisplay);
     FlushBuffer();
 
@@ -73,6 +73,9 @@ long CiA402Device::OperationMode(const vector<uint8_t> mode)
     WriteSDO(od::OperationMode,mode);
     //wait the answer (tx0(580)+id)
 
+    cout<<"OperationModeDisplay"<<endl;
+    ReadSDO(od::OperationModeDisplay);
+    FlushBuffer();
 
     return 0;
 }
@@ -268,13 +271,16 @@ long CiA402Device::SetCommunications(int fdPort)
 }
 
 long CiA402Device::SetupPositionMode(/*const vector<uint8_t> target,*/const uint32_t velocity,const uint32_t acceleration /*const vector<uint8_t> deceleration*/){
+
+
     OperationMode(od::positionmode);
+
     // Motion profile type -  trapezoidal
-    WriteSDO(od::motion_profile_type,od::linear_ramp_trapezoidal);
+    //WriteSDO(od::motion_profile_type,od::linear_ramp_trapezoidal);
     //Si paso los parametros convertidos en ui, sino convertir primero
     WriteSDO(od::profile_velocity,data32to4x8(velocity));
     //Si paso los parametros convertidos en ui, sino convertir primero
-    WriteSDO(od::profile_acceleration,data32to4x8(acceleration));
+    //WriteSDO(od::profile_acceleration,data32to4x8(acceleration));
 //  The target position is the position that the drive should move to in
 //  position profile mode using the current settings of motion control parameters
 //  such as velocity, acceleration, and motion profile type etc.
@@ -303,12 +309,18 @@ long CiA402Device::Setup_Velocity_Mode(const vector<uint8_t> target,const vector
 
 long CiA402Device::SetPosition(uint32_t target){
 
-
-    vector<uint8_t> value;
+//WATCH SLEEPS!!!!!!!!!!!!
+//remove when working code
+    //vector<uint8_t> value;
     //convert target to value
 
     WriteSDO(od::target_position,data32to4x8(target));
     //WritePDO4(data32to4x8(target));
+    sleep(1);
+    //setup via control word
+//    vector<uint8_t>cw={0x30,0x08,0x00 ,0x00 };
+//    WritePDO(cw);
+//    sleep(1);
     cerr<<"RUN"<<endl;
       WritePDO(od::run);
       FlushBuffer();
