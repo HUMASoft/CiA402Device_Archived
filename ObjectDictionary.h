@@ -20,6 +20,8 @@ const vector<uint8_t> goswitchon={0x07,0x00};
 const vector<uint8_t> goenable={0x0F,0x00};
 const vector<uint8_t> goswitchondisable={0x00,0x00};
 const vector<uint8_t> run={0x1F,0x00};
+const vector<uint8_t> expedite={0x3F,0x00}; //like run, but dont finish actual position profile
+
 const vector<uint8_t> quickstop={0x02,0x00};//{0x04,0x00};
 const vector<uint8_t> OperationMode={0x60,0x60,0x00};
 const vector<uint8_t> OperationModeDisplay={0x61,0x60};
@@ -36,6 +38,8 @@ const vector<uint8_t> checkerror={0x02,0x10};
 const vector<uint8_t> positionaddress={0x63,0x60};
 const vector<uint8_t> velocityaddress={0x6C,0x60};
 const vector<uint8_t> target_position={0x7A,0x60,0x00};
+const vector<uint8_t> position_demand={0x62,0x60,0x00};
+
 const vector<uint8_t> profile_acceleration={0x83,0x60,0x00};
 const vector<uint8_t> quick_stop_deceleration={0x85,0x60,0x00};
 const vector<uint8_t> motion_profile_type={0x86,0x60};

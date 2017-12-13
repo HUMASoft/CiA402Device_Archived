@@ -313,10 +313,25 @@ long CiA402Device::SetPosition(uint32_t target){
 //remove when working code
     //vector<uint8_t> value;
     //convert target to value
+    WritePDO(od::goenable);
+    FlushBuffer();
+    sleep(1);
 
     WriteSDO(od::target_position,data32to4x8(target));
+    FlushBuffer();
     //WritePDO4(data32to4x8(target));
     sleep(1);
+    long pos = ReadSDO(od::target_position);
+    cerr<<"target_position"<<pos<<endl;
+    FlushBuffer();
+    sleep(1);
+
+    //lectura del status word y comprobar target reached (posicion bit11 = 1)
+    long stat = ReadSDO(od::statusword);
+    cerr<<"statusword"<<stat<<endl;
+    FlushBuffer();
+    sleep(1);
+
     //setup via control word
 //    vector<uint8_t>cw={0x30,0x08,0x00 ,0x00 };
 //    WritePDO(cw);

@@ -256,15 +256,15 @@ co_msg CiA301CommPort::SetCanOpenMsg(unsigned short id_co, unsigned short rtr, v
 /* Transforma mensaje de canopen a can y lo envía al puerto  */
 int CiA301CommPort::SendMessage(co_msg input)
 {
-    cout<<"SendMessage " << endl;
-    cout<<"sent cob id " << std::hex << input.id_co << std::dec <<" rtr: " << input.rtr << endl;
-            cout<<"sent data: ";
-            for (int i = 0; i < input.dlc_co; i++)
-            {
+//    cout<<"SendMessage " << endl;
+//    cout<<"sent cob id " << std::hex << input.id_co << std::dec <<" rtr: " << input.rtr << endl;
+//            cout<<"sent data: ";
+//            for (int i = 0; i < input.dlc_co; i++)
+//            {
 
-                printf("%02x ",input.data_co[i]);
-            }
-            cout<<endl;
+//                printf("%02x ",input.data_co[i]);
+//            }
+//            cout<<endl;
     if (CanOpenToCanBus(input,send_msg) < 0)
     {
         cout<<"Error al transformar el mensaje"<<endl;
@@ -323,7 +323,7 @@ int CiA301CommPort::SendCanMessage(can_msg &input)
 int CiA301CommPort::WaitForReadMessage(co_msg & output, unsigned int canIndex){
 
     can_msg input;
-    cout<<"WaitForReadMessage -----------" << endl;
+    cerr<<"WaitForReadMessage -----------" << endl;
 
 #if USE_TIMEOUT
     if(read_timeout(portFileDescriptor,&input,USE_TIMEOUT)==0)
@@ -348,23 +348,24 @@ int CiA301CommPort::WaitForReadMessage(co_msg & output, unsigned int canIndex){
     }
     else
     {
-        //print can frame information
-        cout<<"received can id " << (bitset<16>)input.id << " rtr: " << input.rtr << endl;
-        cout<<"received data: ";
-        for (int i = 0; i < input.dlc; i++)
-        {
+//        //print can frame information
+//        cerr<<"received can id " << (bitset<16>)input.id << " rtr: " << input.rtr << endl;
+//        cerr<<"received data: ";
+//        for (int i = 0; i < input.dlc; i++)
+//        {
 
-            printf("%02x ",input.data[i]);
-        }
-        cout<<endl;
-                cout<<"received cob id " << std::hex << output.id_co << std::dec << " rtr: " << output.rtr << endl;
-                cout<<"received canopen data: ";
-                for (int i = 0; i < output.dlc_co; i++)
-                {
+//            printf("%02x ",input.data[i]);
+//        }
+//        cerr<<endl;
+//                cerr<<"received cob id " << std::hex << output.id_co << std::dec << " rtr: " << output.rtr << endl;
+//                cerr<<"received canopen data: ";
+//                for (int i = 0; i < output.dlc_co; i++)
+//                {
 
-                    printf("%02x ",output.data_co[i]);
-                }
-                cout<<"WaitForReadMessage End-----------" << endl;
+//                    printf("%02x ",output.data_co[i]);
+//                }
+//                cerr<<endl;
+//                cerr<<"WaitForReadMessage End-----------" << endl;
     }
     return 0;
 }
