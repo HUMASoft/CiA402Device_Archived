@@ -35,8 +35,10 @@ long CiA402Device::SwitchOn()
 
 //   const vector<u_int8_t> obj2111 ={0x40,0x11,0x21,0x00,0x00};
 
+    long response;
     cerr<<"RESET"<<endl;
-    WriteNMT(od::reset);
+    response = WriteNMT(od::reset);
+
     sleep(1);
     FlushBuffer();
     //OperationMode(od::positionmode);
