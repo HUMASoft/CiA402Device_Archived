@@ -10,7 +10,11 @@ CiA301CommPort::CiA301CommPort(int newPortFileDescriptor, uint8_t new_id)
 
 
 }
-
+///
+/// \brief CiA301CommPort::ReadSDO Waits until expected
+/// \param address
+/// \return
+///
 long CiA301CommPort::ReadSDO(const vector<uint8_t> &address)
 {
 
@@ -53,7 +57,7 @@ long CiA301CommPort::ReadSDO(const vector<uint8_t> &address)
 //        err(1,"Can not receive answer from node");
 //    }
 
-//fix this!!!! return four last bytes from data.
+//fixed return four last bytes from data.
     long retvalue = output.data_co[7];
     retvalue = (retvalue << 8) + output.data_co[6];
     retvalue = (retvalue << 8) + output.data_co[5];
@@ -465,6 +469,7 @@ int CiA301CommPort::ReadCobId(uint16_t expected_cobid, co_msg & output ){
             printf("%02x ",output.data_co[i]);
         }
         cout<<endl;
+        return data4x8to32((char*)&output.data_co[4]);
     }
 
     return 0;
@@ -572,3 +577,14 @@ long CiA301CommPort::GetMsg(can_msg &msg)
 
 }
 
+
+uint32_t CiA301CommPort::data4x8to32(char* in)
+{
+    //TODO check for Sizes!!!!!
+    long retvalue = in[0];
+    retvalue = (retvalue << 8) + in[1];
+    retvalue = (retvalue << 8) + in[2];
+    retvalue = (retvalue << 8) + in[3];
+    return retvalue;
+
+}

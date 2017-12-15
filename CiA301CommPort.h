@@ -40,7 +40,7 @@ private:
     //methods
     long CanOpenToCanBus(const co_msg &input, can_msg &output);
     long CanBusToCanOpen(const can_msg &input, co_msg &output);
-
+    uint32_t data4x8to32(char *in);
 
     int SendMessage(co_msg input);
     int SendCanMessage(can_msg &input);
