@@ -38,7 +38,7 @@ long CiA402Device::SwitchOn()
     long response;
     cerr<<"RESET"<<endl;
     response = WriteNMT(od::reset);
-
+cerr<<"response" << response <<endl;
     sleep(1);
     FlushBuffer();
     //OperationMode(od::positionmode);

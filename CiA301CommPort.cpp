@@ -327,7 +327,7 @@ int CiA301CommPort::SendCanMessage(can_msg &input)
 int CiA301CommPort::WaitForReadMessage(co_msg & output, unsigned int canIndex){
 
     can_msg input;
-    cerr<<"WaitForReadMessage -----------" << endl;
+//    cerr<<"WaitForReadMessage -----------" << endl;
 
 #if USE_TIMEOUT
     if(read_timeout(portFileDescriptor,&input,USE_TIMEOUT)==0)
@@ -440,13 +440,13 @@ int CiA301CommPort::ReadCobId(uint16_t expected_cobid, co_msg & output ){
 
     for (int i=0; i<otherMsgs.size(); i++)
     {
-        cout << "resend number : " << i << " with bytes: " << otherMsgs[i].dlc;  ;
-        cout<<" message with cob id: " << std::hex << otherMsgs[i].id << std::dec <<" rtr: " << otherMsgs[i].rtr << endl;
-        for (int j = 0; j < otherMsgs[i].dlc; j++)
-        {
+//        cout << "resend number : " << i << " with bytes: " << otherMsgs[i].dlc;  ;
+//        cout<<" message with cob id: " << std::hex << otherMsgs[i].id << std::dec <<" rtr: " << otherMsgs[i].rtr << endl;
+//        for (int j = 0; j < otherMsgs[i].dlc; j++)
+//        {
 
-            printf("%02x ",otherMsgs[i].data[j]);
-        }
+//            printf("%02x ",otherMsgs[i].data[j]);
+//        }
         SendCanMessage(otherMsgs[i]);
     }
 
@@ -459,15 +459,15 @@ int CiA301CommPort::ReadCobId(uint16_t expected_cobid, co_msg & output ){
     else
     {
 
-        cout<<endl;
-        cout<<"received cob id " << std::hex << output.id_co << std::dec <<" rtr: " << output.rtr << endl;
-        cout << "ID: " << std::hex<< GET_NODE_ID(output.id_co) << std::dec<< endl;
-        cout<<"received canopen data: ";
-        for (int i = 0; i < output.dlc_co; i++)
-        {
+        cerr<<endl;
+        cerr<<"received cob id " << std::hex << output.id_co << std::dec <<" rtr: " << output.rtr << endl;
+        cerr << "ID: " << std::hex<< GET_NODE_ID(output.id_co) << std::dec<< endl;
+        cerr<<"received canopen data: ";
+//        for (int i = 0; i < output.dlc_co; i++)
+//        {
 
-            printf("%02x ",output.data_co[i]);
-        }
+//            printf("%02x ",output.data_co[i]);
+//        }
         cout<<endl;
         return data4x8to32((char*)&output.data_co[4]);
     }
