@@ -43,29 +43,33 @@ long CiA402Device::SwitchOn()
 //   const vector<u_int8_t> obj2111 ={0x40,0x11,0x21,0x00,0x00};
 
     long response;
-    cerr<<"RESET"<<endl;
-    response = WriteNMT(od::reset);
-cerr<<"response" << response <<endl;
-    sleep(1);
-    FlushBuffer();
-    //OperationMode(od::positionmode);
-    cerr<<"START"<<endl;
-    WriteNMT(od::start);
-    sleep(1);
-    FlushBuffer();
-    //FlushBuffer();
-    WritePDO(od::goreadytoswitchon);
-    sleep(1);
-    FlushBuffer();
+     cerr<<"RESET"<<endl;
+     response = WriteNMT(od::reset);
+     cerr<<"response" << response <<endl;
+     sleep(1);
+     FlushBuffer();
+     //OperationMode(od::positionmode);
+     cerr<<"START"<<endl;
+     response = WriteNMT(od::start);
+     cerr<<"response" << response <<endl;
+     sleep(1);
+     FlushBuffer();
+     //FlushBuffer();
+     response = WritePDO(od::goreadytoswitchon);
+     cerr<<"response" << response <<endl;
+     sleep(1);
+     FlushBuffer();
 
-    sleep(1);
-    cerr<<"SWITCHON"<<endl;
-    WritePDO(od::goswitchon);
-    sleep(1);
-    FlushBuffer();
-    cerr<<"ENABLE"<<endl;
-    WritePDO(od::goenable);
-    FlushBuffer();
+     sleep(1);
+     cerr<<"SWITCHON"<<endl;
+     response = WritePDO(od::goswitchon);
+     cerr<<"response" << response <<endl;
+     sleep(1);
+     FlushBuffer();
+     cerr<<"ENABLE"<<endl;
+     response = WritePDO(od::goenable);
+     cerr<<"response" << response <<endl;
+     FlushBuffer();
 
     return 0;
 }

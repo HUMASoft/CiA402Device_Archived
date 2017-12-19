@@ -472,7 +472,7 @@ int CiA301CommPort::ReadCobId(uint16_t expected_cobid, co_msg & output ){
         cerr<<endl;
         cerr<<"received cob id " << std::hex << output.id_co << std::dec <<" rtr: " << output.rtr << endl;
         cerr << "ID: " << std::hex<< GET_NODE_ID(output.id_co) << std::dec<< endl;
-        cerr<<"received canopen data: ";
+//        cerr<<"received canopen data: ";
 //        for (int i = 0; i < output.dlc_co; i++)
 //        {
 
