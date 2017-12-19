@@ -14,6 +14,7 @@
 
 
 #include "candatatypes.h"
+#include "PortBase.h"
 
 
 #define USE_TIMEOUT 200 //miliseconds timeout
@@ -25,6 +26,7 @@ class CiA301CommPort
 {
 public:
     CiA301CommPort(int newPortFileDescriptor, uint8_t new_id);
+    CiA301CommPort(PortBase *new_port, uint8_t new_id);
 
     long ReadSDO(vector<uint8_t> address, int subindex);
     long ReadSDO(const vector<uint8_t> &address);
@@ -57,6 +59,7 @@ private:
     //variables
     int portFileDescriptor;
     uint8_t id;
+    PortBase* port;
 
     can_msg send_msg;
     can_msg input;

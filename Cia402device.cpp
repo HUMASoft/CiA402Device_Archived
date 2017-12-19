@@ -28,6 +28,13 @@ CiA402Device::CiA402Device(uint8_t new_id, int fdPort) : CiA301CommPort(fdPort, 
 
 }
 
+CiA402Device::CiA402Device(uint8_t new_id, PortBase* new_port) : CiA301CommPort(new_port, new_id)
+{
+    useport=2;
+
+
+}
+
 long CiA402Device::SwitchOn()
 {
 

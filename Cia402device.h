@@ -12,6 +12,7 @@ public:
     CiA402Device();
     CiA402Device(uint8_t new_id);
     CiA402Device(uint8_t new_id, int fdPort);
+    CiA402Device(uint8_t new_id, PortBase *new_port);
     //CiA402Device(uint8_t new_id, CiA301CommPort *new_comm);
     /**
      * @brief CheckStatus: Returns the status word.
@@ -70,6 +71,8 @@ private:
     int comm; //port file de
     //unsigned int id;
     double currentPosition;
+    int useport;
+    PortBase* port;
 
 };
 

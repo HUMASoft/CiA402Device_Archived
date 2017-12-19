@@ -10,6 +10,16 @@ CiA301CommPort::CiA301CommPort(int newPortFileDescriptor, uint8_t new_id)
 
 
 }
+
+CiA301CommPort::CiA301CommPort(PortBase* new_port, uint8_t new_id)
+{
+
+    port=new_port;
+
+    id=new_id;
+
+
+}
 ///
 /// \brief CiA301CommPort::ReadSDO Waits until expected
 /// \param address
