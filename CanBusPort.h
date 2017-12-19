@@ -27,14 +27,14 @@ public:
     /// \param canPort: String with the name of system device.
     ///
     CanBusPort(string canPort);
-    int getPortFileDescriptor();
+    int getPortFD();
 
 private:
 
     long Init(string canPort);
 
 
-    int canPortFileDesc;
+    //int portFD;
 
 };
 

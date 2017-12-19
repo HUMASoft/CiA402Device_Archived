@@ -17,7 +17,7 @@ public:
     TestPort(string Port);
 
     long ShowBuffer();
-    int getPortFileDescriptor();
+    int getPortFD();
 
 private:
     long Init(string name);
