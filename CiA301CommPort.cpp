@@ -11,7 +11,7 @@ CiA301CommPort::CiA301CommPort(int newPortFileDescriptor, uint8_t new_id)
 
 }
 
-CiA301CommPort::CiA301CommPort(PortBase* new_port, uint8_t new_id)
+CiA301CommPort::CiA301CommPort(const PortBase* new_port, uint8_t new_id)
 {
 
     port=new_port;
@@ -401,16 +401,15 @@ int CiA301CommPort::ReadCobId(uint16_t expected_cobid, co_msg & output ){
     GetMsg(input);
 
 
-    //First check for the input.
-    //If the response is the answer expected, continue
-    //if not:
-
     for (long reps=0 ; reps>FIND_RETRY ;reps++)
     {
+        //First check for the input.
+        //If the response is the answer expected, continue
         if (input.id == expected_cobid)
         {
             continue;
         }
+        //if not:
         if (GET_NODE_ID(input.id) == GET_NODE_ID(expected_cobid) )
         {
             //cerr << " Cobid still not received. Received: " << std::hex << input.id << std::dec << endl;

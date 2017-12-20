@@ -1,11 +1,12 @@
 #ifndef CANDATATYPES_H
 #define CANDATATYPES_H
 
+#include<linux/can.h>
 
 //masks used to get data
 //get id from cob-id
-#define GET_NODE_ID(x) ( x & 0x7f )
-#define CO_ID_MASK 0xfe
+#define GET_NODE_ID(cobid) ( cobid & 0x7f )
+//#define CO_ID_MASK 0xfe
 
 
 /* hicocan_mpci 'magic' number for the ioctl calls */

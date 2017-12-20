@@ -12,7 +12,7 @@ public:
     CiA402Device();
     CiA402Device(uint8_t new_id);
     CiA402Device(uint8_t new_id, int fdPort);
-    CiA402Device(uint8_t new_id, PortBase *new_port);
+    CiA402Device(uint8_t new_id, const PortBase *new_port);
     //CiA402Device(uint8_t new_id, CiA301CommPort *new_comm);
     /**
      * @brief CheckStatus: Returns the status word.
