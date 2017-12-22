@@ -168,6 +168,17 @@ long CiA301CommPort::FlushBuffer()
 {
     cout << "Flushing can buffer" << endl;
     co_msg m1;
+
+
+    if (usesockets)
+    {
+        for (int i=0; i<5; i++)
+        {
+            uint32_t id; uint8_t data[8];int size;
+            port->GetMsg(id,data,size);
+        }
+    }
+
     while (WaitForReadMessage(m1,0)==0)
     {
 
@@ -364,6 +375,7 @@ int CiA301CommPort::WaitForReadMessage(co_msg & output, unsigned int canIndex){
 
     can_msg input;
 //    cerr<<"WaitForReadMessage -----------" << endl;
+
 
 #if USE_TIMEOUT
     if(read_timeout(portFileDescriptor,&input,USE_TIMEOUT)==0)
