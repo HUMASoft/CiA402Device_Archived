@@ -16,6 +16,13 @@ SocketCanPort::SocketCanPort(string canPort)
 
 }
 
+SocketCanPort::~SocketCanPort()
+{
+    //shutdown(portFD,0);
+    //close(portFD);
+
+}
+
 long SocketCanPort::SetFilter(uint32_t canId, uint32_t mask)
 {
     //check for socket

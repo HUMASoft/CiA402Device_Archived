@@ -25,6 +25,7 @@ class SocketCanPort : public PortBase
 public:
     SocketCanPort();
     SocketCanPort(string canPort);
+    ~SocketCanPort();
 
     long SetFilter(uint32_t canId, uint32_t mask);
     long GetMsg(uint32_t & canId, uint8_t * data, uint8_t size);
