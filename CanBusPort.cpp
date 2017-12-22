@@ -50,3 +50,22 @@ int CanBusPort::getPortFD()
 {
     return portFD;
 }
+
+long CanBusPort::SetFilter(uint32_t canId, uint32_t mask)
+{
+    cerr << "Not implemented" << endl;
+    return -1;
+}
+
+long CanBusPort::GetMsg(uint32_t &canId, uint8_t *data, uint8_t size)
+{
+    cerr << "Not implemented" << endl;
+    return -1;
+
+}
+
+long CanBusPort::PutMsg(const uint32_t &canId, uint8_t * const data, const uint8_t size)
+{
+    cerr << "Not implemented" << endl;
+    return -1;
+}

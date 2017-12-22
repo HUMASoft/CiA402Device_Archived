@@ -5,19 +5,24 @@ CiA301CommPort::CiA301CommPort(int newPortFileDescriptor, uint8_t new_id)
 {
 
     portFileDescriptor = newPortFileDescriptor;
+    usesockets=0;
 
     id=new_id;
 
 
 }
 
-CiA301CommPort::CiA301CommPort(const PortBase* new_port, uint8_t new_id)
+CiA301CommPort::CiA301CommPort(PortBase* new_port, uint8_t new_id)
 {
 
     port=new_port;
+    usesockets=1;
 
     id=new_id;
 
+    //set the filter to port so commport will only accept messages to his id
+    //must decide to make not constant. Till then, moved up to main
+    port->SetFilter(id,0x7F);
 
 }
 ///
@@ -80,6 +85,7 @@ long CiA301CommPort::ReadSDO(const vector<uint8_t> &address)
 
 long CiA301CommPort::WriteSDO(const vector<uint8_t> &address, const vector<uint8_t> &value )
 {
+
 
 
     vector<uint8_t> data(1);
@@ -297,13 +303,23 @@ int CiA301CommPort::SendMessage(co_msg input)
 //        }
 //        cout<<endl;
 
+
         /* Write the message to the Port */
-        if(write(portFileDescriptor,&send_msg,sizeof(struct can_msg))!=sizeof(struct can_msg))
+
+        if(usesockets)
         {
-            err(1, "Failed to send message");
+            uint32_t tmpid = send_msg.id;
+            port->PutMsg(tmpid, send_msg.data, send_msg.dlc);
 
         }
+        else
+        {
+            if(write(portFileDescriptor,&send_msg,sizeof(struct can_msg))!=sizeof(struct can_msg))
+            {
+                err(1, "Failed to send message");
 
+            }
+        }
     }
     return 0;
 }
@@ -321,13 +337,23 @@ int CiA301CommPort::SendCanMessage(can_msg &input)
 
 //        printf("%02x ",send_msg.data[i]);
 //    }
-    cout<<endl;
+//    cout<<endl;
 
     /* Write the message to the Port */
-    if(write(portFileDescriptor,&input,sizeof(struct can_msg))!=sizeof(struct can_msg))
-    {
-        err(1, "Failed to send message");
 
+    if(usesockets)
+    {
+        uint32_t tmpid = send_msg.id;
+        port->PutMsg(tmpid, send_msg.data, send_msg.dlc);
+
+    }
+    else
+    {
+        if(write(portFileDescriptor,&send_msg,sizeof(struct can_msg))!=sizeof(struct can_msg))
+        {
+            err(1, "Failed to send message");
+
+        }
     }
 
 
@@ -523,6 +549,16 @@ int CiA301CommPort::read_timeout(int fd, struct can_msg *buf, unsigned int timeo
 
 long CiA301CommPort::GetMsg(can_msg &msg)
 {
+
+    if (usesockets)
+    {
+        uint32_t tmpid;
+        //doing it trough port object
+        port->GetMsg(tmpid,msg.data,msg.dlc);
+        msg.id= tmpid;
+        return 0;
+    }
+
 
 #if USE_TIMEOUT
 
