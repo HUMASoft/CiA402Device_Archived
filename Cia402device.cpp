@@ -357,7 +357,7 @@ long CiA402Device::SetPosition(uint32_t target){
 //uint32_t CiA402Device::DegreeConv(uint32_t DegreeTarget){ // Conversion from degrees to the encoder's lines
 
 //uint32_t targetPos;
-//targetPos=DegreeTarget*360/500 //NAT: I think the encoder has 500 lines. Needs revision.
+//targetPos=DegreeTarget*500/360 //NAT: I think the encoder has 500 lines. Needs revision.
 //    return targetPos;
 //}
 
