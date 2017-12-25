@@ -41,12 +41,37 @@ long CiA402Device::SwitchOn()
 //Watch out!! see how to remove sleep commands!!!
 
 //   const vector<u_int8_t> obj2111 ={0x40,0x11,0x21,0x00,0x00};
-
+    int i=0;
+    int e=0; //marks transmission errors
+    uint16_t status;
     long response;
      cerr<<"RESET"<<endl;
      response = WriteNMT(od::reset);
-     cerr<<"response" << response <<endl;
-     sleep(1);
+     status = CheckStatus()&0x6f; //mask 01101111=6f
+     while (i<3){   //three tries to receive the correct message
+        if (status = 0x00) {
+             cerr<<"response" << response <<endl;
+             i=3;
+             e=0;
+        }
+        else {
+             sleep(1);
+             i++;
+             if (i=3){
+                 e=1;
+             }
+        }
+     }
+     if (e=1){
+         cout<<"Error. Wrong message or message not received"<<endl;
+         return 0;
+        }
+     else {
+         i=0;
+     }
+
+//   cerr<<"response"<< response <<endl;
+//   sleep(1);
      FlushBuffer();
      //OperationMode(od::positionmode);
      cerr<<"START"<<endl;
