@@ -48,14 +48,18 @@ long CiA301CommPort::ReadSDO(const vector<uint8_t> &address)
 
     for (long reps=0 ; reps>FIND_RETRY ;reps++)
     {
-        if (output.data_co[1] == address[0] && output.data_co[2] == address[1])
+        //Check that received data comes from right address.
+        if ( (output.data_co[1] == address[0]) && (output.data_co[2] == address[1]) )
         {
             continue;
         }
-        else
+
+        else //Wrong address.
         {
 
+            //Return message to bus
             SendMessage(output);
+            //Read again and check (later)
             ReadCobId(sdo::tx0+id,output);
 
         }
@@ -431,7 +435,7 @@ int CiA301CommPort::WaitForReadMessage(co_msg & output, unsigned int canIndex){
 ///
 int CiA301CommPort::ReadCobId(uint16_t expected_cobid, co_msg & output ){
 
-    cout<<" -- ReadCobId. Expected: "  << std::hex << expected_cobid << std::dec  << endl;
+    cout<<" -- ReadCobId. Expecting: "  << std::hex << expected_cobid << std::dec  << endl;
 
 
     vector<can_msg> otherMsgs(0);

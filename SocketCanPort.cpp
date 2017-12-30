@@ -19,7 +19,7 @@ SocketCanPort::SocketCanPort(string canPort)
 SocketCanPort::~SocketCanPort()
 {
     //shutdown(portFD,0);
-    //close(portFD);
+    close(portFD);
 
 }
 
@@ -52,11 +52,23 @@ long SocketCanPort::GetMsg(uint32_t &canId, uint8_t *data, uint8_t size)
 
 }
 
-long SocketCanPort::PutMsg(const uint32_t &canId, uint8_t * const data, uint8_t const size)
+long SocketCanPort::PutMsg(const uint32_t &canId, uint8_t * const data, uint8_t const data_size)
 {
     frame.can_id = canId;
-    memcpy ( frame.data,  data, size );
-    nbytes = write(portFD, &frame, sizeof(struct can_frame));
+
+    memcpy ( frame.data,  data, data_size );
+    frame.can_dlc = data_size;
+//    cout << "PutMsg: " << hex << frame.can_id << dec << "  | ";
+//    cout << "data: " << hex << frame.data[0] << dec << endl;
+
+    nbytes = write(portFD, &frame, sizeof(struct can_frame) );
+
+    /* send frame */
+    if (nbytes != sizeof(struct can_frame))
+    {
+        perror("Write Failed");
+        return 1;
+    }
     return nbytes;
 
 }
@@ -77,18 +89,18 @@ long SocketCanPort::Init(string canPort)
 
     canPort.copy(ifr.ifr_name,canPort.size());
 
-            ioctl(portFD, SIOCGIFINDEX, &ifr);
+    ioctl(portFD, SIOCGIFINDEX, &ifr);
 
-            addr.can_family  = AF_CAN;
-            addr.can_ifindex = ifr.ifr_ifindex;
+    addr.can_family  = AF_CAN;
+    addr.can_ifindex = ifr.ifr_ifindex;
 
-            printf("%s at index %d\n", canPort.c_str(), ifr.ifr_ifindex);
+    printf("%s at index %d\n", canPort.c_str(), ifr.ifr_ifindex);
 
-            if(bind(portFD, (struct sockaddr *)&addr, sizeof(addr)) < 0)
-            {
-                perror("Error in socket bind");
-                return -2;
-            }
+    if(bind(portFD, (struct sockaddr *)&addr, sizeof(addr)) < 0)
+    {
+        perror("Error in socket bind");
+        return -2;
+    }
 
     return 0;
 }
