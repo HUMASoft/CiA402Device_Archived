@@ -91,6 +91,9 @@ long CiA301CommPort::WriteSDO(const vector<uint8_t> &address, const vector<uint8
 {
 
 
+    //Set the first byte of data frame
+    //it holds the size descriptor for the data bytes
+    //like in CiA 301
 
     vector<uint8_t> data(1);
     switch(value.size()){
@@ -113,20 +116,23 @@ long CiA301CommPort::WriteSDO(const vector<uint8_t> &address, const vector<uint8
 
     }
 
+   //Then set the
    data.insert(data.end(), address.begin(), address.end());
    data.insert(data.end(), value.begin(), value.end());
 
     //cout << "id" << id << endl;
-    //Ask an sdo read from address
+    //Write the data in the default rx port
+    //like in CiA 301
     SendMessage(SetCanOpenMsg(sdo::rx0+id, 0 ,data) );
 
-    co_msg output;
     //Wait for the answer
-    ReadCobId(sdo::tx0+id,output);
+    ///not sure this is needed here
+    ///co_msg output;
+    ///ReadCobId(sdo::tx0+id,output);
 
 
 
-//fix this!!!! return four last bytes from data.
+//fix this???? return four last bytes from data.
     return 0;
 }
 
@@ -176,11 +182,13 @@ long CiA301CommPort::FlushBuffer()
 
     if (usesockets)
     {
-        for (int i=0; i<5; i++)
-        {
-            uint32_t id; uint8_t data[8];int size;
-            port->GetMsg(id,data,size);
-        }
+        cout << "Cant Flush can buffer. Using blocking read!!!!" << endl;
+        return 1;
+//        for (int i=0; i<5; i++)
+//        {
+//            uint32_t id; uint8_t data[8];int size;
+//            port->GetMsg(id,data,size);
+//        }
     }
 
     while (WaitForReadMessage(m1,0)==0)

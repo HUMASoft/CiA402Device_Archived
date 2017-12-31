@@ -123,7 +123,7 @@ uint16_t CiA402Device::CheckStatus()
 {
     //uint16_t* statusp;
     uint16_t status;
-    vector<uint8_t> data= od::statusword;
+    vector<uint8_t> data = od::statusword;
 //    data.push_back(od::statusword[0]);
 //    data.push_back(od::statusword[1]);
 
