@@ -80,7 +80,8 @@ long SocketCanPort::Init(string canPort)
     struct can_frame frame;
     struct ifreq ifr;
 
-    if((portFD  = socket(PF_CAN, SOCK_RAW, CAN_RAW)) < 0)
+    portFD  = socket(PF_CAN, SOCK_RAW, CAN_RAW);
+    if(portFD < 0)
     {
         perror("Error while opening socket \n "
                "try: sudo ip link set can0 up txqueuelen 1000 type can bitrate 1000000");
@@ -88,6 +89,9 @@ long SocketCanPort::Init(string canPort)
     }
 
     canPort.copy(ifr.ifr_name,canPort.size());
+    //CHECK THIS!!!
+    ifr.ifr_name[canPort.size()]=NULL;
+    printf("%s ifr %d\n", ifr.ifr_name, ifr.ifr_ifindex);
 
     ioctl(portFD, SIOCGIFINDEX, &ifr);
 
