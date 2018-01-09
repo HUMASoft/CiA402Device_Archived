@@ -35,6 +35,7 @@ public:
     long WritePDO(const vector<uint8_t> &command);
 
     long FlushBuffer();
+    long FlushBuffer(int msgs);
     long WriteSDO(const vector<uint8_t> &address, const vector<uint8_t> &value);
     long WritePDO4(const vector<uint8_t> &command);
 private:

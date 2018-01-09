@@ -198,6 +198,16 @@ long CiA301CommPort::FlushBuffer()
     return 0;
 }
 
+long CiA301CommPort::FlushBuffer(int msgs)
+{
+
+    for (int i=0; i<msgs; i++)
+    {
+        GetMsg(input);
+    }
+}
+
+
 long CiA301CommPort::WriteNMT(const vector<uint8_t> &nmtCommand)
 {
 
@@ -450,6 +460,7 @@ int CiA301CommPort::ReadCobId(uint16_t expected_cobid, co_msg & output ){
 
     GetMsg(input);
 
+    //cerr << " Canid Received: " << std::hex << input.id << std::dec << endl;
 
     for (long reps=0 ; reps>FIND_RETRY ;reps++)
     {

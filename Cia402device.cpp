@@ -46,10 +46,13 @@ long CiA402Device::SwitchOn()
     uint16_t status;
     long response;
      cerr<<"RESET"<<endl;
+
      response = WriteNMT(od::reset);
+     //reset send two responses 700+id, so clearing the bus
+
      status = CheckStatus()&0x6f; //mask 01101111=6f
      while (i<3){   //three tries to receive the correct message
-        if (status = 0x00) {
+        if (status == 0x00) {
              cerr<<"response" << response <<endl;
              i=3;
              e=0;
