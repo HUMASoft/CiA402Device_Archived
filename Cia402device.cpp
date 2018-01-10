@@ -47,57 +47,64 @@ long CiA402Device::SwitchOn()
     long response;
      cerr<<"RESET"<<endl;
 
-     response = WriteNMT(od::reset);
+     //response = WriteNMT(od::reset);
+     WriteNMT(od::reset);
      //reset send two responses 700+id, so clearing the bus
 
-     status = CheckStatus()&0x6f; //mask 01101111=6f
-     while (i<3){   //three tries to receive the correct message
-        if (status == 0x00) {
-             cerr<<"response" << response <<endl;
-             i=3;
-             e=0;
-        }
-        else {
-             sleep(1);
-             i++;
-             if (i=3){
-                 e=1;
-             }
-        }
-     }
-     if (e=1){
-         cout<<"Error. Wrong message or message not received"<<endl;
-         return 0;
-        }
-     else {
-         i=0;
-     }
+//     status = CheckStatus()&0x6f; //mask 01101111=6f
+//     while (i<3){   //three tries to receive the correct message
+//        if (status == 0x00) {
+//             cerr<<"response" << response <<endl;
+//             i=3;
+//             e=0;
+//        }
+//        else {
+//             sleep(1);
+//             i++;
+//             if (i=3){
+//                 e=1;
+//             }
+//        }
+//     }
+//     if (e=1){
+//         cout<<"Error. Wrong message or message not received"<<endl;
+//         return 0;
+//        }
+//     else {
+//         i=0;
+//     }
 
 //   cerr<<"response"<< response <<endl;
-//   sleep(1);
-     FlushBuffer();
-     //OperationMode(od::positionmode);
-     cerr<<"START"<<endl;
-     response = WriteNMT(od::start);
-     cerr<<"response" << response <<endl;
-     sleep(1);
-     FlushBuffer();
+   sleep(1);
      //FlushBuffer();
-     response = WritePDO(od::goreadytoswitchon);
-     cerr<<"response" << response <<endl;
-     sleep(1);
-     FlushBuffer();
+     //OperationMode(od::positionmode);
+//     cerr<<"START"<<endl;
+//     response = WriteNMT(od::start);
+   WriteNMT(od::start);
+   sleep(1);
+//     cerr<<"response" << response <<endl;
+//     sleep(1);
+//     FlushBuffer();
+     //FlushBuffer();
+     //response = WritePDO(od::goreadytoswitchon);
+     WritePDO(od::goreadytoswitchon);
 
-     sleep(1);
+     //cerr<<"response" << response <<endl;
+     sleep(2);
+     //FlushBuffer();
+
+     //sleep(1);
      cerr<<"SWITCHON"<<endl;
-     response = WritePDO(od::goswitchon);
-     cerr<<"response" << response <<endl;
-     sleep(1);
-     FlushBuffer();
+     //response = WritePDO(od::goswitchon);
+     WritePDO(od::goswitchon);
+     //cerr<<"response" << response <<endl;
+    sleep(1);
+//     FlushBuffer();
      cerr<<"ENABLE"<<endl;
-     response = WritePDO(od::goenable);
-     cerr<<"response" << response <<endl;
-     FlushBuffer();
+     //response = WritePDO(od::goenable);
+     WritePDO(od::goenable);
+     //cerr<<"response" << response <<endl;
+     //FlushBuffer();
 
     return 0;
 }
@@ -140,8 +147,8 @@ uint16_t CiA402Device::CheckStatus()
 }
 void CiA402Device::PrintStatus()
 {
-    //uint16_t* statusp;
-    uint16_t status;
+//    //uint16_t* statusp;
+   uint16_t status;
     //vector<uint8_t> data={0x40};
     vector<uint8_t> data=od::statusword;
 //    data.push_back(od::statusword[0]);
@@ -151,9 +158,10 @@ void CiA402Device::PrintStatus()
     status = (uint16_t) ReadSDO(data);
     cout << "status word: " << std::bitset<16>(status)<< endl;
 
-   // status = 0x07; //testing data
+//    status = 0x024; //testing data
     //filter state
-    status = status&0x6f; //mask 01101111=6f
+    status &= 0x6f; //mask 01101111=6f
+    cout << "status word with mask: " << std::bitset<16>(status)<< endl;
 
     switch(status)
     {
@@ -188,7 +196,7 @@ void CiA402Device::PrintStatus()
         cout<<"Not known"<<endl;
 
     }
-    FlushBuffer();
+    //FlushBuffer();
    return;
 }
 
@@ -370,7 +378,7 @@ long CiA402Device::SetPosition(uint32_t target){
     //lectura del status word y comprobar target reached (posicion bit11 = 1)
     long stat = ReadSDO(od::statusword);
     cerr<<"statusword"<<stat<<endl;
-    FlushBuffer();
+    //FlushBuffer();
     sleep(1);
 
     //setup via control word

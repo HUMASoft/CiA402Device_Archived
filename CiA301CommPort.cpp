@@ -226,6 +226,7 @@ long CiA301CommPort::WriteNMT(const vector<uint8_t> &nmtCommand)
 
 
     return ReadCobId(0x700+id,output);
+
 }
 
 
