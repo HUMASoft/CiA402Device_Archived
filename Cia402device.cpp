@@ -45,16 +45,29 @@ long CiA402Device::SwitchOn()
     int e=0; //marks transmission errors
     uint16_t status;
     long response;
-     cerr<<"RESET"<<endl;
+     cout<<"RESET"<<endl;
 
      //response = WriteNMT(od::reset);
      WriteNMT(od::reset);
-     //reset send two responses 700+id, so clearing the bus
+
+     //reset response 700+id -->booting
+     ReadErrorNMT();
+
+     //Boot finished with nmt 000 data [01 id]
+     ReadNMT();
+
+//     if(id != ReadNMT())
+//     {
+//         perror("Node reset Failed!");
+//         return -1;
+//     }
+
+
 
 //     status = CheckStatus()&0x6f; //mask 01101111=6f
 //     while (i<3){   //three tries to receive the correct message
 //        if (status == 0x00) {
-//             cerr<<"response" << response <<endl;
+//             cout<<"response" << response <<endl;
 //             i=3;
 //             e=0;
 //        }
@@ -74,37 +87,38 @@ long CiA402Device::SwitchOn()
 //         i=0;
 //     }
 
-//   cerr<<"response"<< response <<endl;
-   sleep(1);
+//   cout<<"response"<< response <<endl;
+   //sleep(1);
      //FlushBuffer();
-     //OperationMode(od::positionmode);
-//     cerr<<"START"<<endl;
-//     response = WriteNMT(od::start);
-   WriteNMT(od::start);
-   sleep(1);
-//     cerr<<"response" << response <<endl;
+     OperationMode(od::positionmode);
+     cout<<"START NODE"<<endl;
+     response = WriteNMT(od::start);
+
+   //start gets two pdo (1 and 3) as node ready
+   //ReadNMT();
+   //after start get two frames, sdo status and pdo status
+   FlushBuffer(2);
+
+
+
+//     cout<<"response" << response <<endl;
 //     sleep(1);
 //     FlushBuffer();
      //FlushBuffer();
-     //response = WritePDO(od::goreadytoswitchon);
-     WritePDO(od::goreadytoswitchon);
+     response = WritePDO(od::goreadytoswitchon);
 
-     //cerr<<"response" << response <<endl;
-     sleep(2);
-     //FlushBuffer();
+     FlushBuffer(2);
+     //cout<<"response" << response <<endl;
 
-     //sleep(1);
-     cerr<<"SWITCHON"<<endl;
-     //response = WritePDO(od::goswitchon);
-     WritePDO(od::goswitchon);
-     //cerr<<"response" << response <<endl;
-    sleep(1);
-//     FlushBuffer();
-     cerr<<"ENABLE"<<endl;
-     //response = WritePDO(od::goenable);
-     WritePDO(od::goenable);
-     //cerr<<"response" << response <<endl;
-     //FlushBuffer();
+
+     cout<<"SWITCHON"<<endl;
+     response = WritePDO(od::goswitchon);
+     //cout<<"response" << response <<endl;
+     FlushBuffer(2);
+     cout<<"ENABLE"<<endl;
+     response = WritePDO(od::goenable);
+     //cout<<"response" << response <<endl;
+     FlushBuffer(2);
 
     return 0;
 }
@@ -371,13 +385,13 @@ long CiA402Device::SetPosition(uint32_t target){
     //WritePDO4(data32to4x8(target));
     sleep(1);
     long pos = ReadSDO(od::target_position);
-    cerr<<"target_position"<<pos<<endl;
+    cout<<"target_position"<<pos<<endl;
     FlushBuffer();
     sleep(1);
 
     //lectura del status word y comprobar target reached (posicion bit11 = 1)
     long stat = ReadSDO(od::statusword);
-    cerr<<"statusword"<<stat<<endl;
+    cout<<"statusword"<<stat<<endl;
     //FlushBuffer();
     sleep(1);
 
@@ -385,7 +399,7 @@ long CiA402Device::SetPosition(uint32_t target){
 //    vector<uint8_t>cw={0x30,0x08,0x00 ,0x00 };
 //    WritePDO(cw);
 //    sleep(1);
-    cerr<<"RUN"<<endl;
+    cout<<"RUN"<<endl;
       WritePDO(od::run);
       FlushBuffer();
     return 0;

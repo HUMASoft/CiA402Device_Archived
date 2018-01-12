@@ -10,6 +10,7 @@
 #include <net/if.h>
 #include <sys/types.h>
 #include <sys/socket.h>
+#include <poll.h>
 #include <sys/ioctl.h>
 
 #include <linux/can.h>
@@ -38,6 +39,9 @@ private:
 
     can_frame frame;
     long nbytes;
+    long buff_size;
+
+    struct pollfd poll_set[1];
 
 };
 

@@ -45,10 +45,26 @@ long SocketCanPort::GetMsg(uint32_t &canId, uint8_t *data, uint8_t size)
     //in socketcan, only one device will be listened, given a port, trough SetFilter
     //blocking. It will wait until filtered message arrives
 
-    nbytes = read(portFD, &frame, sizeof(struct can_frame));
-    canId = frame.can_id;
-    memcpy ( data, frame.data, frame.can_dlc );
-    return nbytes;
+    if (poll(poll_set, 1, 10000))
+    {
+
+//        ioctl(portFD, FIONREAD, &buff_size);
+//        cout << "fion: " << buff_size;
+//        nbytes = 0;
+//        for (buff_size; buff_size>0; buff_size--)
+//        {
+            nbytes += read(portFD, &frame, sizeof(struct can_frame));
+            //return first parameter
+            canId = frame.can_id;
+            //return second parameter
+            memcpy ( data, frame.data, frame.can_dlc );
+//        }
+        return nbytes;
+    }
+    else
+    {
+        return -1;
+    }
 
 }
 
@@ -105,6 +121,9 @@ long SocketCanPort::Init(string canPort)
         perror("Error in socket bind");
         return -2;
     }
+
+    poll_set[0].fd = portFD;
+    poll_set[0].events = POLLIN;
 
     return 0;
 }

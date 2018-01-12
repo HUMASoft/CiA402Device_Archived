@@ -30,6 +30,7 @@ public:
 
     long ReadSDO(vector<uint8_t> address, int subindex);
     long ReadSDO(const vector<uint8_t> &address);
+    long ReadNMT();
 
     long WriteNMT(const vector<uint8_t> &nmtCommand);
     long WritePDO(const vector<uint8_t> &command);
@@ -38,6 +39,7 @@ public:
     long FlushBuffer(int msgs);
     long WriteSDO(const vector<uint8_t> &address, const vector<uint8_t> &value);
     long WritePDO4(const vector<uint8_t> &command);
+    long ReadErrorNMT();
 private:
 
     //methods
