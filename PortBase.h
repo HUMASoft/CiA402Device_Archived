@@ -18,6 +18,8 @@ public:
 
 protected:
     int portFD;
+    int portNMT;
+
 
 
 };

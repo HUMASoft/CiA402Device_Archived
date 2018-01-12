@@ -53,8 +53,11 @@ long CiA402Device::SwitchOn()
      //reset response 700+id -->booting
      ReadErrorNMT();
 
-     //Boot finished with nmt 000 data [01 id]
+     //Wait Boot finish
+     //As node is filtered, can not take NMT messages.
      ReadNMT();
+     //TODO: make the wait with NMT message
+     sleep(1);
 
 //     if(id != ReadNMT())
 //     {
@@ -87,34 +90,26 @@ long CiA402Device::SwitchOn()
 //         i=0;
 //     }
 
+     cout<<"START NODE"<<endl;
+     response = WriteNMT(od::start);
+     //after start get two frames, pdo (1 and 3) status
+     FlushBuffer(2);
+
 //   cout<<"response"<< response <<endl;
    //sleep(1);
      //FlushBuffer();
-     OperationMode(od::positionmode);
-     cout<<"START NODE"<<endl;
-     response = WriteNMT(od::start);
+     //OperationMode(od::positionmode);
 
-   //start gets two pdo (1 and 3) as node ready
-   //ReadNMT();
-   //after start get two frames, sdo status and pdo status
-   FlushBuffer(2);
-
-
-
-//     cout<<"response" << response <<endl;
-//     sleep(1);
-//     FlushBuffer();
-     //FlushBuffer();
+     cout<<"READYTOSWITCHON"<<endl;
      response = WritePDO(od::goreadytoswitchon);
-
      FlushBuffer(2);
      //cout<<"response" << response <<endl;
-
 
      cout<<"SWITCHON"<<endl;
      response = WritePDO(od::goswitchon);
      //cout<<"response" << response <<endl;
      FlushBuffer(2);
+
      cout<<"ENABLE"<<endl;
      response = WritePDO(od::goenable);
      //cout<<"response" << response <<endl;

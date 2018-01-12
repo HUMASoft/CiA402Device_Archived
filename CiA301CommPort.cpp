@@ -22,7 +22,8 @@ CiA301CommPort::CiA301CommPort(PortBase* new_port, uint8_t new_id)
 
     //set the filter to port so commport will only accept messages to his id
     //must decide to make not constant. Till then, moved up to main
-    port->SetFilter(id,0x7F);
+    port->SetFilter(id,0x07F);
+    //port->SetFilter(0x000,0x7FF);
 
 }
 ///
@@ -226,6 +227,7 @@ long CiA301CommPort::ReadNMT()
     co_msg output;
 
     //NMT
+    //can't do it like this. This function is filtered:
     return ReadCobId(0x000,output);
 
 }
@@ -469,58 +471,40 @@ int CiA301CommPort::ReadCobId(uint16_t expected_cobid, co_msg & output ){
 
     vector<can_msg> otherMsgs(0);
 
-    GetMsg(input);
+
 
     //cout << " Canid Received: " << std::hex << input.id << std::dec << endl;
 
-    for (long reps=0 ; reps>FIND_RETRY ;reps++)
+    for(long reps=0 ; reps<FIND_RETRY ;reps++)
     {
+        GetMsg(input);
+        //cout << " Received: " << std::hex << input.id << std::dec << endl;
         //First check for the input.
         //If the response is the answer expected, continue
         if (input.id == expected_cobid)
         {
-            continue;
+            //cout << " comp: " << (input.id == expected_cobid) << endl;
+            break;
         }
-        //if not:
+        //if not cobid but node id:
         if (GET_NODE_ID(input.id) == GET_NODE_ID(expected_cobid) )
         {
-            //cout << " Cobid still not received. Received: " << std::hex << input.id << std::dec << endl;
+            cout << " Cobid still not received. Received: " << std::hex << input.id << std::dec << endl;
             //if id, check if error
             //return -1;
         }
         else
         {
+            cout << " Cobid still not received. Received: " << std::hex << input.id << std::dec << endl;
             otherMsgs.push_back(input);
         }
-        GetMsg(input);
 
 
     }
-//    while (input.id != expected_cobid)
+    //GetMsg(input);
+
+//    for (int i=0; i<otherMsgs.size(); i++)
 //    {
-//        //cout << "reps : " << reps << endl;
-//        reps++;
-//        if (reps>FIND_RETRY) return -10;
-//        //check node id
-//        if (GET_NODE_ID(input.id) == GET_NODE_ID(expected_cobid) )
-//        {
-//            //cout << " Cobid still not received. Received: " << std::hex << input.id << std::dec << endl;
-//            //if id, check if error
-//            //return -1;
-//        }
-//        //Otherwise, store in a buffer to avoid loose data and read again
-//        else
-//        {
-//        otherMsgs.push_back(input);
-//        }
-
-//        GetMsg(input);
-
-//    }
-    //Finally, resend buffer to canopen to avoid losing messages
-
-    for (int i=0; i<otherMsgs.size(); i++)
-    {
 //        cout << "resend number : " << i << " with bytes: " << otherMsgs[i].dlc;  ;
 //        cout<<" message with cob id: " << std::hex << otherMsgs[i].id << std::dec <<" rtr: " << otherMsgs[i].rtr << endl;
 //        for (int j = 0; j < otherMsgs[i].dlc; j++)
@@ -530,7 +514,7 @@ int CiA301CommPort::ReadCobId(uint16_t expected_cobid, co_msg & output ){
 //        }
         //TODO: find another way for this without sending again
         //SendCanMessage(otherMsgs[i]);
-    }
+//    }
 
     //convert received data to canopen
     if(CanBusToCanOpen(input, output)!=0)
@@ -541,8 +525,7 @@ int CiA301CommPort::ReadCobId(uint16_t expected_cobid, co_msg & output ){
     else
     {
 
-        cout<<endl;
-        cout<<" <-- ReadCobId. Received: " << std::hex << output.id_co << std::dec << endl;
+        cout<<"  <-- ReadCobId. Received: " << std::hex << output.id_co << std::dec << endl;
         cout << "ID: " << std::hex<< GET_NODE_ID(output.id_co) << std::dec<< endl;
         //cout << " rtr: " << output.rtr << endl;
 //        cout<<"received canopen data: ";
@@ -595,6 +578,7 @@ int CiA301CommPort::read_timeout(int fd, struct can_msg *buf, unsigned int timeo
     }
 
 }
+
 
 long CiA301CommPort::GetMsg(can_msg &msg)
 {

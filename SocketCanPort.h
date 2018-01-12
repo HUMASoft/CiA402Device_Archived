@@ -41,7 +41,8 @@ private:
     long nbytes;
     long buff_size;
 
-    struct pollfd poll_set[1];
+    struct pollfd poll_set[2];
+    long timeoutPoll;
 
 };
 

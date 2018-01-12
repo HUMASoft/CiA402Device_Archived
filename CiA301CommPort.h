@@ -18,6 +18,7 @@
 
 
 #define USE_TIMEOUT 200 //miliseconds timeout
+#define FIND_RETRY 20
 
 
 using namespace std;
@@ -52,7 +53,6 @@ private:
 
     int WaitForReadMessage(co_msg &output, unsigned int canIndex);
 
-#define FIND_RETRY 20
     int ReadCobId(uint16_t expected_cobid, co_msg &output);
     int read_timeout(int fd, can_msg *buf, unsigned int timeout);
     long GetMsg(can_msg &msg);
@@ -87,6 +87,8 @@ namespace pdo
 
 const uint16_t tx0=0x180;
 const uint16_t rx0=0x200;
+const uint16_t tx1=0x280;
+const uint16_t rx1=0x300;
 const uint16_t tx4=0x380;
 const uint16_t rx4=0x400;
 
