@@ -54,8 +54,8 @@ long CiA402Device::SwitchOn()
      ReadErrorNMT();
 
      //Wait Boot finish
-     //As node is filtered, can not take NMT messages.
-     ReadNMT();
+
+     ReadNMT(nmt::boot);
      //TODO: make the wait with NMT message
 //     sleep(1);
 

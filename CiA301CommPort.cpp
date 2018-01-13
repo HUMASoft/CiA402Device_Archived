@@ -221,35 +221,45 @@ long CiA301CommPort::WriteNMT(const vector<uint8_t> &nmtCommand)
 
 }
 
-long CiA301CommPort::ReadNMT()
+long CiA301CommPort::ReadNMT(const vector<uint8_t> & nmtCode)
 {
 
-    co_msg output;
-    uint8_t dlc;
-    cout<<" --> ReadNMT. Expecting: "  << std::hex << 0 << std::dec  << endl;
+    can_frame output;
 
-    for(long reps=0 ; reps<FIND_RETRY ;reps++)
+    vector<uint8_t> nmtBoot(nmtCode);
+    nmtBoot.push_back(id);
+    long code=DataToInt(nmtBoot.data(),nmtBoot.size());
+    cout<<" --> ReadNMT. Expecting: "  << std::hex << code << std::dec  << endl;
+
+    for(long reps=0; reps<FIND_RETRY; reps++)
     {
-        port->GetNMT(input.data,dlc);
+        port->GetNMT(output.data, output.can_dlc);
         //cout << " Received: " << std::hex << input.id << std::dec << endl;
         //First check for the input.
         //If the response is the answer expected, continue
-        if (input.data[0] == 0x01)
+        if ( code == DataToInt(output.data,output.can_dlc) )
         {
             //cout << " comp: " << (input.id == expected_cobid) << endl;
             break;
         }
         else
         {
-            cout << " Cobid still not received. Received: " << std::hex << input.data[0] << std::dec << endl;
+            cout << " ReadNMT still not received. Received: " << std::hex << DataToInt(output.data,output.can_dlc) << std::dec << endl;
+        }
+
+        if (reps==FIND_RETRY-1)
+        {
+            cout<<"  Max retry reached " << endl;
+            return -1;
         }
 
 
     }
     //NMT
+    cout<<"  <-- ReadNMT. Received: " << std::hex << code << std::dec << endl;
+    cout << "ID: " << std::hex<< output.data[output.can_dlc] << std::dec<< endl;
 
-    cout<<"  <-- ReadNMT. Received: " << std::hex << 0 << std::dec << endl;
-    cout << "ID: " << std::hex<< GET_NODE_ID(0) << std::dec<< endl;
+
     return 0;
 }
 
@@ -519,6 +529,11 @@ int CiA301CommPort::ReadCobId(uint16_t expected_cobid, co_msg & output ){
             cout << " Cobid still not received. Received: " << std::hex << input.id << std::dec << endl;
             otherMsgs.push_back(input);
         }
+        if (reps==FIND_RETRY-1)
+        {
+            cout<<"  Max retry reached " << endl;
+            return -1;
+        }
 
 
     }
@@ -557,7 +572,7 @@ int CiA301CommPort::ReadCobId(uint16_t expected_cobid, co_msg & output ){
 //        }
         cout<<endl;
         //TODO: use dlc here!!!
-        return data4x8to32((char*)&output.data_co[4]);
+        return data4x8to32(&output.data_co[4]);
     }
 
     return 0;
@@ -677,7 +692,7 @@ long CiA301CommPort::GetMsg(can_msg &msg)
 }
 
 
-uint32_t CiA301CommPort::data4x8to32(char* in)
+uint32_t CiA301CommPort::data4x8to32(const uint8_t* in)
 {
     //TODO check for Sizes!!!!!
     //TODO: use dlc here!!!
@@ -686,6 +701,18 @@ uint32_t CiA301CommPort::data4x8to32(char* in)
     retvalue = (retvalue << 8) + in[1];
     retvalue = (retvalue << 8) + in[2];
     retvalue = (retvalue << 8) + in[3];
+    return retvalue;
+
+}
+
+uint32_t CiA301CommPort::DataToInt(const uint8_t* in, const uint8_t size)
+{
+
+    long retvalue = in[0];
+    for (int i=1; i<size; i++)
+    {
+    retvalue = (retvalue << 8) + in[1];
+    }
     return retvalue;
 
 }

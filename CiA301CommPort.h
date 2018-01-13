@@ -31,7 +31,7 @@ public:
 
     long ReadSDO(vector<uint8_t> address, int subindex);
     long ReadSDO(const vector<uint8_t> &address);
-    long ReadNMT();
+    long ReadNMT(const vector<uint8_t> &nmtCode);
 
     long WriteNMT(const vector<uint8_t> &nmtCommand);
     long WritePDO(const vector<uint8_t> &command);
@@ -46,7 +46,8 @@ private:
     //methods
     long CanOpenToCanBus(const co_msg &input, can_msg &output);
     long CanBusToCanOpen(const can_msg &input, co_msg &output);
-    uint32_t data4x8to32(char *in);
+    uint32_t data4x8to32(const uint8_t *in);
+    uint32_t DataToInt(const uint8_t *in, const uint8_t size);
 
     int SendMessage(co_msg input);
     int SendCanMessage(can_msg &input);

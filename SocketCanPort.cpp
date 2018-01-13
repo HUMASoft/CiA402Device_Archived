@@ -207,6 +207,7 @@ long SocketCanPort::Init(string canPort)
     poll_setNMT[0].events = POLLIN | POLLERR | POLLPRI;
 
 
+    //TODO:get as parameter??
     timeoutPoll = 10000;
 
     buffSizeFD =0;
