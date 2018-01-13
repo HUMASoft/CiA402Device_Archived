@@ -225,11 +225,32 @@ long CiA301CommPort::ReadNMT()
 {
 
     co_msg output;
+    uint8_t dlc;
+    cout<<" --> ReadNMT. Expecting: "  << std::hex << 0 << std::dec  << endl;
 
+    for(long reps=0 ; reps<FIND_RETRY ;reps++)
+    {
+        port->GetNMT(input.data,dlc);
+        //cout << " Received: " << std::hex << input.id << std::dec << endl;
+        //First check for the input.
+        //If the response is the answer expected, continue
+        if (input.data[0] == 0x01)
+        {
+            //cout << " comp: " << (input.id == expected_cobid) << endl;
+            break;
+        }
+        else
+        {
+            cout << " Cobid still not received. Received: " << std::hex << input.data[0] << std::dec << endl;
+        }
+
+
+    }
     //NMT
-    //can't do it like this. This function is filtered:
-    return ReadCobId(0x000,output);
 
+    cout<<"  <-- ReadNMT. Received: " << std::hex << 0 << std::dec << endl;
+    cout << "ID: " << std::hex<< GET_NODE_ID(0) << std::dec<< endl;
+    return 0;
 }
 
 long CiA301CommPort::ReadErrorNMT()

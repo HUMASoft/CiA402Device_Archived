@@ -93,6 +93,10 @@ const uint16_t tx4=0x380;
 const uint16_t rx4=0x400;
 
 }
+namespace nmt
+{
+const vector<uint8_t> boot={0x01};
 
+}
 
 #endif // CIA301COMMPORT_H

@@ -41,28 +41,27 @@ long SocketCanPort::SetFilter(uint32_t canId, uint32_t mask)
     return 0;
 }
 
-long SocketCanPort::GetMsg(uint32_t &canId, uint8_t *data, uint8_t size)
+long SocketCanPort::GetNMT(uint8_t *data, uint8_t & size)
 {
     //get a message from canbus and store in canId and data out parameters.
     //in socketcan, only one device will be listened, given a port, trough SetFilter
     //blocking. It will wait until filtered message arrives
     //cout << " (buff_size) " << (buff_size) << endl;
     //Poll data only if not buffer available.
-    if (buff_size<=0)
-    {
-        buff_size = poll(poll_set, 2, timeoutPoll);
-        cout << " (new buff_size) " << (buff_size) << endl;
-        cout << " (revents 0) " <<hex << (poll_set[0].revents) << dec << endl;
-        cout << " (new buff_size) " << (buff_size) << endl;
-        cout << " (revents 1) " <<hex << (poll_set[1].revents) << dec << endl;
 
-        if(buff_size<0)
+    if (buffSizeNMT<=0)
+    {
+        buffSizeNMT = poll(poll_setNMT, 1, timeoutPoll);
+        cout << " (buffSizeNMT) " << (buffSizeNMT) << endl;
+        cout << " (revents 0) " <<hex << (poll_setNMT[0].revents) << dec << endl;
+
+        if(buffSizeNMT<0)
         {
             cout << ("Error in poll read") << endl;
             return -2;
 
         }
-        if(buff_size==0)
+        if(buffSizeNMT==0)
         {
             cout << ("Timeout in poll read") << endl;
 
@@ -72,23 +71,57 @@ long SocketCanPort::GetMsg(uint32_t &canId, uint8_t *data, uint8_t size)
         }
     }
 
-    //TODO: redo it. quick and dirty!!!
-    //better do in separate functions.
-    if (poll_set[0].revents==0)
+
+    nbytes = read(portNMT, &frame, sizeof(struct can_frame));
+
+
+    //return second parameter
+    memcpy ( data, frame.data, frame.can_dlc );
+    size =frame.can_dlc;
+    buffSizeNMT--;
+
+    return (buffSizeNMT);
+}
+
+long SocketCanPort::GetMsg(uint32_t &canId, uint8_t *data, uint8_t size)
+{
+    //get a message from canbus and store in canId and data out parameters.
+    //in socketcan, only one device will be listened, given a port, trough SetFilter
+    //blocking. It will wait until filtered message arrives
+    //cout << " (buff_size) " << (buff_size) << endl;
+    //Poll data only if not buffer available.
+    if (buffSizeFD<=0)
     {
-        nbytes = read(portNMT, &frame, sizeof(struct can_frame));
+        buffSizeFD = poll(poll_setFD, 1, timeoutPoll);
+        cout << " (buffSizeFD) " << (buffSizeFD) << endl;
+        cout << " (revents 0) " <<hex << (poll_setFD[0].revents) << dec << endl;
+
+        if(buffSizeFD<0)
+        {
+            cout << ("Error in poll read") << endl;
+            return -2;
+
+        }
+        if(buffSizeFD==0)
+        {
+            cout << ("Timeout in poll read") << endl;
+
+            //perror("Timeout in poll read");
+            return -1;
+
+        }
     }
-    else
-    {
-        nbytes = read(portFD, &frame, sizeof(struct can_frame));
-    }
+
+
+    nbytes = read(portFD, &frame, sizeof(struct can_frame));
+
     //return first parameter
     canId = frame.can_id;
     //return second parameter
     memcpy ( data, frame.data, frame.can_dlc );
-    buff_size--;
+    buffSizeFD--;
 
-    return (buff_size);
+    return (buffSizeFD);
 
 
 
@@ -134,7 +167,7 @@ long SocketCanPort::Init(string canPort)
     }
 
     canPort.copy(ifr.ifr_name,canPort.size());
-    ifr.ifr_name[canPort.size()]=NULL;
+    ifr.ifr_name[canPort.size()]='\0';
     //printf("%s ifr %d\n", ifr.ifr_name, ifr.ifr_ifindex);
 
     ioctl(portFD, SIOCGIFINDEX, &ifr);
@@ -168,15 +201,16 @@ long SocketCanPort::Init(string canPort)
     rfilter2[0].can_mask = 0x7FF;
     setsockopt(portNMT, SOL_CAN_RAW, CAN_RAW_FILTER, &rfilter2, sizeof(rfilter2));
 
-    poll_set[0].fd = portFD;
-    poll_set[0].events = POLLIN | POLLERR | POLLPRI;
-    poll_set[1].fd = portNMT;
-    poll_set[1].events = POLLIN | POLLERR | POLLPRI;
+    poll_setFD[0].fd = portFD;
+    poll_setFD[0].events = POLLIN | POLLERR | POLLPRI;
+    poll_setNMT[0].fd = portNMT;
+    poll_setNMT[0].events = POLLIN | POLLERR | POLLPRI;
 
 
-    timeoutPoll = 3000;
+    timeoutPoll = 10000;
 
-    buff_size =0;
+    buffSizeFD =0;
+    buffSizeNMT =0;
 
     return 0;
 }

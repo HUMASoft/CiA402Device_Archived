@@ -57,7 +57,7 @@ long CiA402Device::SwitchOn()
      //As node is filtered, can not take NMT messages.
      ReadNMT();
      //TODO: make the wait with NMT message
-     sleep(1);
+//     sleep(1);
 
 //     if(id != ReadNMT())
 //     {

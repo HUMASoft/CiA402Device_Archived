@@ -69,3 +69,8 @@ long CanBusPort::PutMsg(const uint32_t &canId, uint8_t * const data, const uint8
     cerr << "Not implemented" << endl;
     return -1;
 }
+long CanBusPort::GetNMT(uint8_t * const data, uint8_t &size)
+{
+    cerr << "Not implemented" << endl;
+    return -1;
+}

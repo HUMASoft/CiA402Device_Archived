@@ -31,7 +31,7 @@ public:
     long SetFilter(uint32_t canId, uint32_t mask);
     long GetMsg(uint32_t & canId, uint8_t * data, uint8_t size);
     long PutMsg(const uint32_t &canId, uint8_t * const data, const uint8_t size);
-
+    long GetNMT(uint8_t *data, uint8_t &size);
 
 private:
 
@@ -39,9 +39,11 @@ private:
 
     can_frame frame;
     long nbytes;
-    long buff_size;
+    long buffSizeFD;
+    long buffSizeNMT;
 
-    struct pollfd poll_set[2];
+    struct pollfd poll_setFD[1];
+    struct pollfd poll_setNMT[1];
     long timeoutPoll;
 
 };
