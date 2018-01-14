@@ -19,7 +19,7 @@ public:
 
 
 protected:
-    int portFD;
+    int portId;
     int portNMT;
 
 

@@ -54,66 +54,59 @@ long CiA402Device::SwitchOn()
      ReadErrorNMT();
 
      //Wait Boot finish
-
      ReadNMT(nmt::boot);
-     //TODO: make the wait with NMT message
-//     sleep(1);
-
-//     if(id != ReadNMT())
-//     {
-//         perror("Node reset Failed!");
-//         return -1;
-//     }
 
 
-
-//     status = CheckStatus()&0x6f; //mask 01101111=6f
-//     while (i<3){   //three tries to receive the correct message
-//        if (status == 0x00) {
-//             cout<<"response" << response <<endl;
-//             i=3;
-//             e=0;
-//        }
-//        else {
-//             sleep(1);
-//             i++;
-//             if (i=3){
-//                 e=1;
-//             }
-//        }
-//     }
-//     if (e=1){
-//         cout<<"Error. Wrong message or message not received"<<endl;
-//         return 0;
-//        }
-//     else {
-//         i=0;
-//     }
+     status = CheckStatus()&0x6f; //mask 01101111=6f
+     while (i<3){   //three tries to receive the correct message
+        if (status == 0x00) {
+             cout<<"response" << response <<endl;
+             i=3;
+             e=0;
+        }
+        else {
+             sleep(1);
+             i++;
+             if (i=3){
+                 e=1;
+             }
+        }
+     }
+     if (e=1){
+         cout<<"Error. Wrong message or message not received"<<endl;
+         cerr << "Start Failed for id: " << endl;
+         //PrintStatus();
+         return 0;
+        }
+     else {
+         i=0;
+     }
 
      cout<<"START NODE"<<endl;
      response = WriteNMT(od::start);
-     //after start get two frames, pdo (1 and 3) status
-     FlushBuffer(2);
+     //after start get two frames, pdo (1 and 2) status
+     FlushBuffer(2); //remove two messages, pdo1tx and pdo2tx
 
 //   cout<<"response"<< response <<endl;
    //sleep(1);
      //FlushBuffer();
-     //OperationMode(od::positionmode);
+     OperationMode(od::positionmode);
+
 
      cout<<"READYTOSWITCHON"<<endl;
      response = WritePDO(od::goreadytoswitchon);
-     FlushBuffer(2);
+     FlushBuffer(2); //remove two messages, pdo1tx and pdo2tx
      //cout<<"response" << response <<endl;
 
      cout<<"SWITCHON"<<endl;
      response = WritePDO(od::goswitchon);
      //cout<<"response" << response <<endl;
-     FlushBuffer(2);
+     FlushBuffer(2); //remove two messages, pdo1tx and pdo2tx
 
      cout<<"ENABLE"<<endl;
      response = WritePDO(od::goenable);
      //cout<<"response" << response <<endl;
-     FlushBuffer(2);
+     FlushBuffer(2); //remove two messages, pdo1tx and pdo2tx
 
     return 0;
 }

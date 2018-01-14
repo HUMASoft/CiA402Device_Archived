@@ -249,7 +249,8 @@ long CiA301CommPort::ReadNMT(const vector<uint8_t> & nmtCode)
 
         if (reps==FIND_RETRY-1)
         {
-            cout<<"  Max retry reached " << endl;
+            fprintf(stderr, "Max retry reached: %d", reps);
+
             return -1;
         }
 
@@ -257,7 +258,7 @@ long CiA301CommPort::ReadNMT(const vector<uint8_t> & nmtCode)
     }
     //NMT
     cout<<"  <-- ReadNMT. Received: " << std::hex << code << std::dec << endl;
-    cout << "ID: " << std::hex<< output.data[output.can_dlc] << std::dec<< endl;
+    cout << "ID: " << std::hex<< (int)output.data[output.can_dlc-1] << std::dec<< endl;
 
 
     return 0;

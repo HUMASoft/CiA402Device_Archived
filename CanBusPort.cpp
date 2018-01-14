@@ -21,25 +21,25 @@ long CanBusPort::Init(string canPort)
     int val;
 
 
-    portFD = open(canPort.c_str(), O_RDWR);
+    portId = open(canPort.c_str(), O_RDWR);
 
-    if (portFD<0){
+    if (portId<0){
         err(1, "could not open node '%s'",canPort.c_str());
     }
 
     /* Reset the board. Which node is used for this doesn't matter */
-    if(ioctl(portFD,IOC_RESET_BOARD)!=0){
+    if(ioctl(portId,IOC_RESET_BOARD)!=0){
         err(1, "could not reset board");
     }
 
     /* Set baudrate for both nodes */
     val=BITRATE_1000k;
-    if(ioctl(portFD,IOC_SET_BITRATE,&val)!=0){
+    if(ioctl(portId,IOC_SET_BITRATE,&val)!=0){
         err(1, "could not set bitrate");
     }
 
     /* Start both CAN nodes */
-    if(ioctl(portFD,IOC_START)!=0){
+    if(ioctl(portId,IOC_START)!=0){
         err(1, "IOC_START");
     }
 
@@ -48,7 +48,7 @@ long CanBusPort::Init(string canPort)
 
 int CanBusPort::getPortFD()
 {
-    return portFD;
+    return portId;
 }
 
 long CanBusPort::SetFilter(uint32_t canId, uint32_t mask)

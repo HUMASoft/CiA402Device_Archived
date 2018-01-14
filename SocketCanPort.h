@@ -39,10 +39,10 @@ private:
 
     can_frame frame;
     long nbytes;
-    long buffSizeFD;
+    long buffSizeId;
     long buffSizeNMT;
 
-    struct pollfd poll_setFD[1];
+    struct pollfd poll_setId[1];
     struct pollfd poll_setNMT[1];
     long timeoutPoll;
 
