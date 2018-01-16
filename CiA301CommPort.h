@@ -41,6 +41,7 @@ public:
     long WriteSDO(const vector<uint8_t> &address, const vector<uint8_t> &value);
     long WritePDO4(const vector<uint8_t> &command);
     long ReadErrorNMT();
+    long ReadPDO(long number);
 private:
 
     //methods

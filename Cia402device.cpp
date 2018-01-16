@@ -35,27 +35,38 @@ CiA402Device::CiA402Device(uint8_t new_id, PortBase *new_port) : CiA301CommPort(
 
 }
 
-long CiA402Device::SwitchOn()
+long CiA402Device::Reset()
 {
 
-//Watch out!! see how to remove sleep commands!!!
 
-//   const vector<u_int8_t> obj2111 ={0x40,0x11,0x21,0x00,0x00};
-    int i=0;
-    int e=0; //marks transmission errors
-    uint16_t status;
-    long response;
      cout<<"RESET"<<endl;
 
      //response = WriteNMT(od::reset);
-     WriteNMT(od::reset);
+     WriteNMT(od::fullreset);
+     //Wait needed for reset to finish. Using sleep
      sleep(2);
+
+     //Wait Start finish NMT [01 id]
+     //ReadNMT(nmt::started);
 
      //reset response 700+id -->booting
      ReadErrorNMT();
-     sleep(2);
 
 
+     cout<<"START NODE"<<endl;
+     WriteNMT(od::start);
+
+}
+long CiA402Device::SwitchOn()
+{
+    //Watch out!! sleep commands removed!!!
+
+
+    //TODO: Check the aim of this part of code.
+
+//        int i=0;
+//        int e=0; //marks transmission errors
+//        uint16_t status;
 //     status = CheckStatus()&0x6f; //mask 01101111=6f
 //     while (i<3){   //three tries to receive the correct message
 //        if (status == 0x00) {
@@ -73,7 +84,7 @@ long CiA402Device::SwitchOn()
 //     }
 //     if (e=1){
 //         cout<<"Error. Wrong message or message not received"<<endl;
-//         cerr << "Start Failed for id: " << endl;
+//         cerr << "Start Failed. Try node init Before with reset. " << endl;
 //         //PrintStatus();
 //         return 0;
 //        }
@@ -81,38 +92,38 @@ long CiA402Device::SwitchOn()
 //         i=0;
 //     }
 
-     cout<<"START NODE"<<endl;
-     response = WriteNMT(od::start);
-     sleep(2);
 
-     //Wait Start finish NMT [01 id]
-     ReadNMT(nmt::started);
-
-
-//   cout<<"response"<< response <<endl;
-   sleep(2);
-     //FlushBuffer();
-     OperationMode(od::positionmode);
-     sleep(2);
-
-     sleep(2);
+    long response;
 
      cout<<"READYTOSWITCHON"<<endl;
-     response = WritePDO(od::goreadytoswitchon);
-     //FlushBuffer(2); //remove two messages, pdo1tx and pdo2tx
-     //cout<<"response" << response <<endl;
-     sleep(1);
+     WritePDO(od::goreadytoswitchon);
+     //it is the same for all pdos??
+     response = ReadPDO(0);
+     response = ReadPDO(1);
+     cout<<"response" << response <<endl;
 
      cout<<"SWITCHON"<<endl;
      response = WritePDO(od::goswitchon);
      //cout<<"response" << response <<endl;
-//     FlushBuffer(2); //remove two messages, pdo1tx and pdo2tx
-     sleep(1);
+     //FlushBuffer(2); //remove two messages, pdo1tx and pdo2tx
+     //listen pdo1tx and pdo2tx
+     //it is the same for all pdos??
+     response = ReadPDO(0);
+     response = ReadPDO(1);
 
      cout<<"ENABLE"<<endl;
      response = WritePDO(od::goenable);
      //cout<<"response" << response <<endl;
-//     FlushBuffer(2); //remove two messages, pdo1tx and pdo2tx
+     //FlushBuffer(2); //remove two messages, pdo1tx and pdo2tx
+     //listen pdo1tx and pdo2tx
+     //it is the same for all pdos??
+     response = ReadPDO(0);
+     response = ReadPDO(1);
+
+     //dont use it here. Call from main.
+//     cout<<"response"<< response <<endl;
+//     FlushBuffer();
+//     OperationMode(od::positionmode);
 
     return 0;
 }
@@ -126,15 +137,17 @@ long CiA402Device::OperationMode(const vector<uint8_t> new_mode)
     tmpmode = ReadSDO(od::OperationModeDisplay);
 
     cout<<"Changing from OperationModeDisplay: " << tmpmode <<endl;
-    FlushBuffer();
 
     //ask the node for write proper mode in 6060 address
     WriteSDO(od::OperationMode,new_mode);
 
+    //TODO: Change WriteSDO to readCobId its acks.
+    //write responses with ack
+    FlushBuffer(1);
+
     tmpmode = ReadSDO(od::OperationModeDisplay);
 
     cout<<"To OperationModeDisplay: " << tmpmode <<endl;
-    FlushBuffer();
 
     return 0;
 }
@@ -375,22 +388,22 @@ long CiA402Device::SetPosition(uint32_t target){
     //convert target to value
     WritePDO(od::goenable);
     FlushBuffer();
-    sleep(1);
+    //sleep(1);
 
     WriteSDO(od::target_position,data32to4x8(target));
     FlushBuffer();
     //WritePDO4(data32to4x8(target));
-    sleep(1);
+    //sleep(1);
     long pos = ReadSDO(od::target_position);
     cout<<"target_position"<<pos<<endl;
     FlushBuffer();
-    sleep(1);
+    //sleep(1);
 
     //lectura del status word y comprobar target reached (posicion bit11 = 1)
     long stat = ReadSDO(od::statusword);
     cout<<"statusword"<<stat<<endl;
     //FlushBuffer();
-    sleep(1);
+    //sleep(1);
 
     //setup via control word
 //    vector<uint8_t>cw={0x30,0x08,0x00 ,0x00 };

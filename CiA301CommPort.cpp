@@ -141,6 +141,48 @@ long CiA301CommPort::WriteSDO(const vector<uint8_t> &address, const vector<uint8
 //    retvalue = (retvalue << 8) + output.data_co[4];
 }
 
+long CiA301CommPort::ReadPDO(long number)
+{
+
+    co_msg output;
+
+    ReadCobId((number*0x100)+pdo::tx0+id,output);
+
+    //TODO: check response
+//    for (long reps=0 ; reps>FIND_RETRY ;reps++)
+//    {
+//        //Check that received data comes from right address.
+//        if ( (output.data_co[1] == address[0]) && (output.data_co[2] == address[1]) )
+//        {
+//            continue;
+//        }
+
+//        else //Wrong address.
+//        {
+//            cout << output.data_co[1]<< " " << address[0]<< " " << output.data_co[2]<< " " << address[1] <<endl;
+
+//            //TODO: Return message to bus??
+//            //SendMessage(output);
+//            //Read again and check (later)
+//            ReadCobId(sdo::tx0+id,output);
+
+//        }
+
+
+
+//    }
+
+    //Get the data from output
+    //Use the data from output
+    //TODO: control response with read table (table 8 man 301)
+//    if (output.data_co[0]!=0x60)
+//    {
+//        err(1,"Can not receive answer from node");
+//    }
+
+    return DataToInt(output.data_co,output.dlc_co);
+}
+
 long CiA301CommPort::WritePDO(const vector<uint8_t> &command)
 {
 

@@ -13,7 +13,8 @@ namespace od
 //Values according to document CiA Draft Standard Proposal DSP-402 Version 1.1 (Date: October 8, 1998)
 const vector<uint8_t> controlword={0x40,0x60};
 const vector<uint8_t> statusword={0x41,0x60};
-const vector<uint8_t> reset={0x81};
+const vector<uint8_t> commreset={0x81};
+const vector<uint8_t> fullreset={0x82};
 const vector<uint8_t> start={0x01};
 const vector<uint8_t> goreadytoswitchon={0x06,0x00};
 const vector<uint8_t> goswitchon={0x07,0x00};
@@ -24,7 +25,7 @@ const vector<uint8_t> expedite={0x3F,0x00}; //like run, but dont finish actual p
 
 const vector<uint8_t> quickstop={0x02,0x00};//{0x04,0x00};
 const vector<uint8_t> OperationMode={0x60,0x60,0x00};
-const vector<uint8_t> OperationModeDisplay={0x61,0x60};
+const vector<uint8_t> OperationModeDisplay={0x61,0x60,0x00};
 
 //move to other header
 const vector<uint8_t> positionmode={0x01};
