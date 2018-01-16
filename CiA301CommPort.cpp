@@ -49,6 +49,7 @@ long CiA301CommPort::ReadSDO(const vector<uint8_t> &address)
 
     for (long reps=0 ; reps>FIND_RETRY ;reps++)
     {
+        cout << output.data_co[1]<< " " << address[0]<< " " << output.data_co[2]<< " " << address[1] <<endl;
         //Check that received data comes from right address.
         if ( (output.data_co[1] == address[0]) && (output.data_co[2] == address[1]) )
         {
@@ -124,10 +125,20 @@ long CiA301CommPort::WriteSDO(const vector<uint8_t> &address, const vector<uint8
     //cout << "id" << id << endl;
     //Write the data in the default rx port
     //like in CiA 301
+
     SendMessage(SetCanOpenMsg(sdo::rx0+id, 0 ,data) );
 
-//fix this???? return four last bytes from data.
-    return 0;
+//    //and wait for write response
+//    co_msg output;
+
+//    //wait the answer (tx0(580)+id)
+//    ReadCobId(sdo::tx0+id,output);
+
+//    //fixed return four last bytes from data.
+//    long retvalue = output.data_co[7];
+//    retvalue = (retvalue << 8) + output.data_co[6];
+//    retvalue = (retvalue << 8) + output.data_co[5];
+//    retvalue = (retvalue << 8) + output.data_co[4];
 }
 
 long CiA301CommPort::WritePDO(const vector<uint8_t> &command)

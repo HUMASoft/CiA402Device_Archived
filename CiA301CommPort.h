@@ -96,7 +96,7 @@ const uint16_t rx4=0x400;
 }
 namespace nmt
 {
-const vector<uint8_t> boot={0x01};
+const vector<uint8_t> started={0x01};
 
 }
 

@@ -49,82 +49,91 @@ long CiA402Device::SwitchOn()
 
      //response = WriteNMT(od::reset);
      WriteNMT(od::reset);
+     sleep(2);
 
      //reset response 700+id -->booting
      ReadErrorNMT();
-
-     //Wait Boot finish
-     ReadNMT(nmt::boot);
+     sleep(2);
 
 
-     status = CheckStatus()&0x6f; //mask 01101111=6f
-     while (i<3){   //three tries to receive the correct message
-        if (status == 0x00) {
-             cout<<"response" << response <<endl;
-             i=3;
-             e=0;
-        }
-        else {
-             sleep(1);
-             i++;
-             if (i=3){
-                 e=1;
-             }
-        }
-     }
-     if (e=1){
-         cout<<"Error. Wrong message or message not received"<<endl;
-         cerr << "Start Failed for id: " << endl;
-         //PrintStatus();
-         return 0;
-        }
-     else {
-         i=0;
-     }
+//     status = CheckStatus()&0x6f; //mask 01101111=6f
+//     while (i<3){   //three tries to receive the correct message
+//        if (status == 0x00) {
+//             cout<<"response" << response <<endl;
+//             i=3;
+//             e=0;
+//        }
+//        else {
+//             sleep(1);
+//             i++;
+//             if (i=3){
+//                 e=1;
+//             }
+//        }
+//     }
+//     if (e=1){
+//         cout<<"Error. Wrong message or message not received"<<endl;
+//         cerr << "Start Failed for id: " << endl;
+//         //PrintStatus();
+//         return 0;
+//        }
+//     else {
+//         i=0;
+//     }
 
      cout<<"START NODE"<<endl;
      response = WriteNMT(od::start);
-     //after start get two frames, pdo (1 and 2) status
-     FlushBuffer(2); //remove two messages, pdo1tx and pdo2tx
+     sleep(2);
+
+     //Wait Start finish NMT [01 id]
+     ReadNMT(nmt::started);
+
 
 //   cout<<"response"<< response <<endl;
-   //sleep(1);
+   sleep(2);
      //FlushBuffer();
      OperationMode(od::positionmode);
+     sleep(2);
 
+     sleep(2);
 
      cout<<"READYTOSWITCHON"<<endl;
      response = WritePDO(od::goreadytoswitchon);
-     FlushBuffer(2); //remove two messages, pdo1tx and pdo2tx
+     //FlushBuffer(2); //remove two messages, pdo1tx and pdo2tx
      //cout<<"response" << response <<endl;
+     sleep(1);
 
      cout<<"SWITCHON"<<endl;
      response = WritePDO(od::goswitchon);
      //cout<<"response" << response <<endl;
-     FlushBuffer(2); //remove two messages, pdo1tx and pdo2tx
+//     FlushBuffer(2); //remove two messages, pdo1tx and pdo2tx
+     sleep(1);
 
      cout<<"ENABLE"<<endl;
      response = WritePDO(od::goenable);
      //cout<<"response" << response <<endl;
-     FlushBuffer(2); //remove two messages, pdo1tx and pdo2tx
+//     FlushBuffer(2); //remove two messages, pdo1tx and pdo2tx
 
     return 0;
 }
 
-long CiA402Device::OperationMode(const vector<uint8_t> mode)
+long CiA402Device::OperationMode(const vector<uint8_t> new_mode)
 {
-    FlushBuffer();
+    //FlushBuffer();
 
-    cout<<"OperationModeDisplay"<<endl;
-    ReadSDO(od::OperationModeDisplay);
+    long tmpmode;
+
+    tmpmode = ReadSDO(od::OperationModeDisplay);
+
+    cout<<"Changing from OperationModeDisplay: " << tmpmode <<endl;
     FlushBuffer();
 
     //ask the node for write proper mode in 6060 address
-    WriteSDO(od::OperationMode,mode);
-    //wait the answer (tx0(580)+id)
+    WriteSDO(od::OperationMode,new_mode);
 
-    cout<<"OperationModeDisplay"<<endl;
-    ReadSDO(od::OperationModeDisplay);
+    tmpmode = ReadSDO(od::OperationModeDisplay);
+
+    cout<<"To OperationModeDisplay: " << tmpmode <<endl;
     FlushBuffer();
 
     return 0;
