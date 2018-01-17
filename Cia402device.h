@@ -67,6 +67,7 @@ public:
     long SetupPositionMode(const uint32_t velocity, const uint32_t acceleration);
     uint32_t DegreeCon(uint32_t DegreeTarget);
     long Reset();
+    long StartNode();
 private:
 
     //methods

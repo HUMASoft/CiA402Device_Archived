@@ -57,6 +57,16 @@ long CiA402Device::Reset()
      WriteNMT(od::start);
 
 }
+
+
+long CiA402Device::StartNode()
+{
+
+     cout<<"START NODE"<<endl;
+     WriteNMT(od::start);
+
+}
+
 long CiA402Device::SwitchOn()
 {
     //Watch out!! sleep commands removed!!!
