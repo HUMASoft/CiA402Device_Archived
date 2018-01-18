@@ -33,7 +33,19 @@ public:
     long ReadSDO(const vector<uint8_t> &address);
     long ReadNMT(const vector<uint8_t> &nmtCode);
 
+    ///
+    /// \brief WriteNMT This function sends NMT message from node to CanBus.
+    /// \param nmtCommand The message that is sent.
+    /// \return 0 if no error.
+    ///
     long WriteNMT(const vector<uint8_t> &nmtCommand);
+
+    ///
+    /// \brief WritePDO This function sends PDO message to a node (the mode id is
+    /// configured on constructor).
+    /// \param command The mesage that is sent.
+    /// \return 0 if no error.
+    ///
     long WritePDO(const vector<uint8_t> &command);
 
     long FlushBuffer();

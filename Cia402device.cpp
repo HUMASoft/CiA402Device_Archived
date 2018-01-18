@@ -37,8 +37,6 @@ CiA402Device::CiA402Device(uint8_t new_id, PortBase *new_port) : CiA301CommPort(
 
 long CiA402Device::Reset()
 {
-
-
      cout<<"RESET"<<endl;
 
      //response = WriteNMT(od::reset);
@@ -52,10 +50,9 @@ long CiA402Device::Reset()
      //reset response 700+id -->booting
      ReadErrorNMT();
 
-
      cout<<"START NODE"<<endl;
      WriteNMT(od::start);
-
+return 0;
 }
 
 
@@ -355,13 +352,20 @@ long CiA402Device::SetCommunications(int fdPort)
 
 long CiA402Device::SetupPositionMode(/*const vector<uint8_t> target,*/const uint32_t velocity,const uint32_t acceleration /*const vector<uint8_t> deceleration*/){
 
+uint32_t velocityr;
 
     OperationMode(od::positionmode);
+
+    /* Converts from degrees/s to lines per ms, and then this value is shifted two bytes
+ to the left to form the high part of the message. Then the low part is added.
+ The high part corresponds to the increments/sample while the low part corresponds
+ to the subdivion of an increment */
+    velocityr=((velocity*4096/360000)<<16)+0;
 
     // Motion profile type -  trapezoidal
     //WriteSDO(od::motion_profile_type,od::linear_ramp_trapezoidal);
     //Si paso los parametros convertidos en ui, sino convertir primero
-    WriteSDO(od::profile_velocity,data32to4x8(velocity));
+    WriteSDO(od::profile_velocity,data32to4x8(velocityr));
     //Si paso los parametros convertidos en ui, sino convertir primero
     //WriteSDO(od::profile_acceleration,data32to4x8(acceleration));
 //  The target position is the position that the drive should move to in
@@ -389,6 +393,18 @@ long CiA402Device::Setup_Velocity_Mode(const vector<uint8_t> target,const vector
     WriteSDO(od::profile_acceleration,acceleration);
     return 0;
 }
+
+///
+/// \brief CiA402Device::SetPosition This function performs the
+/// communication with the device to perform a position control in
+/// a motor and perform a motion towards a selected position. The motor remembers
+/// as position 0 the position in which it has been switched on, always returning to
+/// this position when its target is 0.
+/// \param target of type uint32_t is the desired position by means of the enconder
+/// lines. If this value is bigger than the number of lines of the enconder used,
+/// the motor's axis will perform more than one turn.
+/// \return This function returns a variable of type long with value 0.
+///
 
 long CiA402Device::SetPosition(uint32_t target){
 
@@ -424,12 +440,23 @@ long CiA402Device::SetPosition(uint32_t target){
       FlushBuffer();
     return 0;
 }
-//uint32_t CiA402Device::DegreeConv(uint32_t DegreeTarget){ // Conversion from degrees to the encoder's lines
 
-//uint32_t targetPos;
-//targetPos=DegreeTarget*500/360 //NAT: I think the encoder has 500 lines. Needs revision.
-//    return targetPos;
-//}
+///
+/// \brief CiA402Device::DegreeConv This function converts a variable of type uint32_t
+/// which contains the position of a motor with an encoder of 4096 lines in decimal degrees
+/// into the equivalent position as function of the enconders lines. If the parameter
+/// has a value of 360 the function will return an uint32_t variable with a value of
+/// 4096.
+/// \param DegreeTarget A uint32_t variable with the desired position in decimal degrees
+/// \return targetPos A uint32_t variable with the equivalent position as a function
+/// of the encoder lines.
+///
+uint32_t CiA402Device::DegreeConv(uint32_t DegreeTarget){ // Conversion from degrees to the encoder's lines
+
+uint32_t targetPos;
+targetPos=DegreeTarget*4096/360;
+    return targetPos;
+}
 
 vector<uint8_t> data32to4x8(uint32_t in)
 {

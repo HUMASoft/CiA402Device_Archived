@@ -65,9 +65,14 @@ public:
     //long SetupPositionMode(const vector<uint8_t> target, const vector<uint8_t> velocity, const vector<uint8_t> acceleration, const vector<uint8_t> deceleration);
     long SetPosition(uint32_t target);
     long SetupPositionMode(const uint32_t velocity, const uint32_t acceleration);
-    uint32_t DegreeCon(uint32_t DegreeTarget);
+    ///
+    /// \brief Reset This function resets the node corresponding to this object.
+    /// \return a long of value 0 if there are no errors.
+    ///
     long Reset();
+
     long StartNode();
+    uint32_t DegreeConv(uint32_t DegreeTarget);
 private:
 
     //methods
