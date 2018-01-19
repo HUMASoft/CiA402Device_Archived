@@ -1,0 +1,57 @@
+\hypertarget{classPortBase}{}\section{Port\+Base Class Reference}
+\label{classPortBase}\index{Port\+Base@{Port\+Base}}
+
+
+Inheritance diagram for Port\+Base\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=324pt]{classPortBase__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPortBase_a45ec4a2cd5e17e098f6f72677437f066}\label{classPortBase_a45ec4a2cd5e17e098f6f72677437f066}} 
+int {\bfseries get\+Port\+Id} ()
+\item 
+\mbox{\Hypertarget{classPortBase_a913932fc850e9aebc947542773c669ad}\label{classPortBase_a913932fc850e9aebc947542773c669ad}} 
+long {\bfseries Flush\+Msg} ()
+\item 
+\mbox{\Hypertarget{classPortBase_a1d857a81a8e3f3bd460ef7c802ee762c}\label{classPortBase_a1d857a81a8e3f3bd460ef7c802ee762c}} 
+virtual long {\bfseries Set\+Filter} (uint32\+\_\+t can\+Id, uint32\+\_\+t mask)=0
+\item 
+\mbox{\Hypertarget{classPortBase_a57e891d3992f70dea5c5e403350088be}\label{classPortBase_a57e891d3992f70dea5c5e403350088be}} 
+virtual long {\bfseries Get\+Msg} (uint32\+\_\+t \&can\+Id, uint8\+\_\+t $\ast$data, uint8\+\_\+t size)=0
+\item 
+\mbox{\Hypertarget{classPortBase_a26213ebb6ea0a0b77f60c28944e3bb8e}\label{classPortBase_a26213ebb6ea0a0b77f60c28944e3bb8e}} 
+virtual long {\bfseries Put\+Msg} (const uint32\+\_\+t \&can\+Id, uint8\+\_\+t $\ast$const data, const uint8\+\_\+t size)=0
+\item 
+\mbox{\Hypertarget{classPortBase_abab2bf17b01d87c2bca01cb2151aa2f1}\label{classPortBase_abab2bf17b01d87c2bca01cb2151aa2f1}} 
+virtual long {\bfseries Get\+N\+MT} (uint8\+\_\+t $\ast$data, uint8\+\_\+t \&size)=0
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPortBase_af8816a6f73bf391d2948f3564f8ea1df}\label{classPortBase_af8816a6f73bf391d2948f3564f8ea1df}} 
+int {\bfseries port\+Id}
+\item 
+\mbox{\Hypertarget{classPortBase_ae63f6df54bbeac1046b5dfbe178e1cee}\label{classPortBase_ae63f6df54bbeac1046b5dfbe178e1cee}} 
+int {\bfseries port\+N\+MT}
+\item 
+\mbox{\Hypertarget{classPortBase_ae175156fa18f3be1820adea89ef7b13c}\label{classPortBase_ae175156fa18f3be1820adea89ef7b13c}} 
+can\+\_\+frame {\bfseries frame}
+\item 
+\mbox{\Hypertarget{classPortBase_a559431268076ea9b23bce545510f7b39}\label{classPortBase_a559431268076ea9b23bce545510f7b39}} 
+long {\bfseries buff\+Size\+Id}
+\item 
+\mbox{\Hypertarget{classPortBase_aba8241e5d55c06c7d1a11ebb18096328}\label{classPortBase_aba8241e5d55c06c7d1a11ebb18096328}} 
+long {\bfseries buff\+Size\+N\+MT}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Port\+Base.\+h\item 
+Port\+Base.\+cpp\end{DoxyCompactItemize}

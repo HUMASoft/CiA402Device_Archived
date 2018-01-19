@@ -1,0 +1,70 @@
+\hypertarget{classCanBusPort}{}\section{Can\+Bus\+Port Class Reference}
+\label{classCanBusPort}\index{Can\+Bus\+Port@{Can\+Bus\+Port}}
+
+
+Inheritance diagram for Can\+Bus\+Port\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=150pt]{classCanBusPort__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Can\+Bus\+Port\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=150pt]{classCanBusPort__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCanBusPort_a4ccb8d39da6185bfe5c1dee38db51987}\label{classCanBusPort_a4ccb8d39da6185bfe5c1dee38db51987}} 
+\hyperlink{classCanBusPort_a4ccb8d39da6185bfe5c1dee38db51987}{Can\+Bus\+Port} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCanBusPort}{Can\+Bus\+Port}\+: Empty constructor. Initialize default port \char`\"{}/dev/can0\char`\"{}. \end{DoxyCompactList}\item 
+\hyperlink{classCanBusPort_ad4649a2da594bbffc267483646fb1405}{Can\+Bus\+Port} (string can\+Port)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCanBusPort}{Can\+Bus\+Port}\+: Initialization of one port given a device name. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCanBusPort_a7c6b733c5834d4ab3e1906d847a2234a}\label{classCanBusPort_a7c6b733c5834d4ab3e1906d847a2234a}} 
+int {\bfseries get\+Port\+Id} ()
+\item 
+\mbox{\Hypertarget{classCanBusPort_af09c794e3af86e89c8a511535f856dc9}\label{classCanBusPort_af09c794e3af86e89c8a511535f856dc9}} 
+long {\bfseries Set\+Filter} (uint32\+\_\+t can\+Id, uint32\+\_\+t mask)
+\item 
+\mbox{\Hypertarget{classCanBusPort_a13d6b06d93debc20b2f49aa8e7139988}\label{classCanBusPort_a13d6b06d93debc20b2f49aa8e7139988}} 
+long {\bfseries Get\+Msg} (uint32\+\_\+t \&can\+Id, uint8\+\_\+t $\ast$data, uint8\+\_\+t size)
+\item 
+\mbox{\Hypertarget{classCanBusPort_a2bb802ad7a14e260f0f51b79d4c53c43}\label{classCanBusPort_a2bb802ad7a14e260f0f51b79d4c53c43}} 
+long {\bfseries Put\+Msg} (const uint32\+\_\+t \&can\+Id, uint8\+\_\+t $\ast$const data, const uint8\+\_\+t size)
+\item 
+\mbox{\Hypertarget{classCanBusPort_a41242dc7980ca398e4770813e50ef32b}\label{classCanBusPort_a41242dc7980ca398e4770813e50ef32b}} 
+long {\bfseries Get\+N\+MT} (uint8\+\_\+t $\ast$const data, uint8\+\_\+t \&size)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classCanBusPort_ad4649a2da594bbffc267483646fb1405}\label{classCanBusPort_ad4649a2da594bbffc267483646fb1405}} 
+\index{Can\+Bus\+Port@{Can\+Bus\+Port}!Can\+Bus\+Port@{Can\+Bus\+Port}}
+\index{Can\+Bus\+Port@{Can\+Bus\+Port}!Can\+Bus\+Port@{Can\+Bus\+Port}}
+\subsubsection{\texorpdfstring{Can\+Bus\+Port()}{CanBusPort()}}
+{\footnotesize\ttfamily Can\+Bus\+Port\+::\+Can\+Bus\+Port (\begin{DoxyParamCaption}\item[{string}]{can\+Port }\end{DoxyParamCaption})}
+
+
+
+\hyperlink{classCanBusPort}{Can\+Bus\+Port}\+: Initialization of one port given a device name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em can\+Port} & String with the name of system device. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Can\+Bus\+Port.\+h\item 
+Can\+Bus\+Port.\+cpp\end{DoxyCompactItemize}

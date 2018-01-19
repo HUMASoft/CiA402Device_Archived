@@ -426,6 +426,8 @@ long CiA402Device::SetPosition(uint32_t target){
     //sleep(1);
 
     //lectura del status word y comprobar target reached (posicion bit11 = 1)
+    //cada vez que la statusword cambia, envía un mensaje pdo.
+    //revisar esto para esperar el mensaje correcto.
     long stat = ReadSDO(od::statusword);
     cout<<"statusword: "<<stat<<endl;
     //FlushBuffer();

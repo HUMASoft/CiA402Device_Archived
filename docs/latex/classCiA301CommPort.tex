@@ -1,0 +1,150 @@
+\hypertarget{classCiA301CommPort}{}\section{Ci\+A301\+Comm\+Port Class Reference}
+\label{classCiA301CommPort}\index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
+
+
+Inheritance diagram for Ci\+A301\+Comm\+Port\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=176pt]{classCiA301CommPort__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCiA301CommPort_aae705cb5c6a405ef74a10e5220d0b08f}\label{classCiA301CommPort_aae705cb5c6a405ef74a10e5220d0b08f}} 
+{\bfseries Ci\+A301\+Comm\+Port} (int new\+Port\+File\+Descriptor, uint8\+\_\+t new\+\_\+id)
+\item 
+\mbox{\Hypertarget{classCiA301CommPort_a1e05c4b292cfee36ff9eeddb2c8eb4c0}\label{classCiA301CommPort_a1e05c4b292cfee36ff9eeddb2c8eb4c0}} 
+{\bfseries Ci\+A301\+Comm\+Port} (\hyperlink{classPortBase}{Port\+Base} $\ast$new\+\_\+port, uint8\+\_\+t new\+\_\+id)
+\item 
+\mbox{\Hypertarget{classCiA301CommPort_a0fd0920052684589bc37bb898dcdd758}\label{classCiA301CommPort_a0fd0920052684589bc37bb898dcdd758}} 
+long {\bfseries Read\+S\+DO} (vector$<$ uint8\+\_\+t $>$ address, int subindex)
+\item 
+long \hyperlink{classCiA301CommPort_a3f74ce5899b30731322dabd352ccdc55}{Read\+S\+DO} (const vector$<$ uint8\+\_\+t $>$ \&address)
+\begin{DoxyCompactList}\small\item\em Ci\+A301\+Comm\+Port\+::\+Read\+S\+DO Waits until expected. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCiA301CommPort_a02df85ed5140d0d7a57fe0d2f6e47ea1}\label{classCiA301CommPort_a02df85ed5140d0d7a57fe0d2f6e47ea1}} 
+long {\bfseries Read\+N\+MT} (const vector$<$ uint8\+\_\+t $>$ \&nmt\+Code)
+\item 
+long \hyperlink{classCiA301CommPort_a09feb3f78831c9fbb683a85cc3bc4562}{Write\+N\+MT} (const vector$<$ uint8\+\_\+t $>$ \&nmt\+Command)
+\begin{DoxyCompactList}\small\item\em Write\+N\+MT This function sends N\+MT message from node to Can\+Bus. \end{DoxyCompactList}\item 
+long \hyperlink{classCiA301CommPort_a56d2c604b11363e6b287f59b68a546bd}{Write\+P\+DO} (const vector$<$ uint8\+\_\+t $>$ \&command)
+\begin{DoxyCompactList}\small\item\em Write\+P\+DO This function sends P\+DO message to a node (the mode id is configured on constructor). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCiA301CommPort_a067cddaf01932fa6fa27255c61b08190}\label{classCiA301CommPort_a067cddaf01932fa6fa27255c61b08190}} 
+long {\bfseries Flush\+Buffer} ()
+\item 
+long \hyperlink{classCiA301CommPort_ab29e221039a2d21d1446edb09b91864e}{Flush\+Buffer} (int msgs)
+\begin{DoxyCompactList}\small\item\em Flush\+Buffer Removes the msgs number of can frames from buffer. \end{DoxyCompactList}\item 
+long \hyperlink{classCiA301CommPort_a4d97c27423b2323f8475f6e5c2f91575}{Write\+S\+DO} (const vector$<$ uint8\+\_\+t $>$ \&address, const vector$<$ uint8\+\_\+t $>$ \&value)
+\begin{DoxyCompactList}\small\item\em Write\+S\+DO Writes 4 byte value to specific address on device. This function sends S\+DO message requesting write on the object dictionary address. Also block and wait for the S\+DO msg for write ack, and returns negative if error. As it reads the ack S\+DO message, the buffer should be same size after this function returns. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCiA301CommPort_a1faf4f37530e0dd0ae4600cfb0b1d742}\label{classCiA301CommPort_a1faf4f37530e0dd0ae4600cfb0b1d742}} 
+long {\bfseries Write\+P\+D\+O4} (const vector$<$ uint8\+\_\+t $>$ \&command)
+\item 
+\mbox{\Hypertarget{classCiA301CommPort_a46534ff9e7e2a05a0b4913e4331710e5}\label{classCiA301CommPort_a46534ff9e7e2a05a0b4913e4331710e5}} 
+long {\bfseries Read\+Error\+N\+MT} ()
+\item 
+\mbox{\Hypertarget{classCiA301CommPort_a827f3e594b9f1e57a7b7ccb8a278404a}\label{classCiA301CommPort_a827f3e594b9f1e57a7b7ccb8a278404a}} 
+long {\bfseries Read\+P\+DO} (long number)
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classCiA301CommPort_ab29e221039a2d21d1446edb09b91864e}\label{classCiA301CommPort_ab29e221039a2d21d1446edb09b91864e}} 
+\index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!Flush\+Buffer@{Flush\+Buffer}}
+\index{Flush\+Buffer@{Flush\+Buffer}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
+\subsubsection{\texorpdfstring{Flush\+Buffer()}{FlushBuffer()}}
+{\footnotesize\ttfamily long Ci\+A301\+Comm\+Port\+::\+Flush\+Buffer (\begin{DoxyParamCaption}\item[{int}]{msgs }\end{DoxyParamCaption})}
+
+
+
+Flush\+Buffer Removes the msgs number of can frames from buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msgs} & Number of messages to remove. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if no error. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCiA301CommPort_a3f74ce5899b30731322dabd352ccdc55}\label{classCiA301CommPort_a3f74ce5899b30731322dabd352ccdc55}} 
+\index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!Read\+S\+DO@{Read\+S\+DO}}
+\index{Read\+S\+DO@{Read\+S\+DO}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
+\subsubsection{\texorpdfstring{Read\+S\+D\+O()}{ReadSDO()}}
+{\footnotesize\ttfamily long Ci\+A301\+Comm\+Port\+::\+Read\+S\+DO (\begin{DoxyParamCaption}\item[{const vector$<$ uint8\+\_\+t $>$ \&}]{address }\end{DoxyParamCaption})}
+
+
+
+Ci\+A301\+Comm\+Port\+::\+Read\+S\+DO Waits until expected. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCiA301CommPort_a09feb3f78831c9fbb683a85cc3bc4562}\label{classCiA301CommPort_a09feb3f78831c9fbb683a85cc3bc4562}} 
+\index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!Write\+N\+MT@{Write\+N\+MT}}
+\index{Write\+N\+MT@{Write\+N\+MT}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
+\subsubsection{\texorpdfstring{Write\+N\+M\+T()}{WriteNMT()}}
+{\footnotesize\ttfamily long Ci\+A301\+Comm\+Port\+::\+Write\+N\+MT (\begin{DoxyParamCaption}\item[{const vector$<$ uint8\+\_\+t $>$ \&}]{nmt\+Command }\end{DoxyParamCaption})}
+
+
+
+Write\+N\+MT This function sends N\+MT message from node to Can\+Bus. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nmt\+Command} & The message that is sent. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if no error. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCiA301CommPort_a56d2c604b11363e6b287f59b68a546bd}\label{classCiA301CommPort_a56d2c604b11363e6b287f59b68a546bd}} 
+\index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!Write\+P\+DO@{Write\+P\+DO}}
+\index{Write\+P\+DO@{Write\+P\+DO}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
+\subsubsection{\texorpdfstring{Write\+P\+D\+O()}{WritePDO()}}
+{\footnotesize\ttfamily long Ci\+A301\+Comm\+Port\+::\+Write\+P\+DO (\begin{DoxyParamCaption}\item[{const vector$<$ uint8\+\_\+t $>$ \&}]{command }\end{DoxyParamCaption})}
+
+
+
+Write\+P\+DO This function sends P\+DO message to a node (the mode id is configured on constructor). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em command} & The mesage that is sent. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if no error. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCiA301CommPort_a4d97c27423b2323f8475f6e5c2f91575}\label{classCiA301CommPort_a4d97c27423b2323f8475f6e5c2f91575}} 
+\index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!Write\+S\+DO@{Write\+S\+DO}}
+\index{Write\+S\+DO@{Write\+S\+DO}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
+\subsubsection{\texorpdfstring{Write\+S\+D\+O()}{WriteSDO()}}
+{\footnotesize\ttfamily long Ci\+A301\+Comm\+Port\+::\+Write\+S\+DO (\begin{DoxyParamCaption}\item[{const vector$<$ uint8\+\_\+t $>$ \&}]{address,  }\item[{const vector$<$ uint8\+\_\+t $>$ \&}]{value }\end{DoxyParamCaption})}
+
+
+
+Write\+S\+DO Writes 4 byte value to specific address on device. This function sends S\+DO message requesting write on the object dictionary address. Also block and wait for the S\+DO msg for write ack, and returns negative if error. As it reads the ack S\+DO message, the buffer should be same size after this function returns. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & The address that needs S\+DO writing. \\
+\hline
+{\em value} & The value that will be writed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if no error. Negative if error (see cerr). 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Ci\+A301\+Comm\+Port.\+h\item 
+Ci\+A301\+Comm\+Port.\+cpp\end{DoxyCompactItemize}
