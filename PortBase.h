@@ -2,6 +2,13 @@
 #define PORTBASE_H
 
 #include <cstdint>
+#include <unistd.h>
+
+#include <sys/socket.h>
+#include <poll.h>
+#include <sys/ioctl.h>
+
+#include <linux/can.h>
 
 class PortBase
 {
@@ -9,7 +16,8 @@ public:
     PortBase();
 
 
-    int getPortFD();
+    int getPortId();
+    long FlushMsg();
 
     virtual long SetFilter(uint32_t canId, uint32_t mask)=0;
     virtual long GetMsg(uint32_t & canId, uint8_t * data, uint8_t size)=0;
@@ -18,10 +26,13 @@ public:
 
 
 
+
 protected:
     int portId;
     int portNMT;
-
+    can_frame frame;
+    long buffSizeId;
+    long buffSizeNMT;
 
 
 };

@@ -37,10 +37,8 @@ private:
 
     long Init(string canPort);
 
-    can_frame frame;
     long nbytes;
-    long buffSizeId;
-    long buffSizeNMT;
+
 
     struct pollfd poll_setId[1];
     struct pollfd poll_setNMT[1];

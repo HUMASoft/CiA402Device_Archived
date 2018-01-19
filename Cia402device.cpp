@@ -150,7 +150,7 @@ long CiA402Device::OperationMode(const vector<uint8_t> new_mode)
 
     //TODO: Change WriteSDO to readCobId its acks.
     //write responses with ack
-    FlushBuffer(1);
+//    FlushBuffer(1);
 
     tmpmode = ReadSDO(od::OperationModeDisplay);
 
@@ -375,7 +375,7 @@ uint32_t velocityr;
 //  Si paso los parametros convertidos en ui, sino convertir primero
     //WriteSDO(od::target_position,target);
     //WriteSDO(od::quick_stop_deceleration,deceleration);
-    FlushBuffer();
+//    FlushBuffer();
    return 0;
 }
 
@@ -417,17 +417,17 @@ long CiA402Device::SetPosition(uint32_t target){
     //sleep(1);
 
     WriteSDO(od::target_position,data32to4x8(target));
-    FlushBuffer();
+//    FlushBuffer();
     //WritePDO4(data32to4x8(target));
     //sleep(1);
     long pos = ReadSDO(od::target_position);
-    cout<<"target_position"<<pos<<endl;
+    cout<<"target_position: "<<pos<<endl;
     FlushBuffer();
     //sleep(1);
 
     //lectura del status word y comprobar target reached (posicion bit11 = 1)
     long stat = ReadSDO(od::statusword);
-    cout<<"statusword"<<stat<<endl;
+    cout<<"statusword: "<<stat<<endl;
     //FlushBuffer();
     //sleep(1);
 
@@ -465,10 +465,10 @@ vector<uint8_t> data32to4x8(uint32_t in)
     retvalue[1] = (in&0x0000FF00)>>8;
     retvalue[2] = (in&0x00FF0000)>>16;
     retvalue[3] = (in&0xFF000000)>>24;
-    cout<< " " <<(int)retvalue[0]
-        << " ," <<(int)retvalue[1]
-        << " , "<<(int)retvalue[2]
-        << " , "<<(int)retvalue[3]<<endl;
+//    cout<< " " <<(int)retvalue[0]
+//        << " ," <<(int)retvalue[1]
+//        << " , "<<(int)retvalue[2]
+//        << " , "<<(int)retvalue[3]<<endl;
     return retvalue;
 
 }

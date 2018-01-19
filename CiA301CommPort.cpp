@@ -1,4 +1,4 @@
-#include "CiA301CommPort.h"
+﻿#include "CiA301CommPort.h"
 
 
 CiA301CommPort::CiA301CommPort(int newPortFileDescriptor, uint8_t new_id)
@@ -41,34 +41,12 @@ long CiA301CommPort::ReadSDO(const vector<uint8_t> &address)
     vector<uint8_t> data={};
 //   data.insert(data.end(), address.begin(), address.end());
 //    SendMessage(SetCanOpenMsg(sdo::rx0+id, 0 ,data) );
-    WriteSDO(address, data);
+     return WriteSDO(address, data);
 
-    //Wait for the answer
-    output = SetCanOpenMsg(sdo::tx0+id, 0 ,address);
-    ReadCobId(sdo::tx0+id,output);
+//    //Wait for the answer
+//    output = SetCanOpenMsg(sdo::tx0+id, 0 ,address);
+//    ReadCobId(sdo::tx0+id,output);
 
-    for (long reps=0 ; reps>FIND_RETRY ;reps++)
-    {
-        cout << output.data_co[1]<< " " << address[0]<< " " << output.data_co[2]<< " " << address[1] <<endl;
-        //Check that received data comes from right address.
-        if ( (output.data_co[1] == address[0]) && (output.data_co[2] == address[1]) )
-        {
-            continue;
-        }
-
-        else //Wrong address.
-        {
-
-            //TODO: Return message to bus??
-            //SendMessage(output);
-            //Read again and check (later)
-            ReadCobId(sdo::tx0+id,output);
-
-        }
-
-
-
-    }
 
     //Get the data from output
     //Use the data from output
@@ -79,14 +57,14 @@ long CiA301CommPort::ReadSDO(const vector<uint8_t> &address)
 //    }
 
 //fixed return four last bytes from data.
-    long retvalue = output.data_co[7];
-    retvalue = (retvalue << 8) + output.data_co[6];
-    retvalue = (retvalue << 8) + output.data_co[5];
-    retvalue = (retvalue << 8) + output.data_co[4];
+//    long retvalue = output.data_co[7];
+//    retvalue = (retvalue << 8) + output.data_co[6];
+//    retvalue = (retvalue << 8) + output.data_co[5];
+//    retvalue = (retvalue << 8) + output.data_co[4];
 
 //    return output.data_co[4]+(16^2)*output.data_co[5]+
 //            (16^4)*output.data_co[6]+(16^6)*output.data_co[7];
-    return retvalue;
+//    return retvalue;
 }
 
 long CiA301CommPort::WriteSDO(const vector<uint8_t> &address, const vector<uint8_t> &value )
@@ -131,14 +109,40 @@ long CiA301CommPort::WriteSDO(const vector<uint8_t> &address, const vector<uint8
 //    //and wait for write response
 //    co_msg output;
 
-//    //wait the answer (tx0(580)+id)
-//    ReadCobId(sdo::tx0+id,output);
+    //wait the answer (tx0(580)+id)
+    co_msg output;
+    ReadCobId(sdo::tx0+id, output);
 
-//    //fixed return four last bytes from data.
-//    long retvalue = output.data_co[7];
-//    retvalue = (retvalue << 8) + output.data_co[6];
-//    retvalue = (retvalue << 8) + output.data_co[5];
-//    retvalue = (retvalue << 8) + output.data_co[4];
+
+    for (long reps=0 ; reps>FIND_RETRY ;reps++)
+    {
+        cout << output.data_co[1]<< " " << address[0]<< " " << output.data_co[2]<< " " << address[1] <<endl;
+        //Check that received data comes from right address.
+        if ( (output.data_co[1] == address[0]) && (output.data_co[2] == address[1]) )
+        {
+            continue;
+        }
+
+        else //Wrong address.
+        {
+
+            //TODO: Return message to bus??
+            //SendMessage(output);
+            //Read again and check (later)
+            ReadCobId(sdo::tx0+id,output);
+
+        }
+
+
+
+    }
+
+    //fixed return four last bytes from data.
+    long retvalue = output.data_co[7];
+    retvalue = (retvalue << 8) + output.data_co[6];
+    retvalue = (retvalue << 8) + output.data_co[5];
+    retvalue = (retvalue << 8) + output.data_co[4];
+    return retvalue;
 }
 
 long CiA301CommPort::ReadPDO(long number)
@@ -227,21 +231,24 @@ long CiA301CommPort::FlushBuffer()
     co_msg m1;
 
 
-    if (usesockets)
-    {
-        cout << "Cant Flush can buffer. Using blocking read!!!!" << endl;
-        return 1;
-//        for (int i=0; i<5; i++)
-//        {
-//            uint32_t id; uint8_t data[8];int size;
-//            port->GetMsg(id,data,size);
-//        }
-    }
+    port->FlushMsg();
+    //maybe flush nmt will be needed sometime
 
-    while (WaitForReadMessage(m1,0)==0)
-    {
+//    if (usesockets)
+//    {
+//        cout << "Cant Flush can buffer. Using blocking read!!!!" << endl;
+//        return 1;
+////        for (int i=0; i<5; i++)
+////        {
+////            uint32_t id; uint8_t data[8];int size;
+////            port->GetMsg(id,data,size);
+////        }
+//    }
 
-    }
+//    while (WaitForReadMessage(m1,0)==0)
+//    {
+
+//    }
     return 0;
 }
 

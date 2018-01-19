@@ -49,7 +49,24 @@ public:
     long WritePDO(const vector<uint8_t> &command);
 
     long FlushBuffer();
+
+    ///
+    /// \brief FlushBuffer Removes the msgs number of can frames from buffer
+    /// \param msgs Number of messages to remove.
+    /// \return 0 if no error.
+    ///
     long FlushBuffer(int msgs);
+
+    ///
+    /// \brief WriteSDO Writes 4 byte value to specific address on device.
+    /// This function sends SDO message requesting write on the object dictionary
+    /// address. Also block and wait for the SDO msg for write ack, and returns negative if error.
+    /// As it reads the ack SDO message, the buffer should be same size after this function
+    /// returns.
+    /// \param address The address that needs SDO writing.
+    /// \param value The value that will be writed.
+    /// \return 0 if no error. Negative if error (see cerr).
+    ///
     long WriteSDO(const vector<uint8_t> &address, const vector<uint8_t> &value);
     long WritePDO4(const vector<uint8_t> &command);
     long ReadErrorNMT();

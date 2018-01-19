@@ -5,10 +5,16 @@ PortBase::PortBase()
 
 }
 
-int PortBase::getPortFD()
+int PortBase::getPortId()
 {
     return portId;
 
 }
 
-
+long PortBase::FlushMsg()
+{
+    for (buffSizeId; buffSizeId>0; buffSizeId--)
+    {
+        read(portId, &frame, sizeof(struct can_frame));
+    }
+}

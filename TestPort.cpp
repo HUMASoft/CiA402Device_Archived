@@ -37,7 +37,7 @@ long TestPort::ShowBuffer()
     return 0;
 }
 
-int TestPort::getPortFD()
+int TestPort::getPortId()
 {
     return portId;
 }

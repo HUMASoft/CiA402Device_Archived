@@ -46,7 +46,7 @@ long CanBusPort::Init(string canPort)
     return 0;
 }
 
-int CanBusPort::getPortFD()
+int CanBusPort::getPortId()
 {
     return portId;
 }

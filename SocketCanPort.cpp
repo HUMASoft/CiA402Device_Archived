@@ -85,6 +85,8 @@ long SocketCanPort::GetNMT(uint8_t *data, uint8_t & size)
     return (buffSizeNMT);
 }
 
+
+
 long SocketCanPort::GetMsg(uint32_t &canId, uint8_t *data, uint8_t size)
 {
     //get a message from canbus and store in canId and data out parameters.

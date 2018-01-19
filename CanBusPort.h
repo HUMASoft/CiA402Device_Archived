@@ -28,7 +28,7 @@ public:
     /// \param canPort: String with the name of system device.
     ///
     CanBusPort(string canPort);
-    int getPortFD();
+    int getPortId();
 
     long SetFilter(uint32_t canId, uint32_t mask);
     long GetMsg(uint32_t &canId, uint8_t *data, uint8_t size);
