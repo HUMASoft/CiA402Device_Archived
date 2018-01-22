@@ -1,3 +1,3 @@
 <map id="CanBusPort" name="CanBusPort">
-<area shape="rect" id="node2" href="$classPortBase.html" title="PortBase" alt="" coords="14,5,90,32"/>
+<area shape="rect" id="node2" href="$classPortBase.html" title="{PortBase\n|# portId\l# portNMT\l# frame\l# buffSizeId\l# buffSizeNMT\l|+ PortBase()\l+ getPortId()\l+ FlushMsg()\l+ SetFilter()\l+ GetMsg()\l+ PutMsg()\l+ GetNMT()\l}" alt="" coords="7,5,117,229"/>
 </map>

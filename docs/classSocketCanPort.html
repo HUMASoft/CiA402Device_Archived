@@ -60,75 +60,422 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classSocketCanPort-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">SocketCanPort Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="SocketCanPort_8h_source.html">SocketCanPort.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for SocketCanPort:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSocketCanPort__inherit__graph.png" border="0" usemap="#SocketCanPort_inherit__map" alt="Inheritance graph"/></div>
 <map name="SocketCanPort_inherit__map" id="SocketCanPort_inherit__map">
-<area shape="rect" id="node2" href="classPortBase.html" title="PortBase" alt="" coords="23,5,99,32"/>
+<area shape="rect" id="node2" href="classPortBase.html" title="{PortBase\n|# portId\l# portNMT\l# frame\l# buffSizeId\l# buffSizeNMT\l|+ PortBase()\l+ getPortId()\l+ FlushMsg()\l+ SetFilter()\l+ GetMsg()\l+ PutMsg()\l+ GetNMT()\l}" alt="" coords="19,5,130,229"/>
 </map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+</div>
 <div class="dynheader">
 Collaboration diagram for SocketCanPort:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSocketCanPort__coll__graph.png" border="0" usemap="#SocketCanPort_coll__map" alt="Collaboration graph"/></div>
 <map name="SocketCanPort_coll__map" id="SocketCanPort_coll__map">
-<area shape="rect" id="node2" href="classPortBase.html" title="PortBase" alt="" coords="23,5,99,32"/>
+<area shape="rect" id="node2" href="classPortBase.html" title="{PortBase\n||+ PortBase()\l+ getPortId()\l+ FlushMsg()\l+ SetFilter()\l+ GetMsg()\l+ PutMsg()\l+ GetNMT()\l}" alt="" coords="125,160,224,325"/>
 </map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a087bc07f3c1658e3cb994d85fcb3da5e"><td class="memItemLeft" align="right" valign="top"><a id="a087bc07f3c1658e3cb994d85fcb3da5e"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>SocketCanPort</b> (string canPort)</td></tr>
+<tr class="memitem:af3593609acea236b10646732e277837f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketCanPort.html#af3593609acea236b10646732e277837f">SocketCanPort</a> ()</td></tr>
+<tr class="separator:af3593609acea236b10646732e277837f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a087bc07f3c1658e3cb994d85fcb3da5e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketCanPort.html#a087bc07f3c1658e3cb994d85fcb3da5e">SocketCanPort</a> (string canPort)</td></tr>
 <tr class="separator:a087bc07f3c1658e3cb994d85fcb3da5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1a5d0866524dae11ddff0d1ac22e0dd5"><td class="memItemLeft" align="right" valign="top"><a id="a1a5d0866524dae11ddff0d1ac22e0dd5"></a>
-long&#160;</td><td class="memItemRight" valign="bottom"><b>SetFilter</b> (uint32_t canId, uint32_t mask)</td></tr>
+<tr class="memitem:a0d004347e49110daa1ee29e1d1bc85c0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketCanPort.html#a0d004347e49110daa1ee29e1d1bc85c0">~SocketCanPort</a> ()</td></tr>
+<tr class="separator:a0d004347e49110daa1ee29e1d1bc85c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a5d0866524dae11ddff0d1ac22e0dd5"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketCanPort.html#a1a5d0866524dae11ddff0d1ac22e0dd5">SetFilter</a> (uint32_t canId, uint32_t mask)</td></tr>
 <tr class="separator:a1a5d0866524dae11ddff0d1ac22e0dd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4fe210160e70043ea78443630b9c4e86"><td class="memItemLeft" align="right" valign="top"><a id="a4fe210160e70043ea78443630b9c4e86"></a>
-long&#160;</td><td class="memItemRight" valign="bottom"><b>GetMsg</b> (uint32_t &amp;canId, uint8_t *data, uint8_t size)</td></tr>
+<tr class="memitem:a4fe210160e70043ea78443630b9c4e86"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketCanPort.html#a4fe210160e70043ea78443630b9c4e86">GetMsg</a> (uint32_t &amp;canId, uint8_t *data, uint8_t size)</td></tr>
 <tr class="separator:a4fe210160e70043ea78443630b9c4e86"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9375a0c1e33978c83ebd188100898633"><td class="memItemLeft" align="right" valign="top"><a id="a9375a0c1e33978c83ebd188100898633"></a>
-long&#160;</td><td class="memItemRight" valign="bottom"><b>PutMsg</b> (const uint32_t &amp;canId, uint8_t *const data, const uint8_t size)</td></tr>
+<tr class="memitem:a9375a0c1e33978c83ebd188100898633"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketCanPort.html#a9375a0c1e33978c83ebd188100898633">PutMsg</a> (const uint32_t &amp;canId, uint8_t *const data, const uint8_t size)</td></tr>
 <tr class="separator:a9375a0c1e33978c83ebd188100898633"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2efe27bd3bb8c8127c89925e1e21535a"><td class="memItemLeft" align="right" valign="top"><a id="a2efe27bd3bb8c8127c89925e1e21535a"></a>
-long&#160;</td><td class="memItemRight" valign="bottom"><b>GetNMT</b> (uint8_t *data, uint8_t &amp;size)</td></tr>
+<tr class="memitem:a2efe27bd3bb8c8127c89925e1e21535a"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketCanPort.html#a2efe27bd3bb8c8127c89925e1e21535a">GetNMT</a> (uint8_t *data, uint8_t &amp;size)</td></tr>
 <tr class="separator:a2efe27bd3bb8c8127c89925e1e21535a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classPortBase"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classPortBase')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classPortBase.html">PortBase</a></td></tr>
-<tr class="memitem:a45ec4a2cd5e17e098f6f72677437f066 inherit pub_methods_classPortBase"><td class="memItemLeft" align="right" valign="top"><a id="a45ec4a2cd5e17e098f6f72677437f066"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getPortId</b> ()</td></tr>
+<tr class="memitem:acb7872550bc94538ef95d2510d763be3 inherit pub_methods_classPortBase"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPortBase.html#acb7872550bc94538ef95d2510d763be3">PortBase</a> ()</td></tr>
+<tr class="separator:acb7872550bc94538ef95d2510d763be3 inherit pub_methods_classPortBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45ec4a2cd5e17e098f6f72677437f066 inherit pub_methods_classPortBase"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPortBase.html#a45ec4a2cd5e17e098f6f72677437f066">getPortId</a> ()</td></tr>
 <tr class="separator:a45ec4a2cd5e17e098f6f72677437f066 inherit pub_methods_classPortBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a913932fc850e9aebc947542773c669ad inherit pub_methods_classPortBase"><td class="memItemLeft" align="right" valign="top"><a id="a913932fc850e9aebc947542773c669ad"></a>
-long&#160;</td><td class="memItemRight" valign="bottom"><b>FlushMsg</b> ()</td></tr>
+<tr class="memitem:a913932fc850e9aebc947542773c669ad inherit pub_methods_classPortBase"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPortBase.html#a913932fc850e9aebc947542773c669ad">FlushMsg</a> ()</td></tr>
 <tr class="separator:a913932fc850e9aebc947542773c669ad inherit pub_methods_classPortBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a9209d295c98c12ab85ec61773b775bf4"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketCanPort.html#a9209d295c98c12ab85ec61773b775bf4">Init</a> (string canPort)</td></tr>
+<tr class="separator:a9209d295c98c12ab85ec61773b775bf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a7b06b4d8c897c1a189329f20632fdb71"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketCanPort.html#a7b06b4d8c897c1a189329f20632fdb71">nbytes</a></td></tr>
+<tr class="separator:a7b06b4d8c897c1a189329f20632fdb71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0374fe5ea78a061e7abd16b812f44d5"><td class="memItemLeft" align="right" valign="top">struct pollfd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketCanPort.html#ad0374fe5ea78a061e7abd16b812f44d5">poll_setId</a> [1]</td></tr>
+<tr class="separator:ad0374fe5ea78a061e7abd16b812f44d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afaaf9cd49684de93be7370988ec64b47"><td class="memItemLeft" align="right" valign="top">struct pollfd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketCanPort.html#afaaf9cd49684de93be7370988ec64b47">poll_setNMT</a> [1]</td></tr>
+<tr class="separator:afaaf9cd49684de93be7370988ec64b47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18e670bf7f98482e022da2fd11264309"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSocketCanPort.html#a18e670bf7f98482e022da2fd11264309">timeoutPoll</a></td></tr>
+<tr class="separator:a18e670bf7f98482e022da2fd11264309"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_attribs_classPortBase"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classPortBase')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classPortBase.html">PortBase</a></td></tr>
-<tr class="memitem:af8816a6f73bf391d2948f3564f8ea1df inherit pro_attribs_classPortBase"><td class="memItemLeft" align="right" valign="top"><a id="af8816a6f73bf391d2948f3564f8ea1df"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>portId</b></td></tr>
+<tr class="memitem:af8816a6f73bf391d2948f3564f8ea1df inherit pro_attribs_classPortBase"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPortBase.html#af8816a6f73bf391d2948f3564f8ea1df">portId</a></td></tr>
 <tr class="separator:af8816a6f73bf391d2948f3564f8ea1df inherit pro_attribs_classPortBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae63f6df54bbeac1046b5dfbe178e1cee inherit pro_attribs_classPortBase"><td class="memItemLeft" align="right" valign="top"><a id="ae63f6df54bbeac1046b5dfbe178e1cee"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>portNMT</b></td></tr>
+<tr class="memitem:ae63f6df54bbeac1046b5dfbe178e1cee inherit pro_attribs_classPortBase"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPortBase.html#ae63f6df54bbeac1046b5dfbe178e1cee">portNMT</a></td></tr>
 <tr class="separator:ae63f6df54bbeac1046b5dfbe178e1cee inherit pro_attribs_classPortBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae175156fa18f3be1820adea89ef7b13c inherit pro_attribs_classPortBase"><td class="memItemLeft" align="right" valign="top"><a id="ae175156fa18f3be1820adea89ef7b13c"></a>
-can_frame&#160;</td><td class="memItemRight" valign="bottom"><b>frame</b></td></tr>
+<tr class="memitem:ae175156fa18f3be1820adea89ef7b13c inherit pro_attribs_classPortBase"><td class="memItemLeft" align="right" valign="top">can_frame&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPortBase.html#ae175156fa18f3be1820adea89ef7b13c">frame</a></td></tr>
 <tr class="separator:ae175156fa18f3be1820adea89ef7b13c inherit pro_attribs_classPortBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a559431268076ea9b23bce545510f7b39 inherit pro_attribs_classPortBase"><td class="memItemLeft" align="right" valign="top"><a id="a559431268076ea9b23bce545510f7b39"></a>
-long&#160;</td><td class="memItemRight" valign="bottom"><b>buffSizeId</b></td></tr>
+<tr class="memitem:a559431268076ea9b23bce545510f7b39 inherit pro_attribs_classPortBase"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPortBase.html#a559431268076ea9b23bce545510f7b39">buffSizeId</a></td></tr>
 <tr class="separator:a559431268076ea9b23bce545510f7b39 inherit pro_attribs_classPortBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba8241e5d55c06c7d1a11ebb18096328 inherit pro_attribs_classPortBase"><td class="memItemLeft" align="right" valign="top"><a id="aba8241e5d55c06c7d1a11ebb18096328"></a>
-long&#160;</td><td class="memItemRight" valign="bottom"><b>buffSizeNMT</b></td></tr>
+<tr class="memitem:aba8241e5d55c06c7d1a11ebb18096328 inherit pro_attribs_classPortBase"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPortBase.html#aba8241e5d55c06c7d1a11ebb18096328">buffSizeNMT</a></td></tr>
 <tr class="separator:aba8241e5d55c06c7d1a11ebb18096328 inherit pro_attribs_classPortBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="af3593609acea236b10646732e277837f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3593609acea236b10646732e277837f">&#9670;&nbsp;</a></span>SocketCanPort() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SocketCanPort::SocketCanPort </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a087bc07f3c1658e3cb994d85fcb3da5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a087bc07f3c1658e3cb994d85fcb3da5e">&#9670;&nbsp;</a></span>SocketCanPort() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SocketCanPort::SocketCanPort </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>canPort</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0d004347e49110daa1ee29e1d1bc85c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d004347e49110daa1ee29e1d1bc85c0">&#9670;&nbsp;</a></span>~SocketCanPort()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SocketCanPort::~SocketCanPort </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a4fe210160e70043ea78443630b9c4e86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fe210160e70043ea78443630b9c4e86">&#9670;&nbsp;</a></span>GetMsg()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">long SocketCanPort::GetMsg </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t &amp;&#160;</td>
+          <td class="paramname"><em>canId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="classPortBase.html#a57e891d3992f70dea5c5e403350088be">PortBase</a>.</p>
+
+</div>
+</div>
+<a id="a2efe27bd3bb8c8127c89925e1e21535a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2efe27bd3bb8c8127c89925e1e21535a">&#9670;&nbsp;</a></span>GetNMT()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">long SocketCanPort::GetNMT </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t &amp;&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="classPortBase.html#abab2bf17b01d87c2bca01cb2151aa2f1">PortBase</a>.</p>
+
+</div>
+</div>
+<a id="a9209d295c98c12ab85ec61773b775bf4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9209d295c98c12ab85ec61773b775bf4">&#9670;&nbsp;</a></span>Init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">long SocketCanPort::Init </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>canPort</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9375a0c1e33978c83ebd188100898633"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9375a0c1e33978c83ebd188100898633">&#9670;&nbsp;</a></span>PutMsg()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">long SocketCanPort::PutMsg </td>
+          <td>(</td>
+          <td class="paramtype">const uint32_t &amp;&#160;</td>
+          <td class="paramname"><em>canId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *const&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="classPortBase.html#a26213ebb6ea0a0b77f60c28944e3bb8e">PortBase</a>.</p>
+
+</div>
+</div>
+<a id="a1a5d0866524dae11ddff0d1ac22e0dd5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a5d0866524dae11ddff0d1ac22e0dd5">&#9670;&nbsp;</a></span>SetFilter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">long SocketCanPort::SetFilter </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>canId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>mask</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="classPortBase.html#a1d857a81a8e3f3bd460ef7c802ee762c">PortBase</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a7b06b4d8c897c1a189329f20632fdb71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b06b4d8c897c1a189329f20632fdb71">&#9670;&nbsp;</a></span>nbytes</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">long SocketCanPort::nbytes</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad0374fe5ea78a061e7abd16b812f44d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0374fe5ea78a061e7abd16b812f44d5">&#9670;&nbsp;</a></span>poll_setId</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct pollfd SocketCanPort::poll_setId[1]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afaaf9cd49684de93be7370988ec64b47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afaaf9cd49684de93be7370988ec64b47">&#9670;&nbsp;</a></span>poll_setNMT</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct pollfd SocketCanPort::poll_setNMT[1]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a18e670bf7f98482e022da2fd11264309"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18e670bf7f98482e022da2fd11264309">&#9670;&nbsp;</a></span>timeoutPoll</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">long SocketCanPort::timeoutPoll</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="SocketCanPort_8h_source.html">SocketCanPort.h</a></li>
-<li>SocketCanPort.cpp</li>
+<li><a class="el" href="SocketCanPort_8cpp.html">SocketCanPort.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

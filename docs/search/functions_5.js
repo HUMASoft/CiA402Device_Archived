@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['quickstop',['QuickStop',['../classCiA402Device.html#a8573afbf420c29aa86cd215d74f4e4e3',1,'CiA402Device']]]
+  ['operationmode',['OperationMode',['../classCiA402Device.html#a49f298cf0d4d2d68007b3cb396e93a17',1,'CiA402Device']]]
 ];

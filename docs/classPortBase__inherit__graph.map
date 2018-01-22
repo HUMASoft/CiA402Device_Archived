@@ -1,5 +1,5 @@
 <map id="PortBase" name="PortBase">
-<area shape="rect" id="node2" href="$classCanBusPort.html" title="CanBusPort" alt="" coords="5,80,99,107"/>
-<area shape="rect" id="node3" href="$classSocketCanPort.html" title="SocketCanPort" alt="" coords="123,80,234,107"/>
-<area shape="rect" id="node4" href="$classTestPort.html" title="TestPort" alt="" coords="259,80,331,107"/>
+<area shape="rect" id="node2" href="$classCanBusPort.html" title="{CanBusPort\n||+ CanBusPort()\l+ CanBusPort()\l+ getPortId()\l+ SetFilter()\l+ GetMsg()\l+ PutMsg()\l+ GetNMT()\l&#45; Init()\l}" alt="" coords="5,299,119,479"/>
+<area shape="rect" id="node3" href="$classSocketCanPort.html" title="{SocketCanPort\n|&#45; nbytes\l&#45; poll_setId\l&#45; poll_setNMT\l&#45; timeoutPoll\l|+ SocketCanPort()\l+ SocketCanPort()\l+ ~SocketCanPort()\l+ SetFilter()\l+ GetMsg()\l+ PutMsg()\l+ GetNMT()\l&#45; Init()\l}" alt="" coords="143,277,282,501"/>
+<area shape="rect" id="node4" href="$classTestPort.html" title="{TestPort\n||+ TestPort()\l+ TestPort()\l+ ShowBuffer()\l+ getPortId()\l&#45; Init()\l}" alt="" coords="307,321,417,457"/>
 </map>

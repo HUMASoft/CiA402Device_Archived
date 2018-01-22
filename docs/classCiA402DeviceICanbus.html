@@ -61,57 +61,346 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classCiA402DeviceICanbus-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">CiA402DeviceICanbus Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="CiA402DeviceICanbus_8h_source.html">CiA402DeviceICanbus.h</a>&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for CiA402DeviceICanbus:</div>
+<div class="dyncontent">
+<div class="center"><img src="classCiA402DeviceICanbus__coll__graph.png" border="0" usemap="#CiA402DeviceICanbus_coll__map" alt="Collaboration graph"/></div>
+<map name="CiA402DeviceICanbus_coll__map" id="CiA402DeviceICanbus_coll__map">
+<area shape="rect" id="node4" href="structcan__msg.html" title="{can_msg\n||}" alt="" coords="225,160,300,237"/>
+</map>
+</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a205b5105bd658b73b582cf1685f1d320"><td class="memItemLeft" align="right" valign="top"><a id="a205b5105bd658b73b582cf1685f1d320"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>CiA402DeviceICanbus</b> (long number, string canPort)</td></tr>
+<tr class="memitem:a557d59fe9c75dbdd0fc2cf2b3340e95a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA402DeviceICanbus.html#a557d59fe9c75dbdd0fc2cf2b3340e95a">CiA402DeviceICanbus</a> ()</td></tr>
+<tr class="separator:a557d59fe9c75dbdd0fc2cf2b3340e95a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a205b5105bd658b73b582cf1685f1d320"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA402DeviceICanbus.html#a205b5105bd658b73b582cf1685f1d320">CiA402DeviceICanbus</a> (long number, string canPort)</td></tr>
 <tr class="separator:a205b5105bd658b73b582cf1685f1d320"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a757447054eadb6824cf779ca58d276ae"><td class="memItemLeft" align="right" valign="top"><a id="a757447054eadb6824cf779ca58d276ae"></a>
-long&#160;</td><td class="memItemRight" valign="bottom"><b>Init</b> (const vector&lt; int &gt; &amp;new_canPorts, string canPort)</td></tr>
+<tr class="memitem:a757447054eadb6824cf779ca58d276ae"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA402DeviceICanbus.html#a757447054eadb6824cf779ca58d276ae">Init</a> (const vector&lt; int &gt; &amp;new_canPorts, string canPort)</td></tr>
 <tr class="separator:a757447054eadb6824cf779ca58d276ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac831e319febc65d424955e32ecdf72c3"><td class="memItemLeft" align="right" valign="top"><a id="ac831e319febc65d424955e32ecdf72c3"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>SendMessage</b> (<a class="el" href="structco__msg.html">co_msg</a> input, unsigned int canIndex)</td></tr>
+<tr class="memitem:ac831e319febc65d424955e32ecdf72c3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA402DeviceICanbus.html#ac831e319febc65d424955e32ecdf72c3">SendMessage</a> (<a class="el" href="structco__msg.html">co_msg</a> input, unsigned int canIndex)</td></tr>
 <tr class="separator:ac831e319febc65d424955e32ecdf72c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa108188c7f32a1c5d1f50662e66c6676"><td class="memItemLeft" align="right" valign="top"><a id="aa108188c7f32a1c5d1f50662e66c6676"></a>
-long&#160;</td><td class="memItemRight" valign="bottom"><b>co2c</b> (const <a class="el" href="structco__msg.html">co_msg</a> &amp;input, <a class="el" href="structcan__msg.html">can_msg</a> &amp;output)</td></tr>
+<tr class="memitem:aa108188c7f32a1c5d1f50662e66c6676"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA402DeviceICanbus.html#aa108188c7f32a1c5d1f50662e66c6676">co2c</a> (const <a class="el" href="structco__msg.html">co_msg</a> &amp;input, <a class="el" href="structcan__msg.html">can_msg</a> &amp;output)</td></tr>
 <tr class="separator:aa108188c7f32a1c5d1f50662e66c6676"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f8d07b892461470a29ac5d30f3dd679"><td class="memItemLeft" align="right" valign="top"><a id="a1f8d07b892461470a29ac5d30f3dd679"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>WaitForReadMessage</b> (<a class="el" href="structco__msg.html">co_msg</a> &amp;output, unsigned int canIndex)</td></tr>
+<tr class="memitem:a1f8d07b892461470a29ac5d30f3dd679"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA402DeviceICanbus.html#a1f8d07b892461470a29ac5d30f3dd679">WaitForReadMessage</a> (<a class="el" href="structco__msg.html">co_msg</a> &amp;output, unsigned int canIndex)</td></tr>
 <tr class="separator:a1f8d07b892461470a29ac5d30f3dd679"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab504488399b2d5a5a010efef29e3d64"><td class="memItemLeft" align="right" valign="top"><a id="aab504488399b2d5a5a010efef29e3d64"></a>
-long&#160;</td><td class="memItemRight" valign="bottom"><b>c2co</b> (const <a class="el" href="structcan__msg.html">can_msg</a> &amp;input, <a class="el" href="structco__msg.html">co_msg</a> &amp;output)</td></tr>
+<tr class="memitem:aab504488399b2d5a5a010efef29e3d64"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA402DeviceICanbus.html#aab504488399b2d5a5a010efef29e3d64">c2co</a> (const <a class="el" href="structcan__msg.html">can_msg</a> &amp;input, <a class="el" href="structco__msg.html">co_msg</a> &amp;output)</td></tr>
 <tr class="separator:aab504488399b2d5a5a010efef29e3d64"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa439b9175f5879282058a3f4c2edb45d"><td class="memItemLeft" align="right" valign="top"><a id="aa439b9175f5879282058a3f4c2edb45d"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>SetCanOpenMsg</b> (<a class="el" href="structco__msg.html">co_msg</a> &amp;msg_co)</td></tr>
+<tr class="memitem:aa439b9175f5879282058a3f4c2edb45d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA402DeviceICanbus.html#aa439b9175f5879282058a3f4c2edb45d">SetCanOpenMsg</a> (<a class="el" href="structco__msg.html">co_msg</a> &amp;msg_co)</td></tr>
 <tr class="separator:aa439b9175f5879282058a3f4c2edb45d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af09467b107e73f67804942db1597d983"><td class="memItemLeft" align="right" valign="top"><a id="af09467b107e73f67804942db1597d983"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>SetCanOpenMsg</b> (<a class="el" href="structco__msg.html">co_msg</a> &amp;msg_co, uint8_t msg_start[])</td></tr>
+<tr class="memitem:af09467b107e73f67804942db1597d983"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA402DeviceICanbus.html#af09467b107e73f67804942db1597d983">SetCanOpenMsg</a> (<a class="el" href="structco__msg.html">co_msg</a> &amp;msg_co, uint8_t msg_start[])</td></tr>
 <tr class="separator:af09467b107e73f67804942db1597d983"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a93cde3041c3d0a26666b451aa70b246f"><td class="memItemLeft" align="right" valign="top"><a id="a93cde3041c3d0a26666b451aa70b246f"></a>
-<a class="el" href="structcan__msg.html">can_msg</a>&#160;</td><td class="memItemRight" valign="bottom"><b>SetCanMsg</b> (<a class="el" href="structcan__msg.html">can_msg</a> &amp;msg, uint8_t msg_start[])</td></tr>
+<tr class="memitem:a93cde3041c3d0a26666b451aa70b246f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structcan__msg.html">can_msg</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA402DeviceICanbus.html#a93cde3041c3d0a26666b451aa70b246f">SetCanMsg</a> (<a class="el" href="structcan__msg.html">can_msg</a> &amp;msg, uint8_t msg_start[])</td></tr>
 <tr class="separator:a93cde3041c3d0a26666b451aa70b246f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab861fc4d62c917bdb1c06b886c8ed45a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structco__msg.html">co_msg</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA402DeviceICanbus.html#ab861fc4d62c917bdb1c06b886c8ed45a">SetCanOpenMsg</a> (unsigned short id_co, unsigned short rtr, vector&lt; uint8_t &gt; coDataFrame)</td></tr>
-<tr class="memdesc:ab861fc4d62c917bdb1c06b886c8ed45a"><td class="mdescLeft">&#160;</td><td class="mdescRight">CiA402DeviceICanbus::SetCanOpenMsg : Constructs canopen message from parameters.  <a href="#ab861fc4d62c917bdb1c06b886c8ed45a">More...</a><br /></td></tr>
+<tr class="memdesc:ab861fc4d62c917bdb1c06b886c8ed45a"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classCiA402DeviceICanbus.html#aa439b9175f5879282058a3f4c2edb45d">CiA402DeviceICanbus::SetCanOpenMsg</a> : Constructs canopen message from parameters.  <a href="#ab861fc4d62c917bdb1c06b886c8ed45a">More...</a><br /></td></tr>
 <tr class="separator:ab861fc4d62c917bdb1c06b886c8ed45a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a456534a394e4072025f2528938d1070d"><td class="memItemLeft" align="right" valign="top"><a id="a456534a394e4072025f2528938d1070d"></a>
-vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>canPorts</b></td></tr>
+<tr class="memitem:a456534a394e4072025f2528938d1070d"><td class="memItemLeft" align="right" valign="top">vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA402DeviceICanbus.html#a456534a394e4072025f2528938d1070d">canPorts</a></td></tr>
 <tr class="separator:a456534a394e4072025f2528938d1070d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af6cf1493b669ce0415cefed7d84e5710"><td class="memItemLeft" align="right" valign="top"><a id="af6cf1493b669ce0415cefed7d84e5710"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>ret</b></td></tr>
+<tr class="memitem:af6cf1493b669ce0415cefed7d84e5710"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA402DeviceICanbus.html#af6cf1493b669ce0415cefed7d84e5710">ret</a></td></tr>
 <tr class="separator:af6cf1493b669ce0415cefed7d84e5710"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a2ef5507ddae8411aae5b6e47e611ab92"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA402DeviceICanbus.html#a2ef5507ddae8411aae5b6e47e611ab92">read_timeout</a> (int fd, <a class="el" href="structcan__msg.html">can_msg</a> *buf, unsigned int timeout)</td></tr>
+<tr class="separator:a2ef5507ddae8411aae5b6e47e611ab92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a47d8ee98f0f3569874a4018268ab1fb5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structcan__msg.html">can_msg</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA402DeviceICanbus.html#a47d8ee98f0f3569874a4018268ab1fb5">send_msg</a></td></tr>
+<tr class="separator:a47d8ee98f0f3569874a4018268ab1fb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3ab38e7395ad35b3cc28281352b5e40"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA402DeviceICanbus.html#aa3ab38e7395ad35b3cc28281352b5e40">prueba</a></td></tr>
+<tr class="separator:aa3ab38e7395ad35b3cc28281352b5e40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a557d59fe9c75dbdd0fc2cf2b3340e95a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a557d59fe9c75dbdd0fc2cf2b3340e95a">&#9670;&nbsp;</a></span>CiA402DeviceICanbus() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CiA402DeviceICanbus::CiA402DeviceICanbus </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a205b5105bd658b73b582cf1685f1d320"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a205b5105bd658b73b582cf1685f1d320">&#9670;&nbsp;</a></span>CiA402DeviceICanbus() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CiA402DeviceICanbus::CiA402DeviceICanbus </td>
+          <td>(</td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname"><em>number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>canPort</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="aab504488399b2d5a5a010efef29e3d64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab504488399b2d5a5a010efef29e3d64">&#9670;&nbsp;</a></span>c2co()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">long CiA402DeviceICanbus::c2co </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structcan__msg.html">can_msg</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structco__msg.html">co_msg</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa108188c7f32a1c5d1f50662e66c6676"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa108188c7f32a1c5d1f50662e66c6676">&#9670;&nbsp;</a></span>co2c()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">long CiA402DeviceICanbus::co2c </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structco__msg.html">co_msg</a> &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcan__msg.html">can_msg</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a757447054eadb6824cf779ca58d276ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a757447054eadb6824cf779ca58d276ae">&#9670;&nbsp;</a></span>Init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">long CiA402DeviceICanbus::Init </td>
+          <td>(</td>
+          <td class="paramtype">const vector&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>new_canPorts</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>canPort</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2ef5507ddae8411aae5b6e47e611ab92"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ef5507ddae8411aae5b6e47e611ab92">&#9670;&nbsp;</a></span>read_timeout()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CiA402DeviceICanbus::read_timeout </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcan__msg.html">can_msg</a> *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>timeout</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac831e319febc65d424955e32ecdf72c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac831e319febc65d424955e32ecdf72c3">&#9670;&nbsp;</a></span>SendMessage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CiA402DeviceICanbus::SendMessage </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structco__msg.html">co_msg</a>&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>canIndex</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a93cde3041c3d0a26666b451aa70b246f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93cde3041c3d0a26666b451aa70b246f">&#9670;&nbsp;</a></span>SetCanMsg()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structcan__msg.html">can_msg</a> CiA402DeviceICanbus::SetCanMsg </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcan__msg.html">can_msg</a> &amp;&#160;</td>
+          <td class="paramname"><em>msg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>msg_start</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa439b9175f5879282058a3f4c2edb45d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa439b9175f5879282058a3f4c2edb45d">&#9670;&nbsp;</a></span>SetCanOpenMsg() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CiA402DeviceICanbus::SetCanOpenMsg </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structco__msg.html">co_msg</a> &amp;&#160;</td>
+          <td class="paramname"><em>msg_co</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af09467b107e73f67804942db1597d983"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af09467b107e73f67804942db1597d983">&#9670;&nbsp;</a></span>SetCanOpenMsg() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CiA402DeviceICanbus::SetCanOpenMsg </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structco__msg.html">co_msg</a> &amp;&#160;</td>
+          <td class="paramname"><em>msg_co</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>msg_start</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ab861fc4d62c917bdb1c06b886c8ed45a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab861fc4d62c917bdb1c06b886c8ed45a">&#9670;&nbsp;</a></span>SetCanOpenMsg()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ab861fc4d62c917bdb1c06b886c8ed45a">&#9670;&nbsp;</a></span>SetCanOpenMsg() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -142,7 +431,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>ret</b></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>CiA402DeviceICanbus::SetCanOpenMsg : Constructs canopen message from parameters. </p>
+<p><a class="el" href="classCiA402DeviceICanbus.html#aa439b9175f5879282058a3f4c2edb45d">CiA402DeviceICanbus::SetCanOpenMsg</a> : Constructs canopen message from parameters. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">id_co</td><td>cob id canopen parameter. </td></tr>
@@ -155,9 +444,110 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>ret</b></td></tr>
 
 </div>
 </div>
+<a id="a1f8d07b892461470a29ac5d30f3dd679"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f8d07b892461470a29ac5d30f3dd679">&#9670;&nbsp;</a></span>WaitForReadMessage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CiA402DeviceICanbus::WaitForReadMessage </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structco__msg.html">co_msg</a> &amp;&#160;</td>
+          <td class="paramname"><em>output</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>canIndex</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a456534a394e4072025f2528938d1070d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a456534a394e4072025f2528938d1070d">&#9670;&nbsp;</a></span>canPorts</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt;int&gt; CiA402DeviceICanbus::canPorts</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa3ab38e7395ad35b3cc28281352b5e40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3ab38e7395ad35b3cc28281352b5e40">&#9670;&nbsp;</a></span>prueba</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">long CiA402DeviceICanbus::prueba</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af6cf1493b669ce0415cefed7d84e5710"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6cf1493b669ce0415cefed7d84e5710">&#9670;&nbsp;</a></span>ret</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CiA402DeviceICanbus::ret</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a47d8ee98f0f3569874a4018268ab1fb5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47d8ee98f0f3569874a4018268ab1fb5">&#9670;&nbsp;</a></span>send_msg</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structcan__msg.html">can_msg</a> CiA402DeviceICanbus::send_msg</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="CiA402DeviceICanbus_8h_source.html">CiA402DeviceICanbus.h</a></li>
-<li>CiA402DeviceICanbus.cpp</li>
+<li><a class="el" href="CiA402DeviceICanbus_8cpp.html">CiA402DeviceICanbus.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

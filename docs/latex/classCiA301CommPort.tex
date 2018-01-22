@@ -2,58 +2,151 @@
 \label{classCiA301CommPort}\index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
 
 
-Inheritance diagram for Ci\+A301\+Comm\+Port\+:
-\nopagebreak
+{\ttfamily \#include $<$Ci\+A301\+Comm\+Port.\+h$>$}
+
+
+
+Inheritance diagram for Ci\+A301\+Comm\+Port\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=176pt]{classCiA301CommPort__inherit__graph}
+\includegraphics[height=550pt]{classCiA301CommPort__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Ci\+A301\+Comm\+Port\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classCiA301CommPort__coll__graph}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classCiA301CommPort_aae705cb5c6a405ef74a10e5220d0b08f}\label{classCiA301CommPort_aae705cb5c6a405ef74a10e5220d0b08f}} 
-{\bfseries Ci\+A301\+Comm\+Port} (int new\+Port\+File\+Descriptor, uint8\+\_\+t new\+\_\+id)
+\hyperlink{classCiA301CommPort_aae705cb5c6a405ef74a10e5220d0b08f}{Ci\+A301\+Comm\+Port} (int new\+Port\+File\+Descriptor, uint8\+\_\+t new\+\_\+id)
 \item 
-\mbox{\Hypertarget{classCiA301CommPort_a1e05c4b292cfee36ff9eeddb2c8eb4c0}\label{classCiA301CommPort_a1e05c4b292cfee36ff9eeddb2c8eb4c0}} 
-{\bfseries Ci\+A301\+Comm\+Port} (\hyperlink{classPortBase}{Port\+Base} $\ast$new\+\_\+port, uint8\+\_\+t new\+\_\+id)
+\hyperlink{classCiA301CommPort_a1e05c4b292cfee36ff9eeddb2c8eb4c0}{Ci\+A301\+Comm\+Port} (\hyperlink{classPortBase}{Port\+Base} $\ast$new\+\_\+port, uint8\+\_\+t new\+\_\+id)
 \item 
-\mbox{\Hypertarget{classCiA301CommPort_a0fd0920052684589bc37bb898dcdd758}\label{classCiA301CommPort_a0fd0920052684589bc37bb898dcdd758}} 
-long {\bfseries Read\+S\+DO} (vector$<$ uint8\+\_\+t $>$ address, int subindex)
+long \hyperlink{classCiA301CommPort_a0fd0920052684589bc37bb898dcdd758}{Read\+S\+DO} (vector$<$ uint8\+\_\+t $>$ address, int subindex)
 \item 
 long \hyperlink{classCiA301CommPort_a3f74ce5899b30731322dabd352ccdc55}{Read\+S\+DO} (const vector$<$ uint8\+\_\+t $>$ \&address)
-\begin{DoxyCompactList}\small\item\em Ci\+A301\+Comm\+Port\+::\+Read\+S\+DO Waits until expected. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classCiA301CommPort_a02df85ed5140d0d7a57fe0d2f6e47ea1}\label{classCiA301CommPort_a02df85ed5140d0d7a57fe0d2f6e47ea1}} 
-long {\bfseries Read\+N\+MT} (const vector$<$ uint8\+\_\+t $>$ \&nmt\+Code)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCiA301CommPort_a0fd0920052684589bc37bb898dcdd758}{Ci\+A301\+Comm\+Port\+::\+Read\+S\+DO} Waits until expected. \end{DoxyCompactList}\item 
+long \hyperlink{classCiA301CommPort_a02df85ed5140d0d7a57fe0d2f6e47ea1}{Read\+N\+MT} (const vector$<$ uint8\+\_\+t $>$ \&nmt\+Code)
 \item 
 long \hyperlink{classCiA301CommPort_a09feb3f78831c9fbb683a85cc3bc4562}{Write\+N\+MT} (const vector$<$ uint8\+\_\+t $>$ \&nmt\+Command)
 \begin{DoxyCompactList}\small\item\em Write\+N\+MT This function sends N\+MT message from node to Can\+Bus. \end{DoxyCompactList}\item 
 long \hyperlink{classCiA301CommPort_a56d2c604b11363e6b287f59b68a546bd}{Write\+P\+DO} (const vector$<$ uint8\+\_\+t $>$ \&command)
 \begin{DoxyCompactList}\small\item\em Write\+P\+DO This function sends P\+DO message to a node (the mode id is configured on constructor). \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classCiA301CommPort_a067cddaf01932fa6fa27255c61b08190}\label{classCiA301CommPort_a067cddaf01932fa6fa27255c61b08190}} 
-long {\bfseries Flush\+Buffer} ()
+long \hyperlink{classCiA301CommPort_a067cddaf01932fa6fa27255c61b08190}{Flush\+Buffer} ()
 \item 
 long \hyperlink{classCiA301CommPort_ab29e221039a2d21d1446edb09b91864e}{Flush\+Buffer} (int msgs)
 \begin{DoxyCompactList}\small\item\em Flush\+Buffer Removes the msgs number of can frames from buffer. \end{DoxyCompactList}\item 
 long \hyperlink{classCiA301CommPort_a4d97c27423b2323f8475f6e5c2f91575}{Write\+S\+DO} (const vector$<$ uint8\+\_\+t $>$ \&address, const vector$<$ uint8\+\_\+t $>$ \&value)
 \begin{DoxyCompactList}\small\item\em Write\+S\+DO Writes 4 byte value to specific address on device. This function sends S\+DO message requesting write on the object dictionary address. Also block and wait for the S\+DO msg for write ack, and returns negative if error. As it reads the ack S\+DO message, the buffer should be same size after this function returns. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classCiA301CommPort_a1faf4f37530e0dd0ae4600cfb0b1d742}\label{classCiA301CommPort_a1faf4f37530e0dd0ae4600cfb0b1d742}} 
-long {\bfseries Write\+P\+D\+O4} (const vector$<$ uint8\+\_\+t $>$ \&command)
+long \hyperlink{classCiA301CommPort_a1faf4f37530e0dd0ae4600cfb0b1d742}{Write\+P\+D\+O4} (const vector$<$ uint8\+\_\+t $>$ \&command)
 \item 
-\mbox{\Hypertarget{classCiA301CommPort_a46534ff9e7e2a05a0b4913e4331710e5}\label{classCiA301CommPort_a46534ff9e7e2a05a0b4913e4331710e5}} 
-long {\bfseries Read\+Error\+N\+MT} ()
+long \hyperlink{classCiA301CommPort_a46534ff9e7e2a05a0b4913e4331710e5}{Read\+Error\+N\+MT} ()
 \item 
-\mbox{\Hypertarget{classCiA301CommPort_a827f3e594b9f1e57a7b7ccb8a278404a}\label{classCiA301CommPort_a827f3e594b9f1e57a7b7ccb8a278404a}} 
-long {\bfseries Read\+P\+DO} (long number)
+long \hyperlink{classCiA301CommPort_a827f3e594b9f1e57a7b7ccb8a278404a}{Read\+P\+DO} (long number)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+long \hyperlink{classCiA301CommPort_a26346f83700bc8403a315be01c6508e0}{Can\+Open\+To\+Can\+Bus} (const \hyperlink{structco__msg}{co\+\_\+msg} \&\hyperlink{classCiA301CommPort_ae0f955c7141e2067307cea0b48e111d4}{input}, \hyperlink{structcan__msg}{can\+\_\+msg} \&output)
+\item 
+long \hyperlink{classCiA301CommPort_aa16887712ea9cad534aacd4851f9190d}{Can\+Bus\+To\+Can\+Open} (const \hyperlink{structcan__msg}{can\+\_\+msg} \&\hyperlink{classCiA301CommPort_ae0f955c7141e2067307cea0b48e111d4}{input}, \hyperlink{structco__msg}{co\+\_\+msg} \&output)
+\item 
+uint32\+\_\+t \hyperlink{classCiA301CommPort_a77ec43d792a81489e221c3990225e57b}{data4x8to32} (const uint8\+\_\+t $\ast$in)
+\item 
+uint32\+\_\+t \hyperlink{classCiA301CommPort_a2bbd06fc6ae74727cef148911e433495}{Data\+To\+Int} (const uint8\+\_\+t $\ast$in, const uint8\+\_\+t size)
+\item 
+int \hyperlink{classCiA301CommPort_aeae04455e1e1a1ca1beed9478372c031}{Send\+Message} (\hyperlink{structco__msg}{co\+\_\+msg} \hyperlink{classCiA301CommPort_ae0f955c7141e2067307cea0b48e111d4}{input})
+\item 
+int \hyperlink{classCiA301CommPort_a700a04da67928ca50744617ece28cde5}{Send\+Can\+Message} (\hyperlink{structcan__msg}{can\+\_\+msg} \&\hyperlink{classCiA301CommPort_ae0f955c7141e2067307cea0b48e111d4}{input})
+\item 
+int \hyperlink{classCiA301CommPort_a02ba7069a0497e3497f3dfaec2879b54}{Wait\+For\+Read\+Message} (\hyperlink{structco__msg}{co\+\_\+msg} \&output, unsigned int can\+Index)
+\item 
+int \hyperlink{classCiA301CommPort_a408f53d13935a1916ca6f21d08ae135e}{Read\+Cob\+Id} (uint16\+\_\+t expected\+\_\+cobid, \hyperlink{structco__msg}{co\+\_\+msg} \&output)
+\begin{DoxyCompactList}\small\item\em Ci\+A301\+Comm\+Port\+::\+Wait\+For\+Answer Read the port until expected canopen answer shows up in the port reads. \end{DoxyCompactList}\item 
+int \hyperlink{classCiA301CommPort_ae62c2389b38a0e217aff7ca17a3d87b6}{read\+\_\+timeout} (int fd, \hyperlink{structcan__msg}{can\+\_\+msg} $\ast$buf, unsigned int timeout)
+\item 
+long \hyperlink{classCiA301CommPort_a645450ca09e07ea6da339923ceeec934}{Get\+Msg} (\hyperlink{structcan__msg}{can\+\_\+msg} \&msg)
+\item 
+\hyperlink{structco__msg}{co\+\_\+msg} \hyperlink{classCiA301CommPort_a2c197480112989df6bdb9ea89a649636}{Set\+Can\+Open\+Msg} (unsigned short id\+\_\+co, unsigned short rtr, vector$<$ uint8\+\_\+t $>$ co\+Data\+Frame)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCiA402DeviceICanbus_aa439b9175f5879282058a3f4c2edb45d}{Ci\+A402\+Device\+I\+Canbus\+::\+Set\+Can\+Open\+Msg} \+: Constructs canopen message from parameters. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classCiA301CommPort_adc50c8d333b18fcb1b5c61ca69ea05c6}{port\+File\+Descriptor}
+\item 
+uint8\+\_\+t \hyperlink{classCiA301CommPort_a1ae075d22fc854da21a6e691bb029fc0}{id}
+\item 
+\hyperlink{classPortBase}{Port\+Base} $\ast$ \hyperlink{classCiA301CommPort_a6b8366387075c99ee980d2ca79c7b7fc}{port}
+\item 
+bool \hyperlink{classCiA301CommPort_a579e0de814111bde3bbe18cceb76ce64}{usesockets}
+\item 
+\hyperlink{structcan__msg}{can\+\_\+msg} \hyperlink{classCiA301CommPort_ade81ac897a5d851d946dd7a18245b75d}{send\+\_\+msg}
+\item 
+\hyperlink{structcan__msg}{can\+\_\+msg} \hyperlink{classCiA301CommPort_ae0f955c7141e2067307cea0b48e111d4}{input}
+\item 
+vector$<$ \hyperlink{structcan__msg}{can\+\_\+msg} $>$ \hyperlink{classCiA301CommPort_a8b904f3591ecfb99fd82271343727215}{read\+Buffer}
+\item 
+vector$<$ unsigned int $>$ \hyperlink{classCiA301CommPort_a41b2fcb24a27e5280417db03d8cdb399}{read\+Inbox}
 \end{DoxyCompactItemize}
 
 
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classCiA301CommPort_aae705cb5c6a405ef74a10e5220d0b08f}\label{classCiA301CommPort_aae705cb5c6a405ef74a10e5220d0b08f}} 
+\index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
+\index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
+\subsubsection{\texorpdfstring{Ci\+A301\+Comm\+Port()}{CiA301CommPort()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Ci\+A301\+Comm\+Port\+::\+Ci\+A301\+Comm\+Port (\begin{DoxyParamCaption}\item[{int}]{new\+Port\+File\+Descriptor,  }\item[{uint8\+\_\+t}]{new\+\_\+id }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classCiA301CommPort_a1e05c4b292cfee36ff9eeddb2c8eb4c0}\label{classCiA301CommPort_a1e05c4b292cfee36ff9eeddb2c8eb4c0}} 
+\index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
+\index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
+\subsubsection{\texorpdfstring{Ci\+A301\+Comm\+Port()}{CiA301CommPort()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Ci\+A301\+Comm\+Port\+::\+Ci\+A301\+Comm\+Port (\begin{DoxyParamCaption}\item[{\hyperlink{classPortBase}{Port\+Base} $\ast$}]{new\+\_\+port,  }\item[{uint8\+\_\+t}]{new\+\_\+id }\end{DoxyParamCaption})}
+
+
+
 \subsection{Member Function Documentation}
+\mbox{\Hypertarget{classCiA301CommPort_aa16887712ea9cad534aacd4851f9190d}\label{classCiA301CommPort_aa16887712ea9cad534aacd4851f9190d}} 
+\index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!Can\+Bus\+To\+Can\+Open@{Can\+Bus\+To\+Can\+Open}}
+\index{Can\+Bus\+To\+Can\+Open@{Can\+Bus\+To\+Can\+Open}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
+\subsubsection{\texorpdfstring{Can\+Bus\+To\+Can\+Open()}{CanBusToCanOpen()}}
+{\footnotesize\ttfamily long Ci\+A301\+Comm\+Port\+::\+Can\+Bus\+To\+Can\+Open (\begin{DoxyParamCaption}\item[{const \hyperlink{structcan__msg}{can\+\_\+msg} \&}]{input,  }\item[{\hyperlink{structco__msg}{co\+\_\+msg} \&}]{output }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classCiA301CommPort_a26346f83700bc8403a315be01c6508e0}\label{classCiA301CommPort_a26346f83700bc8403a315be01c6508e0}} 
+\index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!Can\+Open\+To\+Can\+Bus@{Can\+Open\+To\+Can\+Bus}}
+\index{Can\+Open\+To\+Can\+Bus@{Can\+Open\+To\+Can\+Bus}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
+\subsubsection{\texorpdfstring{Can\+Open\+To\+Can\+Bus()}{CanOpenToCanBus()}}
+{\footnotesize\ttfamily long Ci\+A301\+Comm\+Port\+::\+Can\+Open\+To\+Can\+Bus (\begin{DoxyParamCaption}\item[{const \hyperlink{structco__msg}{co\+\_\+msg} \&}]{input,  }\item[{\hyperlink{structcan__msg}{can\+\_\+msg} \&}]{output }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classCiA301CommPort_a77ec43d792a81489e221c3990225e57b}\label{classCiA301CommPort_a77ec43d792a81489e221c3990225e57b}} 
+\index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!data4x8to32@{data4x8to32}}
+\index{data4x8to32@{data4x8to32}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
+\subsubsection{\texorpdfstring{data4x8to32()}{data4x8to32()}}
+{\footnotesize\ttfamily uint32\+\_\+t Ci\+A301\+Comm\+Port\+::data4x8to32 (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t $\ast$}]{in }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classCiA301CommPort_a2bbd06fc6ae74727cef148911e433495}\label{classCiA301CommPort_a2bbd06fc6ae74727cef148911e433495}} 
+\index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!Data\+To\+Int@{Data\+To\+Int}}
+\index{Data\+To\+Int@{Data\+To\+Int}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
+\subsubsection{\texorpdfstring{Data\+To\+Int()}{DataToInt()}}
+{\footnotesize\ttfamily uint32\+\_\+t Ci\+A301\+Comm\+Port\+::\+Data\+To\+Int (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t $\ast$}]{in,  }\item[{const uint8\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classCiA301CommPort_a067cddaf01932fa6fa27255c61b08190}\label{classCiA301CommPort_a067cddaf01932fa6fa27255c61b08190}} 
+\index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!Flush\+Buffer@{Flush\+Buffer}}
+\index{Flush\+Buffer@{Flush\+Buffer}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
+\subsubsection{\texorpdfstring{Flush\+Buffer()}{FlushBuffer()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily long Ci\+A301\+Comm\+Port\+::\+Flush\+Buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{classCiA301CommPort_ab29e221039a2d21d1446edb09b91864e}\label{classCiA301CommPort_ab29e221039a2d21d1446edb09b91864e}} 
 \index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!Flush\+Buffer@{Flush\+Buffer}}
 \index{Flush\+Buffer@{Flush\+Buffer}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
-\subsubsection{\texorpdfstring{Flush\+Buffer()}{FlushBuffer()}}
+\subsubsection{\texorpdfstring{Flush\+Buffer()}{FlushBuffer()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily long Ci\+A301\+Comm\+Port\+::\+Flush\+Buffer (\begin{DoxyParamCaption}\item[{int}]{msgs }\end{DoxyParamCaption})}
 
 
@@ -68,15 +161,71 @@ Flush\+Buffer Removes the msgs number of can frames from buffer.
 \begin{DoxyReturn}{Returns}
 0 if no error. 
 \end{DoxyReturn}
+\mbox{\Hypertarget{classCiA301CommPort_a645450ca09e07ea6da339923ceeec934}\label{classCiA301CommPort_a645450ca09e07ea6da339923ceeec934}} 
+\index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!Get\+Msg@{Get\+Msg}}
+\index{Get\+Msg@{Get\+Msg}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
+\subsubsection{\texorpdfstring{Get\+Msg()}{GetMsg()}}
+{\footnotesize\ttfamily long Ci\+A301\+Comm\+Port\+::\+Get\+Msg (\begin{DoxyParamCaption}\item[{\hyperlink{structcan__msg}{can\+\_\+msg} \&}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classCiA301CommPort_ae62c2389b38a0e217aff7ca17a3d87b6}\label{classCiA301CommPort_ae62c2389b38a0e217aff7ca17a3d87b6}} 
+\index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!read\+\_\+timeout@{read\+\_\+timeout}}
+\index{read\+\_\+timeout@{read\+\_\+timeout}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
+\subsubsection{\texorpdfstring{read\+\_\+timeout()}{read\_timeout()}}
+{\footnotesize\ttfamily int Ci\+A301\+Comm\+Port\+::read\+\_\+timeout (\begin{DoxyParamCaption}\item[{int}]{fd,  }\item[{\hyperlink{structcan__msg}{can\+\_\+msg} $\ast$}]{buf,  }\item[{unsigned int}]{timeout }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classCiA301CommPort_a408f53d13935a1916ca6f21d08ae135e}\label{classCiA301CommPort_a408f53d13935a1916ca6f21d08ae135e}} 
+\index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!Read\+Cob\+Id@{Read\+Cob\+Id}}
+\index{Read\+Cob\+Id@{Read\+Cob\+Id}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
+\subsubsection{\texorpdfstring{Read\+Cob\+Id()}{ReadCobId()}}
+{\footnotesize\ttfamily int Ci\+A301\+Comm\+Port\+::\+Read\+Cob\+Id (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{expected\+\_\+cobid,  }\item[{\hyperlink{structco__msg}{co\+\_\+msg} \&}]{output }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ci\+A301\+Comm\+Port\+::\+Wait\+For\+Answer Read the port until expected canopen answer shows up in the port reads. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em output} & Expected canopen answer. \\
+\hline
+{\em can\+Index} & Index of the caller. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCiA301CommPort_a46534ff9e7e2a05a0b4913e4331710e5}\label{classCiA301CommPort_a46534ff9e7e2a05a0b4913e4331710e5}} 
+\index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!Read\+Error\+N\+MT@{Read\+Error\+N\+MT}}
+\index{Read\+Error\+N\+MT@{Read\+Error\+N\+MT}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
+\subsubsection{\texorpdfstring{Read\+Error\+N\+M\+T()}{ReadErrorNMT()}}
+{\footnotesize\ttfamily long Ci\+A301\+Comm\+Port\+::\+Read\+Error\+N\+MT (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classCiA301CommPort_a02df85ed5140d0d7a57fe0d2f6e47ea1}\label{classCiA301CommPort_a02df85ed5140d0d7a57fe0d2f6e47ea1}} 
+\index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!Read\+N\+MT@{Read\+N\+MT}}
+\index{Read\+N\+MT@{Read\+N\+MT}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
+\subsubsection{\texorpdfstring{Read\+N\+M\+T()}{ReadNMT()}}
+{\footnotesize\ttfamily long Ci\+A301\+Comm\+Port\+::\+Read\+N\+MT (\begin{DoxyParamCaption}\item[{const vector$<$ uint8\+\_\+t $>$ \&}]{nmt\+Code }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classCiA301CommPort_a827f3e594b9f1e57a7b7ccb8a278404a}\label{classCiA301CommPort_a827f3e594b9f1e57a7b7ccb8a278404a}} 
+\index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!Read\+P\+DO@{Read\+P\+DO}}
+\index{Read\+P\+DO@{Read\+P\+DO}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
+\subsubsection{\texorpdfstring{Read\+P\+D\+O()}{ReadPDO()}}
+{\footnotesize\ttfamily long Ci\+A301\+Comm\+Port\+::\+Read\+P\+DO (\begin{DoxyParamCaption}\item[{long}]{number }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classCiA301CommPort_a0fd0920052684589bc37bb898dcdd758}\label{classCiA301CommPort_a0fd0920052684589bc37bb898dcdd758}} 
+\index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!Read\+S\+DO@{Read\+S\+DO}}
+\index{Read\+S\+DO@{Read\+S\+DO}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
+\subsubsection{\texorpdfstring{Read\+S\+D\+O()}{ReadSDO()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily long Ci\+A301\+Comm\+Port\+::\+Read\+S\+DO (\begin{DoxyParamCaption}\item[{vector$<$ uint8\+\_\+t $>$}]{address,  }\item[{int}]{subindex }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{classCiA301CommPort_a3f74ce5899b30731322dabd352ccdc55}\label{classCiA301CommPort_a3f74ce5899b30731322dabd352ccdc55}} 
 \index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!Read\+S\+DO@{Read\+S\+DO}}
 \index{Read\+S\+DO@{Read\+S\+DO}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
-\subsubsection{\texorpdfstring{Read\+S\+D\+O()}{ReadSDO()}}
+\subsubsection{\texorpdfstring{Read\+S\+D\+O()}{ReadSDO()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily long Ci\+A301\+Comm\+Port\+::\+Read\+S\+DO (\begin{DoxyParamCaption}\item[{const vector$<$ uint8\+\_\+t $>$ \&}]{address }\end{DoxyParamCaption})}
 
 
 
-Ci\+A301\+Comm\+Port\+::\+Read\+S\+DO Waits until expected. 
+\hyperlink{classCiA301CommPort_a0fd0920052684589bc37bb898dcdd758}{Ci\+A301\+Comm\+Port\+::\+Read\+S\+DO} Waits until expected. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -86,6 +235,46 @@ Ci\+A301\+Comm\+Port\+::\+Read\+S\+DO Waits until expected.
 \begin{DoxyReturn}{Returns}
 
 \end{DoxyReturn}
+\mbox{\Hypertarget{classCiA301CommPort_a700a04da67928ca50744617ece28cde5}\label{classCiA301CommPort_a700a04da67928ca50744617ece28cde5}} 
+\index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!Send\+Can\+Message@{Send\+Can\+Message}}
+\index{Send\+Can\+Message@{Send\+Can\+Message}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
+\subsubsection{\texorpdfstring{Send\+Can\+Message()}{SendCanMessage()}}
+{\footnotesize\ttfamily int Ci\+A301\+Comm\+Port\+::\+Send\+Can\+Message (\begin{DoxyParamCaption}\item[{\hyperlink{structcan__msg}{can\+\_\+msg} \&}]{input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classCiA301CommPort_aeae04455e1e1a1ca1beed9478372c031}\label{classCiA301CommPort_aeae04455e1e1a1ca1beed9478372c031}} 
+\index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!Send\+Message@{Send\+Message}}
+\index{Send\+Message@{Send\+Message}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
+\subsubsection{\texorpdfstring{Send\+Message()}{SendMessage()}}
+{\footnotesize\ttfamily int Ci\+A301\+Comm\+Port\+::\+Send\+Message (\begin{DoxyParamCaption}\item[{\hyperlink{structco__msg}{co\+\_\+msg}}]{input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classCiA301CommPort_a2c197480112989df6bdb9ea89a649636}\label{classCiA301CommPort_a2c197480112989df6bdb9ea89a649636}} 
+\index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!Set\+Can\+Open\+Msg@{Set\+Can\+Open\+Msg}}
+\index{Set\+Can\+Open\+Msg@{Set\+Can\+Open\+Msg}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
+\subsubsection{\texorpdfstring{Set\+Can\+Open\+Msg()}{SetCanOpenMsg()}}
+{\footnotesize\ttfamily \hyperlink{structco__msg}{co\+\_\+msg} Ci\+A301\+Comm\+Port\+::\+Set\+Can\+Open\+Msg (\begin{DoxyParamCaption}\item[{unsigned short}]{id\+\_\+co,  }\item[{unsigned short}]{rtr,  }\item[{vector$<$ uint8\+\_\+t $>$}]{co\+Data\+Frame }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\hyperlink{classCiA402DeviceICanbus_aa439b9175f5879282058a3f4c2edb45d}{Ci\+A402\+Device\+I\+Canbus\+::\+Set\+Can\+Open\+Msg} \+: Constructs canopen message from parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id\+\_\+co} & cob id canopen parameter. \\
+\hline
+{\em rtr} & request for remote. \\
+\hline
+{\em msg\+\_\+start} & \+: canopen data frame. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: canopen constructed message in \hyperlink{structco__msg}{co\+\_\+msg} data type. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCiA301CommPort_a02ba7069a0497e3497f3dfaec2879b54}\label{classCiA301CommPort_a02ba7069a0497e3497f3dfaec2879b54}} 
+\index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!Wait\+For\+Read\+Message@{Wait\+For\+Read\+Message}}
+\index{Wait\+For\+Read\+Message@{Wait\+For\+Read\+Message}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
+\subsubsection{\texorpdfstring{Wait\+For\+Read\+Message()}{WaitForReadMessage()}}
+{\footnotesize\ttfamily int Ci\+A301\+Comm\+Port\+::\+Wait\+For\+Read\+Message (\begin{DoxyParamCaption}\item[{\hyperlink{structco__msg}{co\+\_\+msg} \&}]{output,  }\item[{unsigned int}]{can\+Index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
 \mbox{\Hypertarget{classCiA301CommPort_a09feb3f78831c9fbb683a85cc3bc4562}\label{classCiA301CommPort_a09feb3f78831c9fbb683a85cc3bc4562}} 
 \index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!Write\+N\+MT@{Write\+N\+MT}}
 \index{Write\+N\+MT@{Write\+N\+MT}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
@@ -122,6 +311,12 @@ Write\+P\+DO This function sends P\+DO message to a node (the mode id is configu
 \begin{DoxyReturn}{Returns}
 0 if no error. 
 \end{DoxyReturn}
+\mbox{\Hypertarget{classCiA301CommPort_a1faf4f37530e0dd0ae4600cfb0b1d742}\label{classCiA301CommPort_a1faf4f37530e0dd0ae4600cfb0b1d742}} 
+\index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!Write\+P\+D\+O4@{Write\+P\+D\+O4}}
+\index{Write\+P\+D\+O4@{Write\+P\+D\+O4}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
+\subsubsection{\texorpdfstring{Write\+P\+D\+O4()}{WritePDO4()}}
+{\footnotesize\ttfamily long Ci\+A301\+Comm\+Port\+::\+Write\+P\+D\+O4 (\begin{DoxyParamCaption}\item[{const vector$<$ uint8\+\_\+t $>$ \&}]{command }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{classCiA301CommPort_a4d97c27423b2323f8475f6e5c2f91575}\label{classCiA301CommPort_a4d97c27423b2323f8475f6e5c2f91575}} 
 \index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!Write\+S\+DO@{Write\+S\+DO}}
 \index{Write\+S\+DO@{Write\+S\+DO}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
@@ -144,7 +339,58 @@ Write\+S\+DO Writes 4 byte value to specific address on device. This function se
 \end{DoxyReturn}
 
 
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classCiA301CommPort_a1ae075d22fc854da21a6e691bb029fc0}\label{classCiA301CommPort_a1ae075d22fc854da21a6e691bb029fc0}} 
+\index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!id@{id}}
+\index{id@{id}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
+\subsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily uint8\+\_\+t Ci\+A301\+Comm\+Port\+::id\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classCiA301CommPort_ae0f955c7141e2067307cea0b48e111d4}\label{classCiA301CommPort_ae0f955c7141e2067307cea0b48e111d4}} 
+\index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!input@{input}}
+\index{input@{input}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
+\subsubsection{\texorpdfstring{input}{input}}
+{\footnotesize\ttfamily \hyperlink{structcan__msg}{can\+\_\+msg} Ci\+A301\+Comm\+Port\+::input\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classCiA301CommPort_a6b8366387075c99ee980d2ca79c7b7fc}\label{classCiA301CommPort_a6b8366387075c99ee980d2ca79c7b7fc}} 
+\index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!port@{port}}
+\index{port@{port}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
+\subsubsection{\texorpdfstring{port}{port}}
+{\footnotesize\ttfamily \hyperlink{classPortBase}{Port\+Base}$\ast$ Ci\+A301\+Comm\+Port\+::port\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classCiA301CommPort_adc50c8d333b18fcb1b5c61ca69ea05c6}\label{classCiA301CommPort_adc50c8d333b18fcb1b5c61ca69ea05c6}} 
+\index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!port\+File\+Descriptor@{port\+File\+Descriptor}}
+\index{port\+File\+Descriptor@{port\+File\+Descriptor}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
+\subsubsection{\texorpdfstring{port\+File\+Descriptor}{portFileDescriptor}}
+{\footnotesize\ttfamily int Ci\+A301\+Comm\+Port\+::port\+File\+Descriptor\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classCiA301CommPort_a8b904f3591ecfb99fd82271343727215}\label{classCiA301CommPort_a8b904f3591ecfb99fd82271343727215}} 
+\index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!read\+Buffer@{read\+Buffer}}
+\index{read\+Buffer@{read\+Buffer}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
+\subsubsection{\texorpdfstring{read\+Buffer}{readBuffer}}
+{\footnotesize\ttfamily vector$<$\hyperlink{structcan__msg}{can\+\_\+msg}$>$ Ci\+A301\+Comm\+Port\+::read\+Buffer\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classCiA301CommPort_a41b2fcb24a27e5280417db03d8cdb399}\label{classCiA301CommPort_a41b2fcb24a27e5280417db03d8cdb399}} 
+\index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!read\+Inbox@{read\+Inbox}}
+\index{read\+Inbox@{read\+Inbox}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
+\subsubsection{\texorpdfstring{read\+Inbox}{readInbox}}
+{\footnotesize\ttfamily vector$<$unsigned int$>$ Ci\+A301\+Comm\+Port\+::read\+Inbox\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classCiA301CommPort_ade81ac897a5d851d946dd7a18245b75d}\label{classCiA301CommPort_ade81ac897a5d851d946dd7a18245b75d}} 
+\index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!send\+\_\+msg@{send\+\_\+msg}}
+\index{send\+\_\+msg@{send\+\_\+msg}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
+\subsubsection{\texorpdfstring{send\+\_\+msg}{send\_msg}}
+{\footnotesize\ttfamily \hyperlink{structcan__msg}{can\+\_\+msg} Ci\+A301\+Comm\+Port\+::send\+\_\+msg\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classCiA301CommPort_a579e0de814111bde3bbe18cceb76ce64}\label{classCiA301CommPort_a579e0de814111bde3bbe18cceb76ce64}} 
+\index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!usesockets@{usesockets}}
+\index{usesockets@{usesockets}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
+\subsubsection{\texorpdfstring{usesockets}{usesockets}}
+{\footnotesize\ttfamily bool Ci\+A301\+Comm\+Port\+::usesockets\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Ci\+A301\+Comm\+Port.\+h\item 
-Ci\+A301\+Comm\+Port.\+cpp\end{DoxyCompactItemize}
+\hyperlink{CiA301CommPort_8h}{Ci\+A301\+Comm\+Port.\+h}\item 
+\hyperlink{CiA301CommPort_8cpp}{Ci\+A301\+Comm\+Port.\+cpp}\end{DoxyCompactItemize}

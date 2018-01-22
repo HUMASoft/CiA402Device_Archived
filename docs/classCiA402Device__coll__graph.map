@@ -1,3 +1,5 @@
 <map id="CiA402Device" name="CiA402Device">
-<area shape="rect" id="node2" href="$classCiA301CommPort.html" title="CiA301CommPort" alt="" coords="5,5,133,32"/>
+<area shape="rect" id="node2" href="$classCiA301CommPort.html" title="{CiA301CommPort\n||+ CiA301CommPort()\l+ CiA301CommPort()\l+ ReadSDO()\l+ ReadSDO()\l+ ReadNMT()\l+ WriteNMT()\l+ WritePDO()\l+ FlushBuffer()\l+ FlushBuffer()\l+ WriteSDO()\l+ WritePDO4()\l+ ReadErrorNMT()\l+ ReadPDO()\l&#45; CanOpenToCanBus()\l&#45; CanBusToCanOpen()\l&#45; data4x8to32()\l&#45; DataToInt()\l&#45; SendMessage()\l&#45; SendCanMessage()\l&#45; WaitForReadMessage()\l&#45; ReadCobId()\l&#45; read_timeout()\l&#45; GetMsg()\l&#45; SetCanOpenMsg()\l}" alt="" coords="457,403,625,817"/>
+<area shape="rect" id="node3" href="$classPortBase.html" title="{PortBase\n||+ PortBase()\l+ getPortId()\l+ FlushMsg()\l+ SetFilter()\l+ GetMsg()\l+ PutMsg()\l+ GetNMT()\l}" alt="" coords="184,160,283,325"/>
+<area shape="rect" id="node10" href="$structcan__msg.html" title="{can_msg\n||}" alt="" coords="1012,204,1087,281"/>
 </map>

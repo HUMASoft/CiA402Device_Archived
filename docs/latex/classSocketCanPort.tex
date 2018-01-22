@@ -2,46 +2,160 @@
 \label{classSocketCanPort}\index{Socket\+Can\+Port@{Socket\+Can\+Port}}
 
 
-Inheritance diagram for Socket\+Can\+Port\+:
-\nopagebreak
+{\ttfamily \#include $<$Socket\+Can\+Port.\+h$>$}
+
+
+
+Inheritance diagram for Socket\+Can\+Port\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=163pt]{classSocketCanPort__inherit__graph}
+\includegraphics[width=184pt]{classSocketCanPort__inherit__graph}
 \end{center}
 \end{figure}
 
 
-Collaboration diagram for Socket\+Can\+Port\+:
-\nopagebreak
+Collaboration diagram for Socket\+Can\+Port\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=163pt]{classSocketCanPort__coll__graph}
+\includegraphics[width=350pt]{classSocketCanPort__coll__graph}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classSocketCanPort_a087bc07f3c1658e3cb994d85fcb3da5e}\label{classSocketCanPort_a087bc07f3c1658e3cb994d85fcb3da5e}} 
-{\bfseries Socket\+Can\+Port} (string can\+Port)
+\hyperlink{classSocketCanPort_af3593609acea236b10646732e277837f}{Socket\+Can\+Port} ()
 \item 
-\mbox{\Hypertarget{classSocketCanPort_a1a5d0866524dae11ddff0d1ac22e0dd5}\label{classSocketCanPort_a1a5d0866524dae11ddff0d1ac22e0dd5}} 
-long {\bfseries Set\+Filter} (uint32\+\_\+t can\+Id, uint32\+\_\+t mask)
+\hyperlink{classSocketCanPort_a087bc07f3c1658e3cb994d85fcb3da5e}{Socket\+Can\+Port} (string can\+Port)
 \item 
-\mbox{\Hypertarget{classSocketCanPort_a4fe210160e70043ea78443630b9c4e86}\label{classSocketCanPort_a4fe210160e70043ea78443630b9c4e86}} 
-long {\bfseries Get\+Msg} (uint32\+\_\+t \&can\+Id, uint8\+\_\+t $\ast$data, uint8\+\_\+t size)
+\hyperlink{classSocketCanPort_a0d004347e49110daa1ee29e1d1bc85c0}{$\sim$\+Socket\+Can\+Port} ()
 \item 
-\mbox{\Hypertarget{classSocketCanPort_a9375a0c1e33978c83ebd188100898633}\label{classSocketCanPort_a9375a0c1e33978c83ebd188100898633}} 
-long {\bfseries Put\+Msg} (const uint32\+\_\+t \&can\+Id, uint8\+\_\+t $\ast$const data, const uint8\+\_\+t size)
+long \hyperlink{classSocketCanPort_a1a5d0866524dae11ddff0d1ac22e0dd5}{Set\+Filter} (uint32\+\_\+t can\+Id, uint32\+\_\+t mask)
 \item 
-\mbox{\Hypertarget{classSocketCanPort_a2efe27bd3bb8c8127c89925e1e21535a}\label{classSocketCanPort_a2efe27bd3bb8c8127c89925e1e21535a}} 
-long {\bfseries Get\+N\+MT} (uint8\+\_\+t $\ast$data, uint8\+\_\+t \&size)
+long \hyperlink{classSocketCanPort_a4fe210160e70043ea78443630b9c4e86}{Get\+Msg} (uint32\+\_\+t \&can\+Id, uint8\+\_\+t $\ast$data, uint8\+\_\+t size)
+\item 
+long \hyperlink{classSocketCanPort_a9375a0c1e33978c83ebd188100898633}{Put\+Msg} (const uint32\+\_\+t \&can\+Id, uint8\+\_\+t $\ast$const data, const uint8\+\_\+t size)
+\item 
+long \hyperlink{classSocketCanPort_a2efe27bd3bb8c8127c89925e1e21535a}{Get\+N\+MT} (uint8\+\_\+t $\ast$data, uint8\+\_\+t \&size)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+long \hyperlink{classSocketCanPort_a9209d295c98c12ab85ec61773b775bf4}{Init} (string can\+Port)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+long \hyperlink{classSocketCanPort_a7b06b4d8c897c1a189329f20632fdb71}{nbytes}
+\item 
+struct pollfd \hyperlink{classSocketCanPort_ad0374fe5ea78a061e7abd16b812f44d5}{poll\+\_\+set\+Id} \mbox{[}1\mbox{]}
+\item 
+struct pollfd \hyperlink{classSocketCanPort_afaaf9cd49684de93be7370988ec64b47}{poll\+\_\+set\+N\+MT} \mbox{[}1\mbox{]}
+\item 
+long \hyperlink{classSocketCanPort_a18e670bf7f98482e022da2fd11264309}{timeout\+Poll}
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
 
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classSocketCanPort_af3593609acea236b10646732e277837f}\label{classSocketCanPort_af3593609acea236b10646732e277837f}} 
+\index{Socket\+Can\+Port@{Socket\+Can\+Port}!Socket\+Can\+Port@{Socket\+Can\+Port}}
+\index{Socket\+Can\+Port@{Socket\+Can\+Port}!Socket\+Can\+Port@{Socket\+Can\+Port}}
+\subsubsection{\texorpdfstring{Socket\+Can\+Port()}{SocketCanPort()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Socket\+Can\+Port\+::\+Socket\+Can\+Port (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classSocketCanPort_a087bc07f3c1658e3cb994d85fcb3da5e}\label{classSocketCanPort_a087bc07f3c1658e3cb994d85fcb3da5e}} 
+\index{Socket\+Can\+Port@{Socket\+Can\+Port}!Socket\+Can\+Port@{Socket\+Can\+Port}}
+\index{Socket\+Can\+Port@{Socket\+Can\+Port}!Socket\+Can\+Port@{Socket\+Can\+Port}}
+\subsubsection{\texorpdfstring{Socket\+Can\+Port()}{SocketCanPort()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Socket\+Can\+Port\+::\+Socket\+Can\+Port (\begin{DoxyParamCaption}\item[{string}]{can\+Port }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classSocketCanPort_a0d004347e49110daa1ee29e1d1bc85c0}\label{classSocketCanPort_a0d004347e49110daa1ee29e1d1bc85c0}} 
+\index{Socket\+Can\+Port@{Socket\+Can\+Port}!````~Socket\+Can\+Port@{$\sim$\+Socket\+Can\+Port}}
+\index{````~Socket\+Can\+Port@{$\sim$\+Socket\+Can\+Port}!Socket\+Can\+Port@{Socket\+Can\+Port}}
+\subsubsection{\texorpdfstring{$\sim$\+Socket\+Can\+Port()}{~SocketCanPort()}}
+{\footnotesize\ttfamily Socket\+Can\+Port\+::$\sim$\+Socket\+Can\+Port (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classSocketCanPort_a4fe210160e70043ea78443630b9c4e86}\label{classSocketCanPort_a4fe210160e70043ea78443630b9c4e86}} 
+\index{Socket\+Can\+Port@{Socket\+Can\+Port}!Get\+Msg@{Get\+Msg}}
+\index{Get\+Msg@{Get\+Msg}!Socket\+Can\+Port@{Socket\+Can\+Port}}
+\subsubsection{\texorpdfstring{Get\+Msg()}{GetMsg()}}
+{\footnotesize\ttfamily long Socket\+Can\+Port\+::\+Get\+Msg (\begin{DoxyParamCaption}\item[{uint32\+\_\+t \&}]{can\+Id,  }\item[{uint8\+\_\+t $\ast$}]{data,  }\item[{uint8\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \hyperlink{classPortBase_a57e891d3992f70dea5c5e403350088be}{Port\+Base}.
+
+\mbox{\Hypertarget{classSocketCanPort_a2efe27bd3bb8c8127c89925e1e21535a}\label{classSocketCanPort_a2efe27bd3bb8c8127c89925e1e21535a}} 
+\index{Socket\+Can\+Port@{Socket\+Can\+Port}!Get\+N\+MT@{Get\+N\+MT}}
+\index{Get\+N\+MT@{Get\+N\+MT}!Socket\+Can\+Port@{Socket\+Can\+Port}}
+\subsubsection{\texorpdfstring{Get\+N\+M\+T()}{GetNMT()}}
+{\footnotesize\ttfamily long Socket\+Can\+Port\+::\+Get\+N\+MT (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{data,  }\item[{uint8\+\_\+t \&}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \hyperlink{classPortBase_abab2bf17b01d87c2bca01cb2151aa2f1}{Port\+Base}.
+
+\mbox{\Hypertarget{classSocketCanPort_a9209d295c98c12ab85ec61773b775bf4}\label{classSocketCanPort_a9209d295c98c12ab85ec61773b775bf4}} 
+\index{Socket\+Can\+Port@{Socket\+Can\+Port}!Init@{Init}}
+\index{Init@{Init}!Socket\+Can\+Port@{Socket\+Can\+Port}}
+\subsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily long Socket\+Can\+Port\+::\+Init (\begin{DoxyParamCaption}\item[{string}]{can\+Port }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classSocketCanPort_a9375a0c1e33978c83ebd188100898633}\label{classSocketCanPort_a9375a0c1e33978c83ebd188100898633}} 
+\index{Socket\+Can\+Port@{Socket\+Can\+Port}!Put\+Msg@{Put\+Msg}}
+\index{Put\+Msg@{Put\+Msg}!Socket\+Can\+Port@{Socket\+Can\+Port}}
+\subsubsection{\texorpdfstring{Put\+Msg()}{PutMsg()}}
+{\footnotesize\ttfamily long Socket\+Can\+Port\+::\+Put\+Msg (\begin{DoxyParamCaption}\item[{const uint32\+\_\+t \&}]{can\+Id,  }\item[{uint8\+\_\+t $\ast$const}]{data,  }\item[{const uint8\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \hyperlink{classPortBase_a26213ebb6ea0a0b77f60c28944e3bb8e}{Port\+Base}.
+
+\mbox{\Hypertarget{classSocketCanPort_a1a5d0866524dae11ddff0d1ac22e0dd5}\label{classSocketCanPort_a1a5d0866524dae11ddff0d1ac22e0dd5}} 
+\index{Socket\+Can\+Port@{Socket\+Can\+Port}!Set\+Filter@{Set\+Filter}}
+\index{Set\+Filter@{Set\+Filter}!Socket\+Can\+Port@{Socket\+Can\+Port}}
+\subsubsection{\texorpdfstring{Set\+Filter()}{SetFilter()}}
+{\footnotesize\ttfamily long Socket\+Can\+Port\+::\+Set\+Filter (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{can\+Id,  }\item[{uint32\+\_\+t}]{mask }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \hyperlink{classPortBase_a1d857a81a8e3f3bd460ef7c802ee762c}{Port\+Base}.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classSocketCanPort_a7b06b4d8c897c1a189329f20632fdb71}\label{classSocketCanPort_a7b06b4d8c897c1a189329f20632fdb71}} 
+\index{Socket\+Can\+Port@{Socket\+Can\+Port}!nbytes@{nbytes}}
+\index{nbytes@{nbytes}!Socket\+Can\+Port@{Socket\+Can\+Port}}
+\subsubsection{\texorpdfstring{nbytes}{nbytes}}
+{\footnotesize\ttfamily long Socket\+Can\+Port\+::nbytes\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classSocketCanPort_ad0374fe5ea78a061e7abd16b812f44d5}\label{classSocketCanPort_ad0374fe5ea78a061e7abd16b812f44d5}} 
+\index{Socket\+Can\+Port@{Socket\+Can\+Port}!poll\+\_\+set\+Id@{poll\+\_\+set\+Id}}
+\index{poll\+\_\+set\+Id@{poll\+\_\+set\+Id}!Socket\+Can\+Port@{Socket\+Can\+Port}}
+\subsubsection{\texorpdfstring{poll\+\_\+set\+Id}{poll\_setId}}
+{\footnotesize\ttfamily struct pollfd Socket\+Can\+Port\+::poll\+\_\+set\+Id\mbox{[}1\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classSocketCanPort_afaaf9cd49684de93be7370988ec64b47}\label{classSocketCanPort_afaaf9cd49684de93be7370988ec64b47}} 
+\index{Socket\+Can\+Port@{Socket\+Can\+Port}!poll\+\_\+set\+N\+MT@{poll\+\_\+set\+N\+MT}}
+\index{poll\+\_\+set\+N\+MT@{poll\+\_\+set\+N\+MT}!Socket\+Can\+Port@{Socket\+Can\+Port}}
+\subsubsection{\texorpdfstring{poll\+\_\+set\+N\+MT}{poll\_setNMT}}
+{\footnotesize\ttfamily struct pollfd Socket\+Can\+Port\+::poll\+\_\+set\+N\+MT\mbox{[}1\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classSocketCanPort_a18e670bf7f98482e022da2fd11264309}\label{classSocketCanPort_a18e670bf7f98482e022da2fd11264309}} 
+\index{Socket\+Can\+Port@{Socket\+Can\+Port}!timeout\+Poll@{timeout\+Poll}}
+\index{timeout\+Poll@{timeout\+Poll}!Socket\+Can\+Port@{Socket\+Can\+Port}}
+\subsubsection{\texorpdfstring{timeout\+Poll}{timeoutPoll}}
+{\footnotesize\ttfamily long Socket\+Can\+Port\+::timeout\+Poll\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Socket\+Can\+Port.\+h\item 
-Socket\+Can\+Port.\+cpp\end{DoxyCompactItemize}
+\hyperlink{SocketCanPort_8h}{Socket\+Can\+Port.\+h}\item 
+\hyperlink{SocketCanPort_8cpp}{Socket\+Can\+Port.\+cpp}\end{DoxyCompactItemize}

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['flushbuffer',['FlushBuffer',['../classCiA301CommPort.html#ab29e221039a2d21d1446edb09b91864e',1,'CiA301CommPort']]]
+  ['err_5fstat',['err_stat',['../structerr__stat.html',1,'']]],
+  ['expedite',['expedite',['../namespaceod.html#ae572be966c7d5de90544f2ac32dbbd38',1,'od']]]
 ];

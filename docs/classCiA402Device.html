@@ -60,38 +60,43 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classCiA402Device-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">CiA402Device Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="Cia402device_8h_source.html">Cia402device.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for CiA402Device:</div>
 <div class="dyncontent">
 <div class="center"><img src="classCiA402Device__inherit__graph.png" border="0" usemap="#CiA402Device_inherit__map" alt="Inheritance graph"/></div>
 <map name="CiA402Device_inherit__map" id="CiA402Device_inherit__map">
-<area shape="rect" id="node2" href="classCiA301CommPort.html" title="CiA301CommPort" alt="" coords="5,5,133,32"/>
+<area shape="rect" id="node2" href="classCiA301CommPort.html" title="{CiA301CommPort\n|&#45; portFileDescriptor\l&#45; id\l&#45; port\l&#45; usesockets\l&#45; send_msg\l&#45; input\l&#45; readBuffer\l&#45; readInbox\l|+ CiA301CommPort()\l+ CiA301CommPort()\l+ ReadSDO()\l+ ReadSDO()\l+ ReadNMT()\l+ WriteNMT()\l+ WritePDO()\l+ FlushBuffer()\l+ FlushBuffer()\l+ WriteSDO()\l+ WritePDO4()\l+ ReadErrorNMT()\l+ ReadPDO()\l&#45; CanOpenToCanBus()\l&#45; CanBusToCanOpen()\l&#45; data4x8to32()\l&#45; DataToInt()\l&#45; SendMessage()\l&#45; SendCanMessage()\l&#45; WaitForReadMessage()\l&#45; ReadCobId()\l&#45; read_timeout()\l&#45; GetMsg()\l&#45; SetCanOpenMsg()\l}" alt="" coords="6,5,174,523"/>
 </map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+</div>
 <div class="dynheader">
 Collaboration diagram for CiA402Device:</div>
 <div class="dyncontent">
 <div class="center"><img src="classCiA402Device__coll__graph.png" border="0" usemap="#CiA402Device_coll__map" alt="Collaboration graph"/></div>
 <map name="CiA402Device_coll__map" id="CiA402Device_coll__map">
-<area shape="rect" id="node2" href="classCiA301CommPort.html" title="CiA301CommPort" alt="" coords="5,5,133,32"/>
+<area shape="rect" id="node2" href="classCiA301CommPort.html" title="{CiA301CommPort\n||+ CiA301CommPort()\l+ CiA301CommPort()\l+ ReadSDO()\l+ ReadSDO()\l+ ReadNMT()\l+ WriteNMT()\l+ WritePDO()\l+ FlushBuffer()\l+ FlushBuffer()\l+ WriteSDO()\l+ WritePDO4()\l+ ReadErrorNMT()\l+ ReadPDO()\l&#45; CanOpenToCanBus()\l&#45; CanBusToCanOpen()\l&#45; data4x8to32()\l&#45; DataToInt()\l&#45; SendMessage()\l&#45; SendCanMessage()\l&#45; WaitForReadMessage()\l&#45; ReadCobId()\l&#45; read_timeout()\l&#45; GetMsg()\l&#45; SetCanOpenMsg()\l}" alt="" coords="457,403,625,817"/>
+<area shape="rect" id="node3" href="classPortBase.html" title="{PortBase\n||+ PortBase()\l+ getPortId()\l+ FlushMsg()\l+ SetFilter()\l+ GetMsg()\l+ PutMsg()\l+ GetNMT()\l}" alt="" coords="184,160,283,325"/>
+<area shape="rect" id="node10" href="structcan__msg.html" title="{can_msg\n||}" alt="" coords="1012,204,1087,281"/>
 </map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a77998e6d9ac4b75764612f3cab7426ef"><td class="memItemLeft" align="right" valign="top"><a id="a77998e6d9ac4b75764612f3cab7426ef"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>CiA402Device</b> (uint8_t new_id)</td></tr>
+<tr class="memitem:a894ef30b3c5a0ed291b086ad2156e4c1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA402Device.html#a894ef30b3c5a0ed291b086ad2156e4c1">CiA402Device</a> ()</td></tr>
+<tr class="separator:a894ef30b3c5a0ed291b086ad2156e4c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77998e6d9ac4b75764612f3cab7426ef"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA402Device.html#a77998e6d9ac4b75764612f3cab7426ef">CiA402Device</a> (uint8_t new_id)</td></tr>
 <tr class="separator:a77998e6d9ac4b75764612f3cab7426ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a084b18ac995775f5079c8b260ec4c6c8"><td class="memItemLeft" align="right" valign="top"><a id="a084b18ac995775f5079c8b260ec4c6c8"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>CiA402Device</b> (uint8_t new_id, int fdPort)</td></tr>
+<tr class="memitem:a084b18ac995775f5079c8b260ec4c6c8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA402Device.html#a084b18ac995775f5079c8b260ec4c6c8">CiA402Device</a> (uint8_t new_id, int fdPort)</td></tr>
 <tr class="separator:a084b18ac995775f5079c8b260ec4c6c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a017bcbc5d6e7a87b950b3cf2fcff1c41"><td class="memItemLeft" align="right" valign="top"><a id="a017bcbc5d6e7a87b950b3cf2fcff1c41"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>CiA402Device</b> (uint8_t new_id, <a class="el" href="classPortBase.html">PortBase</a> *new_port)</td></tr>
+<tr class="memitem:a017bcbc5d6e7a87b950b3cf2fcff1c41"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA402Device.html#a017bcbc5d6e7a87b950b3cf2fcff1c41">CiA402Device</a> (uint8_t new_id, <a class="el" href="classPortBase.html">PortBase</a> *new_port)</td></tr>
 <tr class="separator:a017bcbc5d6e7a87b950b3cf2fcff1c41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a034b00c87d2ec9ec98157b772465d9"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA402Device.html#a5a034b00c87d2ec9ec98157b772465d9">CheckStatus</a> ()</td></tr>
 <tr class="memdesc:a5a034b00c87d2ec9ec98157b772465d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">CheckStatus: Returns the status word.  <a href="#a5a034b00c87d2ec9ec98157b772465d9">More...</a><br /></td></tr>
@@ -111,60 +116,46 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac8d9e36e6f457565cac7d26d91e4a712"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA402Device.html#ac8d9e36e6f457565cac7d26d91e4a712">GetPosition</a> ()</td></tr>
 <tr class="memdesc:ac8d9e36e6f457565cac7d26d91e4a712"><td class="mdescLeft">&#160;</td><td class="mdescRight">GetPosition: Get the position of the cia 402 device.  <a href="#ac8d9e36e6f457565cac7d26d91e4a712">More...</a><br /></td></tr>
 <tr class="separator:ac8d9e36e6f457565cac7d26d91e4a712"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf511a7d44b62ac93ae18fe21f8d51c9"><td class="memItemLeft" align="right" valign="top"><a id="abf511a7d44b62ac93ae18fe21f8d51c9"></a>
-long&#160;</td><td class="memItemRight" valign="bottom"><b>SetCommunications</b> (int fdPort)</td></tr>
+<tr class="memitem:abf511a7d44b62ac93ae18fe21f8d51c9"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA402Device.html#abf511a7d44b62ac93ae18fe21f8d51c9">SetCommunications</a> (int fdPort)</td></tr>
 <tr class="separator:abf511a7d44b62ac93ae18fe21f8d51c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af1ed15805579e85e514e7ccf4ff21e10"><td class="memItemLeft" align="right" valign="top"><a id="af1ed15805579e85e514e7ccf4ff21e10"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>CheckError</b> ()</td></tr>
+<tr class="memitem:af1ed15805579e85e514e7ccf4ff21e10"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA402Device.html#af1ed15805579e85e514e7ccf4ff21e10">CheckError</a> ()</td></tr>
 <tr class="separator:af1ed15805579e85e514e7ccf4ff21e10"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8c09be8df402061e170ca297a7ee6cfe"><td class="memItemLeft" align="right" valign="top"><a id="a8c09be8df402061e170ca297a7ee6cfe"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>setPositionMode</b> ()</td></tr>
+<tr class="memitem:a8c09be8df402061e170ca297a7ee6cfe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA402Device.html#a8c09be8df402061e170ca297a7ee6cfe">setPositionMode</a> ()</td></tr>
 <tr class="separator:a8c09be8df402061e170ca297a7ee6cfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4abf9605004db99567ede3370e1d0a4d"><td class="memItemLeft" align="right" valign="top"><a id="a4abf9605004db99567ede3370e1d0a4d"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>setVelocityModeRaw</b> ()</td></tr>
+<tr class="memitem:a4abf9605004db99567ede3370e1d0a4d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA402Device.html#a4abf9605004db99567ede3370e1d0a4d">setVelocityModeRaw</a> ()</td></tr>
 <tr class="separator:a4abf9605004db99567ede3370e1d0a4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a49f298cf0d4d2d68007b3cb396e93a17"><td class="memItemLeft" align="right" valign="top"><a id="a49f298cf0d4d2d68007b3cb396e93a17"></a>
-long&#160;</td><td class="memItemRight" valign="bottom"><b>OperationMode</b> (const vector&lt; uint8_t &gt; new_mode)</td></tr>
+<tr class="memitem:a49f298cf0d4d2d68007b3cb396e93a17"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA402Device.html#a49f298cf0d4d2d68007b3cb396e93a17">OperationMode</a> (const vector&lt; uint8_t &gt; new_mode)</td></tr>
 <tr class="separator:a49f298cf0d4d2d68007b3cb396e93a17"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abca4743b617d109a915215193bd06fbe"><td class="memItemLeft" align="right" valign="top"><a id="abca4743b617d109a915215193bd06fbe"></a>
-long&#160;</td><td class="memItemRight" valign="bottom"><b>SetupPositionMode</b> (const vector&lt; uint32_t &gt; target, const vector&lt; uint32_t &gt; velocity, const vector&lt; uint32_t &gt; acceleration, const vector&lt; uint32_t &gt; deceleration)</td></tr>
+<tr class="memitem:abca4743b617d109a915215193bd06fbe"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA402Device.html#abca4743b617d109a915215193bd06fbe">SetupPositionMode</a> (const vector&lt; uint32_t &gt; target, const vector&lt; uint32_t &gt; velocity, const vector&lt; uint32_t &gt; acceleration, const vector&lt; uint32_t &gt; deceleration)</td></tr>
 <tr class="separator:abca4743b617d109a915215193bd06fbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a42e8505120ada57ea8292902ce9f9c5e"><td class="memItemLeft" align="right" valign="top"><a id="a42e8505120ada57ea8292902ce9f9c5e"></a>
-long&#160;</td><td class="memItemRight" valign="bottom"><b>Setup_Velocity_Mode</b> (const vector&lt; uint8_t &gt; target, const vector&lt; uint8_t &gt; acceleration)</td></tr>
+<tr class="memitem:a42e8505120ada57ea8292902ce9f9c5e"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA402Device.html#a42e8505120ada57ea8292902ce9f9c5e">Setup_Velocity_Mode</a> (const vector&lt; uint8_t &gt; target, const vector&lt; uint8_t &gt; acceleration)</td></tr>
 <tr class="separator:a42e8505120ada57ea8292902ce9f9c5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff0503b4caa6d2a8e2e66df6b9e0f4e4"><td class="memItemLeft" align="right" valign="top"><a id="aff0503b4caa6d2a8e2e66df6b9e0f4e4"></a>
-long&#160;</td><td class="memItemRight" valign="bottom"><b>ForceSwitchOff</b> ()</td></tr>
+<tr class="memitem:aff0503b4caa6d2a8e2e66df6b9e0f4e4"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA402Device.html#aff0503b4caa6d2a8e2e66df6b9e0f4e4">ForceSwitchOff</a> ()</td></tr>
 <tr class="separator:aff0503b4caa6d2a8e2e66df6b9e0f4e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb2d6cc96a8a613f9c2791e87344ba0d"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA402Device.html#acb2d6cc96a8a613f9c2791e87344ba0d">SetPosition</a> (uint32_t target)</td></tr>
 <tr class="memdesc:acb2d6cc96a8a613f9c2791e87344ba0d"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classCiA402Device.html#acb2d6cc96a8a613f9c2791e87344ba0d" title="CiA402Device::SetPosition This function performs the communication with the device to perform a posit...">CiA402Device::SetPosition</a> This function performs the communication with the device to perform a position control in a motor and perform a motion towards a selected position. The motor remembers as position 0 the position in which it has been switched on, always returning to this position when its target is 0.  <a href="#acb2d6cc96a8a613f9c2791e87344ba0d">More...</a><br /></td></tr>
 <tr class="separator:acb2d6cc96a8a613f9c2791e87344ba0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a221dbc5461823097981727a3baff5d0c"><td class="memItemLeft" align="right" valign="top"><a id="a221dbc5461823097981727a3baff5d0c"></a>
-long&#160;</td><td class="memItemRight" valign="bottom"><b>SetupPositionMode</b> (const uint32_t velocity, const uint32_t acceleration)</td></tr>
+<tr class="memitem:a221dbc5461823097981727a3baff5d0c"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA402Device.html#a221dbc5461823097981727a3baff5d0c">SetupPositionMode</a> (const uint32_t velocity, const uint32_t acceleration)</td></tr>
 <tr class="separator:a221dbc5461823097981727a3baff5d0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac4a6e4987ebe075d0ac07ee5fd4d410c"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA402Device.html#ac4a6e4987ebe075d0ac07ee5fd4d410c">Reset</a> ()</td></tr>
 <tr class="memdesc:ac4a6e4987ebe075d0ac07ee5fd4d410c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset This function resets the node corresponding to this object.  <a href="#ac4a6e4987ebe075d0ac07ee5fd4d410c">More...</a><br /></td></tr>
 <tr class="separator:ac4a6e4987ebe075d0ac07ee5fd4d410c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a32b4628098364846fe291312025f6fda"><td class="memItemLeft" align="right" valign="top"><a id="a32b4628098364846fe291312025f6fda"></a>
-long&#160;</td><td class="memItemRight" valign="bottom"><b>StartNode</b> ()</td></tr>
+<tr class="memitem:a32b4628098364846fe291312025f6fda"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA402Device.html#a32b4628098364846fe291312025f6fda">StartNode</a> ()</td></tr>
 <tr class="separator:a32b4628098364846fe291312025f6fda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a485eaa3cbd186b6f29caf588c7010023"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA402Device.html#a485eaa3cbd186b6f29caf588c7010023">DegreeConv</a> (uint32_t DegreeTarget)</td></tr>
 <tr class="memdesc:a485eaa3cbd186b6f29caf588c7010023"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classCiA402Device.html#a485eaa3cbd186b6f29caf588c7010023" title="CiA402Device::DegreeConv This function converts a variable of type uint32_t which contains the positi...">CiA402Device::DegreeConv</a> This function converts a variable of type uint32_t which contains the position of a motor with an encoder of 4096 lines in decimal degrees into the equivalent position as function of the enconders lines. If the parameter has a value of 360 the function will return an uint32_t variable with a value of 4096.  <a href="#a485eaa3cbd186b6f29caf588c7010023">More...</a><br /></td></tr>
 <tr class="separator:a485eaa3cbd186b6f29caf588c7010023"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classCiA301CommPort"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classCiA301CommPort')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classCiA301CommPort.html">CiA301CommPort</a></td></tr>
-<tr class="memitem:aae705cb5c6a405ef74a10e5220d0b08f inherit pub_methods_classCiA301CommPort"><td class="memItemLeft" align="right" valign="top"><a id="aae705cb5c6a405ef74a10e5220d0b08f"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>CiA301CommPort</b> (int newPortFileDescriptor, uint8_t new_id)</td></tr>
+<tr class="memitem:aae705cb5c6a405ef74a10e5220d0b08f inherit pub_methods_classCiA301CommPort"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA301CommPort.html#aae705cb5c6a405ef74a10e5220d0b08f">CiA301CommPort</a> (int newPortFileDescriptor, uint8_t new_id)</td></tr>
 <tr class="separator:aae705cb5c6a405ef74a10e5220d0b08f inherit pub_methods_classCiA301CommPort"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1e05c4b292cfee36ff9eeddb2c8eb4c0 inherit pub_methods_classCiA301CommPort"><td class="memItemLeft" align="right" valign="top"><a id="a1e05c4b292cfee36ff9eeddb2c8eb4c0"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>CiA301CommPort</b> (<a class="el" href="classPortBase.html">PortBase</a> *new_port, uint8_t new_id)</td></tr>
+<tr class="memitem:a1e05c4b292cfee36ff9eeddb2c8eb4c0 inherit pub_methods_classCiA301CommPort"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA301CommPort.html#a1e05c4b292cfee36ff9eeddb2c8eb4c0">CiA301CommPort</a> (<a class="el" href="classPortBase.html">PortBase</a> *new_port, uint8_t new_id)</td></tr>
 <tr class="separator:a1e05c4b292cfee36ff9eeddb2c8eb4c0 inherit pub_methods_classCiA301CommPort"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0fd0920052684589bc37bb898dcdd758 inherit pub_methods_classCiA301CommPort"><td class="memItemLeft" align="right" valign="top"><a id="a0fd0920052684589bc37bb898dcdd758"></a>
-long&#160;</td><td class="memItemRight" valign="bottom"><b>ReadSDO</b> (vector&lt; uint8_t &gt; address, int subindex)</td></tr>
+<tr class="memitem:a0fd0920052684589bc37bb898dcdd758 inherit pub_methods_classCiA301CommPort"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA301CommPort.html#a0fd0920052684589bc37bb898dcdd758">ReadSDO</a> (vector&lt; uint8_t &gt; address, int subindex)</td></tr>
 <tr class="separator:a0fd0920052684589bc37bb898dcdd758 inherit pub_methods_classCiA301CommPort"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3f74ce5899b30731322dabd352ccdc55 inherit pub_methods_classCiA301CommPort"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA301CommPort.html#a3f74ce5899b30731322dabd352ccdc55">ReadSDO</a> (const vector&lt; uint8_t &gt; &amp;address)</td></tr>
-<tr class="memdesc:a3f74ce5899b30731322dabd352ccdc55 inherit pub_methods_classCiA301CommPort"><td class="mdescLeft">&#160;</td><td class="mdescRight">CiA301CommPort::ReadSDO Waits until expected.  <a href="classCiA301CommPort.html#a3f74ce5899b30731322dabd352ccdc55">More...</a><br /></td></tr>
+<tr class="memdesc:a3f74ce5899b30731322dabd352ccdc55 inherit pub_methods_classCiA301CommPort"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classCiA301CommPort.html#a0fd0920052684589bc37bb898dcdd758">CiA301CommPort::ReadSDO</a> Waits until expected.  <a href="classCiA301CommPort.html#a3f74ce5899b30731322dabd352ccdc55">More...</a><br /></td></tr>
 <tr class="separator:a3f74ce5899b30731322dabd352ccdc55 inherit pub_methods_classCiA301CommPort"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02df85ed5140d0d7a57fe0d2f6e47ea1 inherit pub_methods_classCiA301CommPort"><td class="memItemLeft" align="right" valign="top"><a id="a02df85ed5140d0d7a57fe0d2f6e47ea1"></a>
-long&#160;</td><td class="memItemRight" valign="bottom"><b>ReadNMT</b> (const vector&lt; uint8_t &gt; &amp;nmtCode)</td></tr>
+<tr class="memitem:a02df85ed5140d0d7a57fe0d2f6e47ea1 inherit pub_methods_classCiA301CommPort"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA301CommPort.html#a02df85ed5140d0d7a57fe0d2f6e47ea1">ReadNMT</a> (const vector&lt; uint8_t &gt; &amp;nmtCode)</td></tr>
 <tr class="separator:a02df85ed5140d0d7a57fe0d2f6e47ea1 inherit pub_methods_classCiA301CommPort"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a09feb3f78831c9fbb683a85cc3bc4562 inherit pub_methods_classCiA301CommPort"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA301CommPort.html#a09feb3f78831c9fbb683a85cc3bc4562">WriteNMT</a> (const vector&lt; uint8_t &gt; &amp;nmtCommand)</td></tr>
 <tr class="memdesc:a09feb3f78831c9fbb683a85cc3bc4562 inherit pub_methods_classCiA301CommPort"><td class="mdescLeft">&#160;</td><td class="mdescRight">WriteNMT This function sends NMT message from node to CanBus.  <a href="classCiA301CommPort.html#a09feb3f78831c9fbb683a85cc3bc4562">More...</a><br /></td></tr>
@@ -172,8 +163,7 @@ long&#160;</td><td class="memItemRight" valign="bottom"><b>ReadNMT</b> (const ve
 <tr class="memitem:a56d2c604b11363e6b287f59b68a546bd inherit pub_methods_classCiA301CommPort"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA301CommPort.html#a56d2c604b11363e6b287f59b68a546bd">WritePDO</a> (const vector&lt; uint8_t &gt; &amp;command)</td></tr>
 <tr class="memdesc:a56d2c604b11363e6b287f59b68a546bd inherit pub_methods_classCiA301CommPort"><td class="mdescLeft">&#160;</td><td class="mdescRight">WritePDO This function sends PDO message to a node (the mode id is configured on constructor).  <a href="classCiA301CommPort.html#a56d2c604b11363e6b287f59b68a546bd">More...</a><br /></td></tr>
 <tr class="separator:a56d2c604b11363e6b287f59b68a546bd inherit pub_methods_classCiA301CommPort"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a067cddaf01932fa6fa27255c61b08190 inherit pub_methods_classCiA301CommPort"><td class="memItemLeft" align="right" valign="top"><a id="a067cddaf01932fa6fa27255c61b08190"></a>
-long&#160;</td><td class="memItemRight" valign="bottom"><b>FlushBuffer</b> ()</td></tr>
+<tr class="memitem:a067cddaf01932fa6fa27255c61b08190 inherit pub_methods_classCiA301CommPort"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA301CommPort.html#a067cddaf01932fa6fa27255c61b08190">FlushBuffer</a> ()</td></tr>
 <tr class="separator:a067cddaf01932fa6fa27255c61b08190 inherit pub_methods_classCiA301CommPort"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab29e221039a2d21d1446edb09b91864e inherit pub_methods_classCiA301CommPort"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA301CommPort.html#ab29e221039a2d21d1446edb09b91864e">FlushBuffer</a> (int msgs)</td></tr>
 <tr class="memdesc:ab29e221039a2d21d1446edb09b91864e inherit pub_methods_classCiA301CommPort"><td class="mdescLeft">&#160;</td><td class="mdescRight">FlushBuffer Removes the msgs number of can frames from buffer.  <a href="classCiA301CommPort.html#ab29e221039a2d21d1446edb09b91864e">More...</a><br /></td></tr>
@@ -181,17 +171,139 @@ long&#160;</td><td class="memItemRight" valign="bottom"><b>FlushBuffer</b> ()</t
 <tr class="memitem:a4d97c27423b2323f8475f6e5c2f91575 inherit pub_methods_classCiA301CommPort"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA301CommPort.html#a4d97c27423b2323f8475f6e5c2f91575">WriteSDO</a> (const vector&lt; uint8_t &gt; &amp;address, const vector&lt; uint8_t &gt; &amp;value)</td></tr>
 <tr class="memdesc:a4d97c27423b2323f8475f6e5c2f91575 inherit pub_methods_classCiA301CommPort"><td class="mdescLeft">&#160;</td><td class="mdescRight">WriteSDO Writes 4 byte value to specific address on device. This function sends SDO message requesting write on the object dictionary address. Also block and wait for the SDO msg for write ack, and returns negative if error. As it reads the ack SDO message, the buffer should be same size after this function returns.  <a href="classCiA301CommPort.html#a4d97c27423b2323f8475f6e5c2f91575">More...</a><br /></td></tr>
 <tr class="separator:a4d97c27423b2323f8475f6e5c2f91575 inherit pub_methods_classCiA301CommPort"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1faf4f37530e0dd0ae4600cfb0b1d742 inherit pub_methods_classCiA301CommPort"><td class="memItemLeft" align="right" valign="top"><a id="a1faf4f37530e0dd0ae4600cfb0b1d742"></a>
-long&#160;</td><td class="memItemRight" valign="bottom"><b>WritePDO4</b> (const vector&lt; uint8_t &gt; &amp;command)</td></tr>
+<tr class="memitem:a1faf4f37530e0dd0ae4600cfb0b1d742 inherit pub_methods_classCiA301CommPort"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA301CommPort.html#a1faf4f37530e0dd0ae4600cfb0b1d742">WritePDO4</a> (const vector&lt; uint8_t &gt; &amp;command)</td></tr>
 <tr class="separator:a1faf4f37530e0dd0ae4600cfb0b1d742 inherit pub_methods_classCiA301CommPort"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46534ff9e7e2a05a0b4913e4331710e5 inherit pub_methods_classCiA301CommPort"><td class="memItemLeft" align="right" valign="top"><a id="a46534ff9e7e2a05a0b4913e4331710e5"></a>
-long&#160;</td><td class="memItemRight" valign="bottom"><b>ReadErrorNMT</b> ()</td></tr>
+<tr class="memitem:a46534ff9e7e2a05a0b4913e4331710e5 inherit pub_methods_classCiA301CommPort"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA301CommPort.html#a46534ff9e7e2a05a0b4913e4331710e5">ReadErrorNMT</a> ()</td></tr>
 <tr class="separator:a46534ff9e7e2a05a0b4913e4331710e5 inherit pub_methods_classCiA301CommPort"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a827f3e594b9f1e57a7b7ccb8a278404a inherit pub_methods_classCiA301CommPort"><td class="memItemLeft" align="right" valign="top"><a id="a827f3e594b9f1e57a7b7ccb8a278404a"></a>
-long&#160;</td><td class="memItemRight" valign="bottom"><b>ReadPDO</b> (long number)</td></tr>
+<tr class="memitem:a827f3e594b9f1e57a7b7ccb8a278404a inherit pub_methods_classCiA301CommPort"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA301CommPort.html#a827f3e594b9f1e57a7b7ccb8a278404a">ReadPDO</a> (long number)</td></tr>
 <tr class="separator:a827f3e594b9f1e57a7b7ccb8a278404a inherit pub_methods_classCiA301CommPort"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a622a8884e21d9c4b5ffa0d6c1458ef08"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA402Device.html#a622a8884e21d9c4b5ffa0d6c1458ef08">Init</a> (uint8_t new_id)</td></tr>
+<tr class="separator:a622a8884e21d9c4b5ffa0d6c1458ef08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a4e7a5a225fb27f5f02aeb0e6df38cd1f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA402Device.html#a4e7a5a225fb27f5f02aeb0e6df38cd1f">comm</a></td></tr>
+<tr class="separator:a4e7a5a225fb27f5f02aeb0e6df38cd1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb251ae496aeca707dcc51b43c64d0b8"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA402Device.html#adb251ae496aeca707dcc51b43c64d0b8">currentPosition</a></td></tr>
+<tr class="separator:adb251ae496aeca707dcc51b43c64d0b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12f2b7115362fe05ee5fc10f70bdbbaa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA402Device.html#a12f2b7115362fe05ee5fc10f70bdbbaa">useport</a></td></tr>
+<tr class="separator:a12f2b7115362fe05ee5fc10f70bdbbaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc96eb117cc948d86e3bd4c07c7fe807"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPortBase.html">PortBase</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCiA402Device.html#abc96eb117cc948d86e3bd4c07c7fe807">port</a></td></tr>
+<tr class="separator:abc96eb117cc948d86e3bd4c07c7fe807"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a894ef30b3c5a0ed291b086ad2156e4c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a894ef30b3c5a0ed291b086ad2156e4c1">&#9670;&nbsp;</a></span>CiA402Device() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CiA402Device::CiA402Device </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a77998e6d9ac4b75764612f3cab7426ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77998e6d9ac4b75764612f3cab7426ef">&#9670;&nbsp;</a></span>CiA402Device() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CiA402Device::CiA402Device </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>new_id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a084b18ac995775f5079c8b260ec4c6c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a084b18ac995775f5079c8b260ec4c6c8">&#9670;&nbsp;</a></span>CiA402Device() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CiA402Device::CiA402Device </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>new_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fdPort</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a017bcbc5d6e7a87b950b3cf2fcff1c41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a017bcbc5d6e7a87b950b3cf2fcff1c41">&#9670;&nbsp;</a></span>CiA402Device() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CiA402Device::CiA402Device </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>new_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classPortBase.html">PortBase</a> *&#160;</td>
+          <td class="paramname"><em>new_port</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="af1ed15805579e85e514e7ccf4ff21e10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1ed15805579e85e514e7ccf4ff21e10">&#9670;&nbsp;</a></span>CheckError()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CiA402Device::CheckError </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a5a034b00c87d2ec9ec98157b772465d9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5a034b00c87d2ec9ec98157b772465d9">&#9670;&nbsp;</a></span>CheckStatus()</h2>
 
@@ -239,6 +351,23 @@ long&#160;</td><td class="memItemRight" valign="bottom"><b>ReadPDO</b> (long num
 
 </div>
 </div>
+<a id="aff0503b4caa6d2a8e2e66df6b9e0f4e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff0503b4caa6d2a8e2e66df6b9e0f4e4">&#9670;&nbsp;</a></span>ForceSwitchOff()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">long CiA402Device::ForceSwitchOff </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ac8d9e36e6f457565cac7d26d91e4a712"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac8d9e36e6f457565cac7d26d91e4a712">&#9670;&nbsp;</a></span>GetPosition()</h2>
 
@@ -256,6 +385,50 @@ long&#160;</td><td class="memItemRight" valign="bottom"><b>ReadPDO</b> (long num
 
 <p>GetPosition: Get the position of the cia 402 device. </p>
 <dl class="section return"><dt>Returns</dt><dd>: Position (angle in [rad]) </dd></dl>
+
+</div>
+</div>
+<a id="a622a8884e21d9c4b5ffa0d6c1458ef08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a622a8884e21d9c4b5ffa0d6c1458ef08">&#9670;&nbsp;</a></span>Init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">long CiA402Device::Init </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>new_id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a49f298cf0d4d2d68007b3cb396e93a17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49f298cf0d4d2d68007b3cb396e93a17">&#9670;&nbsp;</a></span>OperationMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">long CiA402Device::OperationMode </td>
+          <td>(</td>
+          <td class="paramtype">const vector&lt; uint8_t &gt;&#160;</td>
+          <td class="paramname"><em>new_mode</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -319,6 +492,24 @@ long&#160;</td><td class="memItemRight" valign="bottom"><b>ReadPDO</b> (long num
 
 </div>
 </div>
+<a id="abf511a7d44b62ac93ae18fe21f8d51c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf511a7d44b62ac93ae18fe21f8d51c9">&#9670;&nbsp;</a></span>SetCommunications()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">long CiA402Device::SetCommunications </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fdPort</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="acb2d6cc96a8a613f9c2791e87344ba0d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acb2d6cc96a8a613f9c2791e87344ba0d">&#9670;&nbsp;</a></span>SetPosition()</h2>
 
@@ -343,6 +534,153 @@ long&#160;</td><td class="memItemRight" valign="bottom"><b>ReadPDO</b> (long num
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>This function returns a variable of type long with value 0. </dd></dl>
+
+</div>
+</div>
+<a id="a8c09be8df402061e170ca297a7ee6cfe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c09be8df402061e170ca297a7ee6cfe">&#9670;&nbsp;</a></span>setPositionMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CiA402Device::setPositionMode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a42e8505120ada57ea8292902ce9f9c5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42e8505120ada57ea8292902ce9f9c5e">&#9670;&nbsp;</a></span>Setup_Velocity_Mode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">long CiA402Device::Setup_Velocity_Mode </td>
+          <td>(</td>
+          <td class="paramtype">const vector&lt; uint8_t &gt;&#160;</td>
+          <td class="paramname"><em>target</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const vector&lt; uint8_t &gt;&#160;</td>
+          <td class="paramname"><em>acceleration</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abca4743b617d109a915215193bd06fbe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abca4743b617d109a915215193bd06fbe">&#9670;&nbsp;</a></span>SetupPositionMode() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">long CiA402Device::SetupPositionMode </td>
+          <td>(</td>
+          <td class="paramtype">const vector&lt; uint32_t &gt;&#160;</td>
+          <td class="paramname"><em>target</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const vector&lt; uint32_t &gt;&#160;</td>
+          <td class="paramname"><em>velocity</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const vector&lt; uint32_t &gt;&#160;</td>
+          <td class="paramname"><em>acceleration</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const vector&lt; uint32_t &gt;&#160;</td>
+          <td class="paramname"><em>deceleration</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a221dbc5461823097981727a3baff5d0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a221dbc5461823097981727a3baff5d0c">&#9670;&nbsp;</a></span>SetupPositionMode() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">long CiA402Device::SetupPositionMode </td>
+          <td>(</td>
+          <td class="paramtype">const uint32_t&#160;</td>
+          <td class="paramname"><em>velocity</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint32_t&#160;</td>
+          <td class="paramname"><em>acceleration</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4abf9605004db99567ede3370e1d0a4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4abf9605004db99567ede3370e1d0a4d">&#9670;&nbsp;</a></span>setVelocityModeRaw()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CiA402Device::setVelocityModeRaw </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a32b4628098364846fe291312025f6fda"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32b4628098364846fe291312025f6fda">&#9670;&nbsp;</a></span>StartNode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">long CiA402Device::StartNode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -386,9 +724,98 @@ long&#160;</td><td class="memItemRight" valign="bottom"><b>ReadPDO</b> (long num
 
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a4e7a5a225fb27f5f02aeb0e6df38cd1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e7a5a225fb27f5f02aeb0e6df38cd1f">&#9670;&nbsp;</a></span>comm</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CiA402Device::comm</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adb251ae496aeca707dcc51b43c64d0b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb251ae496aeca707dcc51b43c64d0b8">&#9670;&nbsp;</a></span>currentPosition</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CiA402Device::currentPosition</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abc96eb117cc948d86e3bd4c07c7fe807"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc96eb117cc948d86e3bd4c07c7fe807">&#9670;&nbsp;</a></span>port</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classPortBase.html">PortBase</a>* CiA402Device::port</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a12f2b7115362fe05ee5fc10f70bdbbaa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12f2b7115362fe05ee5fc10f70bdbbaa">&#9670;&nbsp;</a></span>useport</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CiA402Device::useport</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="Cia402device_8h_source.html">Cia402device.h</a></li>
-<li>Cia402device.cpp</li>
+<li><a class="el" href="Cia402device_8cpp.html">Cia402device.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
