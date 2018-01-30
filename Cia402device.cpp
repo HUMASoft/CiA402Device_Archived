@@ -340,7 +340,15 @@ long CiA402Device::QuickStop()
 double CiA402Device::GetPosition()
 {
 
-    return (uint32_t) ReadSDO(od::positionaddress);
+    return (uint32_t) ReadSDO(od::positionaddress)*360000/4096;
+
+}
+double CiA402Device::GetVelocity()
+{
+
+    return (uint32_t) ReadSDO(od::velocityaddress)*360000/(4096);
+
+
 
 }
 
@@ -353,6 +361,7 @@ long CiA402Device::SetCommunications(int fdPort)
 long CiA402Device::SetupPositionMode(/*const vector<uint8_t> target,*/const uint32_t velocity,const uint32_t acceleration /*const vector<uint8_t> deceleration*/){
 
 uint32_t velocityr;
+uint32_t accelerationr;
 
     OperationMode(od::positionmode);
 
@@ -367,7 +376,8 @@ uint32_t velocityr;
     //Si paso los parametros convertidos en ui, sino convertir primero
     WriteSDO(od::profile_velocity,data32to4x8(velocityr));
     //Si paso los parametros convertidos en ui, sino convertir primero
-    //WriteSDO(od::profile_acceleration,data32to4x8(acceleration));
+    accelerationr=((acceleration*4096/360000000)<<16)+0;
+    WriteSDO(od::profile_acceleration,data32to4x8(accelerationr));
 //  The target position is the position that the drive should move to in
 //  position profile mode using the current settings of motion control parameters
 //  such as velocity, acceleration, and motion profile type etc.
@@ -379,18 +389,25 @@ uint32_t velocityr;
    return 0;
 }
 
-long CiA402Device::Setup_Velocity_Mode(const vector<uint8_t> target,const vector<uint8_t> acceleration){
+long CiA402Device::Setup_Velocity_Mode(const uint32_t target,const uint32_t acceleration){
 //    In the Velocity Profile Mode the drive performs speed control.
 //    The built-in reference generator computes a speed profile with a trapezoidal shape,
 //    due to a limited acceleration. The Target Velocity object specifies
 //    the jog speed (speed sign specifies the direction) and the Profile Acceleration
 //    object the acceleration/deceleration rate.
     OperationMode(od::velocitymode);
+    uint32_t targetr;
+    uint32_t accelerationr;
 //    The target velocity is the input for the trajectory generator
 //    and the value is given in user-defined velocity units.
 //    Si paso los parametros convertidos en ui, sino convertir primero
-    WriteSDO(od::target_velocity,target);
-    WriteSDO(od::profile_acceleration,acceleration);
+
+    targetr=((target*(4096/360)/1000)<<16);//4096/360= [encoder-steps/deg] and 1000 [ms] in a [s]
+    WriteSDO(od::target_velocity,data32to4x8(targetr));
+
+
+    accelerationr=((acceleration*4096/360000000))+0;
+    WriteSDO(od::profile_acceleration,data32to4x8(accelerationr));
     return 0;
 }
 
@@ -443,6 +460,52 @@ long CiA402Device::SetPosition(uint32_t target){
     return 0;
 }
 
+long CiA402Device::SetVelocity(uint32_t target){
+
+////WATCH SLEEPS!!!!!!!!!!!!
+////remove when working code
+///
+    uint32_t targetr;
+    targetr=((target*4096/360000)<<16)+0;
+
+//    uint32_t accelerationr;
+    WriteSDO(od::target_velocity,data32to4x8(target));
+//    accelerationr=((acceleration*4096/360000000)<<16)+0;
+
+//    WriteSDO(od::profile_acceleration,data32to4x8(accelerationr));
+//    //vector<uint8_t> value;
+//    //convert target to value
+//    WritePDO(od::goenable);
+//    FlushBuffer();
+//    //sleep(1);
+
+//    WriteSDO(od::target_velocity,data32to4x8(target));
+////    FlushBuffer();
+//    //WritePDO4(data32to4x8(target));
+//    //sleep(1);
+//    long vel = ReadSDO(od::target_velocity);
+//    cout<<"target_velocity: "<<vel<<endl;
+//    FlushBuffer();
+//    //sleep(1);
+
+//    //lectura del status word y comprobar target reached (posicion bit11 = 1)
+//    //cada vez que la statusword cambia, envía un mensaje pdo.
+//    //revisar esto para esperar el mensaje correcto.
+//    long stat = ReadSDO(od::statusword);
+//    cout<<"statusword: "<<stat<<endl;
+//    //FlushBuffer();
+//    //sleep(1);
+
+//    //setup via control word
+////    vector<uint8_t>cw={0x30,0x08,0x00 ,0x00 };
+////    WritePDO(cw);
+////    sleep(1);
+//    cout<<"RUN"<<endl;
+//      WritePDO(od::run);
+//      FlushBuffer();
+    return 0;
+}
+
 ///
 /// \brief CiA402Device::DegreeConv This function converts a variable of type uint32_t
 /// which contains the position of a motor with an encoder of 4096 lines in decimal degrees
@@ -467,10 +530,10 @@ vector<uint8_t> data32to4x8(uint32_t in)
     retvalue[1] = (in&0x0000FF00)>>8;
     retvalue[2] = (in&0x00FF0000)>>16;
     retvalue[3] = (in&0xFF000000)>>24;
-//    cout<< " " <<(int)retvalue[0]
-//        << " ," <<(int)retvalue[1]
-//        << " , "<<(int)retvalue[2]
-//        << " , "<<(int)retvalue[3]<<endl;
+    cout<< " " <<(int)retvalue[0]
+        << " ," <<(int)retvalue[1]
+        << " , "<<(int)retvalue[2]
+        << " , "<<(int)retvalue[3]<<endl;
     return retvalue;
 
 }

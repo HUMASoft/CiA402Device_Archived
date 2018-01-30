@@ -37,6 +37,7 @@ const vector<uint8_t> checkerror={0x02,0x10};
 
 //address must be complete index and subindex {I1,I2,S1}
 const vector<uint8_t> positionaddress={0x63,0x60};
+const vector<uint8_t> velocityactvalue={0x69,0x60};
 const vector<uint8_t> velocityaddress={0x6C,0x60};
 const vector<uint8_t> target_position={0x7A,0x60,0x00};
 const vector<uint8_t> position_demand={0x62,0x60,0x00};
