@@ -138,11 +138,13 @@ long CiA301CommPort::WriteSDO(const vector<uint8_t> &address, const vector<uint8
     }
 
     //fixed return four last bytes from data.
-    long retvalue = output.data_co[7];
-    retvalue = (retvalue << 8) + output.data_co[6];
-    retvalue = (retvalue << 8) + output.data_co[5];
-    retvalue = (retvalue << 8) + output.data_co[4];
-    return retvalue;
+//    long retvalue = output.data_co[7];
+//    retvalue = (retvalue << 8) + output.data_co[6];
+//    retvalue = (retvalue << 8) + output.data_co[5];
+//    retvalue = (retvalue << 8) + output.data_co[4];
+//    return retvalue;
+    cout << "dlc " << output.dlc_co << endl;
+    return DataToInt(&output.data_co[4], output.dlc_co);
 }
 
 long CiA301CommPort::ReadPDO(long number)
@@ -773,6 +775,7 @@ uint32_t CiA301CommPort::DataToInt(const uint8_t* in, const uint8_t size)
     for (int i=1; i<size; i++)
     {
     retvalue = (retvalue << 8) + in[1];
+    cout <<"i" << i <<"v"<< retvalue <<endl;
     }
     return retvalue;
 

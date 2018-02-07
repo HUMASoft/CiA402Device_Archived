@@ -395,16 +395,17 @@ long CiA402Device::Setup_Velocity_Mode(const uint32_t target,const uint32_t acce
 //    due to a limited acceleration. The Target Velocity object specifies
 //    the jog speed (speed sign specifies the direction) and the Profile Acceleration
 //    object the acceleration/deceleration rate.
+
     OperationMode(od::velocitymode);
     uint32_t targetr;
     uint32_t accelerationr;
+
 //    The target velocity is the input for the trajectory generator
 //    and the value is given in user-defined velocity units.
 //    Si paso los parametros convertidos en ui, sino convertir primero
 
-//    targetr=( (target*(4096/360)*(1) ) << 16 );//4096/360= [encoder-steps/deg] and 1000 [ms] in a [s]
-//    WriteSDO(od::profile_velocity,data32to4x8(targetr));
-
+    targetr=( (target*(4096/360)*(1) ) << 16 )+0;//4096/360= [encoder-steps/deg] and 1000 [ms] in a [s]
+    WriteSDO(od::target_velocity,data32to4x8(targetr));
 
     accelerationr=((acceleration*4096/360000000))+0;
     WriteSDO(od::profile_acceleration,data32to4x8(accelerationr));
@@ -464,9 +465,9 @@ long CiA402Device::SetVelocity(uint32_t target){
 
 
     uint32_t targetr;
-targetr=( (1100) << 16 );
-    /*targetr=( (target*(4096/360)*(2) ) << 16 );*///4096/360= [encoder-steps/deg] and 1000 [ms] in a [s]
-    WriteSDO(od::target_velocity,data32to4x8(targetr));
+//targetr=( (1) << 16 );
+   //targetr=( (target*(4096/360)*(2) ) << 16 );*///4096/360= [encoder-steps/deg] and 1000 [ms] in a [s]
+    //WriteSDO(od::target_velocity,data32to4x8(targetr));
 //    accelerationr=((acceleration*4096/360000000)<<16)+0;
 
 //    WriteSDO(od::profile_acceleration,data32to4x8(accelerationr));

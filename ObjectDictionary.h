@@ -48,6 +48,8 @@ const vector<uint8_t> motion_profile_type={0x86,0x60};
 const vector<uint8_t> profile_velocity={0x81,0x60,0x00};
 const vector<uint8_t> linear_ramp_trapezoidal={0x00};
 const vector<uint8_t> target_velocity={0xFF,0x60};
+const vector<uint8_t> velocity_encoder_resolution_num={0x94,0x60,0x01};
+const vector<uint8_t> velocity_encoder_resolution_den={0x94,0x60,0x02};
 
 }
 #endif // OBJECTDICTIONARY_H
