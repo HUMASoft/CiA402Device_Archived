@@ -771,10 +771,14 @@ uint32_t CiA301CommPort::data4x8to32(const uint8_t* in)
 uint32_t CiA301CommPort::DataToInt(const uint8_t* in, const uint8_t size)
 {
 
+    if (size==0)
+    {
+        return 0;
+    }
     long retvalue = in[0];
     for (int i=1; i<size; i++)
     {
-    retvalue = (retvalue << 8) + in[1];
+    retvalue = (retvalue << 8) + in[i];
     cout <<"i" << i <<"v"<< retvalue <<endl;
     }
     return retvalue;
