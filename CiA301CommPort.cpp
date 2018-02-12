@@ -113,9 +113,10 @@ long CiA301CommPort::WriteSDO(const vector<uint8_t> &address, const vector<uint8
     co_msg output;
     ReadCobId(sdo::tx0+id, output);
 
-
+    cout<<"AQUIIIIIIIIIIIIIIIIIIII"<<endl;
     for (long reps=0 ; reps>FIND_RETRY ;reps++)
     {
+
         cout << output.data_co[1]<< " " << address[0]<< " " << output.data_co[2]<< " " << address[1] <<endl;
         //Check that received data comes from right address.
         if ( (output.data_co[1] == address[0]) && (output.data_co[2] == address[1]) )
@@ -138,13 +139,14 @@ long CiA301CommPort::WriteSDO(const vector<uint8_t> &address, const vector<uint8
     }
 
     //fixed return four last bytes from data.
-//    long retvalue = output.data_co[7];
-//    retvalue = (retvalue << 8) + output.data_co[6];
-//    retvalue = (retvalue << 8) + output.data_co[5];
-//    retvalue = (retvalue << 8) + output.data_co[4];
+    long retvalue = output.data_co[7];
+    retvalue = (retvalue << 8) + output.data_co[6];
+    retvalue = (retvalue << 8) + output.data_co[5];
+    retvalue = (retvalue << 8) + output.data_co[4];
 //    return retvalue;
-    cout << "dlc " << output.dlc_co << endl;
-    return DataToInt(&output.data_co[4], output.dlc_co);
+//    cout << "dlc " << output.dlc_co << endl;
+//    long retvalue=DataToInt(&output.data_co[4], output.dlc_co);
+    return retvalue;
 }
 
 long CiA301CommPort::ReadPDO(long number)
@@ -367,12 +369,13 @@ long CiA301CommPort::CanBusToCanOpen(const can_msg & input, co_msg & output)
 {
 
    //verificar el bit de start to frame de can
+    cout<<"input.dlc"<<input.dlc<<endl;
     output.dlc_co=input.dlc;
     output.id_co=input.id;
     output.rtr=input.rtr;
     output.ts=input.ts;
 
-
+   //
     for( int i=0; i < 8; i++)
     {
         output.data_co[i] = input.data[i];

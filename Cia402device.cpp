@@ -404,7 +404,8 @@ long CiA402Device::Setup_Velocity_Mode(const uint32_t target,const uint32_t acce
 //    and the value is given in user-defined velocity units.
 //    Si paso los parametros convertidos en ui, sino convertir primero
 
-    targetr=( (target*(4096/360)*(1) ) << 16 )+0;//4096/360= [encoder-steps/deg] and 1000 [ms] in a [s]
+    //targetr=( (target*(4096/360)*(1) ) << 16 )+0;//4096/360= [encoder-steps/deg] and 1000 [ms] in a [s]
+    targetr=(target<<16)+00;
     WriteSDO(od::target_velocity,data32to4x8(targetr));
 
     accelerationr=((acceleration*4096/360000000))+0;
@@ -493,6 +494,12 @@ long CiA402Device::SetVelocity(uint32_t target){
 //    cout<<"statusword: "<<stat<<endl;
 //    //FlushBuffer();
 //    //sleep(1);
+//    targetr=((target*1024)/6.28);
+//    uint32_t t=(targetr<<16)+0;
+    uint32_t t=(target*256/15)<<16;
+
+    WriteSDO(od::target_velocity,data32to4x8(t));
+
 
 //    //setup via control word
 ////    vector<uint8_t>cw={0x30,0x08,0x00 ,0x00 };
