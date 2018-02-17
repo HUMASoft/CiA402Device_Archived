@@ -113,7 +113,7 @@ long CiA301CommPort::WriteSDO(const vector<uint8_t> &address, const vector<uint8
     co_msg output;
     ReadCobId(sdo::tx0+id, output);
 
-    cout<<"AQUIIIIIIIIIIIIIIIIIIII"<<endl;
+
     for (long reps=0 ; reps>FIND_RETRY ;reps++)
     {
 

@@ -345,8 +345,9 @@ double CiA402Device::GetPosition()
 }
 double CiA402Device::GetVelocity()
 {
+        cout<<"Get_Velocity"<<ReadSDO(od::velocityaddress)/65536*15<<"rpm"<<endl;
 
-    return (uint32_t) ReadSDO(od::velocityaddress)*360000/(4096);
+        return (uint32_t) ReadSDO(od::velocityaddress)/65536*15;
 
 
 
@@ -408,7 +409,8 @@ long CiA402Device::Setup_Velocity_Mode(const uint32_t target,const uint32_t acce
     targetr=(target<<16)+00;
     WriteSDO(od::target_velocity,data32to4x8(targetr));
 
-    accelerationr=((acceleration*4096/360000000))+0;
+    //accelerationr=((acceleration*4096/360000000))+0;
+    accelerationr=acceleration*65536;
     WriteSDO(od::profile_acceleration,data32to4x8(accelerationr));
     return 0;
 }
