@@ -98,13 +98,14 @@ long CiA301CommPort::WriteSDO(const vector<uint8_t> &address, const vector<uint8
 
    //Then set the
    data.insert(data.end(), address.begin(), address.end());
+
    data.insert(data.end(), value.begin(), value.end());
 
     //cout << "id" << id << endl;
     //Write the data in the default rx port
     //like in CiA 301
-
-    SendMessage(SetCanOpenMsg(sdo::rx0+id, 0 ,data) );
+    int size=value.size();
+    SendMessage(SetCanOpenMsg(sdo::rx0+id, 0 ,data,size) );
 
 //    //and wait for write response
 //    co_msg output;
@@ -139,6 +140,14 @@ long CiA301CommPort::WriteSDO(const vector<uint8_t> &address, const vector<uint8
     }
 
     //fixed return four last bytes from data.
+    cout<<"OUTPUT DATA 0    "<<(bitset<8>)output.data_co[0]<<endl;
+    cout<<"OUTPUT DATA 1    "<<(bitset<8>)output.data_co[1]<<endl;
+    cout<<"OUTPUT DATA 2    "<<(bitset<8>)output.data_co[2]<<endl;
+    cout<<"OUTPUT DATA 3    "<<(bitset<8>)output.data_co[3]<<endl;
+    cout<<"OUTPUT DATA 4    "<<(bitset<8>)output.data_co[4]<<endl;
+    cout<<"OUTPUT DATA 5    "<<(bitset<8>)output.data_co[5]<<endl;
+    cout<<"OUTPUT DATA 6    "<<(bitset<8>)output.data_co[6]<<endl;
+    cout<<"OUTPUT DATA 7    "<<(bitset<8>)output.data_co[7]<<endl;
     long retvalue = output.data_co[7];
     retvalue = (retvalue << 8) + output.data_co[6];
     retvalue = (retvalue << 8) + output.data_co[5];
@@ -348,6 +357,7 @@ long CiA301CommPort::CanOpenToCanBus(const co_msg & input, can_msg & output)
                 //output.fi<<=4;
                 //output.fi+=input.dlc_co;
                 output.dlc=input.dlc_co;
+                cout<<"DLLLLLLLLLCCCCCc"<<output.dlc<<endl;
                 output.rtr=input.rtr;
 
                 output.ff=FF_NORMAL; //normal frame
@@ -393,11 +403,11 @@ long CiA301CommPort::CanBusToCanOpen(const can_msg & input, co_msg & output)
  * @param msg_start : canopen data frame.
  * @return : canopen constructed message in co_msg data type.
  */
-co_msg CiA301CommPort::SetCanOpenMsg(unsigned short id_co, unsigned short rtr, vector<uint8_t> coDataFrame){
+co_msg CiA301CommPort::SetCanOpenMsg(unsigned short id_co, unsigned short rtr, vector<uint8_t> coDataFrame,int size){
 
     co_msg msg_co;
     msg_co.id_co=id_co;
-    msg_co.dlc_co=coDataFrame.size();
+    msg_co.dlc_co=size;
 
     memcpy(msg_co.data_co, coDataFrame.data(), (msg_co.dlc_co)*sizeof(uint8_t));
     //msg_co.nodeID=nodeID;
@@ -638,7 +648,7 @@ int CiA301CommPort::ReadCobId(uint16_t expected_cobid, co_msg & output ){
 //        }
         cout<<endl;
         //TODO: use dlc here!!!
-        return data4x8to32(&output.data_co[4]);
+        return data4x8to32(&output.data_co[4],output.dlc_co);
     }
 
     return 0;
@@ -758,17 +768,35 @@ long CiA301CommPort::GetMsg(can_msg &msg)
 }
 
 
-uint32_t CiA301CommPort::data4x8to32(const uint8_t* in)
+uint32_t CiA301CommPort::data4x8to32(const uint8_t* in,int dlc)
 {
     //TODO check for Sizes!!!!!
     //TODO: use dlc here!!!
+    uint32_t retvalue;
+    const vector<uint8_t> data_out={};
 
-    long retvalue = in[0];
-    retvalue = (retvalue << 8) + in[1];
-    retvalue = (retvalue << 8) + in[2];
-    retvalue = (retvalue << 8) + in[3];
+    for (int i=0;i<dlc;i++){
+        //memcpy((uint8_t *)&(data_out+i),(uint8_t *)in+i,1);
+        if(dlc>0){
+            retvalue = in[i];
+            retvalue = (retvalue << 8);
+        }
+        else{
+            retvalue = data_out[i];
+    }
+//    uint32_t retvalue;
+//    for(int i=0;i<dlc;i++){
+//        if(dlc>0){
+//    retvalue = data_out[i];
+//    retvalue = (retvalue << 8);
+//        }
+//        else{
+//         retvalue = data_out[i];
+//      }
+    }
     return retvalue;
 
+    //return data_out;
 }
 
 uint32_t CiA301CommPort::DataToInt(const uint8_t* in, const uint8_t size)

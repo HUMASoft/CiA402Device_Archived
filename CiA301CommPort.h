@@ -71,12 +71,14 @@ public:
     long WritePDO4(const vector<uint8_t> &command);
     long ReadErrorNMT();
     long ReadPDO(long number);
+    uint32_t data4x8to32(const uint8_t *in, int dlc);
+    //co_msg SetCanOpenMsg(unsigned short id_co, unsigned short rtr, vector<uint8_t> coDataFrame, int size);
 private:
 
     //methods
     long CanOpenToCanBus(const co_msg &input, can_msg &output);
     long CanBusToCanOpen(const can_msg &input, co_msg &output);
-    uint32_t data4x8to32(const uint8_t *in);
+    // uint32_t data4x8to32(const uint8_t *in, int dlc);
     uint32_t DataToInt(const uint8_t *in, const uint8_t size);
 
     int SendMessage(co_msg input);
@@ -101,8 +103,7 @@ private:
     vector<can_msg> readBuffer;
     vector<unsigned int> readInbox;
 
-    co_msg SetCanOpenMsg(unsigned short id_co, unsigned short rtr,  vector<uint8_t> coDataFrame);
-};
+co_msg SetCanOpenMsg(unsigned short id_co, unsigned short rtr, vector<uint8_t> coDataFrame, int size);};
 
 
 namespace sdo

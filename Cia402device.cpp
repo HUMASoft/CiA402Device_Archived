@@ -345,7 +345,7 @@ double CiA402Device::GetPosition()
 }
 double CiA402Device::GetVelocity()
 {
-        cout<<"Get_Velocity"<<ReadSDO(od::velocityaddress)/65536*15<<"rpm"<<endl;
+        cout<<"Get_Velocity"<<ReadSDO(od::velocityaddress)/65536*15*3.7<<"rpm"<<endl;
 
         return (uint32_t) ReadSDO(od::velocityaddress)/65536*15;
 
@@ -398,7 +398,7 @@ long CiA402Device::Setup_Velocity_Mode(const uint32_t target,const uint32_t acce
 //    object the acceleration/deceleration rate.
 
     OperationMode(od::velocitymode);
-    uint32_t targetr;
+    uint32_t velocityr;
     uint32_t accelerationr;
 
 //    The target velocity is the input for the trajectory generator
@@ -406,8 +406,8 @@ long CiA402Device::Setup_Velocity_Mode(const uint32_t target,const uint32_t acce
 //    Si paso los parametros convertidos en ui, sino convertir primero
 
     //targetr=( (target*(4096/360)*(1) ) << 16 )+0;//4096/360= [encoder-steps/deg] and 1000 [ms] in a [s]
-    targetr=(target<<16)+00;
-    WriteSDO(od::target_velocity,data32to4x8(targetr));
+    velocityr=((target*4096/360000)<<16)+0;
+    WriteSDO(od::target_velocity,data32to4x8(velocityr));
 
     //accelerationr=((acceleration*4096/360000000))+0;
     accelerationr=acceleration*65536;

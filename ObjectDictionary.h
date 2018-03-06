@@ -51,5 +51,6 @@ const vector<uint8_t> target_velocity={0xFF,0x60};
 const vector<uint8_t> velocity_encoder_resolution_num={0x94,0x60,0x01};
 const vector<uint8_t> velocity_encoder_resolution_den={0x94,0x60,0x02};
 
+const vector<uint8_t> gear_ratio={0x91,0x60,0x00};
 }
 #endif // OBJECTDICTIONARY_H
