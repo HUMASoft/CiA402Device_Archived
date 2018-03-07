@@ -105,7 +105,7 @@ long CiA301CommPort::WriteSDO(const vector<uint8_t> &address, const vector<uint8
     //Write the data in the default rx port
     //like in CiA 301
     int size=value.size();
-    SendMessage(SetCanOpenMsg(sdo::rx0+id, 0 ,data,size) );
+    SendMessage( SetCanOpenMsg(sdo::rx0+id, 0 ,data) );
 
 //    //and wait for write response
 //    co_msg output;
@@ -357,7 +357,6 @@ long CiA301CommPort::CanOpenToCanBus(const co_msg & input, can_msg & output)
                 //output.fi<<=4;
                 //output.fi+=input.dlc_co;
                 output.dlc=input.dlc_co;
-                cout<<"DLLLLLLLLLCCCCCc"<<output.dlc<<endl;
                 output.rtr=input.rtr;
 
                 output.ff=FF_NORMAL; //normal frame
@@ -403,11 +402,11 @@ long CiA301CommPort::CanBusToCanOpen(const can_msg & input, co_msg & output)
  * @param msg_start : canopen data frame.
  * @return : canopen constructed message in co_msg data type.
  */
-co_msg CiA301CommPort::SetCanOpenMsg(unsigned short id_co, unsigned short rtr, vector<uint8_t> coDataFrame,int size){
+co_msg CiA301CommPort::SetCanOpenMsg(unsigned short id_co, unsigned short rtr, vector<uint8_t> coDataFrame){
 
     co_msg msg_co;
     msg_co.id_co=id_co;
-    msg_co.dlc_co=size;
+    msg_co.dlc_co=coDataFrame.size();
 
     memcpy(msg_co.data_co, coDataFrame.data(), (msg_co.dlc_co)*sizeof(uint8_t));
     //msg_co.nodeID=nodeID;

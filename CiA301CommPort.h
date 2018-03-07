@@ -103,7 +103,7 @@ private:
     vector<can_msg> readBuffer;
     vector<unsigned int> readInbox;
 
-co_msg SetCanOpenMsg(unsigned short id_co, unsigned short rtr, vector<uint8_t> coDataFrame, int size);};
+co_msg SetCanOpenMsg(unsigned short id_co, unsigned short rtr, vector<uint8_t> coDataFrame);};
 
 
 namespace sdo
