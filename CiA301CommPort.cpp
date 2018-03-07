@@ -104,7 +104,12 @@ long CiA301CommPort::WriteSDO(const vector<uint8_t> &address, const vector<uint8
     //cout << "id" << id << endl;
     //Write the data in the default rx port
     //like in CiA 301
+<<<<<<< HEAD
     SendMessage(SetCanOpenMsg(sdo::rx0+id, 0 ,data) );
+=======
+    int size=value.size();
+    SendMessage( SetCanOpenMsg(sdo::rx0+id, 0 ,data) );
+>>>>>>> 802b61f390bce0feac0663a82c471ecc9e5fa3e9
 
 //    //and wait for write response
 //    co_msg output;
