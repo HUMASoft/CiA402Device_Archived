@@ -57,7 +57,7 @@ long CanBusPort::SetFilter(uint32_t canId, uint32_t mask)
     return -1;
 }
 
-long CanBusPort::GetMsg(uint32_t &canId, uint8_t *data, uint8_t size)
+long CanBusPort::GetMsg(uint32_t &canId, uint8_t *data, uint8_t &size)
 {
     cerr << "Not implemented" << endl;
     return -1;

@@ -31,7 +31,7 @@ public:
     int getPortId();
 
     long SetFilter(uint32_t canId, uint32_t mask);
-    long GetMsg(uint32_t &canId, uint8_t *data, uint8_t size);
+    long GetMsg(uint32_t &canId, uint8_t *data, uint8_t &size);
     long PutMsg(const uint32_t &canId, uint8_t * const data, const uint8_t size);
     long GetNMT(uint8_t * const data, uint8_t & size);
 private:
