@@ -73,7 +73,7 @@ public:
     long Reset();
 
     long StartNode();
-    uint32_t DegreeConv(uint32_t DegreeTarget);
+
     long SetVelocity(uint32_t target);
 private:
 

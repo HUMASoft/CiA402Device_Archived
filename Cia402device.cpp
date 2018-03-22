@@ -192,7 +192,7 @@ void CiA402Device::PrintStatus()
 //    status = 0x024; //testing data
     //filter state
     status &= 0x6f; //mask 01101111=6f
-    cout << "status word with mask: " << std::bitset<16>(status)<< endl;
+    //cout << "status word with mask: " << std::bitset<16>(status)<< endl;
 
     switch(status)
     {
@@ -436,8 +436,9 @@ long CiA402Device::SetPosition(uint32_t target){
     WritePDO(od::goenable);
     FlushBuffer();
     //sleep(1);
+    uint32_t target_t=(uint32_t)target*3.7*4096/360;
 
-    WriteSDO(od::target_position,data32to4x8(target));
+    WriteSDO(od::target_position,data32to4x8(target_t));
 //    FlushBuffer();
     //WritePDO4(data32to4x8(target));
     //sleep(1);
@@ -523,12 +524,7 @@ long CiA402Device::SetVelocity(uint32_t target){
 /// \return targetPos A uint32_t variable with the equivalent position as a function
 /// of the encoder lines.
 ///
-uint32_t CiA402Device::DegreeConv(uint32_t DegreeTarget){ // Conversion from degrees to the encoder's lines
 
-uint32_t targetPos;
-targetPos=DegreeTarget*4096/360;
-    return targetPos;
-}
 
 vector<uint8_t> data32to4x8(uint32_t in)
 {
