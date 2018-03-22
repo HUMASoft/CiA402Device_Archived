@@ -463,7 +463,8 @@ int CiA301CommPort::SendMessage(co_msg input)
         if(usesockets)
         {
             uint32_t tmpid = send_msg.id;
-            port->PutMsg(tmpid, send_msg.data, send_msg.dlc);
+            uint16_t tmpdlc = send_msg.dlc;
+            port->PutMsg(tmpid, send_msg.data, tmpdlc);
 
         }
         else
