@@ -131,6 +131,7 @@ long CiA402Device::SwitchOn()
 //     cout<<"response"<< response <<endl;
 //     FlushBuffer();
 //     OperationMode(od::positionmode);
+     sleep(1);
 
     return 0;
 }
@@ -427,7 +428,7 @@ long CiA402Device::Setup_Velocity_Mode(const uint32_t target,const uint32_t acce
 /// \return This function returns a variable of type long with value 0.
 ///
 
-long CiA402Device::SetPosition(uint32_t target){
+long CiA402Device::SetPosition(long target){
 
 //WATCH SLEEPS!!!!!!!!!!!!
 //remove when working code
@@ -436,7 +437,7 @@ long CiA402Device::SetPosition(uint32_t target){
     WritePDO(od::goenable);
     FlushBuffer();
     //sleep(1);
-    uint32_t target_t=(uint32_t)target*3.7*4096/360;
+    long target_t=(long)target*3.7*4096/360;
 
     WriteSDO(od::target_position,data32to4x8(target_t));
 //    FlushBuffer();

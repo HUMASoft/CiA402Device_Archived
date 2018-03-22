@@ -64,7 +64,7 @@ public:
     long ForceSwitchOff();
 
     //long SetupPositionMode(const vector<uint8_t> target, const vector<uint8_t> velocity, const vector<uint8_t> acceleration, const vector<uint8_t> deceleration);
-    long SetPosition(uint32_t target);
+    long SetPosition(long target);
     long SetupPositionMode(const uint32_t velocity, const uint32_t acceleration);
     ///
     /// \brief Reset This function resets the node corresponding to this object.
