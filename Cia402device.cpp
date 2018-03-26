@@ -341,14 +341,14 @@ long CiA402Device::QuickStop()
 double CiA402Device::GetPosition()
 {
 
-    return (uint32_t) ReadSDO(od::positionaddress)*360000/4096;
+    return (uint32_t) ReadSDO(od::positionaddress)*360/15155;//*360000/4096
 
 }
 double CiA402Device::GetVelocity()
 {
-        cout<<"Get_Velocity"<<ReadSDO(od::velocityaddress)/65536*15*3.7<<"rpm"<<endl;
 
-        return (uint32_t) ReadSDO(od::velocityaddress)/65536*15;
+
+        return (uint32_t) (ReadSDO(od::velocityaddress)*15/65536)/3.7;
 
 
 

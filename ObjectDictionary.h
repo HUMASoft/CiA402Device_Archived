@@ -36,7 +36,7 @@ const vector<uint8_t> stop_option_code={0x5D,0x60};
 const vector<uint8_t> checkerror={0x02,0x10};
 
 //address must be complete index and subindex {I1,I2,S1}
-const vector<uint8_t> positionaddress={0x63,0x60};
+const vector<uint8_t> positionaddress={0x64,0x60};
 const vector<uint8_t> velocityactvalue={0x69,0x60};
 const vector<uint8_t> velocityaddress={0x69,0x60};
 const vector<uint8_t> target_position={0x7A,0x60,0x00};
