@@ -61,6 +61,8 @@ public:
     long OperationMode(const vector<uint8_t> new_mode);
     long SetupPositionMode(const vector<uint32_t> target, const vector<uint32_t> velocity, const vector<uint32_t> acceleration, const vector<uint32_t> deceleration);
     long Setup_Velocity_Mode(const uint32_t target, const uint32_t acceleration);
+    long Setup_Torque_Mode();
+    long SetTorque(uint32_t target);
     long ForceSwitchOff();
 
     //long SetupPositionMode(const vector<uint8_t> target, const vector<uint8_t> velocity, const vector<uint8_t> acceleration, const vector<uint8_t> deceleration);

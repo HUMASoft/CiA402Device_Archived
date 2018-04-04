@@ -42,6 +42,13 @@ const vector<uint8_t> velocityaddress={0x69,0x60};
 const vector<uint8_t> target_position={0x7A,0x60,0x00};
 const vector<uint8_t> position_demand={0x62,0x60,0x00};
 
+//Torque
+const vector<uint8_t> torquemode={0xFB};
+const vector<uint8_t> torque_type_extern={0x1D,0x20,0x00};
+const vector<uint8_t> torque_online={0x01,0x00};
+const vector<uint8_t> torque_target={0x1C,0x20,0x00};
+const vector<uint8_t> torque_max={0x72,0x60};
+
 const vector<uint8_t> profile_acceleration={0x83,0x60,0x00};
 const vector<uint8_t> quick_stop_deceleration={0x85,0x60,0x00};
 const vector<uint8_t> motion_profile_type={0x86,0x60};
@@ -52,5 +59,8 @@ const vector<uint8_t> velocity_encoder_resolution_num={0x94,0x60,0x01};
 const vector<uint8_t> velocity_encoder_resolution_den={0x94,0x60,0x02};
 
 const vector<uint8_t> gear_ratio={0x91,0x60,0x00};
+
+
+const vector<uint8_t> aa={0x71,0x60,0x00};
 }
 #endif // OBJECTDICTIONARY_H

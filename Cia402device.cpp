@@ -338,18 +338,36 @@ long CiA402Device::QuickStop()
     return 0;
 }
 
+//double CiA402Device::GetPosition()
+//{
+
+//    return (uint32_t) ReadSDO(od::positionaddress)*360/4096;//*360000/4096
+
+//}
+
 double CiA402Device::GetPosition()
 {
 
     return (uint32_t) ReadSDO(od::positionaddress)*360/15155;//*360000/4096
+       double position = ReadSDO(od::positionaddress)*360/15155;
+       while(position > 1200){
+             position = ReadSDO(od::positionaddress)*360/15155;
+       }
+       cout<<"DENTRO DE GETPOSITIOB"<<position<<endl;
+    //return (uint32_t) ReadSDO(od::positionaddress)*360/4096;//*360000/4096
+    return position;
 
 }
+
 double CiA402Device::GetVelocity()
 {
 
 
         return (uint32_t) (ReadSDO(od::velocityaddress)*15/65536)/3.7;
+        //cout<<"Get_Velocity"<<ReadSDO(od::velocityaddress)/65536*15*3.7<<"rpm"<<endl;
 
+        //return (uint32_t) ReadSDO(od::velocityaddress)/65536*15*3.7;
+        return (uint32_t) (ReadSDO(od::velocityaddress)*15/65536)/3.7;
 
 
 }
@@ -364,9 +382,7 @@ long CiA402Device::SetupPositionMode(/*const vector<uint8_t> target,*/const uint
 
 uint32_t velocityr;
 uint32_t accelerationr;
-
     OperationMode(od::positionmode);
-
     /* Converts from degrees/s to lines per ms, and then this value is shifted two bytes
  to the left to form the high part of the message. Then the low part is added.
  The high part corresponds to the increments/sample while the low part corresponds
@@ -399,7 +415,7 @@ long CiA402Device::Setup_Velocity_Mode(const uint32_t target,const uint32_t acce
 //    object the acceleration/deceleration rate.
 
     OperationMode(od::velocitymode);
-    uint32_t velocityr;
+    uint32_t t=(target*256/15)<<16;
     uint32_t accelerationr;
 
 //    The target velocity is the input for the trajectory generator
@@ -407,8 +423,8 @@ long CiA402Device::Setup_Velocity_Mode(const uint32_t target,const uint32_t acce
 //    Si paso los parametros convertidos en ui, sino convertir primero
 
     //targetr=( (target*(4096/360)*(1) ) << 16 )+0;//4096/360= [encoder-steps/deg] and 1000 [ms] in a [s]
-    velocityr=((target*4096/360000)<<16)+0;
-    WriteSDO(od::target_velocity,data32to4x8(velocityr));
+
+     WriteSDO(od::target_velocity,data32to4x8(t));
 
     //accelerationr=((acceleration*4096/360000000))+0;
     accelerationr=acceleration*65536;
@@ -459,7 +475,7 @@ long CiA402Device::SetPosition(long target){
     //setup via control word
 //    vector<uint8_t>cw={0x30,0x08,0x00 ,0x00 };
 //    WritePDO(cw);
-//    sleep(1);
+//    sleep(1);01100100
     cout<<"RUN"<<endl;
       WritePDO(od::run);
       FlushBuffer();
@@ -527,8 +543,30 @@ long CiA402Device::SetVelocity(uint32_t target){
 ///
 
 
+
+long CiA402Device::Setup_Torque_Mode(){
+
+    OperationMode(od::torquemode);
+
+    WriteSDO(od::torque_type_extern,od::torque_online);
+    return 0;
+}
+
+long CiA402Device::SetTorque(uint32_t target){
+
+    uint32_t targetr=(target)<<16;
+
+    WriteSDO(od::torque_target,data32to4x8(targetr));
+
+    cout<<"RUN"<<endl;
+    WritePDO(od::run);
+    FlushBuffer();
+    return 0;
+}
+
 vector<uint8_t> data32to4x8(uint32_t in)
 {
+    cout<<"---------------------------"<<endl;
     vector<uint8_t> retvalue(4);
     retvalue[0] = in&0x000000FF;
     retvalue[1] = (in&0x0000FF00)>>8;
