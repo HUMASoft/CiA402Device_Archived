@@ -36,7 +36,7 @@ const vector<uint8_t> stop_option_code={0x5D,0x60};
 const vector<uint8_t> checkerror={0x02,0x10};
 
 //address must be complete index and subindex {I1,I2,S1}
-const vector<uint8_t> positionaddress={0x64,0x60};
+const vector<uint8_t> positionaddress={0x64,0x60,0x00};
 const vector<uint8_t> velocityactvalue={0x69,0x60};
 const vector<uint8_t> velocityaddress={0x69,0x60};
 const vector<uint8_t> target_position={0x7A,0x60,0x00};
@@ -54,7 +54,7 @@ const vector<uint8_t> quick_stop_deceleration={0x85,0x60,0x00};
 const vector<uint8_t> motion_profile_type={0x86,0x60};
 const vector<uint8_t> profile_velocity={0x81,0x60,0x00};
 const vector<uint8_t> linear_ramp_trapezoidal={0x00};
-const vector<uint8_t> target_velocity={0xFF,0x60};
+const vector<uint8_t> target_velocity={0xFF,0x60,0x00};
 const vector<uint8_t> velocity_encoder_resolution_num={0x94,0x60,0x01};
 const vector<uint8_t> velocity_encoder_resolution_den={0x94,0x60,0x02};
 

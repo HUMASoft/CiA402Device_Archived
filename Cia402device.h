@@ -76,7 +76,7 @@ public:
 
     long StartNode();
 
-    long SetVelocity(uint32_t target);
+    long SetVelocity(double target);
 private:
 
     //methods

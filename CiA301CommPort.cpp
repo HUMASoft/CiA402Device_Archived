@@ -141,20 +141,20 @@ long CiA301CommPort::WriteSDO(const vector<uint8_t> &address, const vector<uint8
     }
 
     //fixed return four last bytes from data.
-    cout<<"OUTPUT DATA 0    "<<(bitset<8>)output.data_co[0]<<endl;
-    cout<<"OUTPUT DATA 1    "<<(bitset<8>)output.data_co[1]<<endl;
-    cout<<"OUTPUT DATA 2    "<<(bitset<8>)output.data_co[2]<<endl;
-    cout<<"OUTPUT DATA 3    "<<(bitset<8>)output.data_co[3]<<endl;
-    cout<<"OUTPUT DATA 4    "<<(bitset<8>)output.data_co[4]<<endl;
-    cout<<"OUTPUT DATA 5    "<<(bitset<8>)output.data_co[5]<<endl;
-    cout<<"OUTPUT DATA 6    "<<(bitset<8>)output.data_co[6]<<endl;
-    cout<<"OUTPUT DATA 7    "<<(bitset<8>)output.data_co[7]<<endl;
+//    cout<<"OUTPUT DATA 0    "<<(bitset<8>)output.data_co[0]<<endl;
+//    cout<<"OUTPUT DATA 1    "<<(bitset<8>)output.data_co[1]<<endl;
+//    cout<<"OUTPUT DATA 2    "<<(bitset<8>)output.data_co[2]<<endl;
+//    cout<<"OUTPUT DATA 3    "<<(bitset<8>)output.data_co[3]<<endl;
+//    cout<<"OUTPUT DATA 4    "<<(bitset<8>)output.data_co[4]<<endl;
+//    cout<<"OUTPUT DATA 5    "<<(bitset<8>)output.data_co[5]<<endl;
+//    cout<<"OUTPUT DATA 6    "<<(bitset<8>)output.data_co[6]<<endl;
+//    cout<<"OUTPUT DATA 7    "<<(bitset<8>)output.data_co[7]<<endl;
 //    long retvalue = output.data_co[7];
 //    retvalue = (retvalue << 8) + output.data_co[6];
 //    retvalue = (retvalue << 8) + output.data_co[5];
 //    retvalue = (retvalue << 8) + output.data_co[4];
 //    return retvalue;
-    cout << "dlc " << output.dlc_co << endl;
+//    cout << "dlc " << output.dlc_co << endl;
 //    long retvalue=DataToInt(&output.data_co[4], output.dlc_co);
     return DataToInt(&output.data_co[4], output.dlc_co-4);
 }
@@ -803,19 +803,25 @@ uint32_t CiA301CommPort::data4x8to32(const uint8_t* in,int dlc)
     //return data_out;
 }
 
-uint32_t CiA301CommPort::DataToInt(const uint8_t* in, const uint8_t size)
+long CiA301CommPort::DataToInt(const uint8_t* in, unsigned short size)
 {
-
+//    cout<<"SIZE "<<size<<endl;
     if ( (size<=0) | (size>4) )
     {
         return 0;
     }
-    long retvalue = in[0];
-    for (int i=size; i>=0; i--)
+    long retvalue = in[size-1];
+//    cout<<"--- RETVALUE "<<retvalue<<endl;
+    for (int i=size-1; i>0; i--)
     {
-    retvalue = (retvalue << 8) + in[i];
+    retvalue = (retvalue << 8) + in[i-1];
+//    cout<<"----RETVALUE "<<retvalue<<endl;
     //cout <<"i" << i <<"v"<< retvalue <<endl;
     }
+    if (in[3]==0xFF && in[2]==0xFF){
+//        cout<<"in[3]==0xFF"<<in[3]<<endl;
+//        cout<<"in[2]==0xFF"<<in[2]<<endl;
+    return -(4294967296-retvalue);
+}
     return retvalue;
-
 }

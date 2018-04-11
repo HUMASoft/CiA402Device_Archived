@@ -348,14 +348,16 @@ long CiA402Device::QuickStop()
 double CiA402Device::GetPosition()
 {
 
-    return (uint32_t) ReadSDO(od::positionaddress)*360/15155;//*360000/4096
-       double position = ReadSDO(od::positionaddress)*360/15155;
-       while(position > 1200){
-             position = ReadSDO(od::positionaddress)*360/15155;
-       }
-       cout<<"DENTRO DE GETPOSITIOB"<<position<<endl;
-    //return (uint32_t) ReadSDO(od::positionaddress)*360/4096;//*360000/4096
-    return position;
+    double position=ReadSDO(od::positionaddress);
+    cout<<"POS --- "<<position<<endl;
+    return position*360/15155;//*360000/4096
+//       double position = ReadSDO(od::positionaddress)*360/15155;
+//       while(position > 1200){
+//             position = ReadSDO(od::positionaddress)*360/15155;
+//       }
+//       cout<<"DENTRO DE GETPOSITIOB"<<position<<endl;
+//    //return (uint32_t) ReadSDO(od::positionaddress)*360/4096;//*360000/4096
+//    return position;
 
 }
 
@@ -482,7 +484,7 @@ long CiA402Device::SetPosition(long target){
     return 0;
 }
 
-long CiA402Device::SetVelocity(uint32_t target){
+long CiA402Device::SetVelocity(double target){
 
 
     uint32_t targetr;
@@ -516,8 +518,9 @@ long CiA402Device::SetVelocity(uint32_t target){
 //    //sleep(1);
 //    targetr=((target*1024)/6.28);
 //    uint32_t t=(targetr<<16)+0;
-    uint32_t t=(target*256/15)<<16;
-
+//    uint32_t t=(target*256/15)<<16;
+    double ui=target*0x10000*4096/60000;
+    long t=(long)ui;
     WriteSDO(od::target_velocity,data32to4x8(t));
 
 
