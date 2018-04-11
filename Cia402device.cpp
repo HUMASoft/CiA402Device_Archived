@@ -349,7 +349,7 @@ double CiA402Device::GetPosition()
 {
 
     double position=ReadSDO(od::positionaddress);
-    cout<<"POS --- "<<position<<endl;
+    //cout<<"POS --- "<<position<<endl;
     return position*360/15155;//*360000/4096
 //       double position = ReadSDO(od::positionaddress)*360/15155;
 //       while(position > 1200){
