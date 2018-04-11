@@ -555,9 +555,9 @@ long CiA402Device::Setup_Torque_Mode(){
     return 0;
 }
 
-long CiA402Device::SetTorque(uint32_t target){
+long CiA402Device::SetTorque(double target){
 
-    uint32_t targetr=(target)<<16;
+    long targetr=(long)target*0x10000;
 
     WriteSDO(od::torque_target,data32to4x8(targetr));
 
