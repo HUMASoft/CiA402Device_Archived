@@ -1,4 +1,4 @@
-#include "Cia402device.h"
+﻿#include "Cia402device.h"
 
 vector<uint8_t> data32to4x8(uint32_t in);
 
@@ -348,9 +348,10 @@ long CiA402Device::QuickStop()
 double CiA402Device::GetPosition()
 {
 
-    double position=ReadSDO(od::positionaddress);
+    int32_t position= (int32_t)ReadSDO(od::positionaddress);
+
     //cout<<"POS --- "<<position<<endl;
-    return position*360/15155;//*360000/4096
+    return (double)position*360/15155;//*360000/4096
 //       double position = ReadSDO(od::positionaddress)*360/15155;
 //       while(position > 1200){
 //             position = ReadSDO(od::positionaddress)*360/15155;
@@ -365,11 +366,11 @@ double CiA402Device::GetVelocity()
 {
 
 
-        return (uint32_t) (ReadSDO(od::velocityaddress)*15/65536)/3.7;
-        //cout<<"Get_Velocity"<<ReadSDO(od::velocityaddress)/65536*15*3.7<<"rpm"<<endl;
+    int v = (int)ReadSDO(od::velocityaddress)*15/65536;
+    double ret = v/3.7;
+    //cout<<"Get_Velocity"<<ret<<"rpm"<<endl;
+    return ret;
 
-        //return (uint32_t) ReadSDO(od::velocityaddress)/65536*15*3.7;
-        return (uint32_t) (ReadSDO(od::velocityaddress)*15/65536)/3.7;
 
 
 }
@@ -382,8 +383,8 @@ long CiA402Device::SetCommunications(int fdPort)
 
 long CiA402Device::SetupPositionMode(/*const vector<uint8_t> target,*/const uint32_t velocity,const uint32_t acceleration /*const vector<uint8_t> deceleration*/){
 
-uint32_t velocityr;
-uint32_t accelerationr;
+int32_t velocityr;
+int32_t accelerationr;
     OperationMode(od::positionmode);
     /* Converts from degrees/s to lines per ms, and then this value is shifted two bytes
  to the left to form the high part of the message. Then the low part is added.
@@ -417,8 +418,8 @@ long CiA402Device::Setup_Velocity_Mode(const uint32_t target,const uint32_t acce
 //    object the acceleration/deceleration rate.
 
     OperationMode(od::velocitymode);
-    uint32_t t=(target*256/15)<<16;
-    uint32_t accelerationr;
+    int32_t t=(target*256/15)<<16;
+    int32_t accelerationr;
 
 //    The target velocity is the input for the trajectory generator
 //    and the value is given in user-defined velocity units.
@@ -487,7 +488,7 @@ long CiA402Device::SetPosition(long target){
 long CiA402Device::SetVelocity(double target){
 
 
-    uint32_t targetr;
+    int32_t targetr;
 //targetr=( (1) << 16 );
    //targetr=( (target*(4096/360)*(2) ) << 16 );*///4096/360= [encoder-steps/deg] and 1000 [ms] in a [s]
     //WriteSDO(od::target_velocity,data32to4x8(targetr));
@@ -520,7 +521,7 @@ long CiA402Device::SetVelocity(double target){
 //    uint32_t t=(targetr<<16)+0;
 //    uint32_t t=(target*256/15)<<16;
     double ui=target*0x10000*4096/60000;
-    long t=(long)ui;
+    int32_t t=(int32_t)ui;
     WriteSDO(od::target_velocity,data32to4x8(t));
 
 
@@ -558,7 +559,7 @@ long CiA402Device::Setup_Torque_Mode(){
 long CiA402Device::SetTorque(double target){
 
 
-    long targetr=(long)target*0x10000;
+    int32_t targetr=(int32_t)target*0x10000;
 
     if ((target < -1000))
     {
@@ -574,7 +575,7 @@ long CiA402Device::SetTorque(double target){
 
     WriteSDO(od::torque_target,data32to4x8(targetr));
 
-    cout<<"RUN"<<endl;
+    //cout<<"RUN"<<endl;
     WritePDO(od::run);
     FlushBuffer();
     return 0;

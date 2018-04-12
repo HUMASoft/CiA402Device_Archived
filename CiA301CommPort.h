@@ -30,7 +30,7 @@ public:
     CiA301CommPort(PortBase *new_port, uint8_t new_id);
 
     long ReadSDO(vector<uint8_t> address, int subindex);
-    long ReadSDO(const vector<uint8_t> &address);
+    ulong ReadSDO(const vector<uint8_t> &address);
     long ReadNMT(const vector<uint8_t> &nmtCode);
 
     ///
@@ -67,7 +67,7 @@ public:
     /// \param value The value that will be writed.
     /// \return 0 if no error. Negative if error (see cerr).
     ///
-    long WriteSDO(const vector<uint8_t> &address, const vector<uint8_t> &value);
+    ulong WriteSDO(const vector<uint8_t> &address, const vector<uint8_t> &value);
     long WritePDO4(const vector<uint8_t> &command);
     long ReadErrorNMT();
     long ReadPDO(long number);
@@ -79,7 +79,7 @@ private:
     long CanOpenToCanBus(const co_msg &input, can_msg &output);
     long CanBusToCanOpen(const can_msg &input, co_msg &output);
     // uint32_t data4x8to32(const uint8_t *in, int dlc);
-    long DataToInt(const uint8_t *in, unsigned short size);
+    ulong DataToInt(const uint8_t *in, unsigned short size);
 
     int SendMessage(co_msg input);
     int SendCanMessage(can_msg &input);

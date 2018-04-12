@@ -31,7 +31,7 @@ CiA301CommPort::CiA301CommPort(PortBase* new_port, uint8_t new_id)
 /// \param address
 /// \return
 ///
-long CiA301CommPort::ReadSDO(const vector<uint8_t> &address)
+ulong CiA301CommPort::ReadSDO(const vector<uint8_t> &address)
 {
 
     co_msg output;
@@ -67,7 +67,7 @@ long CiA301CommPort::ReadSDO(const vector<uint8_t> &address)
 //    return retvalue;
 }
 
-long CiA301CommPort::WriteSDO(const vector<uint8_t> &address, const vector<uint8_t> &value )
+ulong CiA301CommPort::WriteSDO(const vector<uint8_t> &address, const vector<uint8_t> &value )
 {
 
 
@@ -145,10 +145,10 @@ long CiA301CommPort::WriteSDO(const vector<uint8_t> &address, const vector<uint8
 //    cout<<"OUTPUT DATA 1    "<<(bitset<8>)output.data_co[1]<<endl;
 //    cout<<"OUTPUT DATA 2    "<<(bitset<8>)output.data_co[2]<<endl;
 //    cout<<"OUTPUT DATA 3    "<<(bitset<8>)output.data_co[3]<<endl;
-//    cout<<"OUTPUT DATA 4    "<<(bitset<8>)output.data_co[4]<<endl;
-//    cout<<"OUTPUT DATA 5    "<<(bitset<8>)output.data_co[5]<<endl;
-//    cout<<"OUTPUT DATA 6    "<<(bitset<8>)output.data_co[6]<<endl;
-//    cout<<"OUTPUT DATA 7    "<<(bitset<8>)output.data_co[7]<<endl;
+    cout<<"OUTPUT DATA 4    "<<(bitset<8>)output.data_co[4]<<endl;
+    cout<<"OUTPUT DATA 5    "<<(bitset<8>)output.data_co[5]<<endl;
+    cout<<"OUTPUT DATA 6    "<<(bitset<8>)output.data_co[6]<<endl;
+    cout<<"OUTPUT DATA 7    "<<(bitset<8>)output.data_co[7]<<endl;
 //    long retvalue = output.data_co[7];
 //    retvalue = (retvalue << 8) + output.data_co[6];
 //    retvalue = (retvalue << 8) + output.data_co[5];
@@ -803,7 +803,7 @@ uint32_t CiA301CommPort::data4x8to32(const uint8_t* in,int dlc)
     //return data_out;
 }
 
-long CiA301CommPort::DataToInt(const uint8_t* in, unsigned short size)
+ulong CiA301CommPort::DataToInt(const uint8_t* in, unsigned short size)
 {
 //    cout<<"SIZE "<<size<<endl;
     if ( (size<=0) | (size>4) )
@@ -818,10 +818,11 @@ long CiA301CommPort::DataToInt(const uint8_t* in, unsigned short size)
 //    cout<<"----RETVALUE "<<retvalue<<endl;
     //cout <<"i" << i <<"v"<< retvalue <<endl;
     }
-    if (in[3]==0xFF && in[2]==0xFF){
-//        cout<<"in[3]==0xFF"<<in[3]<<endl;
-//        cout<<"in[2]==0xFF"<<in[2]<<endl;
-    return -(4294967296-retvalue);
-}
+//    if (in[3]==0xFF && in[2]==0xFF)
+//    {
+//        //        cout<<"in[3]==0xFF"<<in[3]<<endl;
+//        //        cout<<"in[2]==0xFF"<<in[2]<<endl;
+//        return -(4294967296-retvalue);
+//    }
     return retvalue;
 }
