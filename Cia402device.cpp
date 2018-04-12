@@ -557,7 +557,20 @@ long CiA402Device::Setup_Torque_Mode(){
 
 long CiA402Device::SetTorque(double target){
 
+
     long targetr=(long)target*0x10000;
+
+    if ((target < -1000))
+    {
+        targetr=-1000*0x10000;
+    }
+    if ((target > 1000))
+    {
+        targetr=1000*0x10000;
+    }
+
+
+    cout<< "targetr " <<targetr;
 
     WriteSDO(od::torque_target,data32to4x8(targetr));
 

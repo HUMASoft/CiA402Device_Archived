@@ -1,5 +1,7 @@
 #ifndef CIA402DEVICE_H
 #define CIA402DEVICE_H
+
+#include <math.h>       /* signbit, sqrt */
 //#include "CiA402DeviceICanbus.h"
 #include "CiA301CommPort.h"
 #include "ObjectDictionary.h"
