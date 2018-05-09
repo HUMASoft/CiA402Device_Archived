@@ -88,7 +88,6 @@ private:
     int comm; //port file de
     //unsigned int id;
     double currentPosition;
-    int useport;
     PortBase* port;
 
 };

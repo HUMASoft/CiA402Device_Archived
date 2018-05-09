@@ -169,6 +169,7 @@ long SocketCanPort::Init(string canPort)
     struct can_frame frame;
     struct ifreq ifr; //used in ioctl and addr
 
+    portType = 2;
     //Open sockets.
     //socket variables
     //printf("%s at index %d\n", canPort.c_str(), ifr.ifr_ifindex);

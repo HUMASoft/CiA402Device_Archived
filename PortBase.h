@@ -29,6 +29,8 @@ public:
 
 protected:
     int portId;
+    int portType; //type of port: 1 chardev, 2 network socket
+
     int portNMT;
     can_frame frame;
     long buffSizeId;

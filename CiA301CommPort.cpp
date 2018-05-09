@@ -28,7 +28,7 @@ CiA301CommPort::CiA301CommPort(PortBase* new_port, uint8_t new_id)
 }
 ///
 /// \brief CiA301CommPort::ReadSDO Waits until expected
-/// \param address
+/// \param can SDO address
 /// \return
 ///
 ulong CiA301CommPort::ReadSDO(const vector<uint8_t> &address)

@@ -5,6 +5,7 @@ add_definitions(-DHICO_LE)
 # source files
 aux_source_directory(. CiA402Device_SRCS)
 #INCLUDE_DIRECTORIES(.)
+#find_package(socketcan REQUIRED)
 
 FILE(GLOB_RECURSE CiA402Device_INCLUDE_LIST *.h *.hpp)
 set(SUBDIR_INCLUDE_DIRECTORIES ${SUBDIR_INCLUDE_DIRECTORIES} ${CMAKE_CURRENT_SOURCE_DIR} PARENT_SCOPE)
