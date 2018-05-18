@@ -76,7 +76,29 @@ public:
 private:
 
     //methods
+
+    ///
+    /// \brief CanOpenToCanBus: Converts a CanOpen object or message into a CanBus object or message.
+    ///For this, it receives two parameters passed by reference, one of an object
+    ///CanOpen that will become the other CanBus object. To do this, copy the ids,
+    ///the dlc, the rtr, the ts, select the normal frame for the CanBus message and
+    ///finally copy the message information.
+    /// \param input CanOpen message.
+    /// \param output Can message.
+    /// \return
+    ///
     long CanOpenToCanBus(const co_msg &input, can_msg &output);
+
+    ///
+    /// \brief CanBusToCanOpen: It performs the inverse task to the previous function. This function converts a
+    ///CanBus object or message in another CanOpen object or message both passed
+    ///by reference. To do this, copy the information in the CanOpen message
+    ///CanBus message data: the id, the dlc, the rtr, the ts and the data information
+    ///which contains (the content of the message itself).
+    /// \param input Can message.
+    /// \param output CanOpen message.
+    /// \return
+    ///
     long CanBusToCanOpen(const can_msg &input, co_msg &output);
     // uint32_t data4x8to32(const uint8_t *in, int dlc);
     ulong DataToInt(const uint8_t *in, unsigned short size);
@@ -103,7 +125,15 @@ private:
     vector<can_msg> readBuffer;
     vector<unsigned int> readInbox;
 
-co_msg SetCanOpenMsg(unsigned short id_co, unsigned short rtr, vector<uint8_t> coDataFrame);};
+    /**
+     * @brief CiA301CommPort::SetCanOpenMsg : Constructs canopen message from parameters
+     * @param id_co: cob id canopen parameter.
+     * @param rtr: request for remote.
+     * @param msg_start : canopen data frame.
+     * @return : canopen constructed message in co_msg data type.
+     */
+
+    co_msg SetCanOpenMsg(unsigned short id_co, unsigned short rtr, vector<uint8_t> coDataFrame);};
 
 
 namespace sdo
