@@ -145,10 +145,10 @@ ulong CiA301CommPort::WriteSDO(const vector<uint8_t> &address, const vector<uint
 //    cout<<"OUTPUT DATA 1    "<<(bitset<8>)output.data_co[1]<<endl;
 //    cout<<"OUTPUT DATA 2    "<<(bitset<8>)output.data_co[2]<<endl;
 //    cout<<"OUTPUT DATA 3    "<<(bitset<8>)output.data_co[3]<<endl;
-    cout<<"OUTPUT DATA 4    "<<(bitset<8>)output.data_co[4]<<endl;
-    cout<<"OUTPUT DATA 5    "<<(bitset<8>)output.data_co[5]<<endl;
-    cout<<"OUTPUT DATA 6    "<<(bitset<8>)output.data_co[6]<<endl;
-    cout<<"OUTPUT DATA 7    "<<(bitset<8>)output.data_co[7]<<endl;
+//    cout<<"OUTPUT DATA 4    "<<(bitset<8>)output.data_co[4]<<endl;
+//    cout<<"OUTPUT DATA 5    "<<(bitset<8>)output.data_co[5]<<endl;
+//    cout<<"OUTPUT DATA 6    "<<(bitset<8>)output.data_co[6]<<endl;
+//    cout<<"OUTPUT DATA 7    "<<(bitset<8>)output.data_co[7]<<endl;
 //    long retvalue = output.data_co[7];
 //    retvalue = (retvalue << 8) + output.data_co[6];
 //    retvalue = (retvalue << 8) + output.data_co[5];
@@ -573,7 +573,8 @@ int CiA301CommPort::WaitForReadMessage(co_msg & output, unsigned int canIndex){
 /// \param canIndex: Index of the caller.
 /// \return
 ///
-int CiA301CommPort::ReadCobId(uint16_t expected_cobid, co_msg & output ){
+int CiA301CommPort::ReadCobId(uint16_t expected_cobid, co_msg & output )
+{
 
     cout<<" --> ReadCobId. Expecting: "  << std::hex << expected_cobid << std::dec  << endl;
 
