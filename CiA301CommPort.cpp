@@ -397,13 +397,7 @@ long CiA301CommPort::CanBusToCanOpen(const can_msg & input, co_msg & output)
 
 
 
-/**
- * @brief CiA402DeviceICanbus::SetCanOpenMsg : Constructs canopen message from parameters
- * @param id_co: cob id canopen parameter.
- * @param rtr: request for remote.
- * @param msg_start : canopen data frame.
- * @return : canopen constructed message in co_msg data type.
- */
+
 co_msg CiA301CommPort::SetCanOpenMsg(unsigned short id_co, unsigned short rtr, vector<uint8_t> coDataFrame){
 
     co_msg msg_co;
