@@ -38,10 +38,11 @@ long CiA402Device::Reset()
 {
      cout<<"RESET"<<endl;
 
+     double response;
      //response = WriteNMT(od::reset);
      WriteNMT(od::fullreset);
      //Wait needed for reset to finish. Using sleep
-     sleep(2);
+     sleep(3);
 
      //Wait Start finish NMT [01 id]
      //ReadNMT(nmt::started);
@@ -51,6 +52,8 @@ long CiA402Device::Reset()
 
      cout<<"START NODE"<<endl;
      WriteNMT(od::start);
+
+     FlushBuffer();
 return 0;
 }
 
@@ -103,32 +106,40 @@ long CiA402Device::SwitchOn()
 
      cout<<"READYTOSWITCHON"<<endl;
      WritePDO(od::goreadytoswitchon);
+
      //it is the same for all pdos??
      response = ReadPDO(0);
-     response = ReadPDO(1);
-     cout<<"response" << response <<endl;
+     FlushBuffer();
+//     response = ReadPDO(1);
+     cout<<"READYTOSWITCHON RESPONSE: " << response <<endl;
 
      cout<<"SWITCHON"<<endl;
      response = WritePDO(od::goswitchon);
+cout<<"SWITCHON WritePDO RESPONSE" << response <<endl;
      //cout<<"response" << response <<endl;
      //FlushBuffer(2); //remove two messages, pdo1tx and pdo2tx
      //listen pdo1tx and pdo2tx
      //it is the same for all pdos??
      response = ReadPDO(0);
-     response = ReadPDO(1);
+     FlushBuffer();
+
+
+     cout<<"SWITCHON RESPONSE" << response <<endl;
 
      cout<<"ENABLE"<<endl;
      response = WritePDO(od::goenable);
+     sleep(1);
+
      //cout<<"response" << response <<endl;
      //FlushBuffer(2); //remove two messages, pdo1tx and pdo2tx
      //listen pdo1tx and pdo2tx
      //it is the same for all pdos??
      response = ReadPDO(0);
-     response = ReadPDO(1);
+     FlushBuffer();
+
 
      //dont use it here. Call from main.
 //     cout<<"response"<< response <<endl;
-//     FlushBuffer();
 //     OperationMode(od::positionmode);
      sleep(1);
 
@@ -143,7 +154,7 @@ long CiA402Device::OperationMode(const vector<uint8_t> new_mode)
 
     tmpmode = ReadSDO(od::OperationModeDisplay);
 
-    cout<<"Changing from OperationModeDisplay: " << tmpmode <<endl;
+    cout<<"Changing from OperationMode : " << tmpmode <<endl;
 
     //ask the node for write proper mode in 6060 address
     WriteSDO(od::OperationMode,new_mode);
@@ -154,7 +165,7 @@ long CiA402Device::OperationMode(const vector<uint8_t> new_mode)
 
     tmpmode = ReadSDO(od::OperationModeDisplay);
 
-    cout<<"To OperationModeDisplay: " << tmpmode <<endl;
+    cout<<"To OperationMode : " << tmpmode <<endl;
 
     return 0;
 }
@@ -547,8 +558,10 @@ long CiA402Device::SetVelocity(double target){
 
 
 
-long CiA402Device::Setup_Torque_Mode(){
+long CiA402Device::Setup_Torque_Mode()
+{
 
+    cout << "Setup_Torque_Mode " <<endl;
     OperationMode(od::torquemode);
 
     WriteSDO(od::torque_type_extern,od::torque_online);

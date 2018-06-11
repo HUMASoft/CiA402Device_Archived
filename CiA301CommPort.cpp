@@ -283,12 +283,15 @@ long CiA301CommPort::FlushBuffer(int msgs)
 long CiA301CommPort::WriteNMT(const vector<uint8_t> &nmtCommand)
 {
 
+
     co_msg output;
+    long response;
     vector<uint8_t> data(nmtCommand);
     data.push_back(id);
     //cout << "id" << id << endl;
     //
     SendMessage(SetCanOpenMsg(0, 0 ,data) );
+
 
 
     return 0;
@@ -380,7 +383,7 @@ long CiA301CommPort::CanBusToCanOpen(const can_msg & input, co_msg & output)
 {
 
    //verificar el bit de start to frame de can
-    cout<<"input.dlc"<<input.dlc<<endl;
+//    cout<<"input.dlc"<<input.dlc<<endl;
     output.dlc_co=input.dlc;
     output.id_co=input.id;
     output.rtr=input.rtr;
