@@ -241,7 +241,7 @@ long CiA301CommPort::WritePDO4(const vector<uint8_t> &command)
 
 long CiA301CommPort::FlushBuffer()
 {
-    cout << "Flushing can buffer" << endl;
+//    cout << "Flushing can buffer" << endl;
     co_msg m1;
 
 
@@ -570,7 +570,7 @@ int CiA301CommPort::WaitForReadMessage(co_msg & output, unsigned int canIndex){
 int CiA301CommPort::ReadCobId(uint16_t expected_cobid, co_msg & output )
 {
 
-    cout<<" --> ReadCobId. Expecting: "  << std::hex << expected_cobid << std::dec  << endl;
+//    cout<<" --> ReadCobId. Expecting: "  << std::hex << expected_cobid << std::dec  << endl;
 
 
     vector<can_msg> otherMsgs(0);
@@ -593,13 +593,13 @@ int CiA301CommPort::ReadCobId(uint16_t expected_cobid, co_msg & output )
         //if not cobid but node id:
         if (GET_NODE_ID(input.id) == GET_NODE_ID(expected_cobid) )
         {
-            cout << " Cobid still not received. Received: " << std::hex << input.id << std::dec << endl;
+            //cout << " Cobid still not received. Received: " << std::hex << input.id << std::dec << endl;
             //if id, check if error
             //return -1;
         }
         else
         {
-            cout << " Cobid still not received. Received: " << std::hex << input.id << std::dec << endl;
+            //cout << " Cobid still not received. Received: " << std::hex << input.id << std::dec << endl;
             otherMsgs.push_back(input);
         }
         if (reps==FIND_RETRY-1)
@@ -634,8 +634,8 @@ int CiA301CommPort::ReadCobId(uint16_t expected_cobid, co_msg & output )
     else
     {
 
-        cout<<"  <-- ReadCobId. Received: " << std::hex << output.id_co << std::dec << endl;
-        cout << "ID: " << std::hex<< GET_NODE_ID(output.id_co) << std::dec<< endl;
+//        cout<<"  <-- ReadCobId. Received: " << std::hex << output.id_co << std::dec << endl;
+//        cout << "ID: " << std::hex<< GET_NODE_ID(output.id_co) << std::dec<< endl;
         //cout << " rtr: " << output.rtr << endl;
 //        cout<<"received canopen data: ";
 //        for (int i = 0; i < output.dlc_co; i++)
@@ -643,7 +643,7 @@ int CiA301CommPort::ReadCobId(uint16_t expected_cobid, co_msg & output )
 
 //            printf("%02x ",output.data_co[i]);
 //        }
-        cout<<endl;
+//        cout<<endl;
         //TODO: use dlc here!!!
         return data4x8to32(&output.data_co[4],output.dlc_co);
     }
