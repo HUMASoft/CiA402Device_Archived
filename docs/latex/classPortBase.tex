@@ -6,7 +6,8 @@
 
 
 
-Inheritance diagram for Port\+Base\+:\nopagebreak
+Inheritance diagram for Port\+Base\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -15,11 +16,12 @@ Inheritance diagram for Port\+Base\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for Port\+Base\+:\nopagebreak
+Collaboration diagram for Port\+Base\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=299pt]{classPortBase__coll__graph}
+\includegraphics[width=301pt]{classPortBase__coll__graph}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
@@ -33,7 +35,7 @@ long \hyperlink{classPortBase_a913932fc850e9aebc947542773c669ad}{Flush\+Msg} ()
 \item 
 virtual long \hyperlink{classPortBase_a1d857a81a8e3f3bd460ef7c802ee762c}{Set\+Filter} (uint32\+\_\+t can\+Id, uint32\+\_\+t mask)=0
 \item 
-virtual long \hyperlink{classPortBase_a57e891d3992f70dea5c5e403350088be}{Get\+Msg} (uint32\+\_\+t \&can\+Id, uint8\+\_\+t $\ast$data, uint8\+\_\+t size)=0
+virtual long \hyperlink{classPortBase_a4fe82768f2b79889d7084292ac0e8696}{Get\+Msg} (uint32\+\_\+t \&can\+Id, uint8\+\_\+t $\ast$data, uint8\+\_\+t \&size)=0
 \item 
 virtual long \hyperlink{classPortBase_a26213ebb6ea0a0b77f60c28944e3bb8e}{Put\+Msg} (const uint32\+\_\+t \&can\+Id, uint8\+\_\+t $\ast$const data, const uint8\+\_\+t size)=0
 \item 
@@ -43,6 +45,8 @@ virtual long \hyperlink{classPortBase_abab2bf17b01d87c2bca01cb2151aa2f1}{Get\+N\
 \begin{DoxyCompactItemize}
 \item 
 int \hyperlink{classPortBase_af8816a6f73bf391d2948f3564f8ea1df}{port\+Id}
+\item 
+int \hyperlink{classPortBase_a6f18d480ef41a91fd2957927fe94c408}{port\+Type}
 \item 
 int \hyperlink{classPortBase_ae63f6df54bbeac1046b5dfbe178e1cee}{port\+N\+MT}
 \item 
@@ -70,15 +74,15 @@ long \hyperlink{classPortBase_aba8241e5d55c06c7d1a11ebb18096328}{buff\+Size\+N\+
 \subsubsection{\texorpdfstring{Flush\+Msg()}{FlushMsg()}}
 {\footnotesize\ttfamily long Port\+Base\+::\+Flush\+Msg (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{classPortBase_a57e891d3992f70dea5c5e403350088be}\label{classPortBase_a57e891d3992f70dea5c5e403350088be}} 
+\mbox{\Hypertarget{classPortBase_a4fe82768f2b79889d7084292ac0e8696}\label{classPortBase_a4fe82768f2b79889d7084292ac0e8696}} 
 \index{Port\+Base@{Port\+Base}!Get\+Msg@{Get\+Msg}}
 \index{Get\+Msg@{Get\+Msg}!Port\+Base@{Port\+Base}}
 \subsubsection{\texorpdfstring{Get\+Msg()}{GetMsg()}}
-{\footnotesize\ttfamily virtual long Port\+Base\+::\+Get\+Msg (\begin{DoxyParamCaption}\item[{uint32\+\_\+t \&}]{can\+Id,  }\item[{uint8\+\_\+t $\ast$}]{data,  }\item[{uint8\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+{\footnotesize\ttfamily virtual long Port\+Base\+::\+Get\+Msg (\begin{DoxyParamCaption}\item[{uint32\+\_\+t \&}]{can\+Id,  }\item[{uint8\+\_\+t $\ast$}]{data,  }\item[{uint8\+\_\+t \&}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
-Implemented in \hyperlink{classCanBusPort_a13d6b06d93debc20b2f49aa8e7139988}{Can\+Bus\+Port}, and \hyperlink{classSocketCanPort_a4fe210160e70043ea78443630b9c4e86}{Socket\+Can\+Port}.
+Implemented in \hyperlink{classCanBusPort_ac442e4e5b7bb154ea6322518b715f406}{Can\+Bus\+Port}, and \hyperlink{classSocketCanPort_aa9684efc602da057cb4928d52395af33}{Socket\+Can\+Port}.
 
 \mbox{\Hypertarget{classPortBase_abab2bf17b01d87c2bca01cb2151aa2f1}\label{classPortBase_abab2bf17b01d87c2bca01cb2151aa2f1}} 
 \index{Port\+Base@{Port\+Base}!Get\+N\+MT@{Get\+N\+MT}}
@@ -148,6 +152,12 @@ Implemented in \hyperlink{classCanBusPort_af09c794e3af86e89c8a511535f856dc9}{Can
 \index{port\+N\+MT@{port\+N\+MT}!Port\+Base@{Port\+Base}}
 \subsubsection{\texorpdfstring{port\+N\+MT}{portNMT}}
 {\footnotesize\ttfamily int Port\+Base\+::port\+N\+MT\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classPortBase_a6f18d480ef41a91fd2957927fe94c408}\label{classPortBase_a6f18d480ef41a91fd2957927fe94c408}} 
+\index{Port\+Base@{Port\+Base}!port\+Type@{port\+Type}}
+\index{port\+Type@{port\+Type}!Port\+Base@{Port\+Base}}
+\subsubsection{\texorpdfstring{port\+Type}{portType}}
+{\footnotesize\ttfamily int Port\+Base\+::port\+Type\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 

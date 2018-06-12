@@ -6,7 +6,8 @@
 
 
 
-Inheritance diagram for Ci\+A402\+Device\+:\nopagebreak
+Inheritance diagram for Ci\+A402\+Device\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -15,7 +16,8 @@ Inheritance diagram for Ci\+A402\+Device\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for Ci\+A402\+Device\+:\nopagebreak
+Collaboration diagram for Ci\+A402\+Device\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -45,6 +47,8 @@ long \hyperlink{classCiA402Device_a8573afbf420c29aa86cd215d74f4e4e3}{Quick\+Stop
 \begin{DoxyCompactList}\small\item\em Quick\+Stop\+: Fast turn off of the device. \end{DoxyCompactList}\item 
 double \hyperlink{classCiA402Device_ac8d9e36e6f457565cac7d26d91e4a712}{Get\+Position} ()
 \begin{DoxyCompactList}\small\item\em Get\+Position\+: Get the position of the cia 402 device. \end{DoxyCompactList}\item 
+double \hyperlink{classCiA402Device_a54b43f6429da4c6c0241653355e81d36}{Get\+Velocity} ()
+\item 
 long \hyperlink{classCiA402Device_abf511a7d44b62ac93ae18fe21f8d51c9}{Set\+Communications} (int fd\+Port)
 \item 
 int \hyperlink{classCiA402Device_af1ed15805579e85e514e7ccf4ff21e10}{Check\+Error} ()
@@ -57,20 +61,24 @@ long \hyperlink{classCiA402Device_a49f298cf0d4d2d68007b3cb396e93a17}{Operation\+
 \item 
 long \hyperlink{classCiA402Device_abca4743b617d109a915215193bd06fbe}{Setup\+Position\+Mode} (const vector$<$ uint32\+\_\+t $>$ target, const vector$<$ uint32\+\_\+t $>$ velocity, const vector$<$ uint32\+\_\+t $>$ acceleration, const vector$<$ uint32\+\_\+t $>$ deceleration)
 \item 
-long \hyperlink{classCiA402Device_a42e8505120ada57ea8292902ce9f9c5e}{Setup\+\_\+\+Velocity\+\_\+\+Mode} (const vector$<$ uint8\+\_\+t $>$ target, const vector$<$ uint8\+\_\+t $>$ acceleration)
+long \hyperlink{classCiA402Device_ac1db22a6a8a7d7a56590423bd7577c7b}{Setup\+\_\+\+Velocity\+\_\+\+Mode} (const uint32\+\_\+t target, const uint32\+\_\+t acceleration)
+\item 
+long \hyperlink{classCiA402Device_a20475438205c26cd4bcc689ed9c7fe95}{Setup\+\_\+\+Torque\+\_\+\+Mode} ()
+\begin{DoxyCompactList}\small\item\em Ci\+A402\+Device\+::\+Degree\+Conv This function converts a variable of type uint32\+\_\+t which contains the position of a motor with an encoder of 4096 lines in decimal degrees into the equivalent position as function of the enconders lines. If the parameter has a value of 360 the function will return an uint32\+\_\+t variable with a value of 4096. \end{DoxyCompactList}\item 
+long \hyperlink{classCiA402Device_a556c03984774974dd3a1231793916d9b}{Set\+Torque} (double target)
 \item 
 long \hyperlink{classCiA402Device_aff0503b4caa6d2a8e2e66df6b9e0f4e4}{Force\+Switch\+Off} ()
 \item 
-long \hyperlink{classCiA402Device_acb2d6cc96a8a613f9c2791e87344ba0d}{Set\+Position} (uint32\+\_\+t target)
-\begin{DoxyCompactList}\small\item\em \hyperlink{classCiA402Device_acb2d6cc96a8a613f9c2791e87344ba0d}{Ci\+A402\+Device\+::\+Set\+Position} This function performs the communication with the device to perform a position control in a motor and perform a motion towards a selected position. The motor remembers as position 0 the position in which it has been switched on, always returning to this position when its target is 0. \end{DoxyCompactList}\item 
+long \hyperlink{classCiA402Device_ae2647017d52b074cb8b4800f77ed65b5}{Set\+Position} (long target)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCiA402Device_ae2647017d52b074cb8b4800f77ed65b5}{Ci\+A402\+Device\+::\+Set\+Position} This function performs the communication with the device to perform a position control in a motor and perform a motion towards a selected position. The motor remembers as position 0 the position in which it has been switched on, always returning to this position when its target is 0. \end{DoxyCompactList}\item 
 long \hyperlink{classCiA402Device_a221dbc5461823097981727a3baff5d0c}{Setup\+Position\+Mode} (const uint32\+\_\+t velocity, const uint32\+\_\+t acceleration)
 \item 
 long \hyperlink{classCiA402Device_ac4a6e4987ebe075d0ac07ee5fd4d410c}{Reset} ()
 \begin{DoxyCompactList}\small\item\em Reset This function resets the node corresponding to this object. \end{DoxyCompactList}\item 
 long \hyperlink{classCiA402Device_a32b4628098364846fe291312025f6fda}{Start\+Node} ()
 \item 
-uint32\+\_\+t \hyperlink{classCiA402Device_a485eaa3cbd186b6f29caf588c7010023}{Degree\+Conv} (uint32\+\_\+t Degree\+Target)
-\begin{DoxyCompactList}\small\item\em \hyperlink{classCiA402Device_a485eaa3cbd186b6f29caf588c7010023}{Ci\+A402\+Device\+::\+Degree\+Conv} This function converts a variable of type uint32\+\_\+t which contains the position of a motor with an encoder of 4096 lines in decimal degrees into the equivalent position as function of the enconders lines. If the parameter has a value of 360 the function will return an uint32\+\_\+t variable with a value of 4096. \end{DoxyCompactList}\end{DoxyCompactItemize}
+long \hyperlink{classCiA402Device_a498224b82a857197eb2d28beddc74729}{Set\+Velocity} (double target)
+\end{DoxyCompactItemize}
 \subsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -82,8 +90,6 @@ long \hyperlink{classCiA402Device_a622a8884e21d9c4b5ffa0d6c1458ef08}{Init} (uint
 int \hyperlink{classCiA402Device_a4e7a5a225fb27f5f02aeb0e6df38cd1f}{comm}
 \item 
 double \hyperlink{classCiA402Device_adb251ae496aeca707dcc51b43c64d0b8}{current\+Position}
-\item 
-int \hyperlink{classCiA402Device_a12f2b7115362fe05ee5fc10f70bdbbaa}{useport}
 \item 
 \hyperlink{classPortBase}{Port\+Base} $\ast$ \hyperlink{classCiA402Device_abc96eb117cc948d86e3bd4c07c7fe807}{port}
 \end{DoxyCompactItemize}
@@ -136,24 +142,6 @@ Check\+Status\+: Returns the status word.
 \begin{DoxyReturn}{Returns}
 \+: status 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classCiA402Device_a485eaa3cbd186b6f29caf588c7010023}\label{classCiA402Device_a485eaa3cbd186b6f29caf588c7010023}} 
-\index{Ci\+A402\+Device@{Ci\+A402\+Device}!Degree\+Conv@{Degree\+Conv}}
-\index{Degree\+Conv@{Degree\+Conv}!Ci\+A402\+Device@{Ci\+A402\+Device}}
-\subsubsection{\texorpdfstring{Degree\+Conv()}{DegreeConv()}}
-{\footnotesize\ttfamily uint32\+\_\+t Ci\+A402\+Device\+::\+Degree\+Conv (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{Degree\+Target }\end{DoxyParamCaption})}
-
-
-
-\hyperlink{classCiA402Device_a485eaa3cbd186b6f29caf588c7010023}{Ci\+A402\+Device\+::\+Degree\+Conv} This function converts a variable of type uint32\+\_\+t which contains the position of a motor with an encoder of 4096 lines in decimal degrees into the equivalent position as function of the enconders lines. If the parameter has a value of 360 the function will return an uint32\+\_\+t variable with a value of 4096. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em Degree\+Target} & A uint32\+\_\+t variable with the desired position in decimal degrees \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-target\+Pos A uint32\+\_\+t variable with the equivalent position as a function of the encoder lines. 
-\end{DoxyReturn}
 \mbox{\Hypertarget{classCiA402Device_aff0503b4caa6d2a8e2e66df6b9e0f4e4}\label{classCiA402Device_aff0503b4caa6d2a8e2e66df6b9e0f4e4}} 
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Force\+Switch\+Off@{Force\+Switch\+Off}}
 \index{Force\+Switch\+Off@{Force\+Switch\+Off}!Ci\+A402\+Device@{Ci\+A402\+Device}}
@@ -173,6 +161,12 @@ Get\+Position\+: Get the position of the cia 402 device.
 \begin{DoxyReturn}{Returns}
 \+: Position (angle in \mbox{[}rad\mbox{]}) 
 \end{DoxyReturn}
+\mbox{\Hypertarget{classCiA402Device_a54b43f6429da4c6c0241653355e81d36}\label{classCiA402Device_a54b43f6429da4c6c0241653355e81d36}} 
+\index{Ci\+A402\+Device@{Ci\+A402\+Device}!Get\+Velocity@{Get\+Velocity}}
+\index{Get\+Velocity@{Get\+Velocity}!Ci\+A402\+Device@{Ci\+A402\+Device}}
+\subsubsection{\texorpdfstring{Get\+Velocity()}{GetVelocity()}}
+{\footnotesize\ttfamily double Ci\+A402\+Device\+::\+Get\+Velocity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{classCiA402Device_a622a8884e21d9c4b5ffa0d6c1458ef08}\label{classCiA402Device_a622a8884e21d9c4b5ffa0d6c1458ef08}} 
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Init@{Init}}
 \index{Init@{Init}!Ci\+A402\+Device@{Ci\+A402\+Device}}
@@ -230,15 +224,15 @@ a long of value 0 if there are no errors.
 \subsubsection{\texorpdfstring{Set\+Communications()}{SetCommunications()}}
 {\footnotesize\ttfamily long Ci\+A402\+Device\+::\+Set\+Communications (\begin{DoxyParamCaption}\item[{int}]{fd\+Port }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{classCiA402Device_acb2d6cc96a8a613f9c2791e87344ba0d}\label{classCiA402Device_acb2d6cc96a8a613f9c2791e87344ba0d}} 
+\mbox{\Hypertarget{classCiA402Device_ae2647017d52b074cb8b4800f77ed65b5}\label{classCiA402Device_ae2647017d52b074cb8b4800f77ed65b5}} 
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Set\+Position@{Set\+Position}}
 \index{Set\+Position@{Set\+Position}!Ci\+A402\+Device@{Ci\+A402\+Device}}
 \subsubsection{\texorpdfstring{Set\+Position()}{SetPosition()}}
-{\footnotesize\ttfamily long Ci\+A402\+Device\+::\+Set\+Position (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{target }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily long Ci\+A402\+Device\+::\+Set\+Position (\begin{DoxyParamCaption}\item[{long}]{target }\end{DoxyParamCaption})}
 
 
 
-\hyperlink{classCiA402Device_acb2d6cc96a8a613f9c2791e87344ba0d}{Ci\+A402\+Device\+::\+Set\+Position} This function performs the communication with the device to perform a position control in a motor and perform a motion towards a selected position. The motor remembers as position 0 the position in which it has been switched on, always returning to this position when its target is 0. 
+\hyperlink{classCiA402Device_ae2647017d52b074cb8b4800f77ed65b5}{Ci\+A402\+Device\+::\+Set\+Position} This function performs the communication with the device to perform a position control in a motor and perform a motion towards a selected position. The motor remembers as position 0 the position in which it has been switched on, always returning to this position when its target is 0. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -254,11 +248,35 @@ This function returns a variable of type long with value 0.
 \subsubsection{\texorpdfstring{set\+Position\+Mode()}{setPositionMode()}}
 {\footnotesize\ttfamily bool Ci\+A402\+Device\+::set\+Position\+Mode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{classCiA402Device_a42e8505120ada57ea8292902ce9f9c5e}\label{classCiA402Device_a42e8505120ada57ea8292902ce9f9c5e}} 
+\mbox{\Hypertarget{classCiA402Device_a556c03984774974dd3a1231793916d9b}\label{classCiA402Device_a556c03984774974dd3a1231793916d9b}} 
+\index{Ci\+A402\+Device@{Ci\+A402\+Device}!Set\+Torque@{Set\+Torque}}
+\index{Set\+Torque@{Set\+Torque}!Ci\+A402\+Device@{Ci\+A402\+Device}}
+\subsubsection{\texorpdfstring{Set\+Torque()}{SetTorque()}}
+{\footnotesize\ttfamily long Ci\+A402\+Device\+::\+Set\+Torque (\begin{DoxyParamCaption}\item[{double}]{target }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classCiA402Device_a20475438205c26cd4bcc689ed9c7fe95}\label{classCiA402Device_a20475438205c26cd4bcc689ed9c7fe95}} 
+\index{Ci\+A402\+Device@{Ci\+A402\+Device}!Setup\+\_\+\+Torque\+\_\+\+Mode@{Setup\+\_\+\+Torque\+\_\+\+Mode}}
+\index{Setup\+\_\+\+Torque\+\_\+\+Mode@{Setup\+\_\+\+Torque\+\_\+\+Mode}!Ci\+A402\+Device@{Ci\+A402\+Device}}
+\subsubsection{\texorpdfstring{Setup\+\_\+\+Torque\+\_\+\+Mode()}{Setup\_Torque\_Mode()}}
+{\footnotesize\ttfamily long Ci\+A402\+Device\+::\+Setup\+\_\+\+Torque\+\_\+\+Mode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Ci\+A402\+Device\+::\+Degree\+Conv This function converts a variable of type uint32\+\_\+t which contains the position of a motor with an encoder of 4096 lines in decimal degrees into the equivalent position as function of the enconders lines. If the parameter has a value of 360 the function will return an uint32\+\_\+t variable with a value of 4096. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Degree\+Target} & A uint32\+\_\+t variable with the desired position in decimal degrees \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+target\+Pos A uint32\+\_\+t variable with the equivalent position as a function of the encoder lines. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCiA402Device_ac1db22a6a8a7d7a56590423bd7577c7b}\label{classCiA402Device_ac1db22a6a8a7d7a56590423bd7577c7b}} 
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Setup\+\_\+\+Velocity\+\_\+\+Mode@{Setup\+\_\+\+Velocity\+\_\+\+Mode}}
 \index{Setup\+\_\+\+Velocity\+\_\+\+Mode@{Setup\+\_\+\+Velocity\+\_\+\+Mode}!Ci\+A402\+Device@{Ci\+A402\+Device}}
 \subsubsection{\texorpdfstring{Setup\+\_\+\+Velocity\+\_\+\+Mode()}{Setup\_Velocity\_Mode()}}
-{\footnotesize\ttfamily long Ci\+A402\+Device\+::\+Setup\+\_\+\+Velocity\+\_\+\+Mode (\begin{DoxyParamCaption}\item[{const vector$<$ uint8\+\_\+t $>$}]{target,  }\item[{const vector$<$ uint8\+\_\+t $>$}]{acceleration }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily long Ci\+A402\+Device\+::\+Setup\+\_\+\+Velocity\+\_\+\+Mode (\begin{DoxyParamCaption}\item[{const uint32\+\_\+t}]{target,  }\item[{const uint32\+\_\+t}]{acceleration }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classCiA402Device_abca4743b617d109a915215193bd06fbe}\label{classCiA402Device_abca4743b617d109a915215193bd06fbe}} 
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Setup\+Position\+Mode@{Setup\+Position\+Mode}}
@@ -271,6 +289,12 @@ This function returns a variable of type long with value 0.
 \index{Setup\+Position\+Mode@{Setup\+Position\+Mode}!Ci\+A402\+Device@{Ci\+A402\+Device}}
 \subsubsection{\texorpdfstring{Setup\+Position\+Mode()}{SetupPositionMode()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily long Ci\+A402\+Device\+::\+Setup\+Position\+Mode (\begin{DoxyParamCaption}\item[{const uint32\+\_\+t}]{velocity,  }\item[{const uint32\+\_\+t}]{acceleration }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classCiA402Device_a498224b82a857197eb2d28beddc74729}\label{classCiA402Device_a498224b82a857197eb2d28beddc74729}} 
+\index{Ci\+A402\+Device@{Ci\+A402\+Device}!Set\+Velocity@{Set\+Velocity}}
+\index{Set\+Velocity@{Set\+Velocity}!Ci\+A402\+Device@{Ci\+A402\+Device}}
+\subsubsection{\texorpdfstring{Set\+Velocity()}{SetVelocity()}}
+{\footnotesize\ttfamily long Ci\+A402\+Device\+::\+Set\+Velocity (\begin{DoxyParamCaption}\item[{double}]{target }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classCiA402Device_a4abf9605004db99567ede3370e1d0a4d}\label{classCiA402Device_a4abf9605004db99567ede3370e1d0a4d}} 
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!set\+Velocity\+Mode\+Raw@{set\+Velocity\+Mode\+Raw}}
@@ -330,12 +354,6 @@ Switch\+On\+: Turn on the device and wait for commands.
 \index{port@{port}!Ci\+A402\+Device@{Ci\+A402\+Device}}
 \subsubsection{\texorpdfstring{port}{port}}
 {\footnotesize\ttfamily \hyperlink{classPortBase}{Port\+Base}$\ast$ Ci\+A402\+Device\+::port\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{classCiA402Device_a12f2b7115362fe05ee5fc10f70bdbbaa}\label{classCiA402Device_a12f2b7115362fe05ee5fc10f70bdbbaa}} 
-\index{Ci\+A402\+Device@{Ci\+A402\+Device}!useport@{useport}}
-\index{useport@{useport}!Ci\+A402\+Device@{Ci\+A402\+Device}}
-\subsubsection{\texorpdfstring{useport}{useport}}
-{\footnotesize\ttfamily int Ci\+A402\+Device\+::useport\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['id',['id',['../structcan__msg.html#a9a5f820883d3dfe1f0c6bc33c3f95989',1,'can_msg::id()'],['../classCiA301CommPort.html#a1ae075d22fc854da21a6e691bb029fc0',1,'CiA301CommPort::id()']]],
-  ['id_5fco',['id_co',['../structco__msg.html#a634de83979d7da90565eccdf16304a07',1,'co_msg']]],
-  ['input',['input',['../classCiA301CommPort.html#ae0f955c7141e2067307cea0b48e111d4',1,'CiA301CommPort']]]
+  ['gear_5fratio',['gear_ratio',['../namespaceod.html#af615192e30bab04a02f1aa4c21a48642',1,'od']]],
+  ['goenable',['goenable',['../namespaceod.html#a74448ee88df5960df4c32613e7cdcd53',1,'od']]],
+  ['goreadytoswitchon',['goreadytoswitchon',['../namespaceod.html#a360cf2eae7cc59f7bd224fcf5992c767',1,'od']]],
+  ['goswitchon',['goswitchon',['../namespaceod.html#a933f995790a17f6cdd3b54df8f7483a6',1,'od']]],
+  ['goswitchondisable',['goswitchondisable',['../namespaceod.html#a12f3001ff096334fecb9c9749be4d1c2',1,'od']]]
 ];

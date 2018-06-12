@@ -1,4 +1,4 @@
 <map id="CiA301CommPort" name="CiA301CommPort">
-<area shape="rect" id="node2" href="$classPortBase.html" title="{PortBase\n||+ PortBase()\l+ getPortId()\l+ FlushMsg()\l+ SetFilter()\l+ GetMsg()\l+ PutMsg()\l+ GetNMT()\l}" alt="" coords="124,160,223,325"/>
-<area shape="rect" id="node9" href="$structcan__msg.html" title="{can_msg\n||}" alt="" coords="813,204,888,281"/>
+<area shape="rect" id="node2" href="$classPortBase.html" title="{PortBase\n||+ PortBase()\l+ getPortId()\l+ FlushMsg()\l+ SetFilter()\l+ GetMsg()\l+ PutMsg()\l+ GetNMT()\l}" alt="" coords="140,175,239,340"/>
+<area shape="rect" id="node9" href="$structcan__msg.html" title="{can_msg\n||}" alt="" coords="813,219,888,296"/>
 </map>

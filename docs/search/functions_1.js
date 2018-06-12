@@ -1,7 +1,7 @@
 var searchData=
 [
   ['data32to4x8',['data32to4x8',['../Cia402device_8cpp.html#ae234205c3014b4a69b38fff2c9602132',1,'Cia402device.cpp']]],
-  ['data4x8to32',['data4x8to32',['../classCiA301CommPort.html#a77ec43d792a81489e221c3990225e57b',1,'CiA301CommPort']]],
-  ['datatoint',['DataToInt',['../classCiA301CommPort.html#a2bbd06fc6ae74727cef148911e433495',1,'CiA301CommPort']]],
-  ['degreeconv',['DegreeConv',['../classCiA402Device.html#a485eaa3cbd186b6f29caf588c7010023',1,'CiA402Device']]]
+  ['data4x8to32',['data4x8to32',['../classCiA301CommPort.html#a2e85303159577f6b3209b741e9871cc5',1,'CiA301CommPort']]],
+  ['datatoint',['DataToInt',['../classCiA301CommPort.html#a4e62245791e907b5df74e3612f8fc9ce',1,'CiA301CommPort']]],
+  ['devicechain',['DeviceChain',['../classDeviceChain.html#ad89af127eec501ad00ad5f5de197b21e',1,'DeviceChain::DeviceChain(string actualPort)'],['../classDeviceChain.html#a20dd5853f160cfc8ef21ed93dac96f11',1,'DeviceChain::DeviceChain(string actualPort, vector&lt; long &gt; ids)']]]
 ];

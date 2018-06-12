@@ -1,12 +1,14 @@
 var searchData=
 [
-  ['get_5fnode_5fid',['GET_NODE_ID',['../candatatypes_8h.html#a37499575cbfb9909399ce3189639f122',1,'candatatypes.h']]],
-  ['getmsg',['GetMsg',['../classCanBusPort.html#a13d6b06d93debc20b2f49aa8e7139988',1,'CanBusPort::GetMsg()'],['../classCiA301CommPort.html#a645450ca09e07ea6da339923ceeec934',1,'CiA301CommPort::GetMsg()'],['../classPortBase.html#a57e891d3992f70dea5c5e403350088be',1,'PortBase::GetMsg()'],['../classSocketCanPort.html#a4fe210160e70043ea78443630b9c4e86',1,'SocketCanPort::GetMsg()']]],
-  ['getnmt',['GetNMT',['../classCanBusPort.html#a41242dc7980ca398e4770813e50ef32b',1,'CanBusPort::GetNMT()'],['../classPortBase.html#abab2bf17b01d87c2bca01cb2151aa2f1',1,'PortBase::GetNMT()'],['../classSocketCanPort.html#a2efe27bd3bb8c8127c89925e1e21535a',1,'SocketCanPort::GetNMT()']]],
-  ['getportid',['getPortId',['../classCanBusPort.html#a7c6b733c5834d4ab3e1906d847a2234a',1,'CanBusPort::getPortId()'],['../classPortBase.html#a45ec4a2cd5e17e098f6f72677437f066',1,'PortBase::getPortId()'],['../classTestPort.html#abf6a7327e26838aaf3e2e4482668085f',1,'TestPort::getPortId()']]],
-  ['getposition',['GetPosition',['../classCiA402Device.html#ac8d9e36e6f457565cac7d26d91e4a712',1,'CiA402Device']]],
-  ['goenable',['goenable',['../namespaceod.html#a74448ee88df5960df4c32613e7cdcd53',1,'od']]],
-  ['goreadytoswitchon',['goreadytoswitchon',['../namespaceod.html#a360cf2eae7cc59f7bd224fcf5992c767',1,'od']]],
-  ['goswitchon',['goswitchon',['../namespaceod.html#a933f995790a17f6cdd3b54df8f7483a6',1,'od']]],
-  ['goswitchondisable',['goswitchondisable',['../namespaceod.html#a12f3001ff096334fecb9c9749be4d1c2',1,'od']]]
+  ['ff_5fextended',['FF_EXTENDED',['../candatatypes_8h.html#a45b12438f26b30925139689e606f9231',1,'FF_EXTENDED():&#160;candatatypes.h'],['../hico__api_8h.html#a45b12438f26b30925139689e606f9231',1,'FF_EXTENDED():&#160;hico_api.h']]],
+  ['ff_5fnormal',['FF_NORMAL',['../candatatypes_8h.html#a04fd6b5cadb7a6b3d7b586a14545ccdb',1,'FF_NORMAL():&#160;candatatypes.h'],['../hico__api_8h.html#a04fd6b5cadb7a6b3d7b586a14545ccdb',1,'FF_NORMAL():&#160;hico_api.h']]],
+  ['fi',['fi',['../structcan__msg.html#ad1e9cccb168fbc295bb79ef7d9c5c915',1,'can_msg']]],
+  ['find_5fretry',['FIND_RETRY',['../CiA301CommPort_8h.html#a1ac42c9168b067855b5bb1e8e96afb62',1,'CiA301CommPort.h']]],
+  ['flushbuffer',['FlushBuffer',['../classCiA301CommPort.html#a067cddaf01932fa6fa27255c61b08190',1,'CiA301CommPort::FlushBuffer()'],['../classCiA301CommPort.html#ab29e221039a2d21d1446edb09b91864e',1,'CiA301CommPort::FlushBuffer(int msgs)']]],
+  ['flushmsg',['FlushMsg',['../classPortBase.html#a913932fc850e9aebc947542773c669ad',1,'PortBase']]],
+  ['forceswitchoff',['ForceSwitchOff',['../classCiA402Device.html#aff0503b4caa6d2a8e2e66df6b9e0f4e4',1,'CiA402Device']]],
+  ['frame',['frame',['../classPortBase.html#ae175156fa18f3be1820adea89ef7b13c',1,'PortBase']]],
+  ['ftype_5famask',['FTYPE_AMASK',['../hico__api_8h.html#aeab87a407e720785d1f5ad25d3c99c08',1,'hico_api.h']]],
+  ['ftype_5frange',['FTYPE_RANGE',['../hico__api_8h.html#af0abb1e59194a189a7cc3a4d8554e2f6',1,'hico_api.h']]],
+  ['fullreset',['fullreset',['../namespaceod.html#af9d6d0e820d6bc1ee375195e253f7b7b',1,'od']]]
 ];

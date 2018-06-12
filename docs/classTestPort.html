@@ -73,7 +73,7 @@ Inheritance diagram for TestPort:</div>
 <div class="dyncontent">
 <div class="center"><img src="classTestPort__inherit__graph.png" border="0" usemap="#TestPort_inherit__map" alt="Inheritance graph"/></div>
 <map name="TestPort_inherit__map" id="TestPort_inherit__map">
-<area shape="rect" id="node2" href="classPortBase.html" title="{PortBase\n|# portId\l# portNMT\l# frame\l# buffSizeId\l# buffSizeNMT\l|+ PortBase()\l+ getPortId()\l+ FlushMsg()\l+ SetFilter()\l+ GetMsg()\l+ PutMsg()\l+ GetNMT()\l}" alt="" coords="5,5,116,229"/>
+<area shape="rect" id="node2" href="classPortBase.html" title="{PortBase\n|# portId\l# portType\l# portNMT\l# frame\l# buffSizeId\l# buffSizeNMT\l|+ PortBase()\l+ getPortId()\l+ FlushMsg()\l+ SetFilter()\l+ GetMsg()\l+ PutMsg()\l+ GetNMT()\l}" alt="" coords="5,5,116,244"/>
 </map>
 </div>
 <div class="dynheader">
@@ -81,7 +81,7 @@ Collaboration diagram for TestPort:</div>
 <div class="dyncontent">
 <div class="center"><img src="classTestPort__coll__graph.png" border="0" usemap="#TestPort_coll__map" alt="Collaboration graph"/></div>
 <map name="TestPort_coll__map" id="TestPort_coll__map">
-<area shape="rect" id="node2" href="classPortBase.html" title="{PortBase\n||+ PortBase()\l+ getPortId()\l+ FlushMsg()\l+ SetFilter()\l+ GetMsg()\l+ PutMsg()\l+ GetNMT()\l}" alt="" coords="83,160,181,325"/>
+<area shape="rect" id="node2" href="classPortBase.html" title="{PortBase\n||+ PortBase()\l+ getPortId()\l+ FlushMsg()\l+ SetFilter()\l+ GetMsg()\l+ PutMsg()\l+ GetNMT()\l}" alt="" coords="83,175,181,340"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -104,8 +104,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a913932fc850e9aebc947542773c669ad inherit pub_methods_classPortBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d857a81a8e3f3bd460ef7c802ee762c inherit pub_methods_classPortBase"><td class="memItemLeft" align="right" valign="top">virtual long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPortBase.html#a1d857a81a8e3f3bd460ef7c802ee762c">SetFilter</a> (uint32_t canId, uint32_t mask)=0</td></tr>
 <tr class="separator:a1d857a81a8e3f3bd460ef7c802ee762c inherit pub_methods_classPortBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a57e891d3992f70dea5c5e403350088be inherit pub_methods_classPortBase"><td class="memItemLeft" align="right" valign="top">virtual long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPortBase.html#a57e891d3992f70dea5c5e403350088be">GetMsg</a> (uint32_t &amp;canId, uint8_t *data, uint8_t size)=0</td></tr>
-<tr class="separator:a57e891d3992f70dea5c5e403350088be inherit pub_methods_classPortBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fe82768f2b79889d7084292ac0e8696 inherit pub_methods_classPortBase"><td class="memItemLeft" align="right" valign="top">virtual long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPortBase.html#a4fe82768f2b79889d7084292ac0e8696">GetMsg</a> (uint32_t &amp;canId, uint8_t *data, uint8_t &amp;size)=0</td></tr>
+<tr class="separator:a4fe82768f2b79889d7084292ac0e8696 inherit pub_methods_classPortBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26213ebb6ea0a0b77f60c28944e3bb8e inherit pub_methods_classPortBase"><td class="memItemLeft" align="right" valign="top">virtual long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPortBase.html#a26213ebb6ea0a0b77f60c28944e3bb8e">PutMsg</a> (const uint32_t &amp;canId, uint8_t *const data, const uint8_t size)=0</td></tr>
 <tr class="separator:a26213ebb6ea0a0b77f60c28944e3bb8e inherit pub_methods_classPortBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abab2bf17b01d87c2bca01cb2151aa2f1 inherit pub_methods_classPortBase"><td class="memItemLeft" align="right" valign="top">virtual long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPortBase.html#abab2bf17b01d87c2bca01cb2151aa2f1">GetNMT</a> (uint8_t *data, uint8_t &amp;size)=0</td></tr>
@@ -121,6 +121,8 @@ Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_attribs_classPortBase"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classPortBase')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classPortBase.html">PortBase</a></td></tr>
 <tr class="memitem:af8816a6f73bf391d2948f3564f8ea1df inherit pro_attribs_classPortBase"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPortBase.html#af8816a6f73bf391d2948f3564f8ea1df">portId</a></td></tr>
 <tr class="separator:af8816a6f73bf391d2948f3564f8ea1df inherit pro_attribs_classPortBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f18d480ef41a91fd2957927fe94c408 inherit pro_attribs_classPortBase"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPortBase.html#a6f18d480ef41a91fd2957927fe94c408">portType</a></td></tr>
+<tr class="separator:a6f18d480ef41a91fd2957927fe94c408 inherit pro_attribs_classPortBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae63f6df54bbeac1046b5dfbe178e1cee inherit pro_attribs_classPortBase"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPortBase.html#ae63f6df54bbeac1046b5dfbe178e1cee">portNMT</a></td></tr>
 <tr class="separator:ae63f6df54bbeac1046b5dfbe178e1cee inherit pro_attribs_classPortBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae175156fa18f3be1820adea89ef7b13c inherit pro_attribs_classPortBase"><td class="memItemLeft" align="right" valign="top">can_frame&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPortBase.html#ae175156fa18f3be1820adea89ef7b13c">frame</a></td></tr>

@@ -73,15 +73,17 @@ Inheritance diagram for PortBase:</div>
 <div class="dyncontent">
 <div class="center"><img src="classPortBase__inherit__graph.png" border="0" usemap="#PortBase_inherit__map" alt="Inheritance graph"/></div>
 <map name="PortBase_inherit__map" id="PortBase_inherit__map">
-<area shape="rect" id="node2" href="classCanBusPort.html" title="{CanBusPort\n||+ CanBusPort()\l+ CanBusPort()\l+ getPortId()\l+ SetFilter()\l+ GetMsg()\l+ PutMsg()\l+ GetNMT()\l&#45; Init()\l}" alt="" coords="5,299,119,479"/>
-<area shape="rect" id="node3" href="classSocketCanPort.html" title="{SocketCanPort\n|&#45; nbytes\l&#45; poll_setId\l&#45; poll_setNMT\l&#45; timeoutPoll\l|+ SocketCanPort()\l+ SocketCanPort()\l+ ~SocketCanPort()\l+ SetFilter()\l+ GetMsg()\l+ PutMsg()\l+ GetNMT()\l&#45; Init()\l}" alt="" coords="143,277,282,501"/>
-<area shape="rect" id="node4" href="classTestPort.html" title="{TestPort\n||+ TestPort()\l+ TestPort()\l+ ShowBuffer()\l+ getPortId()\l&#45; Init()\l}" alt="" coords="307,321,417,457"/>
+<area shape="rect" id="node2" href="classCanBusPort.html" title="{CanBusPort\n||+ CanBusPort()\l+ CanBusPort()\l+ getPortId()\l+ SetFilter()\l+ GetMsg()\l+ PutMsg()\l+ GetNMT()\l&#45; Init()\l}" alt="" coords="5,314,119,494"/>
+<area shape="rect" id="node3" href="classSocketCanPort.html" title="{SocketCanPort\n|&#45; nbytes\l&#45; poll_setId\l&#45; poll_setNMT\l&#45; timeoutPoll\l|+ SocketCanPort()\l+ SocketCanPort()\l+ ~SocketCanPort()\l+ SetFilter()\l+ GetMsg()\l+ PutMsg()\l+ GetNMT()\l&#45; Init()\l}" alt="" coords="143,292,282,516"/>
+<area shape="rect" id="node4" href="classTestPort.html" title="{TestPort\n||+ TestPort()\l+ TestPort()\l+ ShowBuffer()\l+ getPortId()\l&#45; Init()\l}" alt="" coords="307,336,417,472"/>
 </map>
 </div>
 <div class="dynheader">
 Collaboration diagram for PortBase:</div>
 <div class="dyncontent">
 <div class="center"><img src="classPortBase__coll__graph.png" border="0" usemap="#PortBase_coll__map" alt="Collaboration graph"/></div>
+<map name="PortBase_coll__map" id="PortBase_coll__map">
+</map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -94,8 +96,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a913932fc850e9aebc947542773c669ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d857a81a8e3f3bd460ef7c802ee762c"><td class="memItemLeft" align="right" valign="top">virtual long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPortBase.html#a1d857a81a8e3f3bd460ef7c802ee762c">SetFilter</a> (uint32_t canId, uint32_t mask)=0</td></tr>
 <tr class="separator:a1d857a81a8e3f3bd460ef7c802ee762c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a57e891d3992f70dea5c5e403350088be"><td class="memItemLeft" align="right" valign="top">virtual long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPortBase.html#a57e891d3992f70dea5c5e403350088be">GetMsg</a> (uint32_t &amp;canId, uint8_t *data, uint8_t size)=0</td></tr>
-<tr class="separator:a57e891d3992f70dea5c5e403350088be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fe82768f2b79889d7084292ac0e8696"><td class="memItemLeft" align="right" valign="top">virtual long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPortBase.html#a4fe82768f2b79889d7084292ac0e8696">GetMsg</a> (uint32_t &amp;canId, uint8_t *data, uint8_t &amp;size)=0</td></tr>
+<tr class="separator:a4fe82768f2b79889d7084292ac0e8696"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26213ebb6ea0a0b77f60c28944e3bb8e"><td class="memItemLeft" align="right" valign="top">virtual long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPortBase.html#a26213ebb6ea0a0b77f60c28944e3bb8e">PutMsg</a> (const uint32_t &amp;canId, uint8_t *const data, const uint8_t size)=0</td></tr>
 <tr class="separator:a26213ebb6ea0a0b77f60c28944e3bb8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abab2bf17b01d87c2bca01cb2151aa2f1"><td class="memItemLeft" align="right" valign="top">virtual long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPortBase.html#abab2bf17b01d87c2bca01cb2151aa2f1">GetNMT</a> (uint8_t *data, uint8_t &amp;size)=0</td></tr>
@@ -105,6 +107,8 @@ Public Member Functions</h2></td></tr>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:af8816a6f73bf391d2948f3564f8ea1df"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPortBase.html#af8816a6f73bf391d2948f3564f8ea1df">portId</a></td></tr>
 <tr class="separator:af8816a6f73bf391d2948f3564f8ea1df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f18d480ef41a91fd2957927fe94c408"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPortBase.html#a6f18d480ef41a91fd2957927fe94c408">portType</a></td></tr>
+<tr class="separator:a6f18d480ef41a91fd2957927fe94c408"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae63f6df54bbeac1046b5dfbe178e1cee"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPortBase.html#ae63f6df54bbeac1046b5dfbe178e1cee">portNMT</a></td></tr>
 <tr class="separator:ae63f6df54bbeac1046b5dfbe178e1cee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae175156fa18f3be1820adea89ef7b13c"><td class="memItemLeft" align="right" valign="top">can_frame&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPortBase.html#ae175156fa18f3be1820adea89ef7b13c">frame</a></td></tr>
@@ -150,8 +154,8 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a57e891d3992f70dea5c5e403350088be"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a57e891d3992f70dea5c5e403350088be">&#9670;&nbsp;</a></span>GetMsg()</h2>
+<a id="a4fe82768f2b79889d7084292ac0e8696"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fe82768f2b79889d7084292ac0e8696">&#9670;&nbsp;</a></span>GetMsg()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -174,7 +178,7 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramtype">uint8_t &amp;&#160;</td>
           <td class="paramname"><em>size</em>&#160;</td>
         </tr>
         <tr>
@@ -190,7 +194,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classCanBusPort.html#a13d6b06d93debc20b2f49aa8e7139988">CanBusPort</a>, and <a class="el" href="classSocketCanPort.html#a4fe210160e70043ea78443630b9c4e86">SocketCanPort</a>.</p>
+<p>Implemented in <a class="el" href="classCanBusPort.html#ac442e4e5b7bb154ea6322518b715f406">CanBusPort</a>, and <a class="el" href="classSocketCanPort.html#aa9684efc602da057cb4928d52395af33">SocketCanPort</a>.</p>
 
 </div>
 </div>
@@ -431,6 +435,28 @@ Protected Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">int PortBase::portNMT</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6f18d480ef41a91fd2957927fe94c408"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f18d480ef41a91fd2957927fe94c408">&#9670;&nbsp;</a></span>portType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int PortBase::portType</td>
         </tr>
       </table>
   </td>

@@ -6,7 +6,8 @@
 
 
 
-Inheritance diagram for Ci\+A301\+Comm\+Port\+:\nopagebreak
+Inheritance diagram for Ci\+A301\+Comm\+Port\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -15,7 +16,8 @@ Inheritance diagram for Ci\+A301\+Comm\+Port\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for Ci\+A301\+Comm\+Port\+:\nopagebreak
+Collaboration diagram for Ci\+A301\+Comm\+Port\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -31,7 +33,7 @@ Collaboration diagram for Ci\+A301\+Comm\+Port\+:\nopagebreak
 \item 
 long \hyperlink{classCiA301CommPort_a0fd0920052684589bc37bb898dcdd758}{Read\+S\+DO} (vector$<$ uint8\+\_\+t $>$ address, int subindex)
 \item 
-long \hyperlink{classCiA301CommPort_a3f74ce5899b30731322dabd352ccdc55}{Read\+S\+DO} (const vector$<$ uint8\+\_\+t $>$ \&address)
+ulong \hyperlink{classCiA301CommPort_a403c1de504a2a5c36c90dd977e1bd536}{Read\+S\+DO} (const vector$<$ uint8\+\_\+t $>$ \&address)
 \begin{DoxyCompactList}\small\item\em \hyperlink{classCiA301CommPort_a0fd0920052684589bc37bb898dcdd758}{Ci\+A301\+Comm\+Port\+::\+Read\+S\+DO} Waits until expected. \end{DoxyCompactList}\item 
 long \hyperlink{classCiA301CommPort_a02df85ed5140d0d7a57fe0d2f6e47ea1}{Read\+N\+MT} (const vector$<$ uint8\+\_\+t $>$ \&nmt\+Code)
 \item 
@@ -43,24 +45,24 @@ long \hyperlink{classCiA301CommPort_a067cddaf01932fa6fa27255c61b08190}{Flush\+Bu
 \item 
 long \hyperlink{classCiA301CommPort_ab29e221039a2d21d1446edb09b91864e}{Flush\+Buffer} (int msgs)
 \begin{DoxyCompactList}\small\item\em Flush\+Buffer Removes the msgs number of can frames from buffer. \end{DoxyCompactList}\item 
-long \hyperlink{classCiA301CommPort_a4d97c27423b2323f8475f6e5c2f91575}{Write\+S\+DO} (const vector$<$ uint8\+\_\+t $>$ \&address, const vector$<$ uint8\+\_\+t $>$ \&value)
+ulong \hyperlink{classCiA301CommPort_a7c55c89b1ccd80dd008240ce3e0409c5}{Write\+S\+DO} (const vector$<$ uint8\+\_\+t $>$ \&address, const vector$<$ uint8\+\_\+t $>$ \&value)
 \begin{DoxyCompactList}\small\item\em Write\+S\+DO Writes 4 byte value to specific address on device. This function sends S\+DO message requesting write on the object dictionary address. Also block and wait for the S\+DO msg for write ack, and returns negative if error. As it reads the ack S\+DO message, the buffer should be same size after this function returns. \end{DoxyCompactList}\item 
 long \hyperlink{classCiA301CommPort_a1faf4f37530e0dd0ae4600cfb0b1d742}{Write\+P\+D\+O4} (const vector$<$ uint8\+\_\+t $>$ \&command)
 \item 
 long \hyperlink{classCiA301CommPort_a46534ff9e7e2a05a0b4913e4331710e5}{Read\+Error\+N\+MT} ()
 \item 
 long \hyperlink{classCiA301CommPort_a827f3e594b9f1e57a7b7ccb8a278404a}{Read\+P\+DO} (long number)
+\item 
+uint32\+\_\+t \hyperlink{classCiA301CommPort_a2e85303159577f6b3209b741e9871cc5}{data4x8to32} (const uint8\+\_\+t $\ast$in, int dlc)
 \end{DoxyCompactItemize}
 \subsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 long \hyperlink{classCiA301CommPort_a26346f83700bc8403a315be01c6508e0}{Can\+Open\+To\+Can\+Bus} (const \hyperlink{structco__msg}{co\+\_\+msg} \&\hyperlink{classCiA301CommPort_ae0f955c7141e2067307cea0b48e111d4}{input}, \hyperlink{structcan__msg}{can\+\_\+msg} \&output)
-\item 
+\begin{DoxyCompactList}\small\item\em Can\+Open\+To\+Can\+Bus\+: Converts a Can\+Open object or message into a Can\+Bus object or message. For this, it receives two parameters passed by reference, one of an object Can\+Open that will become the other Can\+Bus object. To do this, copy the ids, the dlc, the rtr, the ts, select the normal frame for the Can\+Bus message and finally copy the message information. \end{DoxyCompactList}\item 
 long \hyperlink{classCiA301CommPort_aa16887712ea9cad534aacd4851f9190d}{Can\+Bus\+To\+Can\+Open} (const \hyperlink{structcan__msg}{can\+\_\+msg} \&\hyperlink{classCiA301CommPort_ae0f955c7141e2067307cea0b48e111d4}{input}, \hyperlink{structco__msg}{co\+\_\+msg} \&output)
-\item 
-uint32\+\_\+t \hyperlink{classCiA301CommPort_a77ec43d792a81489e221c3990225e57b}{data4x8to32} (const uint8\+\_\+t $\ast$in)
-\item 
-uint32\+\_\+t \hyperlink{classCiA301CommPort_a2bbd06fc6ae74727cef148911e433495}{Data\+To\+Int} (const uint8\+\_\+t $\ast$in, const uint8\+\_\+t size)
+\begin{DoxyCompactList}\small\item\em Can\+Bus\+To\+Can\+Open\+: It performs the inverse task to the previous function. This function converts a Can\+Bus object or message in another Can\+Open object or message both passed by reference. To do this, copy the information in the Can\+Open message Can\+Bus message data\+: the id, the dlc, the rtr, the ts and the data information which contains (the content of the message itself). \end{DoxyCompactList}\item 
+ulong \hyperlink{classCiA301CommPort_a4e62245791e907b5df74e3612f8fc9ce}{Data\+To\+Int} (const uint8\+\_\+t $\ast$in, unsigned short size)
 \item 
 int \hyperlink{classCiA301CommPort_aeae04455e1e1a1ca1beed9478372c031}{Send\+Message} (\hyperlink{structco__msg}{co\+\_\+msg} \hyperlink{classCiA301CommPort_ae0f955c7141e2067307cea0b48e111d4}{input})
 \item 
@@ -75,7 +77,7 @@ int \hyperlink{classCiA301CommPort_ae62c2389b38a0e217aff7ca17a3d87b6}{read\+\_\+
 long \hyperlink{classCiA301CommPort_a645450ca09e07ea6da339923ceeec934}{Get\+Msg} (\hyperlink{structcan__msg}{can\+\_\+msg} \&msg)
 \item 
 \hyperlink{structco__msg}{co\+\_\+msg} \hyperlink{classCiA301CommPort_a2c197480112989df6bdb9ea89a649636}{Set\+Can\+Open\+Msg} (unsigned short id\+\_\+co, unsigned short rtr, vector$<$ uint8\+\_\+t $>$ co\+Data\+Frame)
-\begin{DoxyCompactList}\small\item\em \hyperlink{classCiA402DeviceICanbus_aa439b9175f5879282058a3f4c2edb45d}{Ci\+A402\+Device\+I\+Canbus\+::\+Set\+Can\+Open\+Msg} \+: Constructs canopen message from parameters. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classCiA301CommPort_a2c197480112989df6bdb9ea89a649636}{Ci\+A301\+Comm\+Port\+::\+Set\+Can\+Open\+Msg} \+: Constructs canopen message from parameters. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -119,23 +121,51 @@ vector$<$ unsigned int $>$ \hyperlink{classCiA301CommPort_a41b2fcb24a27e5280417d
 \subsubsection{\texorpdfstring{Can\+Bus\+To\+Can\+Open()}{CanBusToCanOpen()}}
 {\footnotesize\ttfamily long Ci\+A301\+Comm\+Port\+::\+Can\+Bus\+To\+Can\+Open (\begin{DoxyParamCaption}\item[{const \hyperlink{structcan__msg}{can\+\_\+msg} \&}]{input,  }\item[{\hyperlink{structco__msg}{co\+\_\+msg} \&}]{output }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Can\+Bus\+To\+Can\+Open\+: It performs the inverse task to the previous function. This function converts a Can\+Bus object or message in another Can\+Open object or message both passed by reference. To do this, copy the information in the Can\+Open message Can\+Bus message data\+: the id, the dlc, the rtr, the ts and the data information which contains (the content of the message itself). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & Can message. \\
+\hline
+{\em output} & Can\+Open message. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
 \mbox{\Hypertarget{classCiA301CommPort_a26346f83700bc8403a315be01c6508e0}\label{classCiA301CommPort_a26346f83700bc8403a315be01c6508e0}} 
 \index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!Can\+Open\+To\+Can\+Bus@{Can\+Open\+To\+Can\+Bus}}
 \index{Can\+Open\+To\+Can\+Bus@{Can\+Open\+To\+Can\+Bus}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
 \subsubsection{\texorpdfstring{Can\+Open\+To\+Can\+Bus()}{CanOpenToCanBus()}}
 {\footnotesize\ttfamily long Ci\+A301\+Comm\+Port\+::\+Can\+Open\+To\+Can\+Bus (\begin{DoxyParamCaption}\item[{const \hyperlink{structco__msg}{co\+\_\+msg} \&}]{input,  }\item[{\hyperlink{structcan__msg}{can\+\_\+msg} \&}]{output }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
-\mbox{\Hypertarget{classCiA301CommPort_a77ec43d792a81489e221c3990225e57b}\label{classCiA301CommPort_a77ec43d792a81489e221c3990225e57b}} 
+
+
+Can\+Open\+To\+Can\+Bus\+: Converts a Can\+Open object or message into a Can\+Bus object or message. For this, it receives two parameters passed by reference, one of an object Can\+Open that will become the other Can\+Bus object. To do this, copy the ids, the dlc, the rtr, the ts, select the normal frame for the Can\+Bus message and finally copy the message information. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & Can\+Open message. \\
+\hline
+{\em output} & Can message. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCiA301CommPort_a2e85303159577f6b3209b741e9871cc5}\label{classCiA301CommPort_a2e85303159577f6b3209b741e9871cc5}} 
 \index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!data4x8to32@{data4x8to32}}
 \index{data4x8to32@{data4x8to32}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
 \subsubsection{\texorpdfstring{data4x8to32()}{data4x8to32()}}
-{\footnotesize\ttfamily uint32\+\_\+t Ci\+A301\+Comm\+Port\+::data4x8to32 (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t $\ast$}]{in }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily uint32\+\_\+t Ci\+A301\+Comm\+Port\+::data4x8to32 (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t $\ast$}]{in,  }\item[{int}]{dlc }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{classCiA301CommPort_a2bbd06fc6ae74727cef148911e433495}\label{classCiA301CommPort_a2bbd06fc6ae74727cef148911e433495}} 
+\mbox{\Hypertarget{classCiA301CommPort_a4e62245791e907b5df74e3612f8fc9ce}\label{classCiA301CommPort_a4e62245791e907b5df74e3612f8fc9ce}} 
 \index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!Data\+To\+Int@{Data\+To\+Int}}
 \index{Data\+To\+Int@{Data\+To\+Int}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
 \subsubsection{\texorpdfstring{Data\+To\+Int()}{DataToInt()}}
-{\footnotesize\ttfamily uint32\+\_\+t Ci\+A301\+Comm\+Port\+::\+Data\+To\+Int (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t $\ast$}]{in,  }\item[{const uint8\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily ulong Ci\+A301\+Comm\+Port\+::\+Data\+To\+Int (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t $\ast$}]{in,  }\item[{unsigned short}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 \mbox{\Hypertarget{classCiA301CommPort_a067cddaf01932fa6fa27255c61b08190}\label{classCiA301CommPort_a067cddaf01932fa6fa27255c61b08190}} 
 \index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!Flush\+Buffer@{Flush\+Buffer}}
@@ -217,11 +247,11 @@ Ci\+A301\+Comm\+Port\+::\+Wait\+For\+Answer Read the port until expected canopen
 \subsubsection{\texorpdfstring{Read\+S\+D\+O()}{ReadSDO()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily long Ci\+A301\+Comm\+Port\+::\+Read\+S\+DO (\begin{DoxyParamCaption}\item[{vector$<$ uint8\+\_\+t $>$}]{address,  }\item[{int}]{subindex }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{classCiA301CommPort_a3f74ce5899b30731322dabd352ccdc55}\label{classCiA301CommPort_a3f74ce5899b30731322dabd352ccdc55}} 
+\mbox{\Hypertarget{classCiA301CommPort_a403c1de504a2a5c36c90dd977e1bd536}\label{classCiA301CommPort_a403c1de504a2a5c36c90dd977e1bd536}} 
 \index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!Read\+S\+DO@{Read\+S\+DO}}
 \index{Read\+S\+DO@{Read\+S\+DO}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
 \subsubsection{\texorpdfstring{Read\+S\+D\+O()}{ReadSDO()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily long Ci\+A301\+Comm\+Port\+::\+Read\+S\+DO (\begin{DoxyParamCaption}\item[{const vector$<$ uint8\+\_\+t $>$ \&}]{address }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily ulong Ci\+A301\+Comm\+Port\+::\+Read\+S\+DO (\begin{DoxyParamCaption}\item[{const vector$<$ uint8\+\_\+t $>$ \&}]{address }\end{DoxyParamCaption})}
 
 
 
@@ -229,7 +259,7 @@ Ci\+A301\+Comm\+Port\+::\+Wait\+For\+Answer Read the port until expected canopen
 
 
 \begin{DoxyParams}{Parameters}
-{\em address} & \\
+{\em can} & S\+DO address \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -255,7 +285,7 @@ Ci\+A301\+Comm\+Port\+::\+Wait\+For\+Answer Read the port until expected canopen
 
 
 
-\hyperlink{classCiA402DeviceICanbus_aa439b9175f5879282058a3f4c2edb45d}{Ci\+A402\+Device\+I\+Canbus\+::\+Set\+Can\+Open\+Msg} \+: Constructs canopen message from parameters. 
+\hyperlink{classCiA301CommPort_a2c197480112989df6bdb9ea89a649636}{Ci\+A301\+Comm\+Port\+::\+Set\+Can\+Open\+Msg} \+: Constructs canopen message from parameters. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -317,11 +347,11 @@ Write\+P\+DO This function sends P\+DO message to a node (the mode id is configu
 \subsubsection{\texorpdfstring{Write\+P\+D\+O4()}{WritePDO4()}}
 {\footnotesize\ttfamily long Ci\+A301\+Comm\+Port\+::\+Write\+P\+D\+O4 (\begin{DoxyParamCaption}\item[{const vector$<$ uint8\+\_\+t $>$ \&}]{command }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{classCiA301CommPort_a4d97c27423b2323f8475f6e5c2f91575}\label{classCiA301CommPort_a4d97c27423b2323f8475f6e5c2f91575}} 
+\mbox{\Hypertarget{classCiA301CommPort_a7c55c89b1ccd80dd008240ce3e0409c5}\label{classCiA301CommPort_a7c55c89b1ccd80dd008240ce3e0409c5}} 
 \index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!Write\+S\+DO@{Write\+S\+DO}}
 \index{Write\+S\+DO@{Write\+S\+DO}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
 \subsubsection{\texorpdfstring{Write\+S\+D\+O()}{WriteSDO()}}
-{\footnotesize\ttfamily long Ci\+A301\+Comm\+Port\+::\+Write\+S\+DO (\begin{DoxyParamCaption}\item[{const vector$<$ uint8\+\_\+t $>$ \&}]{address,  }\item[{const vector$<$ uint8\+\_\+t $>$ \&}]{value }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily ulong Ci\+A301\+Comm\+Port\+::\+Write\+S\+DO (\begin{DoxyParamCaption}\item[{const vector$<$ uint8\+\_\+t $>$ \&}]{address,  }\item[{const vector$<$ uint8\+\_\+t $>$ \&}]{value }\end{DoxyParamCaption})}
 
 
 

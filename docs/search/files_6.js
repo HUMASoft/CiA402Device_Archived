@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['testport_2ecpp',['TestPort.cpp',['../TestPort_8cpp.html',1,'']]],
-  ['testport_2eh',['TestPort.h',['../TestPort_8h.html',1,'']]]
+  ['socketcanport_2ecpp',['SocketCanPort.cpp',['../SocketCanPort_8cpp.html',1,'']]],
+  ['socketcanport_2eh',['SocketCanPort.h',['../SocketCanPort_8h.html',1,'']]]
 ];
