@@ -562,9 +562,10 @@ long CiA402Device::Setup_Torque_Mode()
 {
 
     cout << "Setup_Torque_Mode " <<endl;
+    WriteSDO(od::torque_type_extern,od::torque_online);
+
     OperationMode(od::torquemode);
 
-    WriteSDO(od::torque_type_extern,od::torque_online);
     return 0;
 }
 
