@@ -584,7 +584,7 @@ long CiA402Device::SetTorque(double target){
     }
 
 
-    cout<< "targetr " <<targetr;
+//    cout<< "targetr " <<targetr;
 
     WriteSDO(od::torque_target,data32to4x8(targetr));
 
@@ -596,16 +596,16 @@ long CiA402Device::SetTorque(double target){
 
 vector<uint8_t> data32to4x8(uint32_t in)
 {
-    cout<<"---------------------------"<<endl;
+//    cout<<"---------------------------"<<endl;
     vector<uint8_t> retvalue(4);
     retvalue[0] = in&0x000000FF;
     retvalue[1] = (in&0x0000FF00)>>8;
     retvalue[2] = (in&0x00FF0000)>>16;
     retvalue[3] = (in&0xFF000000)>>24;
-    cout<< " " <<(int)retvalue[0]
-        << " ," <<(int)retvalue[1]
-        << " , "<<(int)retvalue[2]
-        << " , "<<(int)retvalue[3]<<endl;
+//    cout<< " " <<(int)retvalue[0]
+//        << " ," <<(int)retvalue[1]
+//        << " , "<<(int)retvalue[2]
+//        << " , "<<(int)retvalue[3]<<endl;
     return retvalue;
 
 }
