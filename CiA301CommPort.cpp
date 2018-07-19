@@ -67,7 +67,7 @@ ulong CiA301CommPort::ReadSDO(const vector<uint8_t> &address)
 //    return retvalue;
 }
 
-ulong CiA301CommPort::WriteSDO(const vector<uint8_t> &address, const vector<uint8_t> &value )
+long CiA301CommPort::WriteSDO(const vector<uint8_t> &address, const vector<uint8_t> &value )
 {
 
 

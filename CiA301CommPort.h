@@ -67,7 +67,7 @@ public:
     /// \param value The value that will be writed.
     /// \return 0 if no error. Negative if error (see cerr).
     ///
-    ulong WriteSDO(const vector<uint8_t> &address, const vector<uint8_t> &value);
+    long WriteSDO(const vector<uint8_t> &address, const vector<uint8_t> &value);
     long WritePDO4(const vector<uint8_t> &command);
     long ReadErrorNMT();
     long ReadPDO(long number);
