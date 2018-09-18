@@ -37,7 +37,7 @@ The library is based on the use of the class ``CiA402Device``, then the use of t
 
     ///Create a joint and give a canopen id, and a 301port (by constructor)
     
-CiA402Device j1(3,&p1);
+    CiA402Device j1(3,&p1);
 
 
 # Can interface
