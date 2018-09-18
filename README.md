@@ -24,8 +24,17 @@ INCLUDE_DIRECTORIES(${SUBDIR_INCLUDE_DIRECTORIES})
 Also after "add_executable( ${name} ${sourcefile} )" line, add the following to link the library:
 
 ``
-target_link_libraries( ${name} ${SUBDIR_LINK_NAMES} )
+target_link_libraries( ${PROJECT_NAME} ${SUBDIR_LINK_NAMES} )
 ``
+
+# Can interface
+Remember to start can interface by typing these lines:
+    ``
+    sudo ip link add dev can0 type can
+    ``
+    ``
+    sudo ip link set up can0
+    ``
 
 # Main classes
 
@@ -40,14 +49,6 @@ The library is based on the use of the class ``CiA402Device``, then the use of t
     CiA402Device j1(3,&p1);
 
 
-# Can interface
-Remember to start can interface by typing these lines:
-``
-sudo ip link add dev can0 type can
-``
-``
-sudo ip link set up can0
-``
 
 
 <>![Main class collaboration graph](docs/classCiA402Device__coll__graph.png "Main class collaboration graph")
