@@ -7,6 +7,8 @@ This library is intended for the use with CMake build system. Under CMake buildi
 
 ``
 SUBDIR_INCLUDE_DIRECTORIES
+``
+``
 SUBDIR_LINK_NAMES
 ``
 
