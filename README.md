@@ -44,8 +44,10 @@ CiA402Device j1(3,&p1);
 ```
 
 See https://github.com/HUMASoft/CiA402Device-example for more use examples.
-Trubleshooting here: https://github.com/HUMASoft/CiA402Device/wiki/Troubleshooting.
+
+Troubleshooting here: https://github.com/HUMASoft/CiA402Device/wiki/Troubleshooting.
 
 
+# Collaboration graph
 
-<>![Main class collaboration graph](docs/classCiA402Device__coll__graph.png "Main class collaboration graph")
+![Main class collaboration graph](docs/classCiA402Device__coll__graph.png "Main class collaboration graph")
