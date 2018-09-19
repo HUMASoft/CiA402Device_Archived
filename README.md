@@ -14,27 +14,25 @@ SUBDIR_LINK_NAMES
 
 Then, assuming the library is placed at "${PROJECT_SOURCE_DIR}/lib/CiA402Device/" (for example after clone with ``git clone https://github.com/HUMASoft/CiA402Device.git ``, it is enough to add the following lines to CMakeLists.txt to add includes:
 
-``
-add_subdirectory(${PROJECT_SOURCE_DIR}/lib/CiA402Device/)
-``
-``
-INCLUDE_DIRECTORIES(${SUBDIR_INCLUDE_DIRECTORIES})
-``
+
+    add_subdirectory(${PROJECT_SOURCE_DIR}/lib/CiA402Device/)
+    INCLUDE_DIRECTORIES(${SUBDIR_INCLUDE_DIRECTORIES})
+
 
 Also after "add_executable( ${name} ${sourcefile} )" line, add the following to link the library:
 
-``
-target_link_libraries( ${PROJECT_NAME} ${SUBDIR_LINK_NAMES} )
-``
+
+    target_link_libraries( ${PROJECT_NAME} ${SUBDIR_LINK_NAMES} )
+
 
 # Can interface
 Remember to start can interface by typing these lines:
-    ``
+
     sudo ip link add dev can0 type can
-    ``
-    ``
+
+
     sudo ip link set up can0
-    ``
+
 
 # Main classes
 
