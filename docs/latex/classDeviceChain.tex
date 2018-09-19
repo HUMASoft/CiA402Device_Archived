@@ -1,0 +1,84 @@
+\hypertarget{classDeviceChain}{}\section{Device\+Chain Class Reference}
+\label{classDeviceChain}\index{Device\+Chain@{Device\+Chain}}
+
+
+{\ttfamily \#include $<$Device\+Chain.\+h$>$}
+
+
+
+Collaboration diagram for Device\+Chain\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classDeviceChain__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classDeviceChain_ad89af127eec501ad00ad5f5de197b21e}{Device\+Chain} (string actual\+Port)
+\item 
+\hyperlink{classDeviceChain_a20dd5853f160cfc8ef21ed93dac96f11}{Device\+Chain} (string actual\+Port, vector$<$ long $>$ ids)
+\item 
+long \hyperlink{classDeviceChain_ae6e9be5bfb46721d4c6b66d3d9541f25}{Set\+Positions} (vector$<$ double $>$ joint\+Angles)
+\item 
+long \hyperlink{classDeviceChain_a329b622f12a419f01a9bab38f869144b}{Setup\+Position\+Mode} (const uint32\+\_\+t velocity, const uint32\+\_\+t acceleration)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \hyperlink{classCiA402Device}{Ci\+A402\+Device} $>$ \hyperlink{classDeviceChain_a114bea9dc1166ab2ea5a9ef7488c66ab}{Joints}
+\item 
+std\+::vector$<$ \hyperlink{classSocketCanPort}{Socket\+Can\+Port} $>$ \hyperlink{classDeviceChain_a760e12bf0095431fe76563cc5d7969de}{Ports}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classDeviceChain_ad89af127eec501ad00ad5f5de197b21e}\label{classDeviceChain_ad89af127eec501ad00ad5f5de197b21e}} 
+\index{Device\+Chain@{Device\+Chain}!Device\+Chain@{Device\+Chain}}
+\index{Device\+Chain@{Device\+Chain}!Device\+Chain@{Device\+Chain}}
+\subsubsection{\texorpdfstring{Device\+Chain()}{DeviceChain()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Device\+Chain\+::\+Device\+Chain (\begin{DoxyParamCaption}\item[{string}]{actual\+Port }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classDeviceChain_a20dd5853f160cfc8ef21ed93dac96f11}\label{classDeviceChain_a20dd5853f160cfc8ef21ed93dac96f11}} 
+\index{Device\+Chain@{Device\+Chain}!Device\+Chain@{Device\+Chain}}
+\index{Device\+Chain@{Device\+Chain}!Device\+Chain@{Device\+Chain}}
+\subsubsection{\texorpdfstring{Device\+Chain()}{DeviceChain()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Device\+Chain\+::\+Device\+Chain (\begin{DoxyParamCaption}\item[{string}]{actual\+Port,  }\item[{vector$<$ long $>$}]{ids }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classDeviceChain_ae6e9be5bfb46721d4c6b66d3d9541f25}\label{classDeviceChain_ae6e9be5bfb46721d4c6b66d3d9541f25}} 
+\index{Device\+Chain@{Device\+Chain}!Set\+Positions@{Set\+Positions}}
+\index{Set\+Positions@{Set\+Positions}!Device\+Chain@{Device\+Chain}}
+\subsubsection{\texorpdfstring{Set\+Positions()}{SetPositions()}}
+{\footnotesize\ttfamily long Device\+Chain\+::\+Set\+Positions (\begin{DoxyParamCaption}\item[{vector$<$ double $>$}]{joint\+Angles }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classDeviceChain_a329b622f12a419f01a9bab38f869144b}\label{classDeviceChain_a329b622f12a419f01a9bab38f869144b}} 
+\index{Device\+Chain@{Device\+Chain}!Setup\+Position\+Mode@{Setup\+Position\+Mode}}
+\index{Setup\+Position\+Mode@{Setup\+Position\+Mode}!Device\+Chain@{Device\+Chain}}
+\subsubsection{\texorpdfstring{Setup\+Position\+Mode()}{SetupPositionMode()}}
+{\footnotesize\ttfamily long Device\+Chain\+::\+Setup\+Position\+Mode (\begin{DoxyParamCaption}\item[{const uint32\+\_\+t}]{velocity,  }\item[{const uint32\+\_\+t}]{acceleration }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classDeviceChain_a114bea9dc1166ab2ea5a9ef7488c66ab}\label{classDeviceChain_a114bea9dc1166ab2ea5a9ef7488c66ab}} 
+\index{Device\+Chain@{Device\+Chain}!Joints@{Joints}}
+\index{Joints@{Joints}!Device\+Chain@{Device\+Chain}}
+\subsubsection{\texorpdfstring{Joints}{Joints}}
+{\footnotesize\ttfamily std\+::vector$<$\hyperlink{classCiA402Device}{Ci\+A402\+Device}$>$ Device\+Chain\+::\+Joints\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classDeviceChain_a760e12bf0095431fe76563cc5d7969de}\label{classDeviceChain_a760e12bf0095431fe76563cc5d7969de}} 
+\index{Device\+Chain@{Device\+Chain}!Ports@{Ports}}
+\index{Ports@{Ports}!Device\+Chain@{Device\+Chain}}
+\subsubsection{\texorpdfstring{Ports}{Ports}}
+{\footnotesize\ttfamily std\+::vector$<$\hyperlink{classSocketCanPort}{Socket\+Can\+Port}$>$ Device\+Chain\+::\+Ports\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{DeviceChain_8h}{Device\+Chain.\+h}\item 
+\hyperlink{DeviceChain_8cpp}{Device\+Chain.\+cpp}\end{DoxyCompactItemize}

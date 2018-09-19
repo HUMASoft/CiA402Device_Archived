@@ -6,8 +6,7 @@
 
 
 
-Inheritance diagram for Ci\+A301\+Comm\+Port\+:
-\nopagebreak
+Inheritance diagram for Ci\+A301\+Comm\+Port\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -16,8 +15,7 @@ Inheritance diagram for Ci\+A301\+Comm\+Port\+:
 \end{figure}
 
 
-Collaboration diagram for Ci\+A301\+Comm\+Port\+:
-\nopagebreak
+Collaboration diagram for Ci\+A301\+Comm\+Port\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -45,7 +43,7 @@ long \hyperlink{classCiA301CommPort_a067cddaf01932fa6fa27255c61b08190}{Flush\+Bu
 \item 
 long \hyperlink{classCiA301CommPort_ab29e221039a2d21d1446edb09b91864e}{Flush\+Buffer} (int msgs)
 \begin{DoxyCompactList}\small\item\em Flush\+Buffer Removes the msgs number of can frames from buffer. \end{DoxyCompactList}\item 
-ulong \hyperlink{classCiA301CommPort_a7c55c89b1ccd80dd008240ce3e0409c5}{Write\+S\+DO} (const vector$<$ uint8\+\_\+t $>$ \&address, const vector$<$ uint8\+\_\+t $>$ \&value)
+long \hyperlink{classCiA301CommPort_a4d97c27423b2323f8475f6e5c2f91575}{Write\+S\+DO} (const vector$<$ uint8\+\_\+t $>$ \&address, const vector$<$ uint8\+\_\+t $>$ \&value)
 \begin{DoxyCompactList}\small\item\em Write\+S\+DO Writes 4 byte value to specific address on device. This function sends S\+DO message requesting write on the object dictionary address. Also block and wait for the S\+DO msg for write ack, and returns negative if error. As it reads the ack S\+DO message, the buffer should be same size after this function returns. \end{DoxyCompactList}\item 
 long \hyperlink{classCiA301CommPort_a1faf4f37530e0dd0ae4600cfb0b1d742}{Write\+P\+D\+O4} (const vector$<$ uint8\+\_\+t $>$ \&command)
 \item 
@@ -347,11 +345,11 @@ Write\+P\+DO This function sends P\+DO message to a node (the mode id is configu
 \subsubsection{\texorpdfstring{Write\+P\+D\+O4()}{WritePDO4()}}
 {\footnotesize\ttfamily long Ci\+A301\+Comm\+Port\+::\+Write\+P\+D\+O4 (\begin{DoxyParamCaption}\item[{const vector$<$ uint8\+\_\+t $>$ \&}]{command }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{classCiA301CommPort_a7c55c89b1ccd80dd008240ce3e0409c5}\label{classCiA301CommPort_a7c55c89b1ccd80dd008240ce3e0409c5}} 
+\mbox{\Hypertarget{classCiA301CommPort_a4d97c27423b2323f8475f6e5c2f91575}\label{classCiA301CommPort_a4d97c27423b2323f8475f6e5c2f91575}} 
 \index{Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}!Write\+S\+DO@{Write\+S\+DO}}
 \index{Write\+S\+DO@{Write\+S\+DO}!Ci\+A301\+Comm\+Port@{Ci\+A301\+Comm\+Port}}
 \subsubsection{\texorpdfstring{Write\+S\+D\+O()}{WriteSDO()}}
-{\footnotesize\ttfamily ulong Ci\+A301\+Comm\+Port\+::\+Write\+S\+DO (\begin{DoxyParamCaption}\item[{const vector$<$ uint8\+\_\+t $>$ \&}]{address,  }\item[{const vector$<$ uint8\+\_\+t $>$ \&}]{value }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily long Ci\+A301\+Comm\+Port\+::\+Write\+S\+DO (\begin{DoxyParamCaption}\item[{const vector$<$ uint8\+\_\+t $>$ \&}]{address,  }\item[{const vector$<$ uint8\+\_\+t $>$ \&}]{value }\end{DoxyParamCaption})}
 
 
 

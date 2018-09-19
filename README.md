@@ -44,6 +44,7 @@ CiA402Device j1(3,&p1);
 ```
 
 See https://github.com/HUMASoft/CiA402Device-example for more use examples.
+Trubleshooting here: https://github.com/HUMASoft/CiA402Device/wiki/Troubleshooting.
 
 
 
