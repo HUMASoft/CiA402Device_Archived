@@ -17,4 +17,6 @@ long PortBase::FlushMsg()
     {
         read(portId, &frame, sizeof(struct can_frame));
     }
+    return 0;
+
 }

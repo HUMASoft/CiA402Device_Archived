@@ -63,6 +63,7 @@ long CiA402Device::StartNode()
 
      cout<<"START NODE"<<endl;
      WriteNMT(od::start);
+     return 0;
 
 }
 
