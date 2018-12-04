@@ -41,14 +41,15 @@ long CiA402Device::Reset()
      double response;
      //response = WriteNMT(od::reset);
      WriteNMT(od::fullreset);
-     //Wait needed for reset to finish. Using sleep
-     sleep(3);
+
 
      //Wait Start finish NMT [01 id]
      //ReadNMT(nmt::started);
 
      //reset response 700+id -->booting
      ReadErrorNMT();
+     //Wait needed for reset to finish. Using sleep
+     sleep(1);
 
      cout<<"START NODE"<<endl;
      WriteNMT(od::start);
@@ -142,7 +143,7 @@ cout<<"SWITCHON WritePDO RESPONSE" << response <<endl;
      //dont use it here. Call from main.
 //     cout<<"response"<< response <<endl;
 //     OperationMode(od::positionmode);
-     sleep(1);
+//     sleep(1);
 
     return 0;
 }
