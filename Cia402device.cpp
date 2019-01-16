@@ -475,7 +475,7 @@ long CiA402Device::SetPosition(long target){
     //WritePDO4(data32to4x8(target));
     //sleep(1);
     long pos = ReadSDO(od::target_position);
-    cout<<"target_position: "<<pos<<endl;
+    //cout<<"target_position: "<<pos<<endl;
     FlushBuffer();
     //sleep(1);
 
@@ -483,7 +483,7 @@ long CiA402Device::SetPosition(long target){
     //cada vez que la statusword cambia, envía un mensaje pdo.
     //revisar esto para esperar el mensaje correcto.
     long stat = ReadSDO(od::statusword);
-    cout<<"statusword: "<<stat<<endl;
+    //cout<<"statusword: "<<stat<<endl;
     //FlushBuffer();
     //sleep(1);
 
@@ -491,7 +491,7 @@ long CiA402Device::SetPosition(long target){
 //    vector<uint8_t>cw={0x30,0x08,0x00 ,0x00 };
 //    WritePDO(cw);
 //    sleep(1);01100100
-    cout<<"RUN"<<endl;
+    //cout<<"RUN"<<endl;
       WritePDO(od::run);
       FlushBuffer();
     return 0;
