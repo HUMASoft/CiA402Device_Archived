@@ -576,13 +576,13 @@ long CiA402Device::SetTorque(double target){
 
     int32_t targetr=(int32_t)target*0x10000;
 
-    if ((target < -1000))
+    if ((target < -3000))
     {
-        targetr=-1000*0x10000;
+        targetr=-3000*0x10000;
     }
-    if ((target > 1000))
+    if ((target > 3000))
     {
-        targetr=1000*0x10000;
+        targetr=3000*0x10000;
     }
 
 
