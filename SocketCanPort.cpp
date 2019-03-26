@@ -65,7 +65,7 @@ long SocketCanPort::GetNMT(uint8_t *data, uint8_t & size)
         }
         if(buffSizeNMT==0)
         {
-            cout << ("Timeout in poll read") << endl;
+            cout << ("Timeout in poll read in the port ") <<  getPortId() << endl;
             size = 0;
             data[0] = '\0';
             //perror("Timeout in poll read");
@@ -111,7 +111,7 @@ long SocketCanPort::GetMsg(uint32_t &canId, uint8_t *data, uint8_t &size)
         }
         if(buffSizeId==0)
         {
-            cout << ("Timeout in poll read") << endl;
+            cout << ("Timeout in poll read in the port ")<<  getPortId() << endl;
             size=0;
             data[0] = '\0';
             //perror("Timeout in poll read");
@@ -147,11 +147,11 @@ long SocketCanPort::PutMsg(const uint32_t &canId, uint8_t * const data, uint8_t 
 
 
     nbytes = write(portId, &frame, sizeof(struct can_frame) );
-
     /* send frame */
     if (nbytes != sizeof(struct can_frame))
     {
-        fprintf(stderr, "Write Failed in Port %d", portId);
+
+        fprintf(stderr, "Write Failed in Port %d ", portId);
         //perror("Write Failed", portId);
         cerr << "PutMsg: " << hex << frame.can_id << dec << "  | ";
         cerr << "data[0]: " << hex << frame.data[0] << dec << "  | ";

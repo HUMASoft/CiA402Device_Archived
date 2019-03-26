@@ -288,11 +288,9 @@ long CiA301CommPort::WriteNMT(const vector<uint8_t> &nmtCommand)
     long response;
     vector<uint8_t> data(nmtCommand);
     data.push_back(id);
-    //cout << "id" << id << endl;
+    cout << "id " << id << endl;
     //
     SendMessage(SetCanOpenMsg(0, 0 ,data) );
-
-
 
     return 0;
 
@@ -353,24 +351,24 @@ long CiA301CommPort::ReadErrorNMT()
 }
 
 long CiA301CommPort::CanOpenToCanBus(const co_msg & input, can_msg & output)
+{
+
+        output.id=input.id_co;
+
+
+        //output.fi=input.id_co;
+        //output.fi<<=4;
+        //output.fi+=input.dlc_co;
+        output.dlc=input.dlc_co;
+        output.rtr=input.rtr;
+
+        output.ff=FF_NORMAL; //normal frame
+        output.ts=input.ts;
+        // creo que en vez de 8 poner dlc
+        for( int i=0; i < 8; i++)
         {
-
-                output.id=input.id_co;
-
-
-                //output.fi=input.id_co;
-                //output.fi<<=4;
-                //output.fi+=input.dlc_co;
-                output.dlc=input.dlc_co;
-                output.rtr=input.rtr;
-
-                output.ff=FF_NORMAL; //normal frame
-                output.ts=input.ts;
-                // creo que en vez de 8 poner dlc
-                for( int i=0; i < 8; i++)
-        {
-                output.data[i] = input.data_co[i];
-}
+             output.data[i] = input.data_co[i];
+        }
 
 
 
@@ -810,9 +808,9 @@ ulong CiA301CommPort::DataToInt(const uint8_t* in, unsigned short size)
     }
     long retvalue = in[size-1];
 //    cout<<"--- RETVALUE "<<retvalue<<endl;
-    for (int i=size-1; i>0; i--)
+    for (int i=size-2; i>=0; i--)
     {
-    retvalue = (retvalue << 8) + in[i-1];
+    retvalue = (retvalue << 8) + in[i];
 //    cout<<"----RETVALUE "<<retvalue<<endl;
     //cout <<"i" << i <<"v"<< retvalue <<endl;
     }

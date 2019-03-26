@@ -2,36 +2,66 @@
 
 vector<uint8_t> data32to4x8(uint32_t in);
 
+vector<uint8_t> data16to2x8(uint16_t in);
 
 long CiA402Device::Init(uint8_t new_id)
 {
     //id = new_id;
+
+    SetEnc_res(4096);   //Encoder resolution parameter intialize by default
+    SetRed_Mot(1);      //Reduction parameter intialize by default
+    SetSampling_period(0.001);
+
+    Scaling();
+
+
     return 0;
 }
 
 CiA402Device::CiA402Device() : CiA301CommPort(1,1) //stdout
 {
-
+    Init(1);
     comm = 1; //stdout
 
 }
 
 CiA402Device::CiA402Device(uint8_t new_id) : CiA301CommPort(1, new_id)
 {
-
+    Init(new_id);
     comm = 1; //stdout
 }
 
 CiA402Device::CiA402Device(uint8_t new_id, int fdPort) : CiA301CommPort(fdPort, new_id)
 {
+
+    Init(new_id);
     comm = fdPort;
 
 }
 
 CiA402Device::CiA402Device(uint8_t new_id, PortBase *new_port) : CiA301CommPort(new_port, new_id)
 {
+     Init(new_id);
+
+}
 
 
+long CiA402Device::Scaling(void)
+{
+    float count_sec = encoder_resolution/60.0;
+
+
+    // Motor_Position[IU]=Scaling_factors_velocity*Load_Position[SI]
+    Scaling_Factors_Position = reduction_ratio_motor*encoder_resolution/(2.0*PI);
+
+    // Motor_Speed[IU]=Scaling_factors_velocity*Load_Speed[SI]
+    Scaling_Factors_Velocity = RADS2RPM*count_sec*reduction_ratio_motor*SampSL;
+    cout << "Scaling_Factors_Velocity - " << Scaling_Factors_Velocity << endl;
+
+    // Motor_Accel[IU]=Scaling_factors_velocity*Load_Accel[SI]
+    Scaling_Factors_Acceleration = Scaling_Factors_Velocity*SampSL;
+
+    return 0;
 }
 
 long CiA402Device::Reset()
@@ -361,26 +391,42 @@ double CiA402Device::GetPosition()
 
     int32_t position= (int32_t)ReadSDO(od::positionaddress);
 
-    //cout<<"POS --- "<<position<<endl;
-    return (double)position*360/15155;//*360000/4096
+//    cout<<"POS --- "<<position<<endl;
+//    cout<<"reduction_ratio_motor*encoder_resolution "<<reduction_ratio_motor<< " "<<encoder_resolution<<" "<<reduction_ratio_motor*encoder_resolution<<endl;
+
+    return (double)position/Scaling_Factors_Position;//*360000/4096
 //       double position = ReadSDO(od::positionaddress)*360/15155;
 //       while(position > 1200){
 //             position = ReadSDO(od::positionaddress)*360/15155;
-//       }
+//       } " "<<
 //       cout<<"DENTRO DE GETPOSITIOB"<<position<<endl;
 //    //return (uint32_t) ReadSDO(od::positionaddress)*360/4096;//*360000/4096
 //    return position;
 
 }
 
+/// \brief CiA402Device::GetVelocity This function converts a variable of type uint32_t which contains the equivalent velocity
+///  as function of the enconder lines/sample into the velocity of a motor with an encoder of X lines in radians per second.
+///
+/// \return This function returns a variable of type double with value the actual velocity in rad/s
+
 double CiA402Device::GetVelocity()
 {
 
+    int32_t velocity= (int32_t)ReadSDO(od::velocityaddress);
 
-    int v = (int)ReadSDO(od::velocityaddress)*15/65536;
-    double ret = v/3.7;
-    //cout<<"Get_Velocity"<<ret<<"rpm"<<endl;
-    return ret;
+
+      // Motor_Position[IU]=Scaling_factors_velocity*Load_Position[SI];
+
+//    cout << std::hex << "velocity  hex    - " <<  velocity <<endl;
+//    cout << "velocity  float    - " << (double)velocity/(Scaling_Factors_Velocity*MIN_SPEED_INC32) << endl;
+//    cout << "velocity           - " << velocity/(Scaling_Factors_Velocity*MIN_SPEED_INC32)<< endl;
+//    cout << "velocity Low  - " << (velocity << 16) << endl;
+
+    return velocity/(Scaling_Factors_Velocity*MIN_SPEED_INC32);// /65536;
+   // double ret = v/reduction_ratio_motor;
+    //cout<<"Get_Velocity"<<ret<<"rpm"<<endl;++++++++++++++++++++++++++++
+
 
 
 
@@ -396,24 +442,26 @@ long CiA402Device::SetupPositionMode(/*const vector<uint8_t> target,*/const uint
 
 int32_t velocityr;
 int32_t accelerationr;
+
     OperationMode(od::positionmode);
     /* Converts from degrees/s to lines per ms, and then this value is shifted two bytes
- to the left to form the high part of the message. Then the low part is added.
- The high part corresponds to the increments/sample while the low part corresponds
- to the subdivion of an increment */
-    velocityr=((velocity*4096/360000)<<16)+0;
+     to the left to form the high part of the message. Then the low part is added.
+     The high part corresponds to the increments/sample while the low part corresponds
+     to the subdivion of an increment */
+    velocityr=((velocity*Scaling_Factors_Velocity)*MIN_SPEED_INC32);
 
     // Motion profile type -  trapezoidal
     //WriteSDO(od::motion_profile_type,od::linear_ramp_trapezoidal);
     //Si paso los parametros convertidos en ui, sino convertir primero
     WriteSDO(od::profile_velocity,data32to4x8(velocityr));
     //Si paso los parametros convertidos en ui, sino convertir primero
-    accelerationr=((acceleration*4096/360000000)<<16)+0;
+    accelerationr=((acceleration*(Scaling_Factors_Acceleration))*MIN_SPEED_INC32);
     WriteSDO(od::profile_acceleration,data32to4x8(accelerationr));
 //  The target position is the position that the drive should move to in
 //  position profile mode using the current settings of motion control parameters
 //  such as velocity, acceleration, and motion profile type etc.
-//  It is given in position units.
+//  It is given in position units.0x10000
+
 //  Si paso los parametros convertidos en ui, sino convertir primero
     //WriteSDO(od::target_position,target);
     //WriteSDO(od::quick_stop_deceleration,deceleration);
@@ -427,9 +475,9 @@ long CiA402Device::Setup_Velocity_Mode(const uint32_t target,const uint32_t acce
 //    due to a limited acceleration. The Target Velocity object specifies
 //    the jog speed (speed sign specifies the direction) and the Profile Acceleration
 //    object the acceleration/deceleration rate.
-
+cout<<"scaling "<< Scaling_Factors_Velocity<<endl;
     OperationMode(od::velocitymode);
-    int32_t t=(target*256/15)<<16;
+    int32_t t=(target*Scaling_Factors_Velocity)*MIN_SPEED_INC32;
     int32_t accelerationr;
 
 //    The target velocity is the input for the trajectory generator
@@ -441,10 +489,68 @@ long CiA402Device::Setup_Velocity_Mode(const uint32_t target,const uint32_t acce
      WriteSDO(od::target_velocity,data32to4x8(t));
 
     //accelerationr=((acceleration*4096/360000000))+0;
-    accelerationr=acceleration*65536;
+    accelerationr=acceleration*MIN_SPEED_INC32;
     WriteSDO(od::profile_acceleration,data32to4x8(accelerationr));
     return 0;
 }
+
+
+
+
+long CiA402Device::SetTarget_VELOCITY_PROPORCIONAL(double target, float kp){
+
+    float consigna = 0; // Umbral de acercamiento a al traget en radianes
+    float error;
+    float threshold_target = 0.116;
+
+    for(int i=0; i<2000; i++)
+    {
+
+        float pos = GetPosition();
+        error = target - pos ;
+        cout<<"  target- " <<target<<endl;
+
+
+
+        if(fabs(error) < threshold_target)
+            break;
+
+        consigna = error * kp;
+
+        cout<<"i= "<< i <<" | e =  "<< error << " |consigna = " << consigna << " | p = "<< pos*RADS2DEG << endl;
+
+        SetVelocity(consigna);
+
+
+
+        usleep(10000);
+
+    }
+
+    SetVelocity(0);
+
+
+    return 0;
+}
+
+
+long CiA402Device::SetPositionRECURSIVE_test(long target){
+
+    float threshold_target = 0.016; // Umbral de acercamiento a al traget en radianes
+    SetPosition(target);
+    for(int i=0; i<100; i++)
+    {
+        if(fabs(GetPosition()-target) < threshold_target)
+            break;
+        usleep(1000);
+        SetPosition(target);
+        cout<<" "<<i<<" "<< GetPosition()<<endl;
+    }
+    return 0;
+}
+
+
+
 
 ///
 /// \brief CiA402Device::SetPosition This function performs the
@@ -465,24 +571,26 @@ long CiA402Device::SetPosition(long target){
     //vector<uint8_t> value;
     //convert target to value
     WritePDO(od::goenable);
-    FlushBuffer();
+  //  FlushBuffer();
     //sleep(1);
-    long target_t=(long)target*3.7*4096/360;
+    long target_t=(long)target*Scaling_Factors_Position;
+
+   // cout<<"target deg: "<<target<<" -- target_t: "<< target_t<<endl;
 
     WriteSDO(od::target_position,data32to4x8(target_t));
 //    FlushBuffer();
     //WritePDO4(data32to4x8(target));
     //sleep(1);
     long pos = ReadSDO(od::target_position);
-    cout<<"target_position: "<<pos<<endl;
-    FlushBuffer();
+   // cout<<"target_position: "<<pos<<endl;
+   // FlushBuffer();
     //sleep(1);
 
     //lectura del status word y comprobar target reached (posicion bit11 = 1)
     //cada vez que la statusword cambia, envía un mensaje pdo.
     //revisar esto para esperar el mensaje correcto.
     long stat = ReadSDO(od::statusword);
-    cout<<"statusword: "<<stat<<endl;
+    //cout<<"statusword: "<<stat<<endl;
     //FlushBuffer();
     //sleep(1);
 
@@ -490,61 +598,42 @@ long CiA402Device::SetPosition(long target){
 //    vector<uint8_t>cw={0x30,0x08,0x00 ,0x00 };
 //    WritePDO(cw);
 //    sleep(1);01100100
-    cout<<"RUN"<<endl;
+ //   cout<<"RUN"<<endl;
       WritePDO(od::run);
-      FlushBuffer();
+     // FlushBuffer();
     return 0;
 }
 
+/// \brief CiA402Device::SetVelocity This function converts the velocity of a motor with an encoder of X lines in radians per second
+/// into a variable of type uint32_t which contains the equivalent velocity as function of the enconder lines/sample.
+/// \param target A uint32_t variable with the desired velocity in rad/s
+/// \return This function re1turns a variable of type long with value 0.
+///
 long CiA402Device::SetVelocity(double target){
 
 
     int32_t targetr;
-//targetr=( (1) << 16 );
-   //targetr=( (target*(4096/360)*(2) ) << 16 );*///4096/360= [encoder-steps/deg] and 1000 [ms] in a [s]
-    //WriteSDO(od::target_velocity,data32to4x8(targetr));
-//    accelerationr=((acceleration*4096/360000000)<<16)+0;
 
-//    WriteSDO(od::profile_acceleration,data32to4x8(accelerationr));
-//    //vector<uint8_t> value;
-//    //convert target to value
-//    WritePDO(od::goenable);
-//    FlushBuffer();
-//    //sleep(1);
+    double ui = target*Scaling_Factors_Velocity;
 
-//    WriteSDO(od::target_velocity,data32to4x8(target));
-////    FlushBuffer();
-//    //WritePDO4(data32to4x8(target));
-//    //sleep(1);
-//    long vel = ReadSDO(od::target_velocity);
-//    cout<<"target_velocity: "<<vel<<endl;
-//    FlushBuffer();
-//    //sleep(1);
+    if( ui < 1 && ui > 0)
+        ui = MIN_SPEED_INC32;
+    else if( ui > - 1 && ui < 0)
+        ui = - MIN_SPEED_INC32;
+    else if ( ui == 0)
+        ui = 0;
+    else
+        ui = ui * MIN_SPEED_INC32;
 
-//    //lectura del status word y comprobar target reached (posicion bit11 = 1)
-//    //cada vez que la statusword cambia, envía un mensaje pdo.
-//    //revisar esto para esperar el mensaje correcto.
-//    long stat = ReadSDO(od::statusword);
-//    cout<<"statusword: "<<stat<<endl;
-//    //FlushBuffer();
-//    //sleep(1);
-//    targetr=((target*1024)/6.28);
-//    uint32_t t=(targetr<<16)+0;
-//    uint32_t t=(target*256/15)<<16;
-    double ui=target*0x10000*4096/60000;
-    int32_t t=(int32_t)ui;
+    int32_t t = (int32_t)ui;
+   // cout<<"ui- "<< target*Scaling_Factors_Velocity<< " t- " << t << " | target- " <<target<<endl;
     WriteSDO(od::target_velocity,data32to4x8(t));
 
-
-//    //setup via control word
-////    vector<uint8_t>cw={0x30,0x08,0x00 ,0x00 };
-////    WritePDO(cw);
-////    sleep(1);
-//    cout<<"RUN"<<endl;
-//      WritePDO(od::run);
-//      FlushBuffer();
+    // Motor_Velocity[IU]=Scaling_factors_velocity*Load_Velocity[SI]
     return 0;
 }
+
+
 
 ///
 /// \brief CiA402Device::DegreeConv This function converts a variable of type uint32_t
@@ -562,10 +651,17 @@ long CiA402Device::SetVelocity(double target){
 long CiA402Device::Setup_Torque_Mode()
 {
 
-    cout << "Setup_Torque_Mode " <<endl;
-    WriteSDO(od::torque_type_extern,od::torque_online);
+       OperationMode(od::torquemode);
 
-    OperationMode(od::torquemode);
+    cout << "Setup_Torque_Mode " <<endl;
+    WriteSDO(od::external_reference_type,od::torque_online_enable); /*received online via the CAN bus communication channel from the CANopen
+                                                     master in object External On-line Reference (index 201C h )*/
+
+    current_limit =  ReadSDO(od::current_limit);
+
+
+     cout << "Current limit" <<  (current_limit) << endl;
+
 
     return 0;
 }
@@ -573,40 +669,96 @@ long CiA402Device::Setup_Torque_Mode()
 long CiA402Device::SetTorque(double target){
 
 
-    int32_t targetr=(int32_t)target*0x10000;
+    // Basado en el punto 16.2.1. Object 6071h: Target torque. La corriente en unidades internas es el
+    // tanto por uno de la corriente de pico del "drive". Multiplicado por el rango de de entrada analogica,
+    // dado que el torque lo seteamos de manera online.
+    // formula: current [ IU ] =  65520 ⋅ current [ A ] /   2 ⋅ Ipeak
 
-    if ((target < -1000))
-    {
-        targetr=-1000*0x10000;
-    }
-    if ((target > 1000))
-    {
-        targetr=1000*0x10000;
-    }
+    int32_t targetr= int32_t (target*ANALOGUE_INPUT_SCALE/2.0)*MIN_SPEED_INC32;
+    if(target > 1)
+        targetr = int32_t(ANALOGUE_INPUT_SCALE/2.0)*MIN_SPEED_INC32;
+    else if(target < -1)
+        targetr = int32_t(-ANALOGUE_INPUT_SCALE/2.0)*MIN_SPEED_INC32;
 
 
-//    cout<< "targetr " <<targetr;
+    WriteSDO(od::external_reference, data32to4x8(targetr));
 
-    WriteSDO(od::torque_target,data32to4x8(targetr));
+//    cout << " TORQUE : " << targetr << " " << target << " " <<target*ANALOGUE_INPUT_SCALE/2.0 << endl;
 
-    //cout<<"RUN"<<endl;
     WritePDO(od::run);
     FlushBuffer();
     return 0;
 }
 
+
+//long CiA402Device::SetTorque(double target){
+
+
+//    int32_t targetr=(int32_t)target*MIN_SPEED_INC32;
+
+//    if ((target < -1000))
+//    {
+//        targetr=-1000*MIN_SPEED_INC32;
+//    }
+//    if ((target > 1000))
+//    {
+//        targetr=1000*MIN_SPEED_INC32;
+//    }
+//    cout << " TORQUE : " << targetr << endl;
+
+//    WriteSDO(od::torque_target,data32to4x8(targetr));
+
+//    WritePDO(od::run);
+//    FlushBuffer();
+//    return 0;
+
+//}
+
 vector<uint8_t> data32to4x8(uint32_t in)
 {
-//    cout<<"---------------------------"<<endl;
+
     vector<uint8_t> retvalue(4);
     retvalue[0] = in&0x000000FF;
     retvalue[1] = (in&0x0000FF00)>>8;
     retvalue[2] = (in&0x00FF0000)>>16;
     retvalue[3] = (in&0xFF000000)>>24;
-//    cout<< " " <<(int)retvalue[0]
-//        << " ," <<(int)retvalue[1]
-//        << " , "<<(int)retvalue[2]
-//        << " , "<<(int)retvalue[3]<<endl;
+
     return retvalue;
 
 }
+
+
+vector<uint8_t> data16to2x8(uint16_t in)
+{
+
+    vector<uint8_t> retvalue(2);
+    retvalue[0] = in&0x000000FF;
+    retvalue[1] = (in&0x0000FF00)>>8;
+
+    return retvalue;
+
+}
+
+
+
+/// Set the Nº lines for incremental encoder quadrature  (lines X 4)
+long  CiA402Device::SetEnc_res(int lines)
+{
+    encoder_resolution = lines;
+    return 0;
+}
+
+/// Set the transmission ratio between the motor displacement in SI units and load displacement
+long  CiA402Device::SetRed_Mot(float reduction_ratio)
+{
+    reduction_ratio_motor = reduction_ratio;
+    return 0;
+}
+
+/// Set the speed/position loop sampling period of the motor Control (sampling_slow_loop)
+long  CiA402Device::SetSampling_period(float sampling_period)
+{
+    SampSL = sampling_period;
+    return 0;
+}
+
