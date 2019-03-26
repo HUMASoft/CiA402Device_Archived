@@ -45,6 +45,14 @@ CiA402Device::CiA402Device(uint8_t new_id, PortBase *new_port) : CiA301CommPort(
 
 }
 
+CiA402Device::CiA402Device(uint8_t new_id, PortBase *new_port, CiA402SetupData deviceData) : CiA301CommPort(new_port, new_id)
+{
+     Init(new_id);
+     Scaling_Factors_Position = deviceData.getScaling_Factors_Position();
+     Scaling_Factors_Velocity = deviceData.getScaling_Factors_Velocity();
+     Scaling_Factors_Acceleration= deviceData.getScaling_Factors_Acceleration();
+
+}
 
 long CiA402Device::Scaling(void)
 {
@@ -100,38 +108,7 @@ long CiA402Device::StartNode()
 
 long CiA402Device::SwitchOn()
 {
-    //Watch out!! sleep commands removed!!!
 
-
-    //TODO: Check the aim of this part of code.
-
-//        int i=0;
-//        int e=0; //marks transmission errors
-//        uint16_t status;
-//     status = CheckStatus()&0x6f; //mask 01101111=6f
-//     while (i<3){   //three tries to receive the correct message
-//        if (status == 0x00) {
-//             cout<<"response" << response <<endl;
-//             i=3;
-//             e=0;
-//        }
-//        else {
-//             sleep(1);
-//             i++;
-//             if (i=3){
-//                 e=1;
-//             }
-//        }
-//     }
-//     if (e=1){
-//         cout<<"Error. Wrong message or message not received"<<endl;
-//         cerr << "Start Failed. Try node init Before with reset. " << endl;
-//         //PrintStatus();
-//         return 0;
-//        }
-//     else {
-//         i=0;
-//     }
 
 
     long response;
@@ -439,7 +416,7 @@ long CiA402Device::SetCommunications(int fdPort)
     return 0;
 }
 
-long CiA402Device::SetupPositionMode(/*const vector<uint8_t> target,*/const uint32_t velocity,const uint32_t acceleration /*const vector<uint8_t> deceleration*/){
+long CiA402Device::SetupPositionMode(const uint32_t velocity,const uint32_t acceleration /*const vector<uint8_t> deceleration*/){
 
 int32_t velocityr;
 int32_t accelerationr;
@@ -565,7 +542,7 @@ long CiA402Device::SetPositionRECURSIVE_test(long target){
 /// \return This function returns a variable of type long with value 0.
 ///
 
-long CiA402Device::SetPosition(long target){
+long CiA402Device::SetPosition(double target){
 
 //WATCH SLEEPS!!!!!!!!!!!!
 //remove when working code
@@ -574,7 +551,7 @@ long CiA402Device::SetPosition(long target){
     WritePDO(od::goenable);
   //  FlushBuffer();
     //sleep(1);
-    long target_t=(long)target*Scaling_Factors_Position;
+    long target_t=(long)(target*Scaling_Factors_Position);
 
    // cout<<"target deg: "<<target<<" -- target_t: "<< target_t<<endl;
 
