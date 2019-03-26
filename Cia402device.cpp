@@ -71,14 +71,15 @@ long CiA402Device::Reset()
      double response;
      //response = WriteNMT(od::reset);
      WriteNMT(od::fullreset);
-     //Wait needed for reset to finish. Using sleep
-     sleep(3);
+
 
      //Wait Start finish NMT [01 id]
      //ReadNMT(nmt::started);
 
      //reset response 700+id -->booting
      ReadErrorNMT();
+     //Wait needed for reset to finish. Using sleep
+     sleep(1);
 
      cout<<"START NODE"<<endl;
      WriteNMT(od::start);
@@ -172,7 +173,7 @@ cout<<"SWITCHON WritePDO RESPONSE" << response <<endl;
      //dont use it here. Call from main.
 //     cout<<"response"<< response <<endl;
 //     OperationMode(od::positionmode);
-     sleep(1);
+//     sleep(1);
 
     return 0;
 }
@@ -582,8 +583,10 @@ long CiA402Device::SetPosition(long target){
     //WritePDO4(data32to4x8(target));
     //sleep(1);
     long pos = ReadSDO(od::target_position);
-   // cout<<"target_position: "<<pos<<endl;
-   // FlushBuffer();
+
+    //cout<<"target_position: "<<pos<<endl;
+    FlushBuffer();
+
     //sleep(1);
 
     //lectura del status word y comprobar target reached (posicion bit11 = 1)
@@ -599,6 +602,7 @@ long CiA402Device::SetPosition(long target){
 //    WritePDO(cw);
 //    sleep(1);01100100
  //   cout<<"RUN"<<endl;
+
       WritePDO(od::run);
      // FlushBuffer();
     return 0;
@@ -679,6 +683,7 @@ long CiA402Device::SetTorque(double target){
         targetr = int32_t(ANALOGUE_INPUT_SCALE/2.0)*MIN_SPEED_INC32;
     else if(target < -1)
         targetr = int32_t(-ANALOGUE_INPUT_SCALE/2.0)*MIN_SPEED_INC32;
+
 
 
     WriteSDO(od::external_reference, data32to4x8(targetr));
