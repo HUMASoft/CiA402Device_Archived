@@ -401,7 +401,7 @@ double CiA402Device::GetVelocity()
 //    cout << "velocity           - " << velocity/(Scaling_Factors_Velocity*MIN_SPEED_INC32)<< endl;
 //    cout << "velocity Low  - " << (velocity << 16) << endl;
 
-    return velocity/(Scaling_Factors_Velocity*MIN_SPEED_INC32);// /65536;
+    return double(velocity/(Scaling_Factors_Velocity*MIN_SPEED_INC32));// /65536;
    // double ret = v/reduction_ratio_motor;
     //cout<<"Get_Velocity"<<ret<<"rpm"<<endl;++++++++++++++++++++++++++++
 
