@@ -1,9 +1,10 @@
 <map id="DeviceChain.cpp" name="DeviceChain.cpp">
-<area shape="rect" id="node2" href="$DeviceChain_8h.html" title="DeviceChain.h" alt="" coords="706,80,814,107"/>
-<area shape="rect" id="node3" href="$Cia402device_8h.html" title="Cia402device.h" alt="" coords="658,155,770,181"/>
-<area shape="rect" id="node24" href="$SocketCanPort_8h.html" title="SocketCanPort.h" alt="" coords="1027,229,1150,256"/>
-<area shape="rect" id="node5" href="$CiA301CommPort_8h.html" title="CiA301CommPort.h" alt="" coords="431,229,570,256"/>
-<area shape="rect" id="node19" href="$PortBase_8h.html" title="PortBase.h" alt="" coords="996,304,1082,331"/>
-<area shape="rect" id="node23" href="$ObjectDictionary_8h.html" title="ObjectDictionary.h" alt="" coords="60,229,191,256"/>
-<area shape="rect" id="node15" href="$candatatypes_8h.html" title="candatatypes.h" alt="" coords="572,304,682,331"/>
+<area shape="rect" id="node2" href="$DeviceChain_8h.html" title="DeviceChain.h" alt="" coords="699,80,807,107"/>
+<area shape="rect" id="node3" href="$Cia402device_8h.html" title="Cia402device.h" alt="" coords="650,155,762,181"/>
+<area shape="rect" id="node25" href="$SocketCanPort_8h.html" title="SocketCanPort.h" alt="" coords="1135,229,1258,256"/>
+<area shape="rect" id="node5" href="$CiA301CommPort_8h.html" title="CiA301CommPort.h" alt="" coords="486,229,625,256"/>
+<area shape="rect" id="node19" href="$PortBase_8h.html" title="PortBase.h" alt="" coords="1113,304,1200,331"/>
+<area shape="rect" id="node23" href="$ObjectDictionary_8h.html" title="ObjectDictionary.h" alt="" coords="751,229,882,256"/>
+<area shape="rect" id="node24" href="$CiA402SetupData_8h.html" title="CiA402SetupData.h" alt="" coords="261,229,399,256"/>
+<area shape="rect" id="node15" href="$candatatypes_8h.html" title="candatatypes.h" alt="" coords="652,304,763,331"/>
 </map>

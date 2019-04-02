@@ -1,14 +1,13 @@
 var searchData=
 [
-  ['can_5ftype_5fempty',['CAN_TYPE_EMPTY',['../hico__api_8h.html#a6bc1c2dce7e4a0552af65f8a86cb5b31',1,'hico_api.h']]],
-  ['can_5ftype_5fft',['CAN_TYPE_FT',['../hico__api_8h.html#aa3cf3f42c4c59f5ffa6c9206c136d56d',1,'hico_api.h']]],
-  ['can_5ftype_5fhs',['CAN_TYPE_HS',['../hico__api_8h.html#a3a86da1ecc10837f149a74272370ee0c',1,'hico_api.h']]],
-  ['cm_5factive',['CM_ACTIVE',['../candatatypes_8h.html#a6c1e851b693474b1b91bb0820adfbce3',1,'CM_ACTIVE():&#160;candatatypes.h'],['../hico__api_8h.html#a6c1e851b693474b1b91bb0820adfbce3',1,'CM_ACTIVE():&#160;hico_api.h']]],
-  ['cm_5fbaudscan',['CM_BAUDSCAN',['../candatatypes_8h.html#aff568c17dcaa5179a247a36874b011f6',1,'CM_BAUDSCAN():&#160;candatatypes.h'],['../hico__api_8h.html#aff568c17dcaa5179a247a36874b011f6',1,'CM_BAUDSCAN():&#160;hico_api.h']]],
-  ['cm_5fpassive',['CM_PASSIVE',['../candatatypes_8h.html#ac16bf18f66fbaf440f3dedf069a0f611',1,'CM_PASSIVE():&#160;candatatypes.h'],['../hico__api_8h.html#ac16bf18f66fbaf440f3dedf069a0f611',1,'CM_PASSIVE():&#160;hico_api.h']]],
-  ['cm_5freset',['CM_RESET',['../candatatypes_8h.html#aa8bcd6538691e59322e8e3a03fad080a',1,'CM_RESET():&#160;candatatypes.h'],['../hico__api_8h.html#aa8bcd6538691e59322e8e3a03fad080a',1,'CM_RESET():&#160;hico_api.h']]],
-  ['cs_5ferror_5fbus_5foff',['CS_ERROR_BUS_OFF',['../hico__api_8h.html#a6778a854c562ab058773416c43135f40',1,'hico_api.h']]],
-  ['cs_5ferror_5fpassive',['CS_ERROR_PASSIVE',['../hico__api_8h.html#a25c2242e25d7afcc48780b29b5894c19',1,'hico_api.h']]],
-  ['cs_5fget_5frxerrcnt',['CS_GET_RXERRCNT',['../hico__api_8h.html#a351cedf4b15084ff51f4af74507dded1',1,'hico_api.h']]],
-  ['cs_5fget_5ftxerrcnt',['CS_GET_TXERRCNT',['../hico__api_8h.html#af5d8a11d281bd10ef7c75547cd1fa0e1',1,'hico_api.h']]]
+  ['bitrate_5f1000k',['BITRATE_1000k',['../candatatypes_8h.html#a1432cd8532548faf2ae5287ca4a7413c',1,'BITRATE_1000k():&#160;candatatypes.h'],['../hico__api_8h.html#a1432cd8532548faf2ae5287ca4a7413c',1,'BITRATE_1000k():&#160;hico_api.h']]],
+  ['bitrate_5f100k',['BITRATE_100k',['../candatatypes_8h.html#aae6f862ae12a0da0d319cd353ea7befe',1,'BITRATE_100k():&#160;candatatypes.h'],['../hico__api_8h.html#aae6f862ae12a0da0d319cd353ea7befe',1,'BITRATE_100k():&#160;hico_api.h']]],
+  ['bitrate_5f10k',['BITRATE_10k',['../candatatypes_8h.html#aa1ad7a89155a7f858ab52149c2fcaad5',1,'BITRATE_10k():&#160;candatatypes.h'],['../hico__api_8h.html#aa1ad7a89155a7f858ab52149c2fcaad5',1,'BITRATE_10k():&#160;hico_api.h']]],
+  ['bitrate_5f125k',['BITRATE_125k',['../candatatypes_8h.html#afbce0ed8bc362c29562f98ea81456e24',1,'BITRATE_125k():&#160;candatatypes.h'],['../hico__api_8h.html#afbce0ed8bc362c29562f98ea81456e24',1,'BITRATE_125k():&#160;hico_api.h']]],
+  ['bitrate_5f20k',['BITRATE_20k',['../candatatypes_8h.html#a4eb46432ed1b9dd664fc642738a1a969',1,'BITRATE_20k():&#160;candatatypes.h'],['../hico__api_8h.html#a4eb46432ed1b9dd664fc642738a1a969',1,'BITRATE_20k():&#160;hico_api.h']]],
+  ['bitrate_5f250k',['BITRATE_250k',['../candatatypes_8h.html#a634a59a9129b549f182844e7b4058a2a',1,'BITRATE_250k():&#160;candatatypes.h'],['../hico__api_8h.html#a634a59a9129b549f182844e7b4058a2a',1,'BITRATE_250k():&#160;hico_api.h']]],
+  ['bitrate_5f500k',['BITRATE_500k',['../candatatypes_8h.html#a845bd49223fdabd4ebd206779eb8f3b1',1,'BITRATE_500k():&#160;candatatypes.h'],['../hico__api_8h.html#a845bd49223fdabd4ebd206779eb8f3b1',1,'BITRATE_500k():&#160;hico_api.h']]],
+  ['bitrate_5f50k',['BITRATE_50k',['../candatatypes_8h.html#a39c91c0deb48d0a15d084f2a2021417b',1,'BITRATE_50k():&#160;candatatypes.h'],['../hico__api_8h.html#a39c91c0deb48d0a15d084f2a2021417b',1,'BITRATE_50k():&#160;hico_api.h']]],
+  ['bitrate_5f800k',['BITRATE_800k',['../candatatypes_8h.html#a8b1930fb9b23dcba55143e0ef37081fc',1,'BITRATE_800k():&#160;candatatypes.h'],['../hico__api_8h.html#a8b1930fb9b23dcba55143e0ef37081fc',1,'BITRATE_800k():&#160;hico_api.h']]],
+  ['bs_5frunning_5fok',['BS_RUNNING_OK',['../hico__api_8h.html#a8a1b833620a1a3e76e7ee3a8de419167',1,'hico_api.h']]]
 ];

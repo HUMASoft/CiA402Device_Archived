@@ -53,13 +53,15 @@ const vector$<$ uint8\+\_\+t $>$ \hyperlink{namespaceod_a1d5963cb8a002987c96fae2
 \item 
 const vector$<$ uint8\+\_\+t $>$ \hyperlink{namespaceod_a53c06ba9dc3fe72c8fd5fed43563a4a0}{torquemode} =\{0x\+F\+B\}
 \item 
-const vector$<$ uint8\+\_\+t $>$ \hyperlink{namespaceod_afc052d3983ca0866a0b8cd5d0fc5deaa}{torque\+\_\+type\+\_\+extern} =\{0x1\+D,0x20,0x00\}
+const vector$<$ uint8\+\_\+t $>$ \hyperlink{namespaceod_a1a637a5186ac9c6af08693d9ed6743f7}{external\+\_\+reference\+\_\+type} =\{0x1\+D,0x20,0x00\}
 \item 
-const vector$<$ uint8\+\_\+t $>$ \hyperlink{namespaceod_ada58f32a60ef9137c7e9c4f4f54ace10}{torque\+\_\+online} =\{0x01,0x00\}
+const vector$<$ uint8\+\_\+t $>$ \hyperlink{namespaceod_a60236897674f64937c4d14fb0732f892}{torque\+\_\+online\+\_\+enable} =\{0x01,0x00\}
 \item 
-const vector$<$ uint8\+\_\+t $>$ \hyperlink{namespaceod_a3059829b7387e81bd7bad08c15364497}{torque\+\_\+target} =\{0x1\+C,0x20,0x00\}
+const vector$<$ uint8\+\_\+t $>$ \hyperlink{namespaceod_a8c8991f592c7384071f4d1773ba1609b}{current\+\_\+limit} =\{0x7\+F,0x20\}
 \item 
-const vector$<$ uint8\+\_\+t $>$ \hyperlink{namespaceod_afe81091f209f3c5eaf8f720e730900fa}{torque\+\_\+max} =\{0x72,0x60\}
+const vector$<$ uint8\+\_\+t $>$ \hyperlink{namespaceod_a647046f6eab50732e8d67e7898a0731a}{external\+\_\+reference} =\{0x1\+C,0x20,0x00\}
+\item 
+const vector$<$ uint8\+\_\+t $>$ \hyperlink{namespaceod_afe81091f209f3c5eaf8f720e730900fa}{torque\+\_\+max} =\{0xf8,0x60\}
 \item 
 const vector$<$ uint8\+\_\+t $>$ \hyperlink{namespaceod_aced8c17d62c0e774949057de0a99f402}{profile\+\_\+acceleration} =\{0x83,0x60,0x00\}
 \item 
@@ -108,11 +110,29 @@ const vector$<$ uint8\+\_\+t $>$ \hyperlink{namespaceod_a58009f80110aa4aff7a7ccd
 \subsubsection{\texorpdfstring{controlword}{controlword}}
 {\footnotesize\ttfamily const vector$<$uint8\+\_\+t$>$ od\+::controlword =\{0x40,0x60\}}
 
+\mbox{\Hypertarget{namespaceod_a8c8991f592c7384071f4d1773ba1609b}\label{namespaceod_a8c8991f592c7384071f4d1773ba1609b}} 
+\index{od@{od}!current\+\_\+limit@{current\+\_\+limit}}
+\index{current\+\_\+limit@{current\+\_\+limit}!od@{od}}
+\subsubsection{\texorpdfstring{current\+\_\+limit}{current\_limit}}
+{\footnotesize\ttfamily const vector$<$uint8\+\_\+t$>$ od\+::current\+\_\+limit =\{0x7\+F,0x20\}}
+
 \mbox{\Hypertarget{namespaceod_ae572be966c7d5de90544f2ac32dbbd38}\label{namespaceod_ae572be966c7d5de90544f2ac32dbbd38}} 
 \index{od@{od}!expedite@{expedite}}
 \index{expedite@{expedite}!od@{od}}
 \subsubsection{\texorpdfstring{expedite}{expedite}}
 {\footnotesize\ttfamily const vector$<$uint8\+\_\+t$>$ od\+::expedite =\{0x3\+F,0x00\}}
+
+\mbox{\Hypertarget{namespaceod_a647046f6eab50732e8d67e7898a0731a}\label{namespaceod_a647046f6eab50732e8d67e7898a0731a}} 
+\index{od@{od}!external\+\_\+reference@{external\+\_\+reference}}
+\index{external\+\_\+reference@{external\+\_\+reference}!od@{od}}
+\subsubsection{\texorpdfstring{external\+\_\+reference}{external\_reference}}
+{\footnotesize\ttfamily const vector$<$uint8\+\_\+t$>$ od\+::external\+\_\+reference =\{0x1\+C,0x20,0x00\}}
+
+\mbox{\Hypertarget{namespaceod_a1a637a5186ac9c6af08693d9ed6743f7}\label{namespaceod_a1a637a5186ac9c6af08693d9ed6743f7}} 
+\index{od@{od}!external\+\_\+reference\+\_\+type@{external\+\_\+reference\+\_\+type}}
+\index{external\+\_\+reference\+\_\+type@{external\+\_\+reference\+\_\+type}!od@{od}}
+\subsubsection{\texorpdfstring{external\+\_\+reference\+\_\+type}{external\_reference\_type}}
+{\footnotesize\ttfamily const vector$<$uint8\+\_\+t$>$ od\+::external\+\_\+reference\+\_\+type =\{0x1\+D,0x20,0x00\}}
 
 \mbox{\Hypertarget{namespaceod_af9d6d0e820d6bc1ee375195e253f7b7b}\label{namespaceod_af9d6d0e820d6bc1ee375195e253f7b7b}} 
 \index{od@{od}!fullreset@{fullreset}}
@@ -262,25 +282,13 @@ const vector$<$ uint8\+\_\+t $>$ \hyperlink{namespaceod_a58009f80110aa4aff7a7ccd
 \index{od@{od}!torque\+\_\+max@{torque\+\_\+max}}
 \index{torque\+\_\+max@{torque\+\_\+max}!od@{od}}
 \subsubsection{\texorpdfstring{torque\+\_\+max}{torque\_max}}
-{\footnotesize\ttfamily const vector$<$uint8\+\_\+t$>$ od\+::torque\+\_\+max =\{0x72,0x60\}}
+{\footnotesize\ttfamily const vector$<$uint8\+\_\+t$>$ od\+::torque\+\_\+max =\{0xf8,0x60\}}
 
-\mbox{\Hypertarget{namespaceod_ada58f32a60ef9137c7e9c4f4f54ace10}\label{namespaceod_ada58f32a60ef9137c7e9c4f4f54ace10}} 
-\index{od@{od}!torque\+\_\+online@{torque\+\_\+online}}
-\index{torque\+\_\+online@{torque\+\_\+online}!od@{od}}
-\subsubsection{\texorpdfstring{torque\+\_\+online}{torque\_online}}
-{\footnotesize\ttfamily const vector$<$uint8\+\_\+t$>$ od\+::torque\+\_\+online =\{0x01,0x00\}}
-
-\mbox{\Hypertarget{namespaceod_a3059829b7387e81bd7bad08c15364497}\label{namespaceod_a3059829b7387e81bd7bad08c15364497}} 
-\index{od@{od}!torque\+\_\+target@{torque\+\_\+target}}
-\index{torque\+\_\+target@{torque\+\_\+target}!od@{od}}
-\subsubsection{\texorpdfstring{torque\+\_\+target}{torque\_target}}
-{\footnotesize\ttfamily const vector$<$uint8\+\_\+t$>$ od\+::torque\+\_\+target =\{0x1\+C,0x20,0x00\}}
-
-\mbox{\Hypertarget{namespaceod_afc052d3983ca0866a0b8cd5d0fc5deaa}\label{namespaceod_afc052d3983ca0866a0b8cd5d0fc5deaa}} 
-\index{od@{od}!torque\+\_\+type\+\_\+extern@{torque\+\_\+type\+\_\+extern}}
-\index{torque\+\_\+type\+\_\+extern@{torque\+\_\+type\+\_\+extern}!od@{od}}
-\subsubsection{\texorpdfstring{torque\+\_\+type\+\_\+extern}{torque\_type\_extern}}
-{\footnotesize\ttfamily const vector$<$uint8\+\_\+t$>$ od\+::torque\+\_\+type\+\_\+extern =\{0x1\+D,0x20,0x00\}}
+\mbox{\Hypertarget{namespaceod_a60236897674f64937c4d14fb0732f892}\label{namespaceod_a60236897674f64937c4d14fb0732f892}} 
+\index{od@{od}!torque\+\_\+online\+\_\+enable@{torque\+\_\+online\+\_\+enable}}
+\index{torque\+\_\+online\+\_\+enable@{torque\+\_\+online\+\_\+enable}!od@{od}}
+\subsubsection{\texorpdfstring{torque\+\_\+online\+\_\+enable}{torque\_online\_enable}}
+{\footnotesize\ttfamily const vector$<$uint8\+\_\+t$>$ od\+::torque\+\_\+online\+\_\+enable =\{0x01,0x00\}}
 
 \mbox{\Hypertarget{namespaceod_a53c06ba9dc3fe72c8fd5fed43563a4a0}\label{namespaceod_a53c06ba9dc3fe72c8fd5fed43563a4a0}} 
 \index{od@{od}!torquemode@{torquemode}}

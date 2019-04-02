@@ -9,5 +9,7 @@ var searchData=
   ['cia402device_2eh',['Cia402device.h',['../Cia402device_8h.html',1,'']]],
   ['cia402deviceicanbus_2ecpp',['CiA402DeviceICanbus.cpp',['../CiA402DeviceICanbus_8cpp.html',1,'']]],
   ['cia402deviceicanbus_2eh',['CiA402DeviceICanbus.h',['../CiA402DeviceICanbus_8h.html',1,'']]],
+  ['cia402setupdata_2ecpp',['CiA402SetupData.cpp',['../CiA402SetupData_8cpp.html',1,'']]],
+  ['cia402setupdata_2eh',['CiA402SetupData.h',['../CiA402SetupData_8h.html',1,'']]],
   ['co_5fmsg_2eh',['co_msg.h',['../co__msg_8h.html',1,'']]]
 ];

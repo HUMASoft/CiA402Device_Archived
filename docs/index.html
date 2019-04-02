@@ -71,8 +71,10 @@ $(function() {
 <p>Remember to start can interface by typing these lines:</p>
 <div class="fragment"><div class="line">sudo ip link add dev can0 type can</div><div class="line">sudo ip link set up can0</div></div><!-- fragment --><h1>Main classes</h1>
 <p>The library is based on the use of the class <code><a class="el" href="classCiA402Device.html">CiA402Device</a></code>, then the use of the functionalities will be done trough an instance of that class. A communication port is also needed, so the commo instance will be done with the following lines:</p>
-<div class="fragment"><div class="line"><span class="comment">//prepare port. Open a port address with a PortBase Object</span></div><div class="line"><a class="code" href="classSocketCanPort.html">SocketCanPort</a> p1(<span class="stringliteral">&quot;can0&quot;</span>);</div><div class="line"></div><div class="line"><span class="comment">//Create a joint and give a canopen id, and a 301port (by constructor)</span></div><div class="line"><a class="code" href="classCiA402Device.html">CiA402Device</a> j1(3,&amp;p1);</div></div><!-- fragment --><p>See <a href="https://github.com/HUMASoft/CiA402Device-example">https://github.com/HUMASoft/CiA402Device-example</a> for more use examples. Trubleshooting here: <a href="https://github.com/HUMASoft/CiA402Device/wiki/Troubleshooting">https://github.com/HUMASoft/CiA402Device/wiki/Troubleshooting</a>.</p>
-<p>&lt;&gt;</p><div class="image">
+<div class="fragment"><div class="line"><span class="comment">//prepare port. Open a port address with a PortBase Object</span></div><div class="line"><a class="code" href="classSocketCanPort.html">SocketCanPort</a> p1(<span class="stringliteral">&quot;can0&quot;</span>);</div><div class="line"></div><div class="line"><span class="comment">//Create a joint and give a canopen id, and a 301port (by constructor)</span></div><div class="line"><a class="code" href="classCiA402Device.html">CiA402Device</a> j1(3,&amp;p1);</div></div><!-- fragment --><p>See <a href="https://github.com/HUMASoft/CiA402Device-example">https://github.com/HUMASoft/CiA402Device-example</a> for more use examples.</p>
+<p>Troubleshooting here: <a href="https://github.com/HUMASoft/CiA402Device/wiki/Troubleshooting">https://github.com/HUMASoft/CiA402Device/wiki/Troubleshooting</a>.</p>
+<h1>Collaboration graph</h1>
+<div class="image">
 <img src="docs/classCiA402Device__coll__graph.png" alt="Main class collaboration graph" title="Main class collaboration graph"/>
 </div>
  </div></div><!-- contents -->
