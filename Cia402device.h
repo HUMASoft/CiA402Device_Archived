@@ -19,7 +19,7 @@
 /*If no factor is applied, the profile velocity object receives data as a FIXED32 variable.
 the high part represents encoder increments/sample, and the low part represents a subdivision of an increment.
 So 65536(0x00010000) = 1 encoder increment/sample. The minimum speed is 1 encoder increment/sample.*/
-#define MIN_SPEED_INC32 0x10000
+#define HIGHPART_BITSHIFT_16 0x10000
 
 #define ANALOGUE_INPUT_SCALE 0xFFF0
 
@@ -74,6 +74,7 @@ public:
      */
     double GetPosition();
     double GetVelocity();
+    double GetMeanVelocity(int samples);
 
     long SetCommunications(int fdPort);
     int CheckError();

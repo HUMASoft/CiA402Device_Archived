@@ -396,18 +396,24 @@ double CiA402Device::GetVelocity()
 
       // Motor_Position[IU]=Scaling_factors_velocity*Load_Position[SI];
 
-//    cout << std::hex << "velocity  hex    - " <<  velocity <<endl;
-//    cout << "velocity  float    - " << (double)velocity/(Scaling_Factors_Velocity*MIN_SPEED_INC32) << endl;
-//    cout << "velocity           - " << velocity/(Scaling_Factors_Velocity*MIN_SPEED_INC32)<< endl;
-//    cout << "velocity Low  - " << (velocity << 16) << endl;
+    cout << std::hex << "velocity  hex    - " <<  velocity <<endl;
+    cout << "velocity  float    - " << (double)velocity/(Scaling_Factors_Velocity*HIGHPART_BITSHIFT_16) << endl;
+    cout << "velocity           - " << velocity/(Scaling_Factors_Velocity*HIGHPART_BITSHIFT_16)<< endl;
+    cout << "velocity Low  - " << (velocity << 16) << endl;
 
-    return double(velocity/(Scaling_Factors_Velocity*MIN_SPEED_INC32));// /65536;
+    return double(velocity/(Scaling_Factors_Velocity*HIGHPART_BITSHIFT_16));// /65536;
    // double ret = v/reduction_ratio_motor;
     //cout<<"Get_Velocity"<<ret<<"rpm"<<endl;++++++++++++++++++++++++++++
 
 
 
 
+}
+
+double CiA402Device::GetMeanVelocity(int samples)
+{
+
+    return 0;
 }
 
 long CiA402Device::SetCommunications(int fdPort)
@@ -426,14 +432,14 @@ int32_t accelerationr;
      to the left to form the high part of the message. Then the low part is added.
      The high part corresponds to the increments/sample while the low part corresponds
      to the subdivion of an increment */
-    velocityr=((velocity*Scaling_Factors_Velocity)*MIN_SPEED_INC32);
+    velocityr=((velocity*Scaling_Factors_Velocity)*HIGHPART_BITSHIFT_16);
 
     // Motion profile type -  trapezoidal
     //WriteSDO(od::motion_profile_type,od::linear_ramp_trapezoidal);
     //Si paso los parametros convertidos en ui, sino convertir primero
     WriteSDO(od::profile_velocity,data32to4x8(velocityr));
     //Si paso los parametros convertidos en ui, sino convertir primero
-    accelerationr=((acceleration*(Scaling_Factors_Acceleration))*MIN_SPEED_INC32);
+    accelerationr=((acceleration*(Scaling_Factors_Acceleration))*HIGHPART_BITSHIFT_16);
     WriteSDO(od::profile_acceleration,data32to4x8(accelerationr));
 //  The target position is the position that the drive should move to in
 //  position profile mode using the current settings of motion control parameters
@@ -455,7 +461,7 @@ long CiA402Device::Setup_Velocity_Mode(const uint32_t target,const uint32_t acce
 //    object the acceleration/deceleration rate.
 cout<<"scaling "<< Scaling_Factors_Velocity<<endl;
     OperationMode(od::velocitymode);
-    int32_t t=(target*Scaling_Factors_Velocity)*MIN_SPEED_INC32;
+    int32_t t=(target*Scaling_Factors_Velocity)*HIGHPART_BITSHIFT_16;
     int32_t accelerationr;
 
 //    The target velocity is the input for the trajectory generator
@@ -467,7 +473,7 @@ cout<<"scaling "<< Scaling_Factors_Velocity<<endl;
      WriteSDO(od::target_velocity,data32to4x8(t));
 
     //accelerationr=((acceleration*4096/360000000))+0;
-    accelerationr=acceleration*MIN_SPEED_INC32;
+    accelerationr=acceleration*HIGHPART_BITSHIFT_16;
     WriteSDO(od::profile_acceleration,data32to4x8(accelerationr));
     return 0;
 }
@@ -598,13 +604,13 @@ long CiA402Device::SetVelocity(double target){
     double ui = target*Scaling_Factors_Velocity;
 
     if( ui < 1 && ui > 0)
-        ui = MIN_SPEED_INC32;
+        ui = HIGHPART_BITSHIFT_16;
     else if( ui > - 1 && ui < 0)
-        ui = - MIN_SPEED_INC32;
+        ui = - HIGHPART_BITSHIFT_16;
     else if ( ui == 0)
         ui = 0;
     else
-        ui = ui * MIN_SPEED_INC32;
+        ui = ui * HIGHPART_BITSHIFT_16;
 
     int32_t t = (int32_t)ui;
    // cout<<"ui- "<< target*Scaling_Factors_Velocity<< " t- " << t << " | target- " <<target<<endl;
@@ -654,21 +660,24 @@ long CiA402Device::SetTorque(double target){
     // tanto por uno de la corriente de pico del "drive". Multiplicado por el rango de de entrada analogica,
     // dado que el torque lo seteamos de manera online.
     // formula: current [ IU ] =  65520 ⋅ current [ A ] /   2 ⋅ Ipeak
+    // that in the targetr variable computation corresponds to:
+    // 65520 = 0xFFF0 = ANALOGUE_INPUT_SCALE
+    // current [ A ] / Ipeak = target = (peak current ratio received as input)
+    //
 
-    int32_t targetr= int32_t (target*ANALOGUE_INPUT_SCALE/2.0)*MIN_SPEED_INC32;
+    int32_t targetr= int32_t (target*ANALOGUE_INPUT_SCALE/2.0)*HIGHPART_BITSHIFT_16;
     if(target > 1)
-        targetr = int32_t(ANALOGUE_INPUT_SCALE/2.0)*MIN_SPEED_INC32;
+        targetr = int32_t(ANALOGUE_INPUT_SCALE/2.0)*HIGHPART_BITSHIFT_16;
     else if(target < -1)
-        targetr = int32_t(-ANALOGUE_INPUT_SCALE/2.0)*MIN_SPEED_INC32;
-
+        targetr = int32_t(-ANALOGUE_INPUT_SCALE/2.0)*HIGHPART_BITSHIFT_16;
 
 
     WriteSDO(od::external_reference, data32to4x8(targetr));
 
-//    cout << " TORQUE : " << targetr << " " << target << " " <<target*ANALOGUE_INPUT_SCALE/2.0 << endl;
+    //cout << " targetr: " << targetr << ", input target: " << target << ", " <<target*ANALOGUE_INPUT_SCALE/2.0 << endl;
 
     WritePDO(od::run);
-    FlushBuffer();
+    //FlushBuffer();
     return 0;
 }
 
