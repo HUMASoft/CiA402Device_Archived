@@ -4,5 +4,8 @@ var searchData=
   ['getnmt',['GetNMT',['../classCanBusPort.html#a41242dc7980ca398e4770813e50ef32b',1,'CanBusPort::GetNMT()'],['../classPortBase.html#abab2bf17b01d87c2bca01cb2151aa2f1',1,'PortBase::GetNMT()'],['../classSocketCanPort.html#a2efe27bd3bb8c8127c89925e1e21535a',1,'SocketCanPort::GetNMT()']]],
   ['getportid',['getPortId',['../classCanBusPort.html#a7c6b733c5834d4ab3e1906d847a2234a',1,'CanBusPort::getPortId()'],['../classPortBase.html#a45ec4a2cd5e17e098f6f72677437f066',1,'PortBase::getPortId()'],['../classTestPort.html#abf6a7327e26838aaf3e2e4482668085f',1,'TestPort::getPortId()']]],
   ['getposition',['GetPosition',['../classCiA402Device.html#ac8d9e36e6f457565cac7d26d91e4a712',1,'CiA402Device']]],
+  ['getscaling_5ffactors_5facceleration',['getScaling_Factors_Acceleration',['../classCiA402SetupData.html#af2a3390595f6c08c6bf1057d58789a3e',1,'CiA402SetupData']]],
+  ['getscaling_5ffactors_5fposition',['getScaling_Factors_Position',['../classCiA402SetupData.html#aaa5fa09da2e5a3874b19cb1ad7403176',1,'CiA402SetupData']]],
+  ['getscaling_5ffactors_5fvelocity',['getScaling_Factors_Velocity',['../classCiA402SetupData.html#ac7db2b5ed19f3e2fddfdeee3cf73bbae',1,'CiA402SetupData']]],
   ['getvelocity',['GetVelocity',['../classCiA402Device.html#a54b43f6429da4c6c0241653355e81d36',1,'CiA402Device']]]
 ];
