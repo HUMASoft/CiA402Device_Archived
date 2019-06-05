@@ -141,10 +141,10 @@ long CiA301CommPort::WriteSDO(const vector<uint8_t> &address, const vector<uint8
     }
 
     //fixed return four last bytes from data.
-//    cout<<"OUTPUT DATA 0    "<<(bitset<8>)output.data_co[0]<<endl;
-//    cout<<"OUTPUT DATA 1    "<<(bitset<8>)output.data_co[1]<<endl;
-//    cout<<"OUTPUT DATA 2    "<<(bitset<8>)output.data_co[2]<<endl;
-//    cout<<"OUTPUT DATA 3    "<<(bitset<8>)output.data_co[3]<<endl;
+//    cout<<"OUTPUT DATA 0    "<<(int)output.data_co[0]<<endl;
+//    cout<<"OUTPUT DATA 1    "<<(int)output.data_co[1]<<endl;
+//    cout<<"OUTPUT DATA 2    "<<(int)output.data_co[2]<<endl;
+//    cout<<"OUTPUT DATA 3    "<<(int)output.data_co[3]<<endl;
 //    cout<<"OUTPUT DATA 4    "<<(bitset<8>)output.data_co[4]<<endl;
 //    cout<<"OUTPUT DATA 5    "<<(bitset<8>)output.data_co[5]<<endl;
 //    cout<<"OUTPUT DATA 6    "<<(bitset<8>)output.data_co[6]<<endl;

@@ -4,15 +4,25 @@ vector<uint8_t> data32to4x8(uint32_t in);
 
 vector<uint8_t> data16to2x8(uint16_t in);
 
-long CiA402Device::Init(uint8_t new_id)
+long CiA402Device::Init(CiA402SetupData *deviceData)
 {
-    //id = new_id;
 
-    SetEnc_res(4096);   //Encoder resolution parameter intialize by default
-    SetRed_Mot(1);      //Reduction parameter intialize by default
-    SetSampling_period(0.001);
 
-    Scaling();
+    Scaling_Factors_Position = deviceData->getScaling_Factors_Position();
+    Scaling_Factors_Velocity = deviceData->getScaling_Factors_Velocity();
+    Scaling_Factors_Acceleration= deviceData->getScaling_Factors_Acceleration();
+
+//    //Scaling();
+//    float count_sec = encoder_resolution/60.0;
+//    // Motor_Position[IU]=Scaling_factors_velocity*Load_Position[SI]
+//    Scaling_Factors_Position = reduction_ratio_motor*encoder_resolution/(2.0*PI);
+
+//    // Motor_Speed[IU]=Scaling_factors_velocity*Load_Speed[SI]
+//    Scaling_Factors_Velocity = RADS2RPM*count_sec*reduction_ratio_motor*SampSL;
+//    cout << "Scaling_Factors_Velocity - " << Scaling_Factors_Velocity << endl;
+
+//    // Motor_Accel[IU]=Scaling_factors_velocity*Load_Accel[SI]
+//    Scaling_Factors_Acceleration = Scaling_Factors_Velocity*SampSL;
 
 
     return 0;
@@ -20,37 +30,41 @@ long CiA402Device::Init(uint8_t new_id)
 
 CiA402Device::CiA402Device() : CiA301CommPort(1,1) //stdout
 {
-    Init(1);
+    CiA402SetupData defaultInit(2048,24,0.001, 0.144);
+    Init(&defaultInit);
     comm = 1; //stdout
 
 }
 
 CiA402Device::CiA402Device(uint8_t new_id) : CiA301CommPort(1, new_id)
 {
-    Init(new_id);
+    CiA402SetupData defaultInit(2048,24,0.001, 0.144);
+    Init(&defaultInit);
     comm = 1; //stdout
 }
 
 CiA402Device::CiA402Device(uint8_t new_id, int fdPort) : CiA301CommPort(fdPort, new_id)
 {
 
-    Init(new_id);
+    CiA402SetupData defaultInit(2048,24,0.001, 0.144);
+    Init(&defaultInit);
     comm = fdPort;
 
 }
 
 CiA402Device::CiA402Device(uint8_t new_id, PortBase *new_port) : CiA301CommPort(new_port, new_id)
 {
-     Init(new_id);
+    CiA402SetupData defaultInit(2048,24,0.001, 0.144);
+    Init(&defaultInit);
+    port=new_port;
 
 }
 
-CiA402Device::CiA402Device(uint8_t new_id, PortBase *new_port, CiA402SetupData deviceData) : CiA301CommPort(new_port, new_id)
+CiA402Device::CiA402Device(uint8_t new_id, PortBase *new_port, CiA402SetupData *deviceData) : CiA301CommPort(new_port, new_id)
 {
-     Init(new_id);
-     Scaling_Factors_Position = deviceData.getScaling_Factors_Position();
-     Scaling_Factors_Velocity = deviceData.getScaling_Factors_Velocity();
-     Scaling_Factors_Acceleration= deviceData.getScaling_Factors_Acceleration();
+     Init(deviceData);
+     port=new_port;
+
 
 }
 
@@ -396,10 +410,10 @@ double CiA402Device::GetVelocity()
 
       // Motor_Position[IU]=Scaling_factors_velocity*Load_Position[SI];
 
-    cout << std::hex << "velocity  hex    - " <<  velocity <<endl;
-    cout << "velocity  float    - " << (double)velocity/(Scaling_Factors_Velocity*HIGHPART_BITSHIFT_16) << endl;
-    cout << "velocity           - " << velocity/(Scaling_Factors_Velocity*HIGHPART_BITSHIFT_16)<< endl;
-    cout << "velocity Low  - " << (velocity << 16) << endl;
+//    cout << std::hex << "velocity  hex    - " <<  velocity <<endl;
+//    cout << "velocity  float    - " << (double)velocity/(Scaling_Factors_Velocity*HIGHPART_BITSHIFT_16) << endl;
+//    cout << "velocity           - " << velocity/(Scaling_Factors_Velocity*HIGHPART_BITSHIFT_16)<< endl;
+//    cout << "velocity Low  - " << (velocity << 16) << endl;
 
     return double(velocity/(Scaling_Factors_Velocity*HIGHPART_BITSHIFT_16));// /65536;
    // double ret = v/reduction_ratio_motor;
