@@ -1,4 +1,4 @@
-﻿#include "Cia402device.h"
+#include "Cia402device.h"
 
 vector<uint8_t> data32to4x8(uint32_t in);
 
@@ -386,7 +386,13 @@ double CiA402Device::GetPosition()
 //    cout<<"POS --- "<<position<<endl;
 //    cout<<"reduction_ratio_motor*encoder_resolution "<<reduction_ratio_motor<< " "<<encoder_resolution<<" "<<reduction_ratio_motor*encoder_resolution<<endl;
 
-    return (double)position/Scaling_Factors_Position;//*360000/4096
+    //cout<<"position: "<<position<<endl;
+    double scale_position = (double)position;
+    scale_position = scale_position / ( (double)Scaling_Factors_Position );
+
+    return scale_position;
+    //return (double)(position/Scaling_Factors_Position);//*360000/4096
+
 //       double position = ReadSDO(od::positionaddress)*360/15155;
 //       while(position > 1200){
 //             position = ReadSDO(od::positionaddress)*360/15155;
@@ -407,7 +413,8 @@ double CiA402Device::GetVelocity()
 
     int32_t velocity= (int32_t)ReadSDO(od::velocityaddress);
 
-
+    double scale_velocity = (double)velocity;
+    scale_velocity = scale_velocity / ( (double)(Scaling_Factors_Velocity*HIGHPART_BITSHIFT_16) );
       // Motor_Position[IU]=Scaling_factors_velocity*Load_Position[SI];
 
 //    cout << std::hex << "velocity  hex    - " <<  velocity <<endl;
@@ -415,7 +422,8 @@ double CiA402Device::GetVelocity()
 //    cout << "velocity           - " << velocity/(Scaling_Factors_Velocity*HIGHPART_BITSHIFT_16)<< endl;
 //    cout << "velocity Low  - " << (velocity << 16) << endl;
 
-    return double(velocity/(Scaling_Factors_Velocity*HIGHPART_BITSHIFT_16));// /65536;
+    return scale_velocity;
+    //return double(velocity/(Scaling_Factors_Velocity*HIGHPART_BITSHIFT_16));// /65536;
    // double ret = v/reduction_ratio_motor;
     //cout<<"Get_Velocity"<<ret<<"rpm"<<endl;++++++++++++++++++++++++++++
 
@@ -627,7 +635,7 @@ long CiA402Device::SetVelocity(double target){
         ui = ui * HIGHPART_BITSHIFT_16;
 
     int32_t t = (int32_t)ui;
-   // cout<<"ui- "<< target*Scaling_Factors_Velocity<< " t- " << t << " | target- " <<target<<endl;
+    //cout<<"ui- "<< target*Scaling_Factors_Velocity<< " t- " << t << " | target- " <<target<<endl;
     WriteSDO(od::target_velocity,data32to4x8(t));
 
     // Motor_Velocity[IU]=Scaling_factors_velocity*Load_Velocity[SI]
