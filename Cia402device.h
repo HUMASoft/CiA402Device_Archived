@@ -81,7 +81,7 @@ public:
 //    bool setPositionMode();
 //    bool setVelocityModeRaw();
     long OperationMode(const vector<uint8_t> new_mode);
-    long Setup_Velocity_Mode(const uint32_t target, const uint32_t acceleration);
+    long Setup_Velocity_Mode(const uint32_t target = 0, const uint32_t acceleration = 1);
     long Setup_Torque_Mode();
     long SetTorque(double target);
     long ForceSwitchOff();
@@ -89,7 +89,7 @@ public:
 
     //long SetupPositionMode(const vector<uint8_t> target, const vector<uint8_t> velocity, const vector<uint8_t> acceleration, const vector<uint8_t> deceleration);
     long SetPosition(double target);
-    long SetupPositionMode(const uint32_t velocity, const uint32_t acceleration);
+    long SetupPositionMode(const uint32_t velocity=1, const uint32_t acceleration=1);
 //    long SetupPositionMode(const vector<uint32_t> target, const vector<uint32_t> velocity, const vector<uint32_t> acceleration, const vector<uint32_t> deceleration);
     long SetPositionRECURSIVE_test(long target);
     long SetTarget_VELOCITY_PROPORCIONAL(double target, float kp);
