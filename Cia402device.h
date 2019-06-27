@@ -1,6 +1,8 @@
 #ifndef CIA402DEVICE_H
 #define CIA402DEVICE_H
 
+#include <chrono>
+#include <thread>
 #include <math.h>       /* signbit, sqrt */
 //#include "CiA402DeviceICanbus.h"
 #include "CiA301CommPort.h"
@@ -74,7 +76,8 @@ public:
      */
     double GetPosition();
     double GetVelocity();
-    double GetMeanVelocity(int samples);
+    double GetFilteredVelocity(int samples);
+    double GetMeanVelocity();
 
     long SetCommunications(int fdPort);
     int CheckError();
@@ -118,7 +121,6 @@ private:
     //properties
     int comm; //port file de
     //unsigned int id;
-    double currentPosition;
 
     PortBase* port;
 
@@ -133,6 +135,16 @@ private:
     float Scaling_Factors_Velocity;
     float Scaling_Factors_Position;
     float Scaling_Factors_Acceleration;
+
+    //GetMeanVelocity variables
+    double currentPosition, lastPosition;
+    double meanVelocity;
+    chrono::system_clock::time_point actualTimeValue, lastTimeValue; //last time value
+    chrono::system_clock::time_point encoderChangeTime;
+    double encoderSpan;
+
+    chrono::nanoseconds dtsWait, tWaited;
+
 
 };
 

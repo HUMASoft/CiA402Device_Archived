@@ -9,7 +9,7 @@ CiA402SetupData::CiA402SetupData(int new_encRes,float new_mlRatio, float new_Sam
 {
 
     mlRatio = new_mlRatio;// Transmission ratio between the motor displacement in SI units and load displacement
-    encRes = new_encRes;// Nº lines for incremental encoder quadrature  (lines X 4)
+    encRes = new_encRes;// Nº pulses for incremental encoder quadrature  (lines X 4)
     SampSL = new_SampSL;// speed/position loop sampling period of the motor Control (sampling_slow_loop)
     current_limit = new_current_limit;// current_limit. CAnOpen programming iPOS 5.5.7. Object 207Fh: Current limit
 
@@ -43,5 +43,10 @@ float CiA402SetupData::getScaling_Factors_Position() const
 float CiA402SetupData::getScaling_Factors_Acceleration() const
 {
     return Scaling_Factors_Acceleration;
+}
+
+int CiA402SetupData::getEncRes() const
+{
+    return encRes;
 }
 

@@ -21,6 +21,8 @@ public:
 
     float getScaling_Factors_Acceleration() const;
 
+    int getEncRes() const;
+
 private:
 
 

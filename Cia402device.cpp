@@ -12,6 +12,8 @@ long CiA402Device::Init(CiA402SetupData *deviceData)
     Scaling_Factors_Velocity = deviceData->getScaling_Factors_Velocity();
     Scaling_Factors_Acceleration= deviceData->getScaling_Factors_Acceleration();
 
+    encoder_resolution = deviceData->getEncRes();
+
 //    //Scaling();
 //    float count_sec = encoder_resolution/60.0;
 //    // Motor_Position[IU]=Scaling_factors_velocity*Load_Position[SI]
@@ -432,7 +434,58 @@ double CiA402Device::GetVelocity()
 
 }
 
-double CiA402Device::GetMeanVelocity(int samples)
+double CiA402Device::GetMeanVelocity()
+{
+
+    int32_t position= (int32_t)ReadSDO(od::positionaddress);
+
+//    cout<<"POS --- "<<position<<endl;
+//    cout<<"reduction_ratio_motor*encoder_resolution "<<reduction_ratio_motor<< " "<<encoder_resolution<<" "<<reduction_ratio_motor*encoder_resolution<<endl;
+
+    //cout<<"position: "<<position<<endl;
+    double scale_position = (double)position;
+
+    currentPosition = scale_position / ( (double)Scaling_Factors_Position );
+
+    if(lastPosition == currentPosition)
+    {
+
+        //keep old velocity value
+        //check zero velocity
+        if( chrono::system_clock::now() > encoderChangeTime)
+        {
+            meanVelocity = 0;
+        }
+    }
+    else
+    {
+        //Compute velocity from position
+        lastTimeValue = actualTimeValue;
+        actualTimeValue = chrono::system_clock::now();
+        tWaited = actualTimeValue.time_since_epoch() - lastTimeValue.time_since_epoch(); //nanoseconds
+        tWaited = tWaited/1000000; //seconds
+        meanVelocity = (currentPosition - lastPosition)/tWaited.count();
+        //update zero check counter
+        //that is, keeping actual velocity, prediction of the next encoder change
+        encoderSpan = (2*M_PI/encoder_resolution)/meanVelocity;
+        //time to check taking this encoder span
+        encoderChangeTime = actualTimeValue + std::chrono::milliseconds(2*1000*long(encoderSpan));
+    }
+    //filter
+
+
+
+    return meanVelocity;
+    //return double(velocity/(Scaling_Factors_Velocity*HIGHPART_BITSHIFT_16));// /65536;
+   // double ret = v/reduction_ratio_motor;
+    //cout<<"Get_Velocity"<<ret<<"rpm"<<endl;++++++++++++++++++++++++++++
+
+
+
+
+}
+
+double CiA402Device::GetFilteredVelocity(int samples)
 {
 
     return 0;
