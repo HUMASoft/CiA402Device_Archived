@@ -12,7 +12,20 @@ long CiA402Device::Init(CiA402SetupData *deviceData)
     Scaling_Factors_Velocity = deviceData->getScaling_Factors_Velocity();
     Scaling_Factors_Acceleration= deviceData->getScaling_Factors_Acceleration();
 
+    //Initialize velocity and position
     encoder_resolution = deviceData->getEncRes();
+    meanVelocity = 0;
+    currentPosition = 0;
+    lastPosition = 0;
+    encoderSpan = 0;
+
+    tWaited = chrono::milliseconds(1);
+//    lastTimeValue = actualTimeValue;
+//    actualTimeValue = chrono::system_clock::now();
+//    tWaited = actualTimeValue.time_since_epoch() - lastTimeValue.time_since_epoch(); //nanoseconds
+//    tWaited = tWaited/1000000; //seconds
+
+
 
 //    //Scaling();
 //    float count_sec = encoder_resolution/60.0;
@@ -445,6 +458,7 @@ double CiA402Device::GetMeanVelocity()
     //cout<<"position: "<<position<<endl;
     double scale_position = (double)position;
 
+    lastPosition = currentPosition;
     currentPosition = scale_position / ( (double)Scaling_Factors_Position );
 
     if(lastPosition == currentPosition)
@@ -473,6 +487,8 @@ double CiA402Device::GetMeanVelocity()
     }
     //filter
 
+    cout << "meanVelocity =  " << meanVelocity <<  ", currentPosition =  " << currentPosition <<  ", lastPosition =  " << lastPosition <<endl;
+    cout << "tWaited =  " << tWaited.count() <<endl;
 
 
     return meanVelocity;
