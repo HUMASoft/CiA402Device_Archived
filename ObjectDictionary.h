@@ -43,15 +43,21 @@ const vector<uint8_t> velocityaddress={0x69,0x60};
 const vector<uint8_t> target_position={0x7A,0x60,0x00};
 const vector<uint8_t> position_demand={0x62,0x60,0x00};
 
+
 //Torque
 const vector<uint8_t> torquemode={0xFB};
-const vector<uint8_t> external_reference_type={0x1D,0x20,0x00};
-const vector<uint8_t> torque_online_enable={0x01,0x00};
-const vector<uint8_t> current_limit={0x7F,0x20}; //internal units
-const vector<uint8_t> external_reference ={0x1C,0x20,0x00};
+const vector<uint8_t> torque_type_extern={0x1D,0x20,0x00};
+const vector<uint8_t> torque_online={0x01,0x00};
+const vector<uint8_t> torque_target={0x1C,0x20,0x00};
+const vector<uint8_t> torque_max={0x72,0x60};
+//Torque
+//const vector<uint8_t> torquemode={0xFB};
+//const vector<uint8_t> external_reference_type={0x1D,0x20,0x00};
+//const vector<uint8_t> torque_online_enable={0x01,0x00};
+//const vector<uint8_t> current_limit={0x7F,0x20}; //internal units
+//const vector<uint8_t> external_reference ={0x1C,0x20,0x00};
 //const vector<uint8_t> torque_target={0x71,0x60}; Available only with firmwares F508I/F509I and above.
-
-const vector<uint8_t> torque_max={0xf8,0x60};
+//const vector<uint8_t> torque_max={0xf8,0x60};
 
 const vector<uint8_t> profile_acceleration={0x83,0x60,0x00};
 const vector<uint8_t> quick_stop_deceleration={0x85,0x60,0x00};
