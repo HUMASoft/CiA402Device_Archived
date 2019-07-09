@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['msg_5fdlc',['MSG_DLC',['../candatatypes_8h.html#a0e6b1af48bd887e8d0c978b5dc7307bc',1,'MSG_DLC():&#160;candatatypes.h'],['../hico__api_8h.html#a0e6b1af48bd887e8d0c978b5dc7307bc',1,'MSG_DLC():&#160;hico_api.h']]],
-  ['msg_5fdos',['MSG_DOS',['../candatatypes_8h.html#a5525b28635b17a750eb630af9f82aabf',1,'MSG_DOS():&#160;candatatypes.h'],['../hico__api_8h.html#a5525b28635b17a750eb630af9f82aabf',1,'MSG_DOS():&#160;hico_api.h']]],
-  ['msg_5fff',['MSG_FF',['../candatatypes_8h.html#af5de903edfa22afc007f582fa19cb3d9',1,'MSG_FF():&#160;candatatypes.h'],['../hico__api_8h.html#af5de903edfa22afc007f582fa19cb3d9',1,'MSG_FF():&#160;hico_api.h']]],
-  ['msg_5fiopin',['MSG_IOPIN',['../candatatypes_8h.html#a5682e4e8de03fe4232894a36ff00b316',1,'MSG_IOPIN():&#160;candatatypes.h'],['../hico__api_8h.html#a5682e4e8de03fe4232894a36ff00b316',1,'MSG_IOPIN():&#160;hico_api.h']]],
-  ['msg_5fnode',['MSG_NODE',['../candatatypes_8h.html#a4ad56e164b5ddbdec986135493a1fef2',1,'MSG_NODE():&#160;candatatypes.h'],['../hico__api_8h.html#a4ad56e164b5ddbdec986135493a1fef2',1,'MSG_NODE():&#160;hico_api.h']]],
-  ['msg_5frtr',['MSG_RTR',['../candatatypes_8h.html#a3e5172a02bebe6e5e9706ab7df06d902',1,'MSG_RTR():&#160;candatatypes.h'],['../hico__api_8h.html#a3e5172a02bebe6e5e9706ab7df06d902',1,'MSG_RTR():&#160;hico_api.h']]]
+  ['highpart_5fbitshift_5f16',['HIGHPART_BITSHIFT_16',['../Cia402device_8h.html#afa8cb3c12dbeaa9561ce45e7af88636f',1,'Cia402device.h']]],
+  ['hw_5fhicocan_5fmpci',['HW_HICOCAN_MPCI',['../hico__api_8h.html#a2565b08cbbed630050858600b2119134',1,'hico_api.h']]],
+  ['hw_5fhicocan_5fpci104',['HW_HICOCAN_PCI104',['../hico__api_8h.html#a1443fb09a80326d7b271085ed50a3309',1,'hico_api.h']]],
+  ['hw_5fhicocan_5funknown',['HW_HICOCAN_UNKNOWN',['../hico__api_8h.html#a5a5479c91bbb0383d8640495b4573ad1',1,'hico_api.h']]]
 ];

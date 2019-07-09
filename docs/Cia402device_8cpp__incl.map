@@ -1,7 +1,8 @@
 <map id="Cia402device.cpp" name="Cia402device.cpp">
-<area shape="rect" id="node2" href="$Cia402device_8h.html" title="Cia402device.h" alt="" coords="427,80,539,107"/>
-<area shape="rect" id="node4" href="$CiA301CommPort_8h.html" title="CiA301CommPort.h" alt="" coords="467,155,605,181"/>
-<area shape="rect" id="node18" href="$PortBase_8h.html" title="PortBase.h" alt="" coords="70,229,157,256"/>
-<area shape="rect" id="node22" href="$ObjectDictionary_8h.html" title="ObjectDictionary.h" alt="" coords="931,155,1061,181"/>
-<area shape="rect" id="node14" href="$candatatypes_8h.html" title="candatatypes.h" alt="" coords="481,229,591,256"/>
+<area shape="rect" id="node2" href="$Cia402device_8h.html" title="Cia402device.h" alt="" coords="187,80,299,107"/>
+<area shape="rect" id="node4" href="$CiA301CommPort_8h.html" title="CiA301CommPort.h" alt="" coords="453,155,591,181"/>
+<area shape="rect" id="node18" href="$PortBase_8h.html" title="PortBase.h" alt="" coords="193,229,280,256"/>
+<area shape="rect" id="node22" href="$ObjectDictionary_8h.html" title="ObjectDictionary.h" alt="" coords="958,155,1089,181"/>
+<area shape="rect" id="node23" href="$CiA402SetupData_8h.html" title="CiA402SetupData.h" alt="" coords="67,155,206,181"/>
+<area shape="rect" id="node14" href="$candatatypes_8h.html" title="candatatypes.h" alt="" coords="591,229,701,256"/>
 </map>

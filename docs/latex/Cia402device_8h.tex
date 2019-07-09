@@ -1,17 +1,22 @@
 \hypertarget{Cia402device_8h}{}\section{Cia402device.\+h File Reference}
 \label{Cia402device_8h}\index{Cia402device.\+h@{Cia402device.\+h}}
-{\ttfamily \#include $<$math.\+h$>$}\newline
-{\ttfamily \#include \char`\"{}Ci\+A301\+Comm\+Port.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}Object\+Dictionary.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}Port\+Base.\+h\char`\"{}}\newline
-Include dependency graph for Cia402device.\+h\+:\nopagebreak
+{\ttfamily \#include $<$chrono$>$}\\*
+{\ttfamily \#include $<$thread$>$}\\*
+{\ttfamily \#include $<$math.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}Ci\+A301\+Comm\+Port.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Object\+Dictionary.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Port\+Base.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Ci\+A402\+Setup\+Data.\+h\char`\"{}}\\*
+Include dependency graph for Cia402device.\+h\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{Cia402device_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:\nopagebreak
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -23,3 +28,44 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \item 
 class \hyperlink{classCiA402Device}{Ci\+A402\+Device}
 \end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{Cia402device_8h_a598a3330b3c21701223ee0ca14316eca}{PI}~3.\+14159265358
+\item 
+\#define \hyperlink{Cia402device_8h_ad40c559411b96d7cb25cddea2597917f}{R\+P\+M2\+R\+A\+DS}~(2.\+0$\ast$\hyperlink{Cia402device_8h_a598a3330b3c21701223ee0ca14316eca}{PI})/60.\+0
+\item 
+\#define \hyperlink{Cia402device_8h_afac1cb3c0e5f8e76953d71e525c85b5a}{R\+A\+D\+S2\+R\+PM}~60.\+0/(2.\+0$\ast$\hyperlink{Cia402device_8h_a598a3330b3c21701223ee0ca14316eca}{PI})
+\item 
+\#define \hyperlink{Cia402device_8h_ad39cd73edfd605f860349ff73aa1f0e1}{D\+E\+G2\+R\+A\+DS}~(2.\+0$\ast$\hyperlink{Cia402device_8h_a598a3330b3c21701223ee0ca14316eca}{PI})/360.\+0
+\item 
+\#define \hyperlink{Cia402device_8h_a445fa46f44fdc878f2653874a83cab73}{R\+A\+D\+S2\+D\+EG}~360.\+0/(2.\+0$\ast$\hyperlink{Cia402device_8h_a598a3330b3c21701223ee0ca14316eca}{PI})
+\item 
+\#define \hyperlink{Cia402device_8h_afa8cb3c12dbeaa9561ce45e7af88636f}{H\+I\+G\+H\+P\+A\+R\+T\+\_\+\+B\+I\+T\+S\+H\+I\+F\+T\+\_\+16}~0x10000
+\item 
+\#define \hyperlink{Cia402device_8h_a7c21d01106152feef7a4acd77afe01ae}{A\+N\+A\+L\+O\+G\+U\+E\+\_\+\+I\+N\+P\+U\+T\+\_\+\+S\+C\+A\+LE}~0x\+F\+F\+F0
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{Cia402device.\+h@{Cia402device.\+h}!A\+N\+A\+L\+O\+G\+U\+E\+\_\+\+I\+N\+P\+U\+T\+\_\+\+S\+C\+A\+LE@{A\+N\+A\+L\+O\+G\+U\+E\+\_\+\+I\+N\+P\+U\+T\+\_\+\+S\+C\+A\+LE}}
+\index{A\+N\+A\+L\+O\+G\+U\+E\+\_\+\+I\+N\+P\+U\+T\+\_\+\+S\+C\+A\+LE@{A\+N\+A\+L\+O\+G\+U\+E\+\_\+\+I\+N\+P\+U\+T\+\_\+\+S\+C\+A\+LE}!Cia402device.\+h@{Cia402device.\+h}}
+\subsubsection[{\texorpdfstring{A\+N\+A\+L\+O\+G\+U\+E\+\_\+\+I\+N\+P\+U\+T\+\_\+\+S\+C\+A\+LE}{ANALOGUE_INPUT_SCALE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define A\+N\+A\+L\+O\+G\+U\+E\+\_\+\+I\+N\+P\+U\+T\+\_\+\+S\+C\+A\+LE~0x\+F\+F\+F0}\hypertarget{Cia402device_8h_a7c21d01106152feef7a4acd77afe01ae}{}\label{Cia402device_8h_a7c21d01106152feef7a4acd77afe01ae}
+\index{Cia402device.\+h@{Cia402device.\+h}!D\+E\+G2\+R\+A\+DS@{D\+E\+G2\+R\+A\+DS}}
+\index{D\+E\+G2\+R\+A\+DS@{D\+E\+G2\+R\+A\+DS}!Cia402device.\+h@{Cia402device.\+h}}
+\subsubsection[{\texorpdfstring{D\+E\+G2\+R\+A\+DS}{DEG2RADS}}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+E\+G2\+R\+A\+DS~(2.\+0$\ast${\bf PI})/360.\+0}\hypertarget{Cia402device_8h_ad39cd73edfd605f860349ff73aa1f0e1}{}\label{Cia402device_8h_ad39cd73edfd605f860349ff73aa1f0e1}
+\index{Cia402device.\+h@{Cia402device.\+h}!H\+I\+G\+H\+P\+A\+R\+T\+\_\+\+B\+I\+T\+S\+H\+I\+F\+T\+\_\+16@{H\+I\+G\+H\+P\+A\+R\+T\+\_\+\+B\+I\+T\+S\+H\+I\+F\+T\+\_\+16}}
+\index{H\+I\+G\+H\+P\+A\+R\+T\+\_\+\+B\+I\+T\+S\+H\+I\+F\+T\+\_\+16@{H\+I\+G\+H\+P\+A\+R\+T\+\_\+\+B\+I\+T\+S\+H\+I\+F\+T\+\_\+16}!Cia402device.\+h@{Cia402device.\+h}}
+\subsubsection[{\texorpdfstring{H\+I\+G\+H\+P\+A\+R\+T\+\_\+\+B\+I\+T\+S\+H\+I\+F\+T\+\_\+16}{HIGHPART_BITSHIFT_16}}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\+I\+G\+H\+P\+A\+R\+T\+\_\+\+B\+I\+T\+S\+H\+I\+F\+T\+\_\+16~0x10000}\hypertarget{Cia402device_8h_afa8cb3c12dbeaa9561ce45e7af88636f}{}\label{Cia402device_8h_afa8cb3c12dbeaa9561ce45e7af88636f}
+\index{Cia402device.\+h@{Cia402device.\+h}!PI@{PI}}
+\index{PI@{PI}!Cia402device.\+h@{Cia402device.\+h}}
+\subsubsection[{\texorpdfstring{PI}{PI}}]{\setlength{\rightskip}{0pt plus 5cm}\#define PI~3.\+14159265358}\hypertarget{Cia402device_8h_a598a3330b3c21701223ee0ca14316eca}{}\label{Cia402device_8h_a598a3330b3c21701223ee0ca14316eca}
+\index{Cia402device.\+h@{Cia402device.\+h}!R\+A\+D\+S2\+D\+EG@{R\+A\+D\+S2\+D\+EG}}
+\index{R\+A\+D\+S2\+D\+EG@{R\+A\+D\+S2\+D\+EG}!Cia402device.\+h@{Cia402device.\+h}}
+\subsubsection[{\texorpdfstring{R\+A\+D\+S2\+D\+EG}{RADS2DEG}}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+A\+D\+S2\+D\+EG~360.\+0/(2.\+0$\ast${\bf PI})}\hypertarget{Cia402device_8h_a445fa46f44fdc878f2653874a83cab73}{}\label{Cia402device_8h_a445fa46f44fdc878f2653874a83cab73}
+\index{Cia402device.\+h@{Cia402device.\+h}!R\+A\+D\+S2\+R\+PM@{R\+A\+D\+S2\+R\+PM}}
+\index{R\+A\+D\+S2\+R\+PM@{R\+A\+D\+S2\+R\+PM}!Cia402device.\+h@{Cia402device.\+h}}
+\subsubsection[{\texorpdfstring{R\+A\+D\+S2\+R\+PM}{RADS2RPM}}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+A\+D\+S2\+R\+PM~60.\+0/(2.\+0$\ast${\bf PI})}\hypertarget{Cia402device_8h_afac1cb3c0e5f8e76953d71e525c85b5a}{}\label{Cia402device_8h_afac1cb3c0e5f8e76953d71e525c85b5a}
+\index{Cia402device.\+h@{Cia402device.\+h}!R\+P\+M2\+R\+A\+DS@{R\+P\+M2\+R\+A\+DS}}
+\index{R\+P\+M2\+R\+A\+DS@{R\+P\+M2\+R\+A\+DS}!Cia402device.\+h@{Cia402device.\+h}}
+\subsubsection[{\texorpdfstring{R\+P\+M2\+R\+A\+DS}{RPM2RADS}}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+P\+M2\+R\+A\+DS~(2.\+0$\ast${\bf PI})/60.\+0}\hypertarget{Cia402device_8h_ad40c559411b96d7cb25cddea2597917f}{}\label{Cia402device_8h_ad40c559411b96d7cb25cddea2597917f}

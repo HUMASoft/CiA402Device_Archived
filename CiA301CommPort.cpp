@@ -41,7 +41,10 @@ ulong CiA301CommPort::ReadSDO(const vector<uint8_t> &address)
     vector<uint8_t> data={};
 //   data.insert(data.end(), address.begin(), address.end());
 //    SendMessage(SetCanOpenMsg(sdo::rx0+id, 0 ,data) );
-     return WriteSDO(address, data);
+
+    ulong ret=(ulong)WriteSDO(address, data);
+   // cout << "ReadSDO ret: " << ret << endl;
+     return ret;
 
 //    //Wait for the answer
 //    output = SetCanOpenMsg(sdo::tx0+id, 0 ,address);
@@ -116,14 +119,16 @@ long CiA301CommPort::WriteSDO(const vector<uint8_t> &address, const vector<uint8
     ReadCobId(sdo::tx0+id, output);
 
 
-    for (long reps=0 ; reps>FIND_RETRY ;reps++)
+    for (long reps=0 ; reps<FIND_RETRY ;reps++)
     {
 
-        cout << output.data_co[1]<< " " << address[0]<< " " << output.data_co[2]<< " " << address[1] <<endl;
+        //cout << output.data_co[1]<< " " << address[0]<< " " << output.data_co[2]<< " " << address[1] <<endl;
         //Check that received data comes from right address.
         if ( (output.data_co[1] == address[0]) && (output.data_co[2] == address[1]) )
         {
-            continue;
+
+            //cout << "break";
+            break;
         }
 
         else //Wrong address.
@@ -141,10 +146,10 @@ long CiA301CommPort::WriteSDO(const vector<uint8_t> &address, const vector<uint8
     }
 
     //fixed return four last bytes from data.
-//    cout<<"OUTPUT DATA 0    "<<(bitset<8>)output.data_co[0]<<endl;
-//    cout<<"OUTPUT DATA 1    "<<(bitset<8>)output.data_co[1]<<endl;
-//    cout<<"OUTPUT DATA 2    "<<(bitset<8>)output.data_co[2]<<endl;
-//    cout<<"OUTPUT DATA 3    "<<(bitset<8>)output.data_co[3]<<endl;
+//    cout<<"OUTPUT DATA 0    "<<(int)output.data_co[0]<<endl;
+//    cout<<"OUTPUT DATA 1    "<<(int)output.data_co[1]<<endl;
+//    cout<<"OUTPUT DATA 2    "<<(int)output.data_co[2]<<endl;
+//    cout<<"OUTPUT DATA 3    "<<(int)output.data_co[3]<<endl;
 //    cout<<"OUTPUT DATA 4    "<<(bitset<8>)output.data_co[4]<<endl;
 //    cout<<"OUTPUT DATA 5    "<<(bitset<8>)output.data_co[5]<<endl;
 //    cout<<"OUTPUT DATA 6    "<<(bitset<8>)output.data_co[6]<<endl;
@@ -156,7 +161,10 @@ long CiA301CommPort::WriteSDO(const vector<uint8_t> &address, const vector<uint8
 //    return retvalue;
 //    cout << "dlc " << output.dlc_co << endl;
 //    long retvalue=DataToInt(&output.data_co[4], output.dlc_co);
-    return DataToInt(&output.data_co[4], output.dlc_co-4);
+
+    long ret=DataToInt(&output.data_co[4], output.dlc_co-4);
+    //cout << "WriteSDO ret: " << ret << endl;
+    return ret;
 }
 
 long CiA301CommPort::ReadPDO(long number)
