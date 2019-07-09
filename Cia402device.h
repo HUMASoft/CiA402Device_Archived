@@ -84,7 +84,7 @@ public:
 //    bool setPositionMode();
 //    bool setVelocityModeRaw();
     long OperationMode(const vector<uint8_t> new_mode);
-    long Setup_Velocity_Mode(const uint32_t target = 0, const uint32_t acceleration = 1);
+    long Setup_Velocity_Mode(const uint32_t acceleration=1, const uint32_t target=0);
     long Setup_Torque_Mode();
     long SetTorque(double target);
     long ForceSwitchOff();
