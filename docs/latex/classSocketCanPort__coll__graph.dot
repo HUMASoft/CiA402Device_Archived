@@ -1,0 +1,18 @@
+digraph "SocketCanPort"
+{
+  bgcolor="transparent";
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{SocketCanPort\n||+ SocketCanPort()\l+ SocketCanPort()\l+ ~SocketCanPort()\l+ SetFilter()\l+ GetMsg()\l+ PutMsg()\l+ GetNMT()\l- Init()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal"];
+  Node2 [label="{PortBase\n||+ PortBase()\l+ getPortId()\l+ FlushMsg()\l+ SetFilter()\l+ GetMsg()\l+ PutMsg()\l+ GetNMT()\l}",height=0.2,width=0.4,color="black",URL="$classPortBase.html"];
+  Node3 -> Node2 [color="grey25",fontsize="10",style="solid",label=" #frame" ,arrowhead="odiamond"];
+  Node3 [label="{can_frame\n||}",height=0.2,width=0.4,color="grey75"];
+  Node4 -> Node2 [color="grey25",fontsize="10",style="solid",label=" #portType\n#portNMT\n#portId" ,arrowhead="odiamond"];
+  Node4 [label="{int\n||}",height=0.2,width=0.4,color="grey75"];
+  Node5 -> Node2 [color="grey25",fontsize="10",style="solid",label=" #buffSizeNMT\n#buffSizeId" ,arrowhead="odiamond"];
+  Node5 [label="{long\n||}",height=0.2,width=0.4,color="grey75"];
+  Node6 -> Node1 [color="grey25",fontsize="10",style="solid",label=" -poll_setId\n-poll_setNMT" ,arrowhead="odiamond"];
+  Node6 [label="{struct pollfd\n||}",height=0.2,width=0.4,color="grey75"];
+  Node5 -> Node1 [color="grey25",fontsize="10",style="solid",label=" -nbytes\n-timeoutPoll" ,arrowhead="odiamond"];
+}

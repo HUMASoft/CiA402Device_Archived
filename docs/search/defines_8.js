@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['min_5fspeed_5finc32',['MIN_SPEED_INC32',['../Cia402device_8h.html#a298819ef2e8b556f9c418bd2116662df',1,'Cia402device.h']]],
   ['msg_5fdlc',['MSG_DLC',['../candatatypes_8h.html#a0e6b1af48bd887e8d0c978b5dc7307bc',1,'MSG_DLC():&#160;candatatypes.h'],['../hico__api_8h.html#a0e6b1af48bd887e8d0c978b5dc7307bc',1,'MSG_DLC():&#160;hico_api.h']]],
   ['msg_5fdos',['MSG_DOS',['../candatatypes_8h.html#a5525b28635b17a750eb630af9f82aabf',1,'MSG_DOS():&#160;candatatypes.h'],['../hico__api_8h.html#a5525b28635b17a750eb630af9f82aabf',1,'MSG_DOS():&#160;hico_api.h']]],
   ['msg_5fff',['MSG_FF',['../candatatypes_8h.html#af5de903edfa22afc007f582fa19cb3d9',1,'MSG_FF():&#160;candatatypes.h'],['../hico__api_8h.html#af5de903edfa22afc007f582fa19cb3d9',1,'MSG_FF():&#160;hico_api.h']]],
