@@ -73,6 +73,15 @@ public:
     long ReadPDO(long number);
     uint32_t data4x8to32(const uint8_t *in, int dlc);
     //co_msg SetCanOpenMsg(unsigned short id_co, unsigned short rtr, vector<uint8_t> coDataFrame, int size);
+
+protected:
+
+    //variables
+    int portFileDescriptor;
+    uint8_t id;
+    PortBase* port;
+    bool usesockets;
+
 private:
 
     //methods
@@ -114,11 +123,7 @@ private:
 
 
 
-    //variables
-    int portFileDescriptor;
-    uint8_t id;
-    PortBase* port;
-    bool usesockets;
+
 
     can_msg send_msg;
     can_msg input;

@@ -296,8 +296,7 @@ long CiA301CommPort::WriteNMT(const vector<uint8_t> &nmtCommand)
     long response;
     vector<uint8_t> data(nmtCommand);
     data.push_back(id);
-    cout << "id " << id << endl;
-    //
+
     SendMessage(SetCanOpenMsg(0, 0 ,data) );
 
     return 0;
@@ -334,6 +333,7 @@ long CiA301CommPort::ReadNMT(const vector<uint8_t> & nmtCode)
         {
             //fprintf(stderr, "Max retry reached: %u", reps);
             cerr << " Max retry reached: " << reps << endl;
+            cout << " Max retry reached: " << reps << endl;
 
             return -1;
         }
@@ -613,6 +613,8 @@ int CiA301CommPort::ReadCobId(uint16_t expected_cobid, co_msg & output )
         }
         if (reps==FIND_RETRY-1)
         {
+            cerr<<"  Max retry reached " << endl;
+
             cout<<"  Max retry reached " << endl;
             return -1;
         }
