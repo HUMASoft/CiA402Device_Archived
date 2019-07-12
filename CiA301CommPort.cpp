@@ -42,6 +42,7 @@ ulong CiA301CommPort::ReadSDO(const vector<uint8_t> &address)
 //   data.insert(data.end(), address.begin(), address.end());
 //    SendMessage(SetCanOpenMsg(sdo::rx0+id, 0 ,data) );
 
+    //Reading is got from an empty write response
     ulong ret=(ulong)WriteSDO(address, data);
    // cout << "ReadSDO ret: " << ret << endl;
      return ret;
@@ -99,9 +100,10 @@ long CiA301CommPort::WriteSDO(const vector<uint8_t> &address, const vector<uint8
 
     }
 
-   //Then set the
+   //Insert SDO Address
    data.insert(data.end(), address.begin(), address.end());
 
+   //Insert SDO data field
    data.insert(data.end(), value.begin(), value.end());
 
     //cout << "id" << id << endl;
@@ -114,6 +116,7 @@ long CiA301CommPort::WriteSDO(const vector<uint8_t> &address, const vector<uint8
 //    //and wait for write response
 //    co_msg output;
 
+    //every write operation returns an answer
     //wait the answer (tx0(580)+id)
     co_msg output;
     ReadCobId(sdo::tx0+id, output);
@@ -209,6 +212,24 @@ long CiA301CommPort::ReadPDO(long number)
     return DataToInt(output.data_co,output.dlc_co);
 }
 
+long CiA301CommPort::DisablePDOs()
+{
+    //Can Open iPos manual page 194
+    //Send the following message:
+    //(SDO write access to object 1A00 h sub-index 0 the 8-bit value 00 h ):
+    vector<uint8_t> data={0x00};
+    cout << WriteSDO(pdo::tx0enable ,data);
+
+    //Can Open iPos manual page 268
+    //Send the following message:
+    //(SDO write access to object 1A01 h sub-index 0 the 8-bit value 00 h ):
+    cout << WriteSDO(pdo::tx1enable ,data);
+    cout << WriteSDO(pdo::tx2enable ,data);
+    cout << WriteSDO(pdo::tx3enable ,data);
+
+    return 0;
+}
+
 long CiA301CommPort::WritePDO(const vector<uint8_t> &command)
 {
 
@@ -228,6 +249,8 @@ long CiA301CommPort::WritePDO(const vector<uint8_t> &command)
     return 0;
 }
 
+
+
 long CiA301CommPort::WritePDO4(const vector<uint8_t> &command)
 {
 
@@ -235,7 +258,7 @@ long CiA301CommPort::WritePDO4(const vector<uint8_t> &command)
 
     //cout << "id" << id << endl;
     //Ask an sdo read from address
-    SendMessage(SetCanOpenMsg(pdo::rx4+id, 0 ,command) );
+    SendMessage(SetCanOpenMsg(pdo::rx3+id, 0 ,command) );
 
     //Wait for the answer
     //output = SetCanOpenMsg(sdo::tx0+id, 0 ,address);
@@ -332,8 +355,8 @@ long CiA301CommPort::ReadNMT(const vector<uint8_t> & nmtCode)
         if (reps==FIND_RETRY-1)
         {
             //fprintf(stderr, "Max retry reached: %u", reps);
-            cerr << " Max retry reached: " << reps << endl;
-            cout << " Max retry reached: " << reps << endl;
+            cerr << " ReadNMT Max retry reached: " << reps << endl;
+            cout << " ReadNMT Max retry reached: " << reps << endl;
 
             return -1;
         }
@@ -579,7 +602,6 @@ int CiA301CommPort::WaitForReadMessage(co_msg & output, unsigned int canIndex){
 int CiA301CommPort::ReadCobId(uint16_t expected_cobid, co_msg & output )
 {
 
-//    cout<<" --> ReadCobId. Expecting: "  << std::hex << expected_cobid << std::dec  << endl;
 
 
     vector<can_msg> otherMsgs(0);
@@ -587,16 +609,19 @@ int CiA301CommPort::ReadCobId(uint16_t expected_cobid, co_msg & output )
 
 
     //cout << " Canid Received: " << std::hex << input.id << std::dec << endl;
+    //    cout<<" --> ReadCobId. Expecting: "  << std::hex << expected_cobid << std::dec  << endl;
 
     for(long reps=0 ; reps<FIND_RETRY ;reps++)
     {
         GetMsg(input);
-        //cout << " Received: " << std::hex << input.id << std::dec << endl;
+
+//        cout << "Expecting :"<< std::hex << expected_cobid << " Received: " << std::hex << input.id << std::dec << endl;
         //First check for the input.
         //If the response is the answer expected, continue
         if (input.id == expected_cobid)
         {
             //cout << " comp: " << (input.id == expected_cobid) << endl;
+//            FlushBuffer();
             break;
         }
         //if not cobid but node id:
@@ -613,9 +638,9 @@ int CiA301CommPort::ReadCobId(uint16_t expected_cobid, co_msg & output )
         }
         if (reps==FIND_RETRY-1)
         {
-            cerr<<"  Max retry reached " << endl;
+            cerr<<" ReadCobId Max retry reached " << endl;
 
-            cout<<"  Max retry reached " << endl;
+            cout<<" ReadCobId Max retry reached " << endl;
             return -1;
         }
 

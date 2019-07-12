@@ -71,8 +71,13 @@ public:
     long WritePDO4(const vector<uint8_t> &command);
     long ReadErrorNMT();
     long ReadPDO(long number);
+    long DisablePDOs();
+
+
     uint32_t data4x8to32(const uint8_t *in, int dlc);
     //co_msg SetCanOpenMsg(unsigned short id_co, unsigned short rtr, vector<uint8_t> coDataFrame, int size);
+
+
 
 protected:
 
@@ -152,12 +157,20 @@ const uint16_t rx0=0x600;
 namespace pdo
 {
 
-const uint16_t tx0=0x180;
-const uint16_t rx0=0x200;
-const uint16_t tx1=0x280;
-const uint16_t rx1=0x300;
-const uint16_t tx4=0x380;
-const uint16_t rx4=0x400;
+const vector<uint8_t> tx0enable={0x00,0x1A,0x00};//TPDO1
+const vector<uint8_t> tx1enable={0x01,0x1A,0x00};//TPDO2
+const vector<uint8_t> tx2enable={0x02,0x1A,0x00};//TPDO3
+const vector<uint8_t> tx3enable={0x03,0x1A,0x00};//TPDO4
+
+
+const uint16_t tx0=0x180;//TPDO1
+const uint16_t rx0=0x200;//TPDO1
+const uint16_t tx1=0x280;//TPDO2
+const uint16_t rx1=0x300;//TPDO2
+const uint16_t tx2=0x380;//TPDO3
+const uint16_t rx2=0x400;//TPDO3
+const uint16_t tx3=0x480;//TPDO4
+const uint16_t rx3=0x500;//TPDO4
 
 }
 namespace nmt

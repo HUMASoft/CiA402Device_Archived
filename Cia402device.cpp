@@ -20,6 +20,7 @@ long CiA402Device::Init(CiA402SetupData *deviceData)
     encoderSpan = 0;
 
     tWaited = chrono::milliseconds(1);
+
 //    lastTimeValue = actualTimeValue;
 //    actualTimeValue = chrono::system_clock::now();
 //    tWaited = actualTimeValue.time_since_epoch() - lastTimeValue.time_since_epoch(); //nanoseconds
@@ -173,13 +174,15 @@ long CiA402Device::SwitchOn()
 
      response = WritePDO(od::goenable);
      cout<<"NODE " << (uint)id <<" ENABLED"<<endl;
+     DisablePDOs();
      sleep(1);
 
      //cout<<"response" << response <<endl;
      //FlushBuffer(2); //remove two messages, pdo1tx and pdo2tx
      //listen pdo1tx and pdo2tx
      //it is the same for all pdos??
-     response = ReadPDO(0);
+//     response = ReadPDO(0);
+
      FlushBuffer();
 
 
