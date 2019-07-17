@@ -189,7 +189,7 @@ long SocketCanPort::Init(string canPort)
     }
     //get and show index
     ioctl(portId, SIOCGIFINDEX, &ifr);
-    printf("%s portId at index %d\n", ifr.ifr_name, ifr.ifr_ifindex);
+//    printf("%s portId at index %d\n", ifr.ifr_name, ifr.ifr_ifindex);
     addr.can_ifindex = ifr.ifr_ifindex;
     if(bind(portId, (struct sockaddr *)&addr, sizeof(addr)) < 0)
     {
