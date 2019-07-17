@@ -10,5 +10,6 @@ var searchData=
   ['devicechain',['DeviceChain',['../classDeviceChain.html',1,'DeviceChain'],['../classDeviceChain.html#ad89af127eec501ad00ad5f5de197b21e',1,'DeviceChain::DeviceChain(string actualPort)'],['../classDeviceChain.html#a20dd5853f160cfc8ef21ed93dac96f11',1,'DeviceChain::DeviceChain(string actualPort, vector&lt; long &gt; ids)']]],
   ['devicechain_2ecpp',['DeviceChain.cpp',['../DeviceChain_8cpp.html',1,'']]],
   ['devicechain_2eh',['DeviceChain.h',['../DeviceChain_8h.html',1,'']]],
-  ['dlc_5fco',['dlc_co',['../structco__msg.html#ab19d6996baf97d346427d9789d7e4a6b',1,'co_msg']]]
+  ['dlc_5fco',['dlc_co',['../structco__msg.html#ab19d6996baf97d346427d9789d7e4a6b',1,'co_msg']]],
+  ['dtswait',['dtsWait',['../classCiA402Device.html#af3e9acfa1412aad23657a97464626f1d',1,'CiA402Device']]]
 ];

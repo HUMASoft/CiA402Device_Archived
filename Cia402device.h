@@ -84,7 +84,7 @@ public:
 //    bool setPositionMode();
 //    bool setVelocityModeRaw();
     long OperationMode(const vector<uint8_t> new_mode);
-    long Setup_Velocity_Mode(const uint32_t target = 0, const uint32_t acceleration = 1);
+    long Setup_Velocity_Mode(const uint32_t acceleration=1, const uint32_t target=0);
     long Setup_Torque_Mode();
     long SetTorque(double target);
     long ForceSwitchOff();
@@ -122,7 +122,7 @@ private:
     int comm; //port file de
     //unsigned int id;
 
-    PortBase* port;
+//    PortBase* port;
 
     float reduction_ratio_motor;    // Transmission ratio between the motor displacement in SI units and load displacement
     int encoder_resolution;         // Nº lines for incremental encoder quadrature  (lines X 4)

@@ -20,6 +20,7 @@ long CiA402Device::Init(CiA402SetupData *deviceData)
     encoderSpan = 0;
 
     tWaited = chrono::milliseconds(1);
+
 //    lastTimeValue = actualTimeValue;
 //    actualTimeValue = chrono::system_clock::now();
 //    tWaited = actualTimeValue.time_since_epoch() - lastTimeValue.time_since_epoch(); //nanoseconds
@@ -43,22 +44,25 @@ long CiA402Device::Init(CiA402SetupData *deviceData)
     return 0;
 }
 
-CiA402Device::CiA402Device() : CiA301CommPort(1,1) //stdout
+CiA402Device::CiA402Device()
+    : CiA301CommPort(1,1)
 {
     CiA402SetupData defaultInit(2048,24,0.001, 0.144);
     Init(&defaultInit);
-    comm = 1; //stdout
+    comm = 1;
 
 }
 
-CiA402Device::CiA402Device(uint8_t new_id) : CiA301CommPort(1, new_id)
+CiA402Device::CiA402Device(uint8_t new_id)
+    : CiA301CommPort(1, new_id)
 {
     CiA402SetupData defaultInit(2048,24,0.001, 0.144);
     Init(&defaultInit);
-    comm = 1; //stdout
+    comm = 1;
 }
 
-CiA402Device::CiA402Device(uint8_t new_id, int fdPort) : CiA301CommPort(fdPort, new_id)
+CiA402Device::CiA402Device(uint8_t new_id, int fdPort)
+    : CiA301CommPort(fdPort, new_id)
 {
 
     CiA402SetupData defaultInit(2048,24,0.001, 0.144);
@@ -67,18 +71,20 @@ CiA402Device::CiA402Device(uint8_t new_id, int fdPort) : CiA301CommPort(fdPort, 
 
 }
 
-CiA402Device::CiA402Device(uint8_t new_id, PortBase *new_port) : CiA301CommPort(new_port, new_id)
+CiA402Device::CiA402Device(uint8_t new_id, PortBase *new_port)
+    : CiA301CommPort(new_port, new_id)
 {
     CiA402SetupData defaultInit(2048,24,0.001, 0.144);
     Init(&defaultInit);
-    port=new_port;
+//    port=new_port;
 
 }
 
-CiA402Device::CiA402Device(uint8_t new_id, PortBase *new_port, CiA402SetupData *deviceData) : CiA301CommPort(new_port, new_id)
+CiA402Device::CiA402Device(uint8_t new_id, PortBase *new_port, CiA402SetupData *deviceData)
+    : CiA301CommPort(new_port, new_id)
 {
      Init(deviceData);
-     port=new_port;
+//     port=new_port;
 
 
 }
@@ -103,10 +109,11 @@ long CiA402Device::Scaling(void)
 
 long CiA402Device::Reset()
 {
-     cout<<"RESET"<<endl;
 
-     double response;
+//     double response;
      //response = WriteNMT(od::reset);
+     cout<<"RESET id: " << (uint)id << endl;
+
      WriteNMT(od::fullreset);
 
 
@@ -118,8 +125,9 @@ long CiA402Device::Reset()
      //Wait needed for reset to finish. Using sleep
      sleep(1);
 
-     cout<<"START NODE"<<endl;
      WriteNMT(od::start);
+
+     cout<<"NODE " << (uint)id << " STARTED"<<endl;
 
      FlushBuffer();
 return 0;
@@ -142,18 +150,18 @@ long CiA402Device::SwitchOn()
 
     long response;
 
-     cout<<"READYTOSWITCHON"<<endl;
+//     cout<<"READYTOSWITCHON"<<endl;
      WritePDO(od::goreadytoswitchon);
 
      //it is the same for all pdos??
      response = ReadPDO(0);
      FlushBuffer();
 //     response = ReadPDO(1);
-     cout<<"READYTOSWITCHON RESPONSE: " << response <<endl;
+//     cout<<"READYTOSWITCHON RESPONSE: " << response <<endl;
 
-     cout<<"SWITCHON"<<endl;
+//     cout<<"SWITCHON"<<endl;
      response = WritePDO(od::goswitchon);
-cout<<"SWITCHON WritePDO RESPONSE" << response <<endl;
+//cout<<"SWITCHON WritePDO RESPONSE" << response <<endl;
      //cout<<"response" << response <<endl;
      //FlushBuffer(2); //remove two messages, pdo1tx and pdo2tx
      //listen pdo1tx and pdo2tx
@@ -162,17 +170,19 @@ cout<<"SWITCHON WritePDO RESPONSE" << response <<endl;
      FlushBuffer();
 
 
-     cout<<"SWITCHON RESPONSE" << response <<endl;
+//     cout<<"SWITCHON RESPONSE" << response <<endl;
 
-     cout<<"ENABLE"<<endl;
      response = WritePDO(od::goenable);
+     cout<<"NODE " << (uint)id <<" ENABLED"<<endl;
+     DisablePDOs();
      sleep(1);
 
      //cout<<"response" << response <<endl;
      //FlushBuffer(2); //remove two messages, pdo1tx and pdo2tx
      //listen pdo1tx and pdo2tx
      //it is the same for all pdos??
-     response = ReadPDO(0);
+//     response = ReadPDO(0);
+
      FlushBuffer();
 
 
@@ -544,7 +554,7 @@ int32_t accelerationr;
    return 0;
 }
 
-long CiA402Device::Setup_Velocity_Mode(const uint32_t target,const uint32_t acceleration){
+long CiA402Device::Setup_Velocity_Mode(const uint32_t acceleration, const uint32_t target){
 //    In the Velocity Profile Mode the drive performs speed control.
 //    The built-in reference generator computes a speed profile with a trapezoidal shape,
 //    due to a limited acceleration. The Target Velocity object specifies

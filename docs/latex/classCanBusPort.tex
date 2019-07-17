@@ -6,7 +6,8 @@
 
 
 
-Inheritance diagram for Can\+Bus\+Port\+:\nopagebreak
+Inheritance diagram for Can\+Bus\+Port\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -15,7 +16,8 @@ Inheritance diagram for Can\+Bus\+Port\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for Can\+Bus\+Port\+:\nopagebreak
+Collaboration diagram for Can\+Bus\+Port\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -48,22 +50,24 @@ long \hyperlink{classCanBusPort_a0de0778cfc475d2da559668be55f6015}{Init} (string
 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classCanBusPort_a4ccb8d39da6185bfe5c1dee38db51987}\label{classCanBusPort_a4ccb8d39da6185bfe5c1dee38db51987}} 
 \index{Can\+Bus\+Port@{Can\+Bus\+Port}!Can\+Bus\+Port@{Can\+Bus\+Port}}
 \index{Can\+Bus\+Port@{Can\+Bus\+Port}!Can\+Bus\+Port@{Can\+Bus\+Port}}
-\subsubsection{\texorpdfstring{Can\+Bus\+Port()}{CanBusPort()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily Can\+Bus\+Port\+::\+Can\+Bus\+Port (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
+\subsubsection[{\texorpdfstring{Can\+Bus\+Port()}{CanBusPort()}}]{\setlength{\rightskip}{0pt plus 5cm}Can\+Bus\+Port\+::\+Can\+Bus\+Port (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classCanBusPort_a4ccb8d39da6185bfe5c1dee38db51987}{}\label{classCanBusPort_a4ccb8d39da6185bfe5c1dee38db51987}
 
 
 \hyperlink{classCanBusPort}{Can\+Bus\+Port}\+: Empty constructor. Initialize default port \char`\"{}/dev/can0\char`\"{}. 
 
-\mbox{\Hypertarget{classCanBusPort_ad4649a2da594bbffc267483646fb1405}\label{classCanBusPort_ad4649a2da594bbffc267483646fb1405}} 
 \index{Can\+Bus\+Port@{Can\+Bus\+Port}!Can\+Bus\+Port@{Can\+Bus\+Port}}
 \index{Can\+Bus\+Port@{Can\+Bus\+Port}!Can\+Bus\+Port@{Can\+Bus\+Port}}
-\subsubsection{\texorpdfstring{Can\+Bus\+Port()}{CanBusPort()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily Can\+Bus\+Port\+::\+Can\+Bus\+Port (\begin{DoxyParamCaption}\item[{string}]{can\+Port }\end{DoxyParamCaption})}
-
+\subsubsection[{\texorpdfstring{Can\+Bus\+Port(string can\+Port)}{CanBusPort(string canPort)}}]{\setlength{\rightskip}{0pt plus 5cm}Can\+Bus\+Port\+::\+Can\+Bus\+Port (
+\begin{DoxyParamCaption}
+\item[{string}]{can\+Port}
+\end{DoxyParamCaption}
+)}\hypertarget{classCanBusPort_ad4649a2da594bbffc267483646fb1405}{}\label{classCanBusPort_ad4649a2da594bbffc267483646fb1405}
 
 
 \hyperlink{classCanBusPort}{Can\+Bus\+Port}\+: Initialization of one port given a device name. 
@@ -76,54 +80,66 @@ long \hyperlink{classCanBusPort_a0de0778cfc475d2da559668be55f6015}{Init} (string
 
 
 \subsection{Member Function Documentation}
-\mbox{\Hypertarget{classCanBusPort_ac442e4e5b7bb154ea6322518b715f406}\label{classCanBusPort_ac442e4e5b7bb154ea6322518b715f406}} 
 \index{Can\+Bus\+Port@{Can\+Bus\+Port}!Get\+Msg@{Get\+Msg}}
 \index{Get\+Msg@{Get\+Msg}!Can\+Bus\+Port@{Can\+Bus\+Port}}
-\subsubsection{\texorpdfstring{Get\+Msg()}{GetMsg()}}
-{\footnotesize\ttfamily long Can\+Bus\+Port\+::\+Get\+Msg (\begin{DoxyParamCaption}\item[{uint32\+\_\+t \&}]{can\+Id,  }\item[{uint8\+\_\+t $\ast$}]{data,  }\item[{uint8\+\_\+t \&}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
-
+\subsubsection[{\texorpdfstring{Get\+Msg(uint32\+\_\+t \&can\+Id, uint8\+\_\+t $\ast$data, uint8\+\_\+t \&size)}{GetMsg(uint32_t &canId, uint8_t *data, uint8_t &size)}}]{\setlength{\rightskip}{0pt plus 5cm}long Can\+Bus\+Port\+::\+Get\+Msg (
+\begin{DoxyParamCaption}
+\item[{uint32\+\_\+t \&}]{can\+Id, }
+\item[{uint8\+\_\+t $\ast$}]{data, }
+\item[{uint8\+\_\+t \&}]{size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classCanBusPort_ac442e4e5b7bb154ea6322518b715f406}{}\label{classCanBusPort_ac442e4e5b7bb154ea6322518b715f406}
 
 
 Implements \hyperlink{classPortBase_a4fe82768f2b79889d7084292ac0e8696}{Port\+Base}.
 
-\mbox{\Hypertarget{classCanBusPort_a41242dc7980ca398e4770813e50ef32b}\label{classCanBusPort_a41242dc7980ca398e4770813e50ef32b}} 
 \index{Can\+Bus\+Port@{Can\+Bus\+Port}!Get\+N\+MT@{Get\+N\+MT}}
 \index{Get\+N\+MT@{Get\+N\+MT}!Can\+Bus\+Port@{Can\+Bus\+Port}}
-\subsubsection{\texorpdfstring{Get\+N\+M\+T()}{GetNMT()}}
-{\footnotesize\ttfamily long Can\+Bus\+Port\+::\+Get\+N\+MT (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$const}]{data,  }\item[{uint8\+\_\+t \&}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
-
+\subsubsection[{\texorpdfstring{Get\+N\+M\+T(uint8\+\_\+t $\ast$const data, uint8\+\_\+t \&size)}{GetNMT(uint8_t *const data, uint8_t &size)}}]{\setlength{\rightskip}{0pt plus 5cm}long Can\+Bus\+Port\+::\+Get\+N\+MT (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t $\ast$const}]{data, }
+\item[{uint8\+\_\+t \&}]{size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classCanBusPort_a41242dc7980ca398e4770813e50ef32b}{}\label{classCanBusPort_a41242dc7980ca398e4770813e50ef32b}
 
 
 Implements \hyperlink{classPortBase_abab2bf17b01d87c2bca01cb2151aa2f1}{Port\+Base}.
 
-\mbox{\Hypertarget{classCanBusPort_a7c6b733c5834d4ab3e1906d847a2234a}\label{classCanBusPort_a7c6b733c5834d4ab3e1906d847a2234a}} 
 \index{Can\+Bus\+Port@{Can\+Bus\+Port}!get\+Port\+Id@{get\+Port\+Id}}
 \index{get\+Port\+Id@{get\+Port\+Id}!Can\+Bus\+Port@{Can\+Bus\+Port}}
-\subsubsection{\texorpdfstring{get\+Port\+Id()}{getPortId()}}
-{\footnotesize\ttfamily int Can\+Bus\+Port\+::get\+Port\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{classCanBusPort_a0de0778cfc475d2da559668be55f6015}\label{classCanBusPort_a0de0778cfc475d2da559668be55f6015}} 
+\subsubsection[{\texorpdfstring{get\+Port\+Id()}{getPortId()}}]{\setlength{\rightskip}{0pt plus 5cm}int Can\+Bus\+Port\+::get\+Port\+Id (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classCanBusPort_a7c6b733c5834d4ab3e1906d847a2234a}{}\label{classCanBusPort_a7c6b733c5834d4ab3e1906d847a2234a}
 \index{Can\+Bus\+Port@{Can\+Bus\+Port}!Init@{Init}}
 \index{Init@{Init}!Can\+Bus\+Port@{Can\+Bus\+Port}}
-\subsubsection{\texorpdfstring{Init()}{Init()}}
-{\footnotesize\ttfamily long Can\+Bus\+Port\+::\+Init (\begin{DoxyParamCaption}\item[{string}]{can\+Port }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{classCanBusPort_a2bb802ad7a14e260f0f51b79d4c53c43}\label{classCanBusPort_a2bb802ad7a14e260f0f51b79d4c53c43}} 
+\subsubsection[{\texorpdfstring{Init(string can\+Port)}{Init(string canPort)}}]{\setlength{\rightskip}{0pt plus 5cm}long Can\+Bus\+Port\+::\+Init (
+\begin{DoxyParamCaption}
+\item[{string}]{can\+Port}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classCanBusPort_a0de0778cfc475d2da559668be55f6015}{}\label{classCanBusPort_a0de0778cfc475d2da559668be55f6015}
 \index{Can\+Bus\+Port@{Can\+Bus\+Port}!Put\+Msg@{Put\+Msg}}
 \index{Put\+Msg@{Put\+Msg}!Can\+Bus\+Port@{Can\+Bus\+Port}}
-\subsubsection{\texorpdfstring{Put\+Msg()}{PutMsg()}}
-{\footnotesize\ttfamily long Can\+Bus\+Port\+::\+Put\+Msg (\begin{DoxyParamCaption}\item[{const uint32\+\_\+t \&}]{can\+Id,  }\item[{uint8\+\_\+t $\ast$const}]{data,  }\item[{const uint8\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
-
+\subsubsection[{\texorpdfstring{Put\+Msg(const uint32\+\_\+t \&can\+Id, uint8\+\_\+t $\ast$const data, const uint8\+\_\+t size)}{PutMsg(const uint32_t &canId, uint8_t *const data, const uint8_t size)}}]{\setlength{\rightskip}{0pt plus 5cm}long Can\+Bus\+Port\+::\+Put\+Msg (
+\begin{DoxyParamCaption}
+\item[{const uint32\+\_\+t \&}]{can\+Id, }
+\item[{uint8\+\_\+t $\ast$const}]{data, }
+\item[{const uint8\+\_\+t}]{size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classCanBusPort_a2bb802ad7a14e260f0f51b79d4c53c43}{}\label{classCanBusPort_a2bb802ad7a14e260f0f51b79d4c53c43}
 
 
 Implements \hyperlink{classPortBase_a26213ebb6ea0a0b77f60c28944e3bb8e}{Port\+Base}.
 
-\mbox{\Hypertarget{classCanBusPort_af09c794e3af86e89c8a511535f856dc9}\label{classCanBusPort_af09c794e3af86e89c8a511535f856dc9}} 
 \index{Can\+Bus\+Port@{Can\+Bus\+Port}!Set\+Filter@{Set\+Filter}}
 \index{Set\+Filter@{Set\+Filter}!Can\+Bus\+Port@{Can\+Bus\+Port}}
-\subsubsection{\texorpdfstring{Set\+Filter()}{SetFilter()}}
-{\footnotesize\ttfamily long Can\+Bus\+Port\+::\+Set\+Filter (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{can\+Id,  }\item[{uint32\+\_\+t}]{mask }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
-
+\subsubsection[{\texorpdfstring{Set\+Filter(uint32\+\_\+t can\+Id, uint32\+\_\+t mask)}{SetFilter(uint32_t canId, uint32_t mask)}}]{\setlength{\rightskip}{0pt plus 5cm}long Can\+Bus\+Port\+::\+Set\+Filter (
+\begin{DoxyParamCaption}
+\item[{uint32\+\_\+t}]{can\+Id, }
+\item[{uint32\+\_\+t}]{mask}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classCanBusPort_af09c794e3af86e89c8a511535f856dc9}{}\label{classCanBusPort_af09c794e3af86e89c8a511535f856dc9}
 
 
 Implements \hyperlink{classPortBase_a1d857a81a8e3f3bd460ef7c802ee762c}{Port\+Base}.

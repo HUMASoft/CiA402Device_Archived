@@ -35,7 +35,7 @@ Collaboration diagram for Ci\+A402\+Device\+:
 \item 
 \hyperlink{classCiA402Device_a017bcbc5d6e7a87b950b3cf2fcff1c41}{Ci\+A402\+Device} (uint8\+\_\+t new\+\_\+id, \hyperlink{classPortBase}{Port\+Base} $\ast$new\+\_\+port)
 \item 
-\hyperlink{classCiA402Device_af89b69466c797cc162a66f121c802b67}{Ci\+A402\+Device} (uint8\+\_\+t new\+\_\+id, \hyperlink{classPortBase}{Port\+Base} $\ast$new\+\_\+port, \hyperlink{classCiA402SetupData}{Ci\+A402\+Setup\+Data} device\+Data)
+\hyperlink{classCiA402Device_a4c0e432fc2cc0189bd415904bdb0e31b}{Ci\+A402\+Device} (uint8\+\_\+t new\+\_\+id, \hyperlink{classPortBase}{Port\+Base} $\ast$new\+\_\+port, \hyperlink{classCiA402SetupData}{Ci\+A402\+Setup\+Data} $\ast$device\+Data)
 \item 
 uint16\+\_\+t \hyperlink{classCiA402Device_a5a034b00c87d2ec9ec98157b772465d9}{Check\+Status} ()
 \begin{DoxyCompactList}\small\item\em Check\+Status\+: Returns the status word. \end{DoxyCompactList}\item 
@@ -51,13 +51,17 @@ double \hyperlink{classCiA402Device_ac8d9e36e6f457565cac7d26d91e4a712}{Get\+Posi
 \begin{DoxyCompactList}\small\item\em Get\+Position\+: Get the position of the cia 402 device. \end{DoxyCompactList}\item 
 double \hyperlink{classCiA402Device_a54b43f6429da4c6c0241653355e81d36}{Get\+Velocity} ()
 \begin{DoxyCompactList}\small\item\em \hyperlink{classCiA402Device_a54b43f6429da4c6c0241653355e81d36}{Ci\+A402\+Device\+::\+Get\+Velocity} This function converts a variable of type uint32\+\_\+t which contains the equivalent velocity as function of the enconder lines/sample into the velocity of a motor with an encoder of X lines in radians per second. \end{DoxyCompactList}\item 
+double \hyperlink{classCiA402Device_a436b9e3ba2d14367f0bba8d0fe977e23}{Get\+Filtered\+Velocity} (int samples)
+\item 
+double \hyperlink{classCiA402Device_aa19636eb332e6b3bc8265ecc3498f197}{Get\+Mean\+Velocity} ()
+\item 
 long \hyperlink{classCiA402Device_abf511a7d44b62ac93ae18fe21f8d51c9}{Set\+Communications} (int fd\+Port)
 \item 
 int \hyperlink{classCiA402Device_af1ed15805579e85e514e7ccf4ff21e10}{Check\+Error} ()
 \item 
 long \hyperlink{classCiA402Device_a49f298cf0d4d2d68007b3cb396e93a17}{Operation\+Mode} (const vector$<$ uint8\+\_\+t $>$ new\+\_\+mode)
 \item 
-long \hyperlink{classCiA402Device_ac1db22a6a8a7d7a56590423bd7577c7b}{Setup\+\_\+\+Velocity\+\_\+\+Mode} (const uint32\+\_\+t target, const uint32\+\_\+t acceleration)
+long \hyperlink{classCiA402Device_acd659c05abd1534881a0cec2326d4ba8}{Setup\+\_\+\+Velocity\+\_\+\+Mode} (const uint32\+\_\+t target=0, const uint32\+\_\+t acceleration=1)
 \item 
 long \hyperlink{classCiA402Device_a20475438205c26cd4bcc689ed9c7fe95}{Setup\+\_\+\+Torque\+\_\+\+Mode} ()
 \begin{DoxyCompactList}\small\item\em Ci\+A402\+Device\+::\+Degree\+Conv This function converts a variable of type uint32\+\_\+t which contains the position of a motor with an encoder of 4096 lines in decimal degrees into the equivalent position as function of the enconders lines. If the parameter has a value of 360 the function will return an uint32\+\_\+t variable with a value of 4096. \end{DoxyCompactList}\item 
@@ -67,7 +71,7 @@ long \hyperlink{classCiA402Device_aff0503b4caa6d2a8e2e66df6b9e0f4e4}{Force\+Swit
 \item 
 long \hyperlink{classCiA402Device_ac13cd5d90f8d39e1ef9734d035e67acb}{Set\+Position} (double target)
 \begin{DoxyCompactList}\small\item\em \hyperlink{classCiA402Device_ac13cd5d90f8d39e1ef9734d035e67acb}{Ci\+A402\+Device\+::\+Set\+Position} This function performs the communication with the device to perform a position control in a motor and perform a motion towards a selected position. The motor remembers as position 0 the position in which it has been switched on, always returning to this position when its target is 0. \end{DoxyCompactList}\item 
-long \hyperlink{classCiA402Device_a221dbc5461823097981727a3baff5d0c}{Setup\+Position\+Mode} (const uint32\+\_\+t velocity, const uint32\+\_\+t acceleration)
+long \hyperlink{classCiA402Device_a726ff3dfbfc8ae76c01d26277d0b764c}{Setup\+Position\+Mode} (const uint32\+\_\+t velocity=1, const uint32\+\_\+t acceleration=1)
 \item 
 long \hyperlink{classCiA402Device_ac1c55984abb91928d52b0a49651cc18e}{Set\+Position\+R\+E\+C\+U\+R\+S\+I\+V\+E\+\_\+test} (long target)
 \item 
@@ -90,14 +94,12 @@ long \hyperlink{classCiA402Device_ae9b30263a0592f0b254ae4f32cd9a765}{Scaling} (v
 \subsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-long \hyperlink{classCiA402Device_a622a8884e21d9c4b5ffa0d6c1458ef08}{Init} (uint8\+\_\+t new\+\_\+id)
+long \hyperlink{classCiA402Device_abc4e196ca1654a71bc396d77580701f0}{Init} (\hyperlink{classCiA402SetupData}{Ci\+A402\+Setup\+Data} $\ast$device\+Data)
 \end{DoxyCompactItemize}
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 int \hyperlink{classCiA402Device_a4e7a5a225fb27f5f02aeb0e6df38cd1f}{comm}
-\item 
-double \hyperlink{classCiA402Device_adb251ae496aeca707dcc51b43c64d0b8}{current\+Position}
 \item 
 \hyperlink{classPortBase}{Port\+Base} $\ast$ \hyperlink{classCiA402Device_abc96eb117cc948d86e3bd4c07c7fe807}{port}
 \item 
@@ -114,55 +116,84 @@ float \hyperlink{classCiA402Device_a57db6ccb730d3c26b7b33000d371b3bf}{Scaling\+\
 float \hyperlink{classCiA402Device_af6df63ddd2ddc1953f847855436ef129}{Scaling\+\_\+\+Factors\+\_\+\+Position}
 \item 
 float \hyperlink{classCiA402Device_a59de671e30be6f3f8f4c6ede7595d16c}{Scaling\+\_\+\+Factors\+\_\+\+Acceleration}
+\item 
+double \hyperlink{classCiA402Device_adb251ae496aeca707dcc51b43c64d0b8}{current\+Position}
+\item 
+double \hyperlink{classCiA402Device_a18ab540b52f7de30257f92340583a750}{last\+Position}
+\item 
+double \hyperlink{classCiA402Device_af926910c5a7e80c6ec198e1bd110b8d1}{mean\+Velocity}
+\item 
+chrono\+::system\+\_\+clock\+::time\+\_\+point \hyperlink{classCiA402Device_a2bd9cbd37d46453520e6fba51e720215}{actual\+Time\+Value}
+\item 
+chrono\+::system\+\_\+clock\+::time\+\_\+point \hyperlink{classCiA402Device_a3877e4a9b429edbac68503a828dd349d}{last\+Time\+Value}
+\item 
+chrono\+::system\+\_\+clock\+::time\+\_\+point \hyperlink{classCiA402Device_afb0d98f7068e7373f6d7b54d149f0680}{encoder\+Change\+Time}
+\item 
+double \hyperlink{classCiA402Device_a332cd74ce718607e9359b3db0f9ac402}{encoder\+Span}
+\item 
+chrono\+::nanoseconds \hyperlink{classCiA402Device_af3e9acfa1412aad23657a97464626f1d}{dts\+Wait}
+\item 
+chrono\+::nanoseconds \hyperlink{classCiA402Device_ad44fd620387924741772ab8e02d8b95a}{t\+Waited}
 \end{DoxyCompactItemize}
 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classCiA402Device_a894ef30b3c5a0ed291b086ad2156e4c1}\label{classCiA402Device_a894ef30b3c5a0ed291b086ad2156e4c1}} 
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Ci\+A402\+Device@{Ci\+A402\+Device}}
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Ci\+A402\+Device@{Ci\+A402\+Device}}
-\subsubsection{\texorpdfstring{Ci\+A402\+Device()}{CiA402Device()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
-{\footnotesize\ttfamily Ci\+A402\+Device\+::\+Ci\+A402\+Device (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{classCiA402Device_a77998e6d9ac4b75764612f3cab7426ef}\label{classCiA402Device_a77998e6d9ac4b75764612f3cab7426ef}} 
+\subsubsection[{\texorpdfstring{Ci\+A402\+Device()}{CiA402Device()}}]{\setlength{\rightskip}{0pt plus 5cm}Ci\+A402\+Device\+::\+Ci\+A402\+Device (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classCiA402Device_a894ef30b3c5a0ed291b086ad2156e4c1}{}\label{classCiA402Device_a894ef30b3c5a0ed291b086ad2156e4c1}
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Ci\+A402\+Device@{Ci\+A402\+Device}}
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Ci\+A402\+Device@{Ci\+A402\+Device}}
-\subsubsection{\texorpdfstring{Ci\+A402\+Device()}{CiA402Device()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
-{\footnotesize\ttfamily Ci\+A402\+Device\+::\+Ci\+A402\+Device (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{new\+\_\+id }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{classCiA402Device_a084b18ac995775f5079c8b260ec4c6c8}\label{classCiA402Device_a084b18ac995775f5079c8b260ec4c6c8}} 
+\subsubsection[{\texorpdfstring{Ci\+A402\+Device(uint8\+\_\+t new\+\_\+id)}{CiA402Device(uint8_t new_id)}}]{\setlength{\rightskip}{0pt plus 5cm}Ci\+A402\+Device\+::\+Ci\+A402\+Device (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t}]{new\+\_\+id}
+\end{DoxyParamCaption}
+)}\hypertarget{classCiA402Device_a77998e6d9ac4b75764612f3cab7426ef}{}\label{classCiA402Device_a77998e6d9ac4b75764612f3cab7426ef}
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Ci\+A402\+Device@{Ci\+A402\+Device}}
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Ci\+A402\+Device@{Ci\+A402\+Device}}
-\subsubsection{\texorpdfstring{Ci\+A402\+Device()}{CiA402Device()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
-{\footnotesize\ttfamily Ci\+A402\+Device\+::\+Ci\+A402\+Device (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{new\+\_\+id,  }\item[{int}]{fd\+Port }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{classCiA402Device_a017bcbc5d6e7a87b950b3cf2fcff1c41}\label{classCiA402Device_a017bcbc5d6e7a87b950b3cf2fcff1c41}} 
+\subsubsection[{\texorpdfstring{Ci\+A402\+Device(uint8\+\_\+t new\+\_\+id, int fd\+Port)}{CiA402Device(uint8_t new_id, int fdPort)}}]{\setlength{\rightskip}{0pt plus 5cm}Ci\+A402\+Device\+::\+Ci\+A402\+Device (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t}]{new\+\_\+id, }
+\item[{int}]{fd\+Port}
+\end{DoxyParamCaption}
+)}\hypertarget{classCiA402Device_a084b18ac995775f5079c8b260ec4c6c8}{}\label{classCiA402Device_a084b18ac995775f5079c8b260ec4c6c8}
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Ci\+A402\+Device@{Ci\+A402\+Device}}
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Ci\+A402\+Device@{Ci\+A402\+Device}}
-\subsubsection{\texorpdfstring{Ci\+A402\+Device()}{CiA402Device()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
-{\footnotesize\ttfamily Ci\+A402\+Device\+::\+Ci\+A402\+Device (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{new\+\_\+id,  }\item[{\hyperlink{classPortBase}{Port\+Base} $\ast$}]{new\+\_\+port }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{classCiA402Device_af89b69466c797cc162a66f121c802b67}\label{classCiA402Device_af89b69466c797cc162a66f121c802b67}} 
+\subsubsection[{\texorpdfstring{Ci\+A402\+Device(uint8\+\_\+t new\+\_\+id, Port\+Base $\ast$new\+\_\+port)}{CiA402Device(uint8_t new_id, PortBase *new_port)}}]{\setlength{\rightskip}{0pt plus 5cm}Ci\+A402\+Device\+::\+Ci\+A402\+Device (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t}]{new\+\_\+id, }
+\item[{{\bf Port\+Base} $\ast$}]{new\+\_\+port}
+\end{DoxyParamCaption}
+)}\hypertarget{classCiA402Device_a017bcbc5d6e7a87b950b3cf2fcff1c41}{}\label{classCiA402Device_a017bcbc5d6e7a87b950b3cf2fcff1c41}
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Ci\+A402\+Device@{Ci\+A402\+Device}}
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Ci\+A402\+Device@{Ci\+A402\+Device}}
-\subsubsection{\texorpdfstring{Ci\+A402\+Device()}{CiA402Device()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
-{\footnotesize\ttfamily Ci\+A402\+Device\+::\+Ci\+A402\+Device (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{new\+\_\+id,  }\item[{\hyperlink{classPortBase}{Port\+Base} $\ast$}]{new\+\_\+port,  }\item[{\hyperlink{classCiA402SetupData}{Ci\+A402\+Setup\+Data}}]{device\+Data }\end{DoxyParamCaption})}
-
+\subsubsection[{\texorpdfstring{Ci\+A402\+Device(uint8\+\_\+t new\+\_\+id, Port\+Base $\ast$new\+\_\+port, Ci\+A402\+Setup\+Data $\ast$device\+Data)}{CiA402Device(uint8_t new_id, PortBase *new_port, CiA402SetupData *deviceData)}}]{\setlength{\rightskip}{0pt plus 5cm}Ci\+A402\+Device\+::\+Ci\+A402\+Device (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t}]{new\+\_\+id, }
+\item[{{\bf Port\+Base} $\ast$}]{new\+\_\+port, }
+\item[{{\bf Ci\+A402\+Setup\+Data} $\ast$}]{device\+Data}
+\end{DoxyParamCaption}
+)}\hypertarget{classCiA402Device_a4c0e432fc2cc0189bd415904bdb0e31b}{}\label{classCiA402Device_a4c0e432fc2cc0189bd415904bdb0e31b}
 
 
 \subsection{Member Function Documentation}
-\mbox{\Hypertarget{classCiA402Device_af1ed15805579e85e514e7ccf4ff21e10}\label{classCiA402Device_af1ed15805579e85e514e7ccf4ff21e10}} 
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Check\+Error@{Check\+Error}}
 \index{Check\+Error@{Check\+Error}!Ci\+A402\+Device@{Ci\+A402\+Device}}
-\subsubsection{\texorpdfstring{Check\+Error()}{CheckError()}}
-{\footnotesize\ttfamily int Ci\+A402\+Device\+::\+Check\+Error (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{classCiA402Device_a5a034b00c87d2ec9ec98157b772465d9}\label{classCiA402Device_a5a034b00c87d2ec9ec98157b772465d9}} 
+\subsubsection[{\texorpdfstring{Check\+Error()}{CheckError()}}]{\setlength{\rightskip}{0pt plus 5cm}int Ci\+A402\+Device\+::\+Check\+Error (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classCiA402Device_af1ed15805579e85e514e7ccf4ff21e10}{}\label{classCiA402Device_af1ed15805579e85e514e7ccf4ff21e10}
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Check\+Status@{Check\+Status}}
 \index{Check\+Status@{Check\+Status}!Ci\+A402\+Device@{Ci\+A402\+Device}}
-\subsubsection{\texorpdfstring{Check\+Status()}{CheckStatus()}}
-{\footnotesize\ttfamily uint16\+\_\+t Ci\+A402\+Device\+::\+Check\+Status (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
+\subsubsection[{\texorpdfstring{Check\+Status()}{CheckStatus()}}]{\setlength{\rightskip}{0pt plus 5cm}uint16\+\_\+t Ci\+A402\+Device\+::\+Check\+Status (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classCiA402Device_a5a034b00c87d2ec9ec98157b772465d9}{}\label{classCiA402Device_a5a034b00c87d2ec9ec98157b772465d9}
 
 
 Check\+Status\+: Returns the status word. 
@@ -170,18 +201,34 @@ Check\+Status\+: Returns the status word.
 \begin{DoxyReturn}{Returns}
 \+: status 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classCiA402Device_aff0503b4caa6d2a8e2e66df6b9e0f4e4}\label{classCiA402Device_aff0503b4caa6d2a8e2e66df6b9e0f4e4}} 
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Force\+Switch\+Off@{Force\+Switch\+Off}}
 \index{Force\+Switch\+Off@{Force\+Switch\+Off}!Ci\+A402\+Device@{Ci\+A402\+Device}}
-\subsubsection{\texorpdfstring{Force\+Switch\+Off()}{ForceSwitchOff()}}
-{\footnotesize\ttfamily long Ci\+A402\+Device\+::\+Force\+Switch\+Off (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{classCiA402Device_ac8d9e36e6f457565cac7d26d91e4a712}\label{classCiA402Device_ac8d9e36e6f457565cac7d26d91e4a712}} 
+\subsubsection[{\texorpdfstring{Force\+Switch\+Off()}{ForceSwitchOff()}}]{\setlength{\rightskip}{0pt plus 5cm}long Ci\+A402\+Device\+::\+Force\+Switch\+Off (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classCiA402Device_aff0503b4caa6d2a8e2e66df6b9e0f4e4}{}\label{classCiA402Device_aff0503b4caa6d2a8e2e66df6b9e0f4e4}
+\index{Ci\+A402\+Device@{Ci\+A402\+Device}!Get\+Filtered\+Velocity@{Get\+Filtered\+Velocity}}
+\index{Get\+Filtered\+Velocity@{Get\+Filtered\+Velocity}!Ci\+A402\+Device@{Ci\+A402\+Device}}
+\subsubsection[{\texorpdfstring{Get\+Filtered\+Velocity(int samples)}{GetFilteredVelocity(int samples)}}]{\setlength{\rightskip}{0pt plus 5cm}double Ci\+A402\+Device\+::\+Get\+Filtered\+Velocity (
+\begin{DoxyParamCaption}
+\item[{int}]{samples}
+\end{DoxyParamCaption}
+)}\hypertarget{classCiA402Device_a436b9e3ba2d14367f0bba8d0fe977e23}{}\label{classCiA402Device_a436b9e3ba2d14367f0bba8d0fe977e23}
+\index{Ci\+A402\+Device@{Ci\+A402\+Device}!Get\+Mean\+Velocity@{Get\+Mean\+Velocity}}
+\index{Get\+Mean\+Velocity@{Get\+Mean\+Velocity}!Ci\+A402\+Device@{Ci\+A402\+Device}}
+\subsubsection[{\texorpdfstring{Get\+Mean\+Velocity()}{GetMeanVelocity()}}]{\setlength{\rightskip}{0pt plus 5cm}double Ci\+A402\+Device\+::\+Get\+Mean\+Velocity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classCiA402Device_aa19636eb332e6b3bc8265ecc3498f197}{}\label{classCiA402Device_aa19636eb332e6b3bc8265ecc3498f197}
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Get\+Position@{Get\+Position}}
 \index{Get\+Position@{Get\+Position}!Ci\+A402\+Device@{Ci\+A402\+Device}}
-\subsubsection{\texorpdfstring{Get\+Position()}{GetPosition()}}
-{\footnotesize\ttfamily double Ci\+A402\+Device\+::\+Get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
+\subsubsection[{\texorpdfstring{Get\+Position()}{GetPosition()}}]{\setlength{\rightskip}{0pt plus 5cm}double Ci\+A402\+Device\+::\+Get\+Position (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classCiA402Device_ac8d9e36e6f457565cac7d26d91e4a712}{}\label{classCiA402Device_ac8d9e36e6f457565cac7d26d91e4a712}
 
 
 Get\+Position\+: Get the position of the cia 402 device. 
@@ -189,12 +236,13 @@ Get\+Position\+: Get the position of the cia 402 device.
 \begin{DoxyReturn}{Returns}
 \+: Position (angle in \mbox{[}rad\mbox{]}) 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classCiA402Device_a54b43f6429da4c6c0241653355e81d36}\label{classCiA402Device_a54b43f6429da4c6c0241653355e81d36}} 
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Get\+Velocity@{Get\+Velocity}}
 \index{Get\+Velocity@{Get\+Velocity}!Ci\+A402\+Device@{Ci\+A402\+Device}}
-\subsubsection{\texorpdfstring{Get\+Velocity()}{GetVelocity()}}
-{\footnotesize\ttfamily double Ci\+A402\+Device\+::\+Get\+Velocity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
+\subsubsection[{\texorpdfstring{Get\+Velocity()}{GetVelocity()}}]{\setlength{\rightskip}{0pt plus 5cm}double Ci\+A402\+Device\+::\+Get\+Velocity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classCiA402Device_a54b43f6429da4c6c0241653355e81d36}{}\label{classCiA402Device_a54b43f6429da4c6c0241653355e81d36}
 
 
 \hyperlink{classCiA402Device_a54b43f6429da4c6c0241653355e81d36}{Ci\+A402\+Device\+::\+Get\+Velocity} This function converts a variable of type uint32\+\_\+t which contains the equivalent velocity as function of the enconder lines/sample into the velocity of a motor with an encoder of X lines in radians per second. 
@@ -202,24 +250,27 @@ Get\+Position\+: Get the position of the cia 402 device.
 \begin{DoxyReturn}{Returns}
 This function returns a variable of type double with value the actual velocity in rad/s 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classCiA402Device_a622a8884e21d9c4b5ffa0d6c1458ef08}\label{classCiA402Device_a622a8884e21d9c4b5ffa0d6c1458ef08}} 
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Init@{Init}}
 \index{Init@{Init}!Ci\+A402\+Device@{Ci\+A402\+Device}}
-\subsubsection{\texorpdfstring{Init()}{Init()}}
-{\footnotesize\ttfamily long Ci\+A402\+Device\+::\+Init (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{new\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{classCiA402Device_a49f298cf0d4d2d68007b3cb396e93a17}\label{classCiA402Device_a49f298cf0d4d2d68007b3cb396e93a17}} 
+\subsubsection[{\texorpdfstring{Init(\+Ci\+A402\+Setup\+Data $\ast$device\+Data)}{Init(CiA402SetupData *deviceData)}}]{\setlength{\rightskip}{0pt plus 5cm}long Ci\+A402\+Device\+::\+Init (
+\begin{DoxyParamCaption}
+\item[{{\bf Ci\+A402\+Setup\+Data} $\ast$}]{device\+Data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classCiA402Device_abc4e196ca1654a71bc396d77580701f0}{}\label{classCiA402Device_abc4e196ca1654a71bc396d77580701f0}
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Operation\+Mode@{Operation\+Mode}}
 \index{Operation\+Mode@{Operation\+Mode}!Ci\+A402\+Device@{Ci\+A402\+Device}}
-\subsubsection{\texorpdfstring{Operation\+Mode()}{OperationMode()}}
-{\footnotesize\ttfamily long Ci\+A402\+Device\+::\+Operation\+Mode (\begin{DoxyParamCaption}\item[{const vector$<$ uint8\+\_\+t $>$}]{new\+\_\+mode }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{classCiA402Device_a9d5d8df28085395a3ab711107a181ebc}\label{classCiA402Device_a9d5d8df28085395a3ab711107a181ebc}} 
+\subsubsection[{\texorpdfstring{Operation\+Mode(const vector$<$ uint8\+\_\+t $>$ new\+\_\+mode)}{OperationMode(const vector< uint8_t > new_mode)}}]{\setlength{\rightskip}{0pt plus 5cm}long Ci\+A402\+Device\+::\+Operation\+Mode (
+\begin{DoxyParamCaption}
+\item[{const vector$<$ uint8\+\_\+t $>$}]{new\+\_\+mode}
+\end{DoxyParamCaption}
+)}\hypertarget{classCiA402Device_a49f298cf0d4d2d68007b3cb396e93a17}{}\label{classCiA402Device_a49f298cf0d4d2d68007b3cb396e93a17}
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Print\+Status@{Print\+Status}}
 \index{Print\+Status@{Print\+Status}!Ci\+A402\+Device@{Ci\+A402\+Device}}
-\subsubsection{\texorpdfstring{Print\+Status()}{PrintStatus()}}
-{\footnotesize\ttfamily void Ci\+A402\+Device\+::\+Print\+Status (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
+\subsubsection[{\texorpdfstring{Print\+Status()}{PrintStatus()}}]{\setlength{\rightskip}{0pt plus 5cm}void Ci\+A402\+Device\+::\+Print\+Status (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classCiA402Device_a9d5d8df28085395a3ab711107a181ebc}{}\label{classCiA402Device_a9d5d8df28085395a3ab711107a181ebc}
 
 
 Print\+Status\+: Print the status word. 
@@ -227,12 +278,13 @@ Print\+Status\+: Print the status word.
 \begin{DoxyReturn}{Returns}
 \+: 0 if correct, negative on errors. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classCiA402Device_a8573afbf420c29aa86cd215d74f4e4e3}\label{classCiA402Device_a8573afbf420c29aa86cd215d74f4e4e3}} 
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Quick\+Stop@{Quick\+Stop}}
 \index{Quick\+Stop@{Quick\+Stop}!Ci\+A402\+Device@{Ci\+A402\+Device}}
-\subsubsection{\texorpdfstring{Quick\+Stop()}{QuickStop()}}
-{\footnotesize\ttfamily long Ci\+A402\+Device\+::\+Quick\+Stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
+\subsubsection[{\texorpdfstring{Quick\+Stop()}{QuickStop()}}]{\setlength{\rightskip}{0pt plus 5cm}long Ci\+A402\+Device\+::\+Quick\+Stop (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classCiA402Device_a8573afbf420c29aa86cd215d74f4e4e3}{}\label{classCiA402Device_a8573afbf420c29aa86cd215d74f4e4e3}
 
 
 Quick\+Stop\+: Fast turn off of the device. 
@@ -240,12 +292,13 @@ Quick\+Stop\+: Fast turn off of the device.
 \begin{DoxyReturn}{Returns}
 \+: 0 if correct, negative on errors. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classCiA402Device_ac4a6e4987ebe075d0ac07ee5fd4d410c}\label{classCiA402Device_ac4a6e4987ebe075d0ac07ee5fd4d410c}} 
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Reset@{Reset}}
 \index{Reset@{Reset}!Ci\+A402\+Device@{Ci\+A402\+Device}}
-\subsubsection{\texorpdfstring{Reset()}{Reset()}}
-{\footnotesize\ttfamily long Ci\+A402\+Device\+::\+Reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
+\subsubsection[{\texorpdfstring{Reset()}{Reset()}}]{\setlength{\rightskip}{0pt plus 5cm}long Ci\+A402\+Device\+::\+Reset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classCiA402Device_ac4a6e4987ebe075d0ac07ee5fd4d410c}{}\label{classCiA402Device_ac4a6e4987ebe075d0ac07ee5fd4d410c}
 
 
 Reset This function resets the node corresponding to this object. 
@@ -253,34 +306,38 @@ Reset This function resets the node corresponding to this object.
 \begin{DoxyReturn}{Returns}
 a long of value 0 if there are no errors. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classCiA402Device_ae9b30263a0592f0b254ae4f32cd9a765}\label{classCiA402Device_ae9b30263a0592f0b254ae4f32cd9a765}} 
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Scaling@{Scaling}}
 \index{Scaling@{Scaling}!Ci\+A402\+Device@{Ci\+A402\+Device}}
-\subsubsection{\texorpdfstring{Scaling()}{Scaling()}}
-{\footnotesize\ttfamily long Ci\+A402\+Device\+::\+Scaling (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{classCiA402Device_abf511a7d44b62ac93ae18fe21f8d51c9}\label{classCiA402Device_abf511a7d44b62ac93ae18fe21f8d51c9}} 
+\subsubsection[{\texorpdfstring{Scaling(void)}{Scaling(void)}}]{\setlength{\rightskip}{0pt plus 5cm}long Ci\+A402\+Device\+::\+Scaling (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classCiA402Device_ae9b30263a0592f0b254ae4f32cd9a765}{}\label{classCiA402Device_ae9b30263a0592f0b254ae4f32cd9a765}
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Set\+Communications@{Set\+Communications}}
 \index{Set\+Communications@{Set\+Communications}!Ci\+A402\+Device@{Ci\+A402\+Device}}
-\subsubsection{\texorpdfstring{Set\+Communications()}{SetCommunications()}}
-{\footnotesize\ttfamily long Ci\+A402\+Device\+::\+Set\+Communications (\begin{DoxyParamCaption}\item[{int}]{fd\+Port }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{classCiA402Device_a065607adbfdf2446887554b1a3192243}\label{classCiA402Device_a065607adbfdf2446887554b1a3192243}} 
+\subsubsection[{\texorpdfstring{Set\+Communications(int fd\+Port)}{SetCommunications(int fdPort)}}]{\setlength{\rightskip}{0pt plus 5cm}long Ci\+A402\+Device\+::\+Set\+Communications (
+\begin{DoxyParamCaption}
+\item[{int}]{fd\+Port}
+\end{DoxyParamCaption}
+)}\hypertarget{classCiA402Device_abf511a7d44b62ac93ae18fe21f8d51c9}{}\label{classCiA402Device_abf511a7d44b62ac93ae18fe21f8d51c9}
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Set\+Enc\+\_\+res@{Set\+Enc\+\_\+res}}
 \index{Set\+Enc\+\_\+res@{Set\+Enc\+\_\+res}!Ci\+A402\+Device@{Ci\+A402\+Device}}
-\subsubsection{\texorpdfstring{Set\+Enc\+\_\+res()}{SetEnc\_res()}}
-{\footnotesize\ttfamily long Ci\+A402\+Device\+::\+Set\+Enc\+\_\+res (\begin{DoxyParamCaption}\item[{int}]{lines }\end{DoxyParamCaption})}
-
+\subsubsection[{\texorpdfstring{Set\+Enc\+\_\+res(int lines)}{SetEnc_res(int lines)}}]{\setlength{\rightskip}{0pt plus 5cm}long Ci\+A402\+Device\+::\+Set\+Enc\+\_\+res (
+\begin{DoxyParamCaption}
+\item[{int}]{lines}
+\end{DoxyParamCaption}
+)}\hypertarget{classCiA402Device_a065607adbfdf2446887554b1a3192243}{}\label{classCiA402Device_a065607adbfdf2446887554b1a3192243}
 
 
 Set the Nº lines for incremental encoder quadrature (lines X 4) 
 
-\mbox{\Hypertarget{classCiA402Device_ac13cd5d90f8d39e1ef9734d035e67acb}\label{classCiA402Device_ac13cd5d90f8d39e1ef9734d035e67acb}} 
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Set\+Position@{Set\+Position}}
 \index{Set\+Position@{Set\+Position}!Ci\+A402\+Device@{Ci\+A402\+Device}}
-\subsubsection{\texorpdfstring{Set\+Position()}{SetPosition()}}
-{\footnotesize\ttfamily long Ci\+A402\+Device\+::\+Set\+Position (\begin{DoxyParamCaption}\item[{double}]{target }\end{DoxyParamCaption})}
-
+\subsubsection[{\texorpdfstring{Set\+Position(double target)}{SetPosition(double target)}}]{\setlength{\rightskip}{0pt plus 5cm}long Ci\+A402\+Device\+::\+Set\+Position (
+\begin{DoxyParamCaption}
+\item[{double}]{target}
+\end{DoxyParamCaption}
+)}\hypertarget{classCiA402Device_ac13cd5d90f8d39e1ef9734d035e67acb}{}\label{classCiA402Device_ac13cd5d90f8d39e1ef9734d035e67acb}
 
 
 \hyperlink{classCiA402Device_ac13cd5d90f8d39e1ef9734d035e67acb}{Ci\+A402\+Device\+::\+Set\+Position} This function performs the communication with the device to perform a position control in a motor and perform a motion towards a selected position. The motor remembers as position 0 the position in which it has been switched on, always returning to this position when its target is 0. 
@@ -293,50 +350,57 @@ Set the Nº lines for incremental encoder quadrature (lines X 4)
 \begin{DoxyReturn}{Returns}
 This function returns a variable of type long with value 0. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classCiA402Device_ac1c55984abb91928d52b0a49651cc18e}\label{classCiA402Device_ac1c55984abb91928d52b0a49651cc18e}} 
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Set\+Position\+R\+E\+C\+U\+R\+S\+I\+V\+E\+\_\+test@{Set\+Position\+R\+E\+C\+U\+R\+S\+I\+V\+E\+\_\+test}}
 \index{Set\+Position\+R\+E\+C\+U\+R\+S\+I\+V\+E\+\_\+test@{Set\+Position\+R\+E\+C\+U\+R\+S\+I\+V\+E\+\_\+test}!Ci\+A402\+Device@{Ci\+A402\+Device}}
-\subsubsection{\texorpdfstring{Set\+Position\+R\+E\+C\+U\+R\+S\+I\+V\+E\+\_\+test()}{SetPositionRECURSIVE\_test()}}
-{\footnotesize\ttfamily long Ci\+A402\+Device\+::\+Set\+Position\+R\+E\+C\+U\+R\+S\+I\+V\+E\+\_\+test (\begin{DoxyParamCaption}\item[{long}]{target }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{classCiA402Device_ad5b57f2ddfc103644daf157dcd6ab34e}\label{classCiA402Device_ad5b57f2ddfc103644daf157dcd6ab34e}} 
+\subsubsection[{\texorpdfstring{Set\+Position\+R\+E\+C\+U\+R\+S\+I\+V\+E\+\_\+test(long target)}{SetPositionRECURSIVE_test(long target)}}]{\setlength{\rightskip}{0pt plus 5cm}long Ci\+A402\+Device\+::\+Set\+Position\+R\+E\+C\+U\+R\+S\+I\+V\+E\+\_\+test (
+\begin{DoxyParamCaption}
+\item[{long}]{target}
+\end{DoxyParamCaption}
+)}\hypertarget{classCiA402Device_ac1c55984abb91928d52b0a49651cc18e}{}\label{classCiA402Device_ac1c55984abb91928d52b0a49651cc18e}
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Set\+Red\+\_\+\+Mot@{Set\+Red\+\_\+\+Mot}}
 \index{Set\+Red\+\_\+\+Mot@{Set\+Red\+\_\+\+Mot}!Ci\+A402\+Device@{Ci\+A402\+Device}}
-\subsubsection{\texorpdfstring{Set\+Red\+\_\+\+Mot()}{SetRed\_Mot()}}
-{\footnotesize\ttfamily long Ci\+A402\+Device\+::\+Set\+Red\+\_\+\+Mot (\begin{DoxyParamCaption}\item[{float}]{reduction\+\_\+ratio }\end{DoxyParamCaption})}
-
+\subsubsection[{\texorpdfstring{Set\+Red\+\_\+\+Mot(float reduction\+\_\+ratio)}{SetRed_Mot(float reduction_ratio)}}]{\setlength{\rightskip}{0pt plus 5cm}long Ci\+A402\+Device\+::\+Set\+Red\+\_\+\+Mot (
+\begin{DoxyParamCaption}
+\item[{float}]{reduction\+\_\+ratio}
+\end{DoxyParamCaption}
+)}\hypertarget{classCiA402Device_ad5b57f2ddfc103644daf157dcd6ab34e}{}\label{classCiA402Device_ad5b57f2ddfc103644daf157dcd6ab34e}
 
 
 Set the transmission ratio between the motor displacement in SI units and load displacement. 
 
-\mbox{\Hypertarget{classCiA402Device_a9fc81b5fd6bec7cf73a1e60b92b7bfc0}\label{classCiA402Device_a9fc81b5fd6bec7cf73a1e60b92b7bfc0}} 
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Set\+Sampling\+\_\+period@{Set\+Sampling\+\_\+period}}
 \index{Set\+Sampling\+\_\+period@{Set\+Sampling\+\_\+period}!Ci\+A402\+Device@{Ci\+A402\+Device}}
-\subsubsection{\texorpdfstring{Set\+Sampling\+\_\+period()}{SetSampling\_period()}}
-{\footnotesize\ttfamily long Ci\+A402\+Device\+::\+Set\+Sampling\+\_\+period (\begin{DoxyParamCaption}\item[{float}]{sampling\+\_\+period }\end{DoxyParamCaption})}
-
+\subsubsection[{\texorpdfstring{Set\+Sampling\+\_\+period(float sampling\+\_\+period)}{SetSampling_period(float sampling_period)}}]{\setlength{\rightskip}{0pt plus 5cm}long Ci\+A402\+Device\+::\+Set\+Sampling\+\_\+period (
+\begin{DoxyParamCaption}
+\item[{float}]{sampling\+\_\+period}
+\end{DoxyParamCaption}
+)}\hypertarget{classCiA402Device_a9fc81b5fd6bec7cf73a1e60b92b7bfc0}{}\label{classCiA402Device_a9fc81b5fd6bec7cf73a1e60b92b7bfc0}
 
 
 Set the speed/position loop sampling period of the motor Control (sampling\+\_\+slow\+\_\+loop) 
 
-\mbox{\Hypertarget{classCiA402Device_a1b88a18321d6dbee11258b48d49706ba}\label{classCiA402Device_a1b88a18321d6dbee11258b48d49706ba}} 
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Set\+Target\+\_\+\+V\+E\+L\+O\+C\+I\+T\+Y\+\_\+\+P\+R\+O\+P\+O\+R\+C\+I\+O\+N\+AL@{Set\+Target\+\_\+\+V\+E\+L\+O\+C\+I\+T\+Y\+\_\+\+P\+R\+O\+P\+O\+R\+C\+I\+O\+N\+AL}}
 \index{Set\+Target\+\_\+\+V\+E\+L\+O\+C\+I\+T\+Y\+\_\+\+P\+R\+O\+P\+O\+R\+C\+I\+O\+N\+AL@{Set\+Target\+\_\+\+V\+E\+L\+O\+C\+I\+T\+Y\+\_\+\+P\+R\+O\+P\+O\+R\+C\+I\+O\+N\+AL}!Ci\+A402\+Device@{Ci\+A402\+Device}}
-\subsubsection{\texorpdfstring{Set\+Target\+\_\+\+V\+E\+L\+O\+C\+I\+T\+Y\+\_\+\+P\+R\+O\+P\+O\+R\+C\+I\+O\+N\+A\+L()}{SetTarget\_VELOCITY\_PROPORCIONAL()}}
-{\footnotesize\ttfamily long Ci\+A402\+Device\+::\+Set\+Target\+\_\+\+V\+E\+L\+O\+C\+I\+T\+Y\+\_\+\+P\+R\+O\+P\+O\+R\+C\+I\+O\+N\+AL (\begin{DoxyParamCaption}\item[{double}]{target,  }\item[{float}]{kp }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{classCiA402Device_a556c03984774974dd3a1231793916d9b}\label{classCiA402Device_a556c03984774974dd3a1231793916d9b}} 
+\subsubsection[{\texorpdfstring{Set\+Target\+\_\+\+V\+E\+L\+O\+C\+I\+T\+Y\+\_\+\+P\+R\+O\+P\+O\+R\+C\+I\+O\+N\+A\+L(double target, float kp)}{SetTarget_VELOCITY_PROPORCIONAL(double target, float kp)}}]{\setlength{\rightskip}{0pt plus 5cm}long Ci\+A402\+Device\+::\+Set\+Target\+\_\+\+V\+E\+L\+O\+C\+I\+T\+Y\+\_\+\+P\+R\+O\+P\+O\+R\+C\+I\+O\+N\+AL (
+\begin{DoxyParamCaption}
+\item[{double}]{target, }
+\item[{float}]{kp}
+\end{DoxyParamCaption}
+)}\hypertarget{classCiA402Device_a1b88a18321d6dbee11258b48d49706ba}{}\label{classCiA402Device_a1b88a18321d6dbee11258b48d49706ba}
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Set\+Torque@{Set\+Torque}}
 \index{Set\+Torque@{Set\+Torque}!Ci\+A402\+Device@{Ci\+A402\+Device}}
-\subsubsection{\texorpdfstring{Set\+Torque()}{SetTorque()}}
-{\footnotesize\ttfamily long Ci\+A402\+Device\+::\+Set\+Torque (\begin{DoxyParamCaption}\item[{double}]{target }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{classCiA402Device_a20475438205c26cd4bcc689ed9c7fe95}\label{classCiA402Device_a20475438205c26cd4bcc689ed9c7fe95}} 
+\subsubsection[{\texorpdfstring{Set\+Torque(double target)}{SetTorque(double target)}}]{\setlength{\rightskip}{0pt plus 5cm}long Ci\+A402\+Device\+::\+Set\+Torque (
+\begin{DoxyParamCaption}
+\item[{double}]{target}
+\end{DoxyParamCaption}
+)}\hypertarget{classCiA402Device_a556c03984774974dd3a1231793916d9b}{}\label{classCiA402Device_a556c03984774974dd3a1231793916d9b}
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Setup\+\_\+\+Torque\+\_\+\+Mode@{Setup\+\_\+\+Torque\+\_\+\+Mode}}
 \index{Setup\+\_\+\+Torque\+\_\+\+Mode@{Setup\+\_\+\+Torque\+\_\+\+Mode}!Ci\+A402\+Device@{Ci\+A402\+Device}}
-\subsubsection{\texorpdfstring{Setup\+\_\+\+Torque\+\_\+\+Mode()}{Setup\_Torque\_Mode()}}
-{\footnotesize\ttfamily long Ci\+A402\+Device\+::\+Setup\+\_\+\+Torque\+\_\+\+Mode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
+\subsubsection[{\texorpdfstring{Setup\+\_\+\+Torque\+\_\+\+Mode()}{Setup_Torque_Mode()}}]{\setlength{\rightskip}{0pt plus 5cm}long Ci\+A402\+Device\+::\+Setup\+\_\+\+Torque\+\_\+\+Mode (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classCiA402Device_a20475438205c26cd4bcc689ed9c7fe95}{}\label{classCiA402Device_a20475438205c26cd4bcc689ed9c7fe95}
 
 
 Ci\+A402\+Device\+::\+Degree\+Conv This function converts a variable of type uint32\+\_\+t which contains the position of a motor with an encoder of 4096 lines in decimal degrees into the equivalent position as function of the enconders lines. If the parameter has a value of 360 the function will return an uint32\+\_\+t variable with a value of 4096. 
@@ -349,24 +413,29 @@ Ci\+A402\+Device\+::\+Degree\+Conv This function converts a variable of type uin
 \begin{DoxyReturn}{Returns}
 target\+Pos A uint32\+\_\+t variable with the equivalent position as a function of the encoder lines. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classCiA402Device_ac1db22a6a8a7d7a56590423bd7577c7b}\label{classCiA402Device_ac1db22a6a8a7d7a56590423bd7577c7b}} 
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Setup\+\_\+\+Velocity\+\_\+\+Mode@{Setup\+\_\+\+Velocity\+\_\+\+Mode}}
 \index{Setup\+\_\+\+Velocity\+\_\+\+Mode@{Setup\+\_\+\+Velocity\+\_\+\+Mode}!Ci\+A402\+Device@{Ci\+A402\+Device}}
-\subsubsection{\texorpdfstring{Setup\+\_\+\+Velocity\+\_\+\+Mode()}{Setup\_Velocity\_Mode()}}
-{\footnotesize\ttfamily long Ci\+A402\+Device\+::\+Setup\+\_\+\+Velocity\+\_\+\+Mode (\begin{DoxyParamCaption}\item[{const uint32\+\_\+t}]{target,  }\item[{const uint32\+\_\+t}]{acceleration }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{classCiA402Device_a221dbc5461823097981727a3baff5d0c}\label{classCiA402Device_a221dbc5461823097981727a3baff5d0c}} 
+\subsubsection[{\texorpdfstring{Setup\+\_\+\+Velocity\+\_\+\+Mode(const uint32\+\_\+t target=0, const uint32\+\_\+t acceleration=1)}{Setup_Velocity_Mode(const uint32_t target=0, const uint32_t acceleration=1)}}]{\setlength{\rightskip}{0pt plus 5cm}long Ci\+A402\+Device\+::\+Setup\+\_\+\+Velocity\+\_\+\+Mode (
+\begin{DoxyParamCaption}
+\item[{const uint32\+\_\+t}]{target = {\ttfamily 0}, }
+\item[{const uint32\+\_\+t}]{acceleration = {\ttfamily 1}}
+\end{DoxyParamCaption}
+)}\hypertarget{classCiA402Device_acd659c05abd1534881a0cec2326d4ba8}{}\label{classCiA402Device_acd659c05abd1534881a0cec2326d4ba8}
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Setup\+Position\+Mode@{Setup\+Position\+Mode}}
 \index{Setup\+Position\+Mode@{Setup\+Position\+Mode}!Ci\+A402\+Device@{Ci\+A402\+Device}}
-\subsubsection{\texorpdfstring{Setup\+Position\+Mode()}{SetupPositionMode()}}
-{\footnotesize\ttfamily long Ci\+A402\+Device\+::\+Setup\+Position\+Mode (\begin{DoxyParamCaption}\item[{const uint32\+\_\+t}]{velocity,  }\item[{const uint32\+\_\+t}]{acceleration }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{classCiA402Device_a498224b82a857197eb2d28beddc74729}\label{classCiA402Device_a498224b82a857197eb2d28beddc74729}} 
+\subsubsection[{\texorpdfstring{Setup\+Position\+Mode(const uint32\+\_\+t velocity=1, const uint32\+\_\+t acceleration=1)}{SetupPositionMode(const uint32_t velocity=1, const uint32_t acceleration=1)}}]{\setlength{\rightskip}{0pt plus 5cm}long Ci\+A402\+Device\+::\+Setup\+Position\+Mode (
+\begin{DoxyParamCaption}
+\item[{const uint32\+\_\+t}]{velocity = {\ttfamily 1}, }
+\item[{const uint32\+\_\+t}]{acceleration = {\ttfamily 1}}
+\end{DoxyParamCaption}
+)}\hypertarget{classCiA402Device_a726ff3dfbfc8ae76c01d26277d0b764c}{}\label{classCiA402Device_a726ff3dfbfc8ae76c01d26277d0b764c}
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Set\+Velocity@{Set\+Velocity}}
 \index{Set\+Velocity@{Set\+Velocity}!Ci\+A402\+Device@{Ci\+A402\+Device}}
-\subsubsection{\texorpdfstring{Set\+Velocity()}{SetVelocity()}}
-{\footnotesize\ttfamily long Ci\+A402\+Device\+::\+Set\+Velocity (\begin{DoxyParamCaption}\item[{double}]{target }\end{DoxyParamCaption})}
-
+\subsubsection[{\texorpdfstring{Set\+Velocity(double target)}{SetVelocity(double target)}}]{\setlength{\rightskip}{0pt plus 5cm}long Ci\+A402\+Device\+::\+Set\+Velocity (
+\begin{DoxyParamCaption}
+\item[{double}]{target}
+\end{DoxyParamCaption}
+)}\hypertarget{classCiA402Device_a498224b82a857197eb2d28beddc74729}{}\label{classCiA402Device_a498224b82a857197eb2d28beddc74729}
 
 
 \hyperlink{classCiA402Device_a498224b82a857197eb2d28beddc74729}{Ci\+A402\+Device\+::\+Set\+Velocity} This function converts the velocity of a motor with an encoder of X lines in radians per second into a variable of type uint32\+\_\+t which contains the equivalent velocity as function of the enconder lines/sample. 
@@ -379,18 +448,20 @@ target\+Pos A uint32\+\_\+t variable with the equivalent position as a function 
 \begin{DoxyReturn}{Returns}
 This function re1turns a variable of type long with value 0. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classCiA402Device_a32b4628098364846fe291312025f6fda}\label{classCiA402Device_a32b4628098364846fe291312025f6fda}} 
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Start\+Node@{Start\+Node}}
 \index{Start\+Node@{Start\+Node}!Ci\+A402\+Device@{Ci\+A402\+Device}}
-\subsubsection{\texorpdfstring{Start\+Node()}{StartNode()}}
-{\footnotesize\ttfamily long Ci\+A402\+Device\+::\+Start\+Node (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{classCiA402Device_a97acf47b3e3751c85fa70091d3bdfa6a}\label{classCiA402Device_a97acf47b3e3751c85fa70091d3bdfa6a}} 
+\subsubsection[{\texorpdfstring{Start\+Node()}{StartNode()}}]{\setlength{\rightskip}{0pt plus 5cm}long Ci\+A402\+Device\+::\+Start\+Node (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classCiA402Device_a32b4628098364846fe291312025f6fda}{}\label{classCiA402Device_a32b4628098364846fe291312025f6fda}
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Switch\+Off@{Switch\+Off}}
 \index{Switch\+Off@{Switch\+Off}!Ci\+A402\+Device@{Ci\+A402\+Device}}
-\subsubsection{\texorpdfstring{Switch\+Off()}{SwitchOff()}}
-{\footnotesize\ttfamily long Ci\+A402\+Device\+::\+Switch\+Off (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
+\subsubsection[{\texorpdfstring{Switch\+Off()}{SwitchOff()}}]{\setlength{\rightskip}{0pt plus 5cm}long Ci\+A402\+Device\+::\+Switch\+Off (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classCiA402Device_a97acf47b3e3751c85fa70091d3bdfa6a}{}\label{classCiA402Device_a97acf47b3e3751c85fa70091d3bdfa6a}
 
 
 Switch\+Off\+: Turn on the device. 
@@ -398,12 +469,13 @@ Switch\+Off\+: Turn on the device.
 \begin{DoxyReturn}{Returns}
 \+: 0 if correct, negative on errors. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classCiA402Device_ab77bce0d7f42429f5f8f092aacb02754}\label{classCiA402Device_ab77bce0d7f42429f5f8f092aacb02754}} 
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Switch\+On@{Switch\+On}}
 \index{Switch\+On@{Switch\+On}!Ci\+A402\+Device@{Ci\+A402\+Device}}
-\subsubsection{\texorpdfstring{Switch\+On()}{SwitchOn()}}
-{\footnotesize\ttfamily long Ci\+A402\+Device\+::\+Switch\+On (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
+\subsubsection[{\texorpdfstring{Switch\+On()}{SwitchOn()}}]{\setlength{\rightskip}{0pt plus 5cm}long Ci\+A402\+Device\+::\+Switch\+On (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classCiA402Device_ab77bce0d7f42429f5f8f092aacb02754}{}\label{classCiA402Device_ab77bce0d7f42429f5f8f092aacb02754}
 
 
 Switch\+On\+: Turn on the device and wait for commands. 
@@ -414,66 +486,60 @@ Switch\+On\+: Turn on the device and wait for commands.
 
 
 \subsection{Member Data Documentation}
-\mbox{\Hypertarget{classCiA402Device_a4e7a5a225fb27f5f02aeb0e6df38cd1f}\label{classCiA402Device_a4e7a5a225fb27f5f02aeb0e6df38cd1f}} 
+\index{Ci\+A402\+Device@{Ci\+A402\+Device}!actual\+Time\+Value@{actual\+Time\+Value}}
+\index{actual\+Time\+Value@{actual\+Time\+Value}!Ci\+A402\+Device@{Ci\+A402\+Device}}
+\subsubsection[{\texorpdfstring{actual\+Time\+Value}{actualTimeValue}}]{\setlength{\rightskip}{0pt plus 5cm}chrono\+::system\+\_\+clock\+::time\+\_\+point Ci\+A402\+Device\+::actual\+Time\+Value\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classCiA402Device_a2bd9cbd37d46453520e6fba51e720215}{}\label{classCiA402Device_a2bd9cbd37d46453520e6fba51e720215}
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!comm@{comm}}
 \index{comm@{comm}!Ci\+A402\+Device@{Ci\+A402\+Device}}
-\subsubsection{\texorpdfstring{comm}{comm}}
-{\footnotesize\ttfamily int Ci\+A402\+Device\+::comm\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{classCiA402Device_a3dfe8b82f4049137b0992934a9239053}\label{classCiA402Device_a3dfe8b82f4049137b0992934a9239053}} 
+\subsubsection[{\texorpdfstring{comm}{comm}}]{\setlength{\rightskip}{0pt plus 5cm}int Ci\+A402\+Device\+::comm\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classCiA402Device_a4e7a5a225fb27f5f02aeb0e6df38cd1f}{}\label{classCiA402Device_a4e7a5a225fb27f5f02aeb0e6df38cd1f}
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!current\+\_\+limit@{current\+\_\+limit}}
 \index{current\+\_\+limit@{current\+\_\+limit}!Ci\+A402\+Device@{Ci\+A402\+Device}}
-\subsubsection{\texorpdfstring{current\+\_\+limit}{current\_limit}}
-{\footnotesize\ttfamily int Ci\+A402\+Device\+::current\+\_\+limit\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{classCiA402Device_adb251ae496aeca707dcc51b43c64d0b8}\label{classCiA402Device_adb251ae496aeca707dcc51b43c64d0b8}} 
+\subsubsection[{\texorpdfstring{current\+\_\+limit}{current_limit}}]{\setlength{\rightskip}{0pt plus 5cm}int Ci\+A402\+Device\+::current\+\_\+limit\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classCiA402Device_a3dfe8b82f4049137b0992934a9239053}{}\label{classCiA402Device_a3dfe8b82f4049137b0992934a9239053}
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!current\+Position@{current\+Position}}
 \index{current\+Position@{current\+Position}!Ci\+A402\+Device@{Ci\+A402\+Device}}
-\subsubsection{\texorpdfstring{current\+Position}{currentPosition}}
-{\footnotesize\ttfamily double Ci\+A402\+Device\+::current\+Position\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{classCiA402Device_aab8a459615d73c60728344aaedc9f66c}\label{classCiA402Device_aab8a459615d73c60728344aaedc9f66c}} 
+\subsubsection[{\texorpdfstring{current\+Position}{currentPosition}}]{\setlength{\rightskip}{0pt plus 5cm}double Ci\+A402\+Device\+::current\+Position\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classCiA402Device_adb251ae496aeca707dcc51b43c64d0b8}{}\label{classCiA402Device_adb251ae496aeca707dcc51b43c64d0b8}
+\index{Ci\+A402\+Device@{Ci\+A402\+Device}!dts\+Wait@{dts\+Wait}}
+\index{dts\+Wait@{dts\+Wait}!Ci\+A402\+Device@{Ci\+A402\+Device}}
+\subsubsection[{\texorpdfstring{dts\+Wait}{dtsWait}}]{\setlength{\rightskip}{0pt plus 5cm}chrono\+::nanoseconds Ci\+A402\+Device\+::dts\+Wait\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classCiA402Device_af3e9acfa1412aad23657a97464626f1d}{}\label{classCiA402Device_af3e9acfa1412aad23657a97464626f1d}
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!encoder\+\_\+resolution@{encoder\+\_\+resolution}}
 \index{encoder\+\_\+resolution@{encoder\+\_\+resolution}!Ci\+A402\+Device@{Ci\+A402\+Device}}
-\subsubsection{\texorpdfstring{encoder\+\_\+resolution}{encoder\_resolution}}
-{\footnotesize\ttfamily int Ci\+A402\+Device\+::encoder\+\_\+resolution\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{classCiA402Device_abc96eb117cc948d86e3bd4c07c7fe807}\label{classCiA402Device_abc96eb117cc948d86e3bd4c07c7fe807}} 
+\subsubsection[{\texorpdfstring{encoder\+\_\+resolution}{encoder_resolution}}]{\setlength{\rightskip}{0pt plus 5cm}int Ci\+A402\+Device\+::encoder\+\_\+resolution\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classCiA402Device_aab8a459615d73c60728344aaedc9f66c}{}\label{classCiA402Device_aab8a459615d73c60728344aaedc9f66c}
+\index{Ci\+A402\+Device@{Ci\+A402\+Device}!encoder\+Change\+Time@{encoder\+Change\+Time}}
+\index{encoder\+Change\+Time@{encoder\+Change\+Time}!Ci\+A402\+Device@{Ci\+A402\+Device}}
+\subsubsection[{\texorpdfstring{encoder\+Change\+Time}{encoderChangeTime}}]{\setlength{\rightskip}{0pt plus 5cm}chrono\+::system\+\_\+clock\+::time\+\_\+point Ci\+A402\+Device\+::encoder\+Change\+Time\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classCiA402Device_afb0d98f7068e7373f6d7b54d149f0680}{}\label{classCiA402Device_afb0d98f7068e7373f6d7b54d149f0680}
+\index{Ci\+A402\+Device@{Ci\+A402\+Device}!encoder\+Span@{encoder\+Span}}
+\index{encoder\+Span@{encoder\+Span}!Ci\+A402\+Device@{Ci\+A402\+Device}}
+\subsubsection[{\texorpdfstring{encoder\+Span}{encoderSpan}}]{\setlength{\rightskip}{0pt plus 5cm}double Ci\+A402\+Device\+::encoder\+Span\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classCiA402Device_a332cd74ce718607e9359b3db0f9ac402}{}\label{classCiA402Device_a332cd74ce718607e9359b3db0f9ac402}
+\index{Ci\+A402\+Device@{Ci\+A402\+Device}!last\+Position@{last\+Position}}
+\index{last\+Position@{last\+Position}!Ci\+A402\+Device@{Ci\+A402\+Device}}
+\subsubsection[{\texorpdfstring{last\+Position}{lastPosition}}]{\setlength{\rightskip}{0pt plus 5cm}double Ci\+A402\+Device\+::last\+Position\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classCiA402Device_a18ab540b52f7de30257f92340583a750}{}\label{classCiA402Device_a18ab540b52f7de30257f92340583a750}
+\index{Ci\+A402\+Device@{Ci\+A402\+Device}!last\+Time\+Value@{last\+Time\+Value}}
+\index{last\+Time\+Value@{last\+Time\+Value}!Ci\+A402\+Device@{Ci\+A402\+Device}}
+\subsubsection[{\texorpdfstring{last\+Time\+Value}{lastTimeValue}}]{\setlength{\rightskip}{0pt plus 5cm}chrono\+::system\+\_\+clock\+::time\+\_\+point Ci\+A402\+Device\+::last\+Time\+Value\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classCiA402Device_a3877e4a9b429edbac68503a828dd349d}{}\label{classCiA402Device_a3877e4a9b429edbac68503a828dd349d}
+\index{Ci\+A402\+Device@{Ci\+A402\+Device}!mean\+Velocity@{mean\+Velocity}}
+\index{mean\+Velocity@{mean\+Velocity}!Ci\+A402\+Device@{Ci\+A402\+Device}}
+\subsubsection[{\texorpdfstring{mean\+Velocity}{meanVelocity}}]{\setlength{\rightskip}{0pt plus 5cm}double Ci\+A402\+Device\+::mean\+Velocity\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classCiA402Device_af926910c5a7e80c6ec198e1bd110b8d1}{}\label{classCiA402Device_af926910c5a7e80c6ec198e1bd110b8d1}
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!port@{port}}
 \index{port@{port}!Ci\+A402\+Device@{Ci\+A402\+Device}}
-\subsubsection{\texorpdfstring{port}{port}}
-{\footnotesize\ttfamily \hyperlink{classPortBase}{Port\+Base}$\ast$ Ci\+A402\+Device\+::port\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{classCiA402Device_ad433f5fc62f2f7e78815807418ada3ba}\label{classCiA402Device_ad433f5fc62f2f7e78815807418ada3ba}} 
+\subsubsection[{\texorpdfstring{port}{port}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Port\+Base}$\ast$ Ci\+A402\+Device\+::port\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classCiA402Device_abc96eb117cc948d86e3bd4c07c7fe807}{}\label{classCiA402Device_abc96eb117cc948d86e3bd4c07c7fe807}
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!reduction\+\_\+ratio\+\_\+motor@{reduction\+\_\+ratio\+\_\+motor}}
 \index{reduction\+\_\+ratio\+\_\+motor@{reduction\+\_\+ratio\+\_\+motor}!Ci\+A402\+Device@{Ci\+A402\+Device}}
-\subsubsection{\texorpdfstring{reduction\+\_\+ratio\+\_\+motor}{reduction\_ratio\_motor}}
-{\footnotesize\ttfamily float Ci\+A402\+Device\+::reduction\+\_\+ratio\+\_\+motor\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{classCiA402Device_a5d0d4f4f4fcb7413e5de0270341fb209}\label{classCiA402Device_a5d0d4f4f4fcb7413e5de0270341fb209}} 
+\subsubsection[{\texorpdfstring{reduction\+\_\+ratio\+\_\+motor}{reduction_ratio_motor}}]{\setlength{\rightskip}{0pt plus 5cm}float Ci\+A402\+Device\+::reduction\+\_\+ratio\+\_\+motor\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classCiA402Device_ad433f5fc62f2f7e78815807418ada3ba}{}\label{classCiA402Device_ad433f5fc62f2f7e78815807418ada3ba}
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Samp\+SL@{Samp\+SL}}
 \index{Samp\+SL@{Samp\+SL}!Ci\+A402\+Device@{Ci\+A402\+Device}}
-\subsubsection{\texorpdfstring{Samp\+SL}{SampSL}}
-{\footnotesize\ttfamily float Ci\+A402\+Device\+::\+Samp\+SL\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{classCiA402Device_a59de671e30be6f3f8f4c6ede7595d16c}\label{classCiA402Device_a59de671e30be6f3f8f4c6ede7595d16c}} 
+\subsubsection[{\texorpdfstring{Samp\+SL}{SampSL}}]{\setlength{\rightskip}{0pt plus 5cm}float Ci\+A402\+Device\+::\+Samp\+SL\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classCiA402Device_a5d0d4f4f4fcb7413e5de0270341fb209}{}\label{classCiA402Device_a5d0d4f4f4fcb7413e5de0270341fb209}
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Scaling\+\_\+\+Factors\+\_\+\+Acceleration@{Scaling\+\_\+\+Factors\+\_\+\+Acceleration}}
 \index{Scaling\+\_\+\+Factors\+\_\+\+Acceleration@{Scaling\+\_\+\+Factors\+\_\+\+Acceleration}!Ci\+A402\+Device@{Ci\+A402\+Device}}
-\subsubsection{\texorpdfstring{Scaling\+\_\+\+Factors\+\_\+\+Acceleration}{Scaling\_Factors\_Acceleration}}
-{\footnotesize\ttfamily float Ci\+A402\+Device\+::\+Scaling\+\_\+\+Factors\+\_\+\+Acceleration\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{classCiA402Device_af6df63ddd2ddc1953f847855436ef129}\label{classCiA402Device_af6df63ddd2ddc1953f847855436ef129}} 
+\subsubsection[{\texorpdfstring{Scaling\+\_\+\+Factors\+\_\+\+Acceleration}{Scaling_Factors_Acceleration}}]{\setlength{\rightskip}{0pt plus 5cm}float Ci\+A402\+Device\+::\+Scaling\+\_\+\+Factors\+\_\+\+Acceleration\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classCiA402Device_a59de671e30be6f3f8f4c6ede7595d16c}{}\label{classCiA402Device_a59de671e30be6f3f8f4c6ede7595d16c}
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Scaling\+\_\+\+Factors\+\_\+\+Position@{Scaling\+\_\+\+Factors\+\_\+\+Position}}
 \index{Scaling\+\_\+\+Factors\+\_\+\+Position@{Scaling\+\_\+\+Factors\+\_\+\+Position}!Ci\+A402\+Device@{Ci\+A402\+Device}}
-\subsubsection{\texorpdfstring{Scaling\+\_\+\+Factors\+\_\+\+Position}{Scaling\_Factors\_Position}}
-{\footnotesize\ttfamily float Ci\+A402\+Device\+::\+Scaling\+\_\+\+Factors\+\_\+\+Position\hspace{0.3cm}{\ttfamily [private]}}
-
-\mbox{\Hypertarget{classCiA402Device_a57db6ccb730d3c26b7b33000d371b3bf}\label{classCiA402Device_a57db6ccb730d3c26b7b33000d371b3bf}} 
+\subsubsection[{\texorpdfstring{Scaling\+\_\+\+Factors\+\_\+\+Position}{Scaling_Factors_Position}}]{\setlength{\rightskip}{0pt plus 5cm}float Ci\+A402\+Device\+::\+Scaling\+\_\+\+Factors\+\_\+\+Position\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classCiA402Device_af6df63ddd2ddc1953f847855436ef129}{}\label{classCiA402Device_af6df63ddd2ddc1953f847855436ef129}
 \index{Ci\+A402\+Device@{Ci\+A402\+Device}!Scaling\+\_\+\+Factors\+\_\+\+Velocity@{Scaling\+\_\+\+Factors\+\_\+\+Velocity}}
 \index{Scaling\+\_\+\+Factors\+\_\+\+Velocity@{Scaling\+\_\+\+Factors\+\_\+\+Velocity}!Ci\+A402\+Device@{Ci\+A402\+Device}}
-\subsubsection{\texorpdfstring{Scaling\+\_\+\+Factors\+\_\+\+Velocity}{Scaling\_Factors\_Velocity}}
-{\footnotesize\ttfamily float Ci\+A402\+Device\+::\+Scaling\+\_\+\+Factors\+\_\+\+Velocity\hspace{0.3cm}{\ttfamily [private]}}
-
+\subsubsection[{\texorpdfstring{Scaling\+\_\+\+Factors\+\_\+\+Velocity}{Scaling_Factors_Velocity}}]{\setlength{\rightskip}{0pt plus 5cm}float Ci\+A402\+Device\+::\+Scaling\+\_\+\+Factors\+\_\+\+Velocity\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classCiA402Device_a57db6ccb730d3c26b7b33000d371b3bf}{}\label{classCiA402Device_a57db6ccb730d3c26b7b33000d371b3bf}
+\index{Ci\+A402\+Device@{Ci\+A402\+Device}!t\+Waited@{t\+Waited}}
+\index{t\+Waited@{t\+Waited}!Ci\+A402\+Device@{Ci\+A402\+Device}}
+\subsubsection[{\texorpdfstring{t\+Waited}{tWaited}}]{\setlength{\rightskip}{0pt plus 5cm}chrono\+::nanoseconds Ci\+A402\+Device\+::t\+Waited\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classCiA402Device_ad44fd620387924741772ab8e02d8b95a}{}\label{classCiA402Device_ad44fd620387924741772ab8e02d8b95a}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
