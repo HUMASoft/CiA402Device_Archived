@@ -544,7 +544,7 @@ int32_t accelerationr;
    return 0;
 }
 
-long CiA402Device::Setup_Velocity_Mode(const uint32_t target,const uint32_t acceleration){
+long CiA402Device::Setup_Velocity_Mode(const uint32_t acceleration, const uint32_t target){
 //    In the Velocity Profile Mode the drive performs speed control.
 //    The built-in reference generator computes a speed profile with a trapezoidal shape,
 //    due to a limited acceleration. The Target Velocity object specifies
