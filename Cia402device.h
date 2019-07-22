@@ -122,7 +122,7 @@ private:
     int comm; //port file de
     //unsigned int id;
 
-    PortBase* port;
+//    PortBase* port;
 
     float reduction_ratio_motor;    // Transmission ratio between the motor displacement in SI units and load displacement
     int encoder_resolution;         // Nº lines for incremental encoder quadrature  (lines X 4)

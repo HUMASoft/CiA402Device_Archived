@@ -189,14 +189,14 @@ long SocketCanPort::Init(string canPort)
     }
     //get and show index
     ioctl(portId, SIOCGIFINDEX, &ifr);
-    printf("%s portId at index %d\n", ifr.ifr_name, ifr.ifr_ifindex);
+//    printf("%s portId at index %d\n", ifr.ifr_name, ifr.ifr_ifindex);
     addr.can_ifindex = ifr.ifr_ifindex;
     if(bind(portId, (struct sockaddr *)&addr, sizeof(addr)) < 0)
     {
         perror("Error in socket bind");
         return -2;
     }
-    printf("portId index %d\n", portId);
+//    printf("portId index %d\n", portId);
 
 
 
@@ -210,14 +210,14 @@ long SocketCanPort::Init(string canPort)
     }
     //get and show index
     ioctl(portNMT, SIOCGIFINDEX, &ifr);
-    printf("%s portNMT at index %d\n", ifr.ifr_name, ifr.ifr_ifindex);
+//    printf("%s portNMT at index %d\n", ifr.ifr_name, ifr.ifr_ifindex);
     addr.can_ifindex = ifr.ifr_ifindex;
     if(bind(portNMT, (struct sockaddr *)&addr, sizeof(addr)) < 0)
     {
         perror("Error in socket bind");
         return -2;
     }
-    printf("portNMT index %d\n", portNMT);
+//    printf("portNMT index %d\n", portNMT);
     //Add nmt filters (get only 0x000 cobid's)
     can_filter rfilterNMT[1];
     rfilterNMT[0].can_id   = 0x000;

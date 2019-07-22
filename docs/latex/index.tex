@@ -6,17 +6,17 @@ This library is intended for the use with C\+Make build system and Socket\+Can h
 
 
 \begin{DoxyCode}
-SUBDIR\_INCLUDE\_DIRECTORIES
-SUBDIR\_LINK\_NAMES
+1 SUBDIR\_INCLUDE\_DIRECTORIES
+2 SUBDIR\_LINK\_NAMES
 \end{DoxyCode}
 
 
-Then, assuming the library is placed at \char`\"{}\$\{\+P\+R\+O\+J\+E\+C\+T\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+D\+I\+R\}/lib/\+Ci\+A402\+Device/\char`\"{} (for example after clone with {\ttfamily git clone \href{https://github.com/HUMASoft/CiA402Device.git}{\tt https\+://github.\+com/\+H\+U\+M\+A\+Soft/\+Ci\+A402\+Device.\+git}}, it is enough to add the following lines to C\+Make\+Lists.\+txt to add includes\+:
+Then, assuming the library is placed at \char`\"{}\$\{\+P\+R\+O\+J\+E\+C\+T\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+D\+I\+R\}/lib/\+Ci\+A402\+Device/\char`\"{} (for example after clone with {\ttfamily git clone \href{https://github.com/HUMASoft/CiA402Device.git}{\tt https\+://github.\+com/\+H\+U\+M\+A\+Soft/\+Ci\+A402\+Device.\+git}}, it is enough to add the following lines to \hyperlink{CMakeLists_8txt}{C\+Make\+Lists.\+txt} to add includes\+:
 
 
 \begin{DoxyCode}
-add\_subdirectory($\{PROJECT\_SOURCE\_DIR\}/lib/CiA402Device/)
-INCLUDE\_DIRECTORIES($\{SUBDIR\_INCLUDE\_DIRECTORIES\})
+1 add\_subdirectory($\{PROJECT\_SOURCE\_DIR\}/lib/CiA402Device/)
+2 INCLUDE\_DIRECTORIES($\{SUBDIR\_INCLUDE\_DIRECTORIES\})
 \end{DoxyCode}
 
 
@@ -24,7 +24,7 @@ Also after \char`\"{}add\+\_\+executable( \$\{name\} \$\{sourcefile\} )\char`\"{
 
 
 \begin{DoxyCode}
-target\_link\_libraries( $\{PROJECT\_NAME\} $\{SUBDIR\_LINK\_NAMES\} )
+1 target\_link\_libraries( $\{PROJECT\_NAME\} $\{SUBDIR\_LINK\_NAMES\} )
 \end{DoxyCode}
 
 
@@ -34,8 +34,8 @@ Remember to start can interface by typing these lines\+:
 
 
 \begin{DoxyCode}
-sudo ip link add dev can0 type can
-sudo ip link set up can0
+1 sudo ip link add dev can0 type can
+2 sudo ip link set up can0
 \end{DoxyCode}
 
 
