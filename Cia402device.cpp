@@ -147,17 +147,18 @@ long CiA402Device::SwitchOn()
 {
 
 
+    EnablePDOs();
 
     long response;
 
-//     cout<<"READYTOSWITCHON"<<endl;
+     cout<<"READYTOSWITCHON"<<endl;
      WritePDO(od::goreadytoswitchon);
 
      //it is the same for all pdos??
      response = ReadPDO(0);
      FlushBuffer();
 //     response = ReadPDO(1);
-//     cout<<"READYTOSWITCHON RESPONSE: " << response <<endl;
+     cout<<"READYTOSWITCHON RESPONSE: " << response <<endl;
 
 //     cout<<"SWITCHON"<<endl;
      response = WritePDO(od::goswitchon);

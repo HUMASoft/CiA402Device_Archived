@@ -72,6 +72,7 @@ public:
     long ReadErrorNMT();
     long ReadPDO(long number);
     long DisablePDOs();
+    long EnablePDOs();
 
 
     uint32_t data4x8to32(const uint8_t *in, int dlc);
@@ -158,6 +159,8 @@ namespace pdo
 {
 
 const vector<uint8_t> tx0enable={0x00,0x1A,0x00};//TPDO1
+const vector<uint8_t> tx0sub1={0x00,0x1A,0x01};//TPDO1.1
+const vector<uint8_t> tx0sub2={0x00,0x1A,0x02};//TPDO1.2
 const vector<uint8_t> tx1enable={0x01,0x1A,0x00};//TPDO2
 const vector<uint8_t> tx2enable={0x02,0x1A,0x00};//TPDO3
 const vector<uint8_t> tx3enable={0x03,0x1A,0x00};//TPDO4

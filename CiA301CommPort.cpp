@@ -230,6 +230,26 @@ long CiA301CommPort::DisablePDOs()
     return 0;
 }
 
+long CiA301CommPort::EnablePDOs()
+{
+    //Can Open iPos manual page 194
+    //Send the following message:
+    //(SDO write access to object 1A00 h sub-index 0 the 8-bit value 00 h ):
+    vector<uint8_t> data={0x10, 0x00, 0x41, 0x60};
+    cout << WriteSDO(pdo::tx0sub1 ,data);
+    data={0x02};
+    cout << WriteSDO(pdo::tx0enable ,data);
+
+    //Can Open iPos manual page 268
+    //Send the following message:
+    //(SDO write access to object 1A01 h sub-index 0 the 8-bit value 00 h ):
+    cout << WriteSDO(pdo::tx1enable ,data);
+    cout << WriteSDO(pdo::tx2enable ,data);
+    cout << WriteSDO(pdo::tx3enable ,data);
+
+    return 0;
+}
+
 long CiA301CommPort::WritePDO(const vector<uint8_t> &command)
 {
 
