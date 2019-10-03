@@ -151,7 +151,7 @@ long CiA402Device::SwitchOn()
 
     long response;
 
-     cout<<"READYTOSWITCHON"<<endl;
+     cout<<"GOREADYTOSWITCHON"<<endl;
      WritePDO(od::goreadytoswitchon);
 
      //it is the same for all pdos??
