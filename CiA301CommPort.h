@@ -46,7 +46,7 @@ public:
     /// \param command The mesage that is sent.
     /// \return 0 if no error.
     ///
-    long WritePDO(const vector<uint8_t> &command);
+    long WritePDO(long number, const vector<uint8_t> &command);
 
     long FlushBuffer();
 
@@ -80,6 +80,7 @@ public:
 
 
 
+    long WritePDO1(const vector<uint8_t> &command);
 protected:
 
     //variables

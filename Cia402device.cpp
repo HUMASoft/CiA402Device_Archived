@@ -152,7 +152,7 @@ long CiA402Device::SwitchOn()
     long response;
 
      cout<<"GOREADYTOSWITCHON"<<endl;
-     WritePDO(od::goreadytoswitchon);
+     WritePDO1(od::goreadytoswitchon);
 
      //it is the same for all pdos??
      response = ReadPDO(0);
@@ -161,7 +161,7 @@ long CiA402Device::SwitchOn()
      cout<<"READYTOSWITCHON RESPONSE: " << response <<endl;
 
 //     cout<<"SWITCHON"<<endl;
-     response = WritePDO(od::goswitchon);
+     response = WritePDO1(od::goswitchon);
 //cout<<"SWITCHON WritePDO RESPONSE" << response <<endl;
      //cout<<"response" << response <<endl;
      //FlushBuffer(2); //remove two messages, pdo1tx and pdo2tx
@@ -173,7 +173,7 @@ long CiA402Device::SwitchOn()
 
 //     cout<<"SWITCHON RESPONSE" << response <<endl;
 
-     response = WritePDO(od::goenable);
+     response = WritePDO1(od::goenable);
      cout<<"NODE " << (uint)id <<" ENABLED"<<endl;
      DisablePDOs();
      sleep(1);
@@ -318,7 +318,7 @@ int CiA402Device::CheckError()
 }
 
 long CiA402Device::ForceSwitchOff(){
-    WritePDO(od::goswitchondisable);
+    WritePDO1(od::goswitchondisable);
     return 0;
 }
 
@@ -341,14 +341,14 @@ long CiA402Device::SwitchOff()
     case 0x21:
         //cout<<"2"<<endl;
         cout<<"7"<<endl;
-        WritePDO(od::quickstop);
+        WritePDO1(od::quickstop);
         FlushBuffer();
         break;
     case 0x23:
         cout<<"10"<<endl;
         //WritePDO(od::readytoswitchon);
         //FlushBuffer();
-        WritePDO(od::quickstop);
+        WritePDO1(od::quickstop);
         FlushBuffer();
         break;
     case 0x27:
@@ -358,14 +358,14 @@ long CiA402Device::SwitchOff()
         WritePDO(od::readytoswitchon);
         FlushBuffer();*/
         cout<<"11"<<endl;
-        WritePDO(od::quickstop);
+        WritePDO1(od::quickstop);
         FlushBuffer();
         cout<<"12"<<endl;
         WriteNMT(od::start);
         break;
     case 0x07:
         cout<<"5"<<endl;
-        WritePDO(od::quickstop);
+        WritePDO1(od::quickstop);
         FlushBuffer();
         break;
     case 0x0f:
@@ -391,7 +391,7 @@ long CiA402Device::QuickStop()
     WriteSDO(od::stop_option_code,mode);
     sleep(1);
     cout<<"SwitchOff"<<endl;
-    WritePDO(od::quickstop);
+    WritePDO1(od::quickstop);
     FlushBuffer();
 
     return 0;
@@ -652,45 +652,43 @@ long CiA402Device::SetPositionRECURSIVE_test(long target){
 
 long CiA402Device::SetPosition(double target){
 
-//WATCH SLEEPS!!!!!!!!!!!!
-//remove when working code
-    //vector<uint8_t> value;
-    //convert target to value
-    WritePDO(od::goenable);
-  //  FlushBuffer();
-    //sleep(1);
+
+    long retval;
+
+    //Why is this needed?
+    WritePDO1(od::goenable);
+
+    //convert target to internal units value
     long target_t=(long)(target*Scaling_Factors_Position);
 
-   // cout<<"target deg: "<<target<<" -- target_t: "<< target_t<<endl;
-
-    WriteSDO(od::target_position,data32to4x8(target_t));
-//    FlushBuffer();
+    //Write the IU target value in dictionary
+    retval = WriteSDO(od::target_position,data32to4x8(target_t));
+    //alternative, use PDO?
     //WritePDO4(data32to4x8(target));
-    //sleep(1);
-    long pos = ReadSDO(od::target_position);
-
-    //cout<<"target_position: "<<pos<<endl;
-    FlushBuffer();
-
-    //sleep(1);
 
     //lectura del status word y comprobar target reached (posicion bit11 = 1)
     //cada vez que la statusword cambia, envía un mensaje pdo.
     //revisar esto para esperar el mensaje correcto.
-    long stat = ReadSDO(od::statusword);
+//    long stat = ReadSDO(od::statusword);
     //cout<<"statusword: "<<stat<<endl;
     //FlushBuffer();
     //sleep(1);
 
-    //setup via control word
-//    vector<uint8_t>cw={0x30,0x08,0x00 ,0x00 };
-//    WritePDO(cw);
+    //Send control word to update the system
+    // ipos manual page 149
+    //bits: 6=0(absolute) 5=1(immediatly) 4=1(update)
+    // 0100000000111011 --> 40 3B
+    // 0100000000111111 --> 40 3F
+//    WritePDO1(data32to4x8(0x403B));
+    //run via control word
+    vector<uint8_t>cw={0x3F,0x00};
+    WritePDO1(cw);
 //    sleep(1);01100100
- //   cout<<"RUN"<<endl;
+//    cout<<"RUN"<<endl;
 
-      WritePDO(od::run);
+//      WritePDO1(od::run);
      // FlushBuffer();
-    return 0;
+    return 0;//stat;
 }
 
 /// \brief CiA402Device::SetVelocity This function converts the velocity of a motor with an encoder of X lines in radians per second
@@ -778,7 +776,7 @@ long CiA402Device::SetTorque(double target){
 
     //cout << " targetr: " << targetr << ", input target: " << target << ", " <<target*ANALOGUE_INPUT_SCALE/2.0 << endl;
 
-    WritePDO(od::run);
+    WritePDO1(od::run);
     //FlushBuffer();
     return 0;
 }

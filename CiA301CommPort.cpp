@@ -116,10 +116,13 @@ long CiA301CommPort::WriteSDO(const vector<uint8_t> &address, const vector<uint8
 //    //and wait for write response
 //    co_msg output;
 
-    //every write operation returns an answer
-    //wait the answer (tx0(580)+id)
+    //every write operation returns an empty answer if correct
+    //wait the answer in TPDO1 (tx0(580)+id)
     co_msg output;
     ReadCobId(sdo::tx0+id, output);
+    //alternative: use PDO, but no check is available.
+//    if (ReadPDO(0) != 0) return -1;
+
 
 
     for (long reps=0 ; reps<FIND_RETRY ;reps++)
@@ -170,6 +173,12 @@ long CiA301CommPort::WriteSDO(const vector<uint8_t> &address, const vector<uint8
     return ret;
 }
 
+
+///
+/// \brief CiA301CommPort::ReadPDO
+/// \param number: Use numbers between 0(TPDO1) and 3 (TPDO4).
+/// \return Data field response converted to long.
+///
 long CiA301CommPort::ReadPDO(long number)
 {
 
@@ -250,7 +259,7 @@ long CiA301CommPort::EnablePDOs()
     return 0;
 }
 
-long CiA301CommPort::WritePDO(const vector<uint8_t> &command)
+long CiA301CommPort::WritePDO( long number,const vector<uint8_t> &command)
 {
 
     //co_msg output;
@@ -270,6 +279,25 @@ long CiA301CommPort::WritePDO(const vector<uint8_t> &command)
 }
 
 
+
+long CiA301CommPort::WritePDO1(const vector<uint8_t> &command)
+{
+
+    //co_msg output;
+
+    //cout << "id" << id << endl;
+    //Ask an sdo read from address
+    SendMessage(SetCanOpenMsg(pdo::rx0+id, 0 ,command) );
+
+    //Wait for the answer
+    //output = SetCanOpenMsg(sdo::tx0+id, 0 ,address);
+
+
+    //Get the data from output
+    //ReadCobId(pdo::tx0+id,output);
+
+    return 0;
+}
 
 long CiA301CommPort::WritePDO4(const vector<uint8_t> &command)
 {
@@ -640,20 +668,20 @@ int CiA301CommPort::ReadCobId(uint16_t expected_cobid, co_msg & output )
         //If the response is the answer expected, continue
         if (input.id == expected_cobid)
         {
-            //cout << " comp: " << (input.id == expected_cobid) << endl;
+//            cout << " comp: " << (input.id == expected_cobid) << endl;
 //            FlushBuffer();
             break;
         }
         //if not cobid but node id:
         if (GET_NODE_ID(input.id) == GET_NODE_ID(expected_cobid) )
         {
-            //cout << " Cobid still not received. Received: " << std::hex << input.id << std::dec << endl;
+//            cout << " Cobid still not received. Received: " << std::hex << input.id << std::dec << endl;
             //if id, check if error
             //return -1;
         }
         else
         {
-            //cout << " Cobid still not received. Received: " << std::hex << input.id << std::dec << endl;
+//            cout << " Cobid still not received. Received: " << std::hex << input.id << std::dec << endl;
             otherMsgs.push_back(input);
         }
         if (reps==FIND_RETRY-1)
