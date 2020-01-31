@@ -87,6 +87,7 @@ public:
     long Setup_Velocity_Mode(const uint32_t acceleration=1, const uint32_t target=0);
     long Setup_Torque_Mode();
     long SetTorque(double target);
+    long SetAmpRaw(double target);
     long ForceSwitchOff();
 
 

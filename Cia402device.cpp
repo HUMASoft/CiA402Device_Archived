@@ -771,6 +771,9 @@ long CiA402Device::SetTorque(double target){
     else if(target < -1)
         targetr = int32_t(-ANALOGUE_INPUT_SCALE/2.0)*HIGHPART_BITSHIFT_16;
 
+//    cout<<endl<<"Esto se envia a la funcion:"<<(long)target<<endl;
+//    cout<<endl<<"Esto se envia de amperaje:"<<(int32_t)targetr<<endl;
+
 
     WriteSDO(od::external_reference, data32to4x8(targetr));
 
@@ -781,6 +784,11 @@ long CiA402Device::SetTorque(double target){
     return 0;
 }
 
+long CiA402Device::SetAmpRaw(double target){
+//    cout<<endl<<"Esto se envia a la funcion:"<<(int32_t)target<<endl;
+    WriteSDO(od::external_reference, data32to4x8((int32_t)target));
+    return 0;
+    }
 
 //long CiA402Device::SetTorque(double target){
 
