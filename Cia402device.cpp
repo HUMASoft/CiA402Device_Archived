@@ -452,10 +452,6 @@ double CiA402Device::GetVelocity()
     //return double(velocity/(Scaling_Factors_Velocity*HIGHPART_BITSHIFT_16));// /65536;
    // double ret = v/reduction_ratio_motor;
     //cout<<"Get_Velocity"<<ret<<"rpm"<<endl;++++++++++++++++++++++++++++
-
-
-
-
 }
 
 double CiA402Device::GetMeanVelocity()
@@ -516,6 +512,16 @@ double CiA402Device::GetFilteredVelocity(int samples)
 {
 
     return 0;
+}
+double CiA402Device::GetFilterdAmps()
+{
+
+    int32_t amps= (int32_t)ReadSDO(od::filtered_amps);
+
+    double scaledamps = (double)amps;
+    //scaledamps = scaledamps / ( (double)(Scaling_Factors_Velocity*HIGHPART_BITSHIFT_16) );
+
+    return scaledamps;
 }
 
 long CiA402Device::SetCommunications(int fdPort)

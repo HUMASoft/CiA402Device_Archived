@@ -49,6 +49,7 @@ const vector<uint8_t> external_reference_type={0x1D,0x20,0x00};
 const vector<uint8_t> torque_online_enable={0x01,0x00};
 const vector<uint8_t> current_limit={0x7F,0x20}; //internal units
 const vector<uint8_t> external_reference ={0x1C,0x20,0x00};
+const vector<uint8_t> filtered_amps ={0x21,0x08,0x03};
 //const vector<uint8_t> torque_target={0x71,0x60}; Available only with firmwares F508I/F509I and above.
 
 const vector<uint8_t> torque_max={0xf8,0x60};

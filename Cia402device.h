@@ -78,6 +78,7 @@ public:
     double GetVelocity();
     double GetFilteredVelocity(int samples);
     double GetMeanVelocity();
+    double GetFilterdAmps();
 
     long SetCommunications(int fdPort);
     int CheckError();
