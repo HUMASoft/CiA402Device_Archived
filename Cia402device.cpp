@@ -20,6 +20,9 @@ long CiA402Device::Init(CiA402SetupData *deviceData)
     encoderSpan = 0;
 
     tWaited = chrono::milliseconds(1);
+    ///set adress for filtered amps (not working)
+//    const vector<uint8_t> cutoff = {0xFF,0xFF};
+//    WriteSDO(od::filtered_amps_set_cutoff,cutoff);
 
 //    lastTimeValue = actualTimeValue;
 //    actualTimeValue = chrono::system_clock::now();
@@ -513,14 +516,21 @@ double CiA402Device::GetFilteredVelocity(int samples)
 
     return 0;
 }
-double CiA402Device::GetFilterdAmps()
+double CiA402Device::GetAmps()
 {
 
-    int32_t amps= (int32_t)ReadSDO(od::filtered_amps);
-
+    int16_t amps= (int16_t)ReadSDO(od::getamps);
+    cout<< endl<<amps<<endl;
     double scaledamps = (double)amps;
-    //scaledamps = scaledamps / ( (double)(Scaling_Factors_Velocity*HIGHPART_BITSHIFT_16) );
+    return scaledamps;
+}
+double CiA402Device::GetFilterdAmps()
+{
+    ///does not work yet
 
+    int16_t amps= (int16_t)ReadSDO(od::filtered_amps);
+    cout<<"Lectura int32 : "<<amps<<endl;
+    double scaledamps = (double)amps;
     return scaledamps;
 }
 
