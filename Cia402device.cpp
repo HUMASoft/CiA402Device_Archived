@@ -520,7 +520,7 @@ double CiA402Device::GetAmps()
 {
 
     int16_t amps= (int16_t)ReadSDO(od::getamps);
-    cout<< endl<<amps<<endl;
+
     double scaledamps = (double)amps;
     return scaledamps;
 }
