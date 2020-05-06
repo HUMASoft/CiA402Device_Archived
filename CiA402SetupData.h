@@ -14,7 +14,7 @@ class CiA402SetupData
 public:
     CiA402SetupData();
 
-    CiA402SetupData(int new_encRes, float new_mlRatio, float new_SampSL, int new_current_limit);
+    CiA402SetupData(int new_encRes, float new_mlRatio, float new_SampSL, float motor_current_limit, float drive_current_limit);
     float getScaling_Factors_Velocity() const;
 
     float getScaling_Factors_Position() const;
@@ -30,7 +30,7 @@ private:
     float mlRatio;    // Transmission ratio between the motor displacement in SI units and load displacement
     int encRes;         // Nº lines for incremental encoder quadrature  (lines X 4)
     float SampSL;                   // speed/position loop sampling period of the motor Control (sampling_slow_loop)
-    int current_limit;              // current_limit. CAnOpen programming iPOS 5.5.7. Object 207Fh: Current limit
+    int current_limit;              // current_limit. CAnOpen programming iPOS 5.6.7. Object 207Fh: Current limit
 
    //Technosoft drives work with parameters and variables represented in the drive internal units (IU).
    // Constant to convert velocity from rad to count/sample

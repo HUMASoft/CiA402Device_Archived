@@ -5,13 +5,13 @@ CiA402SetupData::CiA402SetupData()
 
 }
 
-CiA402SetupData::CiA402SetupData(int new_encRes,float new_mlRatio, float new_SampSL,int new_current_limit)
+CiA402SetupData::CiA402SetupData(int new_encRes,float new_mlRatio, float new_SampSL,float motor_current_limit,float drive_current_limit)
 {
 
     mlRatio = new_mlRatio;// Transmission ratio between the motor displacement in SI units and load displacement
     encRes = new_encRes;// Nº pulses for incremental encoder quadrature  (lines X 4)
     SampSL = new_SampSL;// speed/position loop sampling period of the motor Control (sampling_slow_loop)
-    current_limit = new_current_limit;// current_limit. CAnOpen programming iPOS 5.5.7. Object 207Fh: Current limit
+    current_limit = 32767-(65520*motor_current_limit)/(2*drive_current_limit);// current_limit. CAnOpen programming iPOS 5.5.7. Object 207Fh: Current limit
 
 
     float count_sec = encRes/60.0;

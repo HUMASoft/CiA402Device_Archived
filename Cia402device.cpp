@@ -50,7 +50,7 @@ long CiA402Device::Init(CiA402SetupData *deviceData)
 CiA402Device::CiA402Device()
     : CiA301CommPort(1,1)
 {
-    CiA402SetupData defaultInit(2048,24,0.001, 0.144);
+    CiA402SetupData defaultInit(2048,24,0.001, 0.144, 20 );
     Init(&defaultInit);
     comm = 1;
 
@@ -59,7 +59,7 @@ CiA402Device::CiA402Device()
 CiA402Device::CiA402Device(uint8_t new_id)
     : CiA301CommPort(1, new_id)
 {
-    CiA402SetupData defaultInit(2048,24,0.001, 0.144);
+    CiA402SetupData defaultInit(2048,24,0.001, 0.144, 20 );
     Init(&defaultInit);
     comm = 1;
 }
@@ -68,7 +68,7 @@ CiA402Device::CiA402Device(uint8_t new_id, int fdPort)
     : CiA301CommPort(fdPort, new_id)
 {
 
-    CiA402SetupData defaultInit(2048,24,0.001, 0.144);
+    CiA402SetupData defaultInit(2048,24,0.001, 0.144, 20 );
     Init(&defaultInit);
     comm = fdPort;
 
@@ -77,7 +77,7 @@ CiA402Device::CiA402Device(uint8_t new_id, int fdPort)
 CiA402Device::CiA402Device(uint8_t new_id, PortBase *new_port)
     : CiA301CommPort(new_port, new_id)
 {
-    CiA402SetupData defaultInit(2048,24,0.001, 0.144);
+    CiA402SetupData defaultInit(2048,24,0.001, 0.144, 20 );
     Init(&defaultInit);
 //    port=new_port;
 
