@@ -6,6 +6,7 @@
 #include <math.h>       /* signbit, sqrt */
 //#include "CiA402DeviceICanbus.h"
 #include "CiA301CommPort.h"
+#include "SocketCanPort.h"
 #include "ObjectDictionary.h"
 #include "PortBase.h"
 #include "CiA402SetupData.h"
