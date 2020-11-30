@@ -9,6 +9,7 @@
 #include "ObjectDictionary.h"
 #include "PortBase.h"
 #include "CiA402SetupData.h"
+#include "SocketCanPort.h"
 
 
 #define PI 3.14159265358
