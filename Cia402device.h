@@ -27,7 +27,7 @@ So 65536(0x00010000) = 1 encoder increment/sample. The minimum speed is 1 encode
 
 #define ANALOGUE_INPUT_SCALE 0xFFF0
 
-
+//using namespace std::chrono;
 
 class CiA402Device : public CiA301CommPort
 {
@@ -144,11 +144,11 @@ private:
     //GetMeanVelocity variables
     double currentPosition, lastPosition;
     double meanVelocity;
-    chrono::system_clock::time_point actualTimeValue, lastTimeValue; //last time value
-    chrono::system_clock::time_point encoderChangeTime;
+    std::chrono::system_clock::time_point actualTimeValue, lastTimeValue; //last time value
+    std::chrono::system_clock::time_point encoderChangeTime;
     double encoderSpan;
 
-    chrono::nanoseconds dtsWait, tWaited;
+    std::chrono::nanoseconds dtsWait, tWaited;
 
 
 };
